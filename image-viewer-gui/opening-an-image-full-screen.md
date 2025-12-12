@@ -1,247 +1,247 @@
-# Opening an Image Full Screen
+# 이미지 전체 화면 열기
 
-The Chloros Image Viewer provides a dedicated full-screen interface for viewing, analyzing, and manipulating your multispectral images. Whether viewing original images or processed outputs, the Image Viewer offers powerful tools for inspection and analysis.
+Chloros 이미지 뷰어는 다중 스펙트럼 이미지를 보고, 분석하고, 조작하기 위한 전용 전체 화면 인터페이스를 제공합니다. 원본 이미지나 처리된 출력을 볼 때에도 이미지 뷰어는 검사 및 분석을 위한 강력한 도구를 제공합니다.
 
-## Accessing the Image Viewer
+## 이미지 뷰어 접근 방법
 
-### From the File Browser
+### 파일 브라우저에서
 
-The most common way to open an image in the Image Viewer:
+이미지 뷰어에서 이미지를 여는 가장 일반적인 방법:
 
-1. Ensure you're in the **File Browser** tab <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line">
-2. Click any **image thumbnail** in the image grid
-3. The image opens in the **main preview area** (center of screen)
-4. The image is now loaded and ready for full-screen viewing
+1. **파일 브라우저** 탭에 있는지 확인합니다 <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line">
+2. 이미지 그리드에서 원하는 **이미지 썸네일**을 클릭하세요
+3. 이미지가 **메인 미리보기 영역**(화면 중앙)에 열립니다
+4. 이제 이미지가 로드되어 전체 화면으로 볼 준비가 되었습니다
 
-### Opening the Image Viewer Tab
+### 이미지 뷰어 탭 열기
 
-Once an image is loaded in the preview area:
+미리보기 영역에 이미지가 로드된 후:
 
-1. Click the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> icon in the left sidebar
-2. The Image Viewer tab opens, displaying the selected image full-screen
-3. Advanced viewing and analysis tools become available in the left sidebar
-
-***
-
-## Image Viewer Interface Overview
-
-### Main Display Area
-
-The largest portion of the screen shows your image:
-
-* **Full resolution**: Images displayed at native resolution
-* **Zoomable**: Use controls or mouse wheel to zoom
-* **Pannable**: Click and drag to move around when zoomed
-* **Aspect ratio maintained**: Images scale proportionally
+1. 왼쪽 사이드바의 **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 아이콘을 클릭하세요
+2. 이미지 뷰어 탭이 열리며 선택한 이미지가 전체 화면으로 표시됩니다
+3. 고급 보기 및 분석 도구가 왼쪽 사이드바에 표시됩니다
 
 ***
 
-## Viewing Options
+## 이미지 뷰어 인터페이스 개요
 
-### Basic Image Navigation
+### 메인 디스플레이 영역
 
-#### Browse Through Images
+화면의 가장 큰 부분은 이미지를 표시합니다:
 
-Navigate through your image set using keyboard shortcuts or buttons:
-
-* **Next image**: Click → button or press **→** (Right Arrow) key
-* **Previous image**: Click ← button or press **←** (Left Arrow) key
-* **Jump to specific image**: Return to File Browser and click desired thumbnail
-
-#### Zoom Controls
-
-Adjust magnification to inspect image details:
-
-**Zoom In:**
-
-* Click **+** (Plus) button
-* Press **+** or **=** key
-* Scroll mouse wheel **up**
-
-**Zoom Out:**
-
-* Click **−** (Minus) button
-* Press **−** (Minus) key
-* Scroll mouse wheel **down**
-
-**Fit to Screen:**
-
-* Click **↔** (Fit) button
-* Press **0** (Zero) key
-* Double-click on image
-
-#### Pan When Zoomed
-
-When zoomed in beyond screen size:
-
-1. Move mouse cursor over image
-2. Click and **hold left mouse button**
-3. **Drag** to move image around
-4. Release to stop panning
-
-**Alternative**: Use arrow keys to pan in small increments
+* **전체 해상도**: 원본 해상도로 이미지 표시
+* **확대/축소 가능**: 컨트롤 또는 마우스 휠로 확대/축소
+* **이동 가능**: 확대 시 클릭 후 드래그하여 화면 이동
+* **종횡비 유지**: 이미지가 비례적으로 확대/축소됨
 
 ***
 
-## Pixel Value Inspection
+## 보기 옵션
 
-### Viewing Pixel Values at Cursor
+### 기본 이미지 탐색
 
-As you move your mouse cursor over the image, pixel values display in real-time:
+#### 이미지 탐색
 
-**Value display location:**
+키보드 단축키 또는 버튼으로 이미지 세트를 탐색하세요:
 
-* **Floating number and red line in right side index LUT gradient legend**
-* **When zoomed in further, floating value near cursor and highlighted pixel**
-* Shows values for pixel **under cursor or highlighted**
-* Updates as you move mouse
+* **다음 이미지**: → 버튼 클릭 또는 **→**(오른쪽 화살표) 키 누르기
+* **이전 이미지**: ← 버튼 클릭 또는 **←**(왼쪽 화살표) 키 누르기
+* **특정 이미지로 이동**: 파일 브라우저로 돌아가 원하는 썸네일 클릭
 
-***
+#### 확대/축소 컨트롤
 
-## Image Types You Can View
+이미지 세부 사항 확인을 위해 확대 배율 조정:
 
-### Original Images (Pre-Processing)
+**확대:**
 
-**RAW + JPG images from camera:**
+* **+**(더하기) 버튼 클릭
+* **+** 또는 **=** 키 누르기
+* 마우스 휠 **위로** 스크롤
 
-* Display RAW data as previewed
-* Show original, uncorrected values
-* Useful for checking image quality before processing
+**축소:**
 
-### Calibrated Reflectance Images
+* **−**(빼기) 버튼 클릭
+* **−**(빼기) 키 누르기
+* 마우스 휠 **아래로** 스크롤
 
-**After processing:**
+**화면 맞추기:**
 
-* Vignette corrected
-* Reflectance calibrated
-* Multi-band TIFF (Red, Green, NIR, etc.)
-* Scientific data ready for analysis
+* **↔** (맞춤) 버튼 클릭
+* **0** (영) 키 누르기
+* 이미지 더블 클릭
 
-### Index Images
+#### 확대 시 이동
 
-**NDVI, NDRE, GNDVI, etc. (\_NDVI.tif files):**
+화면 크기를 초과하여 확대된 경우:
 
-* Single-band grayscale images
-* Pixel values represent index calculation results
-* Range typically -1 to +1 for normalized indices
-* Can apply color LUTs for visualization
+1. 마우스 커서를 이미지 위로 이동
+2. 마우스 왼쪽 버튼을 **누른 상태로** 클릭
+3. **드래그**하여 이미지 이동
+4. 릴리스하여 이동 중지
 
-***
-
-## Index and LUT Application
-
-Apply multispectral indices and color Look-Up Tables:
-
-1. Locate **Index/LUT Sandbox** in **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> sidebar
-2. Select vegetation index (NDVI, NDRE, etc.)
-3. Select multispectral formula, or create your own custom one (Chloros+ only)
-4. Apply color LUT gradient for visualization
-5. Adjust value ranges and thresholds
-
-See [Index/LUT Sandbox](index-lut-sandbox.md) for detailed instructions.
+**대안**: 화살표 키로 미세 이동
 
 ***
 
-## Keyboard Shortcuts
+## 픽셀 값 검사
 
-### Navigation
+### 커서 위치 픽셀 값 보기
 
-* **→** (Right Arrow): Next image
-* **←** (Left Arrow): Previous image
-* **Home**: First image in list
-* **End**: Last image in list
+이미지 위에서 마우스 커서를 이동하면 픽셀 값이 실시간으로 표시됩니다:
 
-### Zoom
+**값 표시 위치:**
 
-* **+** or **=**: Zoom in
-* **−**: Zoom out
-* **0** (Zero): Fit to screen
-* **Mouse Wheel**: Zoom in/out
-
-### View Controls
-
-* **P**: Toggle pixel percent mode
-* **L**: Toggle layers panel
-* **Esc**: Close full-screen or return to File Browser
-
-### Other
-
-* **Ctrl+S**: Save current image
-* **F**: Full-screen mode (if available)
+* **오른쪽 색상 지표 LUT 그라데이션 범례의 부동 소수점 숫자와 빨간색 선**
+* **더 확대 시 커서 근처 부동 값과 강조 표시된 픽셀**
+* 커서 아래 또는 강조 표시된 픽셀의 값 표시
+* 마우스 이동 시 업데이트
 
 ***
 
-### Verifying Index Calculations
+## 표시 가능한 이미지 유형
 
-Check that indices calculated correctly:
+### 원본 이미지 (사전 처리)
 
-1. Open NDVI or other index image
-2. Check vegetation areas:
-   * **NDVI**: Should show 0.4-0.9 for healthy plants
-   * **NDRE**: Higher values for vigorous growth
-   * **GNDVI**: Similar to NDVI but chlorophyll-sensitive
-3. Check non-vegetation:
-   * **Soil**: Near 0 or slightly negative
-   * **Water**: Negative values (-0.5 to 0)
+**카메라 출력 RAW + JPG 이미지:**
 
-***
+* RAW 데이터를 미리보기 형태로 표시
+* 보정되지 않은 원본 값 표시
+* 처리 전 화질 확인에 유용
 
-## Troubleshooting Viewing Issues
+### 보정된 반사율 이미지
 
-### Image Won't Open
+**처리 후:**
 
-**Possible causes:**
+* 비네팅 보정
+* 반사율 보정
+* 다중 밴드 TIFF (Red, Green, NIR 등)
+* 분석 준비 완료된 과학 데이터
 
-* File corrupted during processing
-* Unsupported file format
-* Insufficient memory for large image
+### 지수 이미지
 
-**Solutions:**
+**NDVI, NDRE, GNDVI 등 (\_NDVI.tif 파일):**
 
-1. Try opening in external viewer to verify file integrity
-2. Check file format matches expected type
-3. Close other applications to free memory
-4. Try smaller/different image
-
-### Black or White Image Display
-
-**Possible causes:**
-
-* Value range outside display capability
-* 32-bit float image with unusual values
-* Index calculation error
-
-**Solutions:**
-
-1. Check pixel values - if all very low or very high, adjust display range
-2. Try opening in QGIS or similar with auto-range adjustment
-3. Check Debug Log from processing for errors
-
-### Pixel Values Seem Wrong
-
-**Possible causes:**
-
-* Viewing wrong image (original vs processed)
-* Calibration didn't apply correctly
-* Light sensor data wasn't included in input
-* Percent mode toggled incorrectly
-
-**Solutions:**
-
-1. Verify you're viewing processed output (check filename suffix)
-2. Check percent mode button state
-3. Compare with known-good images from same dataset
+* 단일 밴드 그레이스케일 이미지
+* 픽셀 값은 지수 계산 결과를 나타냄
+* 정규화 지수의 경우 일반적으로 -1에서 +1 범위
+* 시각화를 위해 컬러 LUT 적용 가능
 
 ***
 
-## Next Steps
+## 지수 및 LUT 적용
 
-Now that you can view images full-screen:
+다중 스펙트럼 지수 및 컬러 룩업 테이블 적용 방법:
 
-* [**Image Layers**](image-layers.md) - Learn about multi-band visualization
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Apply custom indices and color mapping
-* [**Multispectral Index Formulas**](../project-settings/multispectral-index-formulas.md) - Understand available indices
+1. **이미지 뷰어**의 **지수/LUT 샌드박스** 위치 확인 <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 사이드바
+2. 식생 지수 선택 (NDVI, NDRE 등)
+3. 다중 스펙트럼 공식 선택 또는 사용자 정의 공식 생성 (Chloros+ 전용)
+4. 시각화를 위한 컬러 LUT 그라데이션 적용
+5. 값 범위 및 임계값 조정
 
-For processing workflow, see:
+자세한 지침은 [지수/LUT 샌드박스](index-lut-sandbox.md)를 참조하십시오.
 
-* [**Processing Images (GUI)**](../processing-images-gui/page-1.md) - Complete processing guide
+***
+
+## 키보드 단축키
+
+### 탐색
+
+* **→** (오른쪽 화살표): 다음 이미지
+* **←** (왼쪽 화살표): 이전 이미지
+* **Home**: 목록의 첫 번째 이미지
+* **End**: 목록의 마지막 이미지
+
+### 확대/축소
+
+* **+** 또는 **=**: 확대
+* **−**: 축소
+* **0** (영): 화면에 맞추기
+* **마우스 휠**: 확대/축소
+
+### 보기 제어
+
+* **P**: 픽셀 퍼센트 모드 전환
+* **L**: 레이어 패널 전환
+* **Esc**: 전체 화면 닫기 또는 파일 브라우저로 돌아가기
+
+### 기타
+
+* **Ctrl+S**: 현재 이미지 저장
+* **F**: 전체 화면 모드 (사용 가능한 경우)
+
+***
+
+### 지수 계산 검증
+
+계산된 지수가 올바른지 확인하세요:
+
+1. NDVI 또는 다른 지수 이미지 열기
+2. 식생 영역 확인:
+   * **NDVI**: 건강한 식물의 경우 0.4-0.9 표시
+   * **NDRE**: 활발한 생장 시 더 높은 값
+   * **GNDVI**: NDVI와 유사하나 엽록소 감지 기능 포함
+3. 비식생 영역 확인:
+   * **토양**: 0 근처 또는 약간 음수
+   * **물**: 음수 값 (-0.5 ~ 0)
+
+***
+
+## 이미지 표시 문제 해결
+
+### 이미지 열리지 않음
+
+**가능한 원인:**
+
+* 처리 중 파일 손상
+* 지원되지 않는 파일 형식
+* 대용량 이미지 처리 시 메모리 부족
+
+**해결 방법:**
+
+1. 외부 뷰어로 열어 파일 무결성 확인
+2. 파일 형식이 예상 유형과 일치하는지 확인
+3. 메모리 확보를 위해 다른 애플리케이션 종료
+4. 더 작은/다른 이미지 시도
+
+### 흑백으로 표시되는 이미지
+
+**가능한 원인:**
+
+* 표시 범위를 벗어난 값 범위
+* 비정상적인 값을 가진 32비트 부동 소수점 이미지
+* 인덱스 계산 오류
+
+**해결 방법:**
+
+1. 픽셀 값 확인 - 모두 매우 낮거나 높을 경우 표시 범위 조정
+2. 자동 범위 조정 기능이 있는 QGIS 등 유사 프로그램에서 열어 보기
+3. 처리 과정의 디버그 로그에서 오류 확인
+
+### 픽셀 값이 잘못된 것처럼 보임
+
+**가능한 원인:**
+
+* 잘못된 이미지 확인 (원본 vs 처리된 이미지)
+* 보정이 제대로 적용되지 않음
+* 입력 데이터에 광 센서 데이터 미포함
+* 퍼센트 모드 토글 오류
+
+**해결 방법:**
+
+1. 처리된 출력물 확인 (파일명 확장자 확인)
+2. 퍼센트 모드 버튼 상태 점검
+3. 동일 데이터셋의 정상 이미지와 비교
+
+***
+
+## 다음 단계
+
+이제 이미지를 전체 화면으로 볼 수 있습니다:
+
+* [**이미지 레이어**](image-layers.md) - 다중 밴드 시각화 이해하기
+* [**지수/LUT 샌드박스**](index-lut-sandbox.md) - 사용자 정의 지수 및 색상 매핑 적용
+* [**다중 스펙트럼 지수 공식**](../project-settings/multispectral-index-formulas.md) - 사용 가능한 지수 이해하기
+
+처리 워크플로에 대해서는 다음을 참조하세요:
+
+* [**이미지 처리 (GUI)**](../processing-images-gui/adding-files-to-a-project.md) - 완전한 처리 가이드

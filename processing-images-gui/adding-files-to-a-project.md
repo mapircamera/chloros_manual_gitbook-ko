@@ -1,204 +1,204 @@
-# Adding Files to a Project
+# 프로젝트에 파일 추가하기
 
-Once you've created or opened a project in Chloros, the next step is to add your multispectral images to begin processing. The File Browser<img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> tab makes it easy to import images and manage your dataset.
+Chloros에서 프로젝트를 생성하거나 열었다면, 다음 단계는 다중 스펙트럼 이미지를 추가하여 처리를 시작하는 것입니다. 파일 브라우저<img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> 탭을 사용하면 이미지를 쉽게 가져오고 데이터 세트를 관리할 수 있습니다.
 
-## Accessing the File Browser
+## 파일 브라우저 접근 방법
 
-1. Open or create a project in Chloros
-2. Click the **File Browser** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> icon in the left sidebar
-3. The File Browser panel will display your project's file list
+1. Chloros에서 프로젝트를 열거나 생성합니다.
+2. 왼쪽 사이드바의 **파일 브라우저** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> 아이콘을 클릭합니다
+3. 파일 브라우저 패널에 프로젝트의 파일 목록이 표시됩니다
 
-{% hint style="info" %}
-**Supported File Types**: Chloros supports RAW+JPG and JPG image files from MAPIR Survey3W and Survey3N cameras. Only RAW+JPG are recommended.
+{% 힌트 style=&quot;info&quot; %}
+**지원되는 파일 형식**: Chloros는 MAPIR, Survey3W 및 Survey3N 카메라의 RAW+JPG 및 JPG 이미지 파일을 지원합니다. RAW+JPG 형식만 권장됩니다.
 {% endhint %}
 
 ***
 
-## Adding Images to Your Project
+## 프로젝트에 이미지 추가하기
 
-There are two primary ways to add images to your project:
+프로젝트에 이미지를 추가하는 두 가지 주요 방법이 있습니다:
 
-### Method 1: Add Files
+### 방법 1: 파일 추가
 
-Use this option to import individual image files or a small selection of files.
+개별 이미지 파일 또는 소량의 파일을 가져오려면 이 옵션을 사용하세요.
 
-1. Click the **"Add Files"** button at the top of the File Browser panel
-2. Navigate to the folder containing your images
-3. Select one or more image files (hold **Ctrl** to select multiple files)
-4. Click **"Open"** to import the selected files
+1. 파일 브라우저 패널 상단의 **&quot;파일 추가&quot;** 버튼을 클릭합니다.
+2. 이미지가 포함된 폴더로 이동합니다.
+3. 하나 이상의 이미지 파일을 선택합니다(**Ctrl** 키를 누른 상태에서 여러 파일 선택).
+4. **&quot;열기&quot;**를 클릭하여 선택한 파일을 가져옵니다.
 
-### Method 2: Add Folder
+### 방법 2: 폴더 추가
 
-Use this option to import all images from a folder at once.
+폴더 내 모든 이미지를 한 번에 가져오려면 이 옵션을 사용합니다.
 
-1. Click the **"Add Folder"** button at the top of the File Browser panel
-2. Navigate to and select the folder containing your capture session images
-3. Click **"Select Folder"** to import all supported images from that folder
-
-***
-
-## Understanding the File Browser Table
-
-Once images are imported, they appear in a table with the following columns:
-
-### Thumbnail
-
-* Small preview of each image
-* Click thumbnail to view full image in the main preview area
-
-### File Name
-
-* Original filename from the camera
-* Maintains camera naming convention (e.g., IMG\_0001.RAW)
-
-### Timestamp
-
-* Date and time the image was captured
-* Extracted from image EXIF metadata
-* Used for PPK synchronization and calibration target detection
-
-### Camera Model
-
-* Automatically detected camera and filter configuration
-* Examples: Survey3W\_RGN, Survey3N\_OCN, Survey3W\_RGB
-* Used to apply correct processing profiles
-
-### Target Column (Checkbox)
-
-* Check this box for images that contain calibration targets
-* Greatly speeds up target detection during processing
-* See [Choosing Target Images](choosing-target-images.md) for details
+1. 파일 브라우저 패널 상단의 **&quot;폴더 추가&quot;** 버튼을 클릭합니다.
+2. 캡처 세션 이미지가 포함된 폴더로 이동하여 선택합니다.
+3. **&quot;폴더 선택&quot;**을 클릭하여 해당 폴더의 모든 지원 이미지 파일을 가져옵니다.
 
 ***
 
-## Managing Files in Your Project
+## 파일 브라우저 테이블 이해하기
 
-### Removing Files
+이미지가 가져오기 완료되면 다음 열로 구성된 테이블에 표시됩니다:
 
-To remove unwanted images from your project:
+### 썸네일
 
-1. Select one or more images in the File Browser table
-2. Click the **"Remove Selected"** button
-3. Confirm removal (files are not deleted from disk, only removed from the project)
+* 각 이미지의 작은 미리보기
+* 썸네일을 클릭하면 메인 미리보기 영역에서 전체 이미지를 볼 수 있습니다
 
-### Sorting and Filtering
+### 파일 이름
 
-* **Sort by column**: Click any column header to sort images
-* **Timestamp sort**: Useful for organizing chronological capture sequences
-* **Camera model filter**: Group images by camera type if using multiple cameras
+* 카메라의 원본 파일 이름
+* 카메라의 명명 규칙을 유지합니다(예: IMG\_0001.RAW)
 
-***
+### 타임스탬프
 
-## Image Preview
+* 이미지가 캡처된 날짜 및 시간
+* 이미지 EXIF 메타데이터에서 추출됩니다
+* PPK 동기화 및 교정 대상 탐지에 사용
 
-### Viewing Full Image
+### 카메라 모델
 
-Click any image thumbnail in the File Browser to display it in the main preview area:
+* 자동 감지된 카메라 및 필터 구성
+* 예시: Survey3W\_RGN, Survey3N\_OCN, Survey3W\_RGB
+* 올바른 처리 프로필 적용에 사용
 
-1. Image appears in the center preview panel
-2. Use zoom controls to inspect image details
-3. Navigate between images using arrow keys
+### 타겟 열 (체크박스)
 
-### Quick Navigation
-
-* **Previous Image**: Click left arrow or press ← key
-* **Next Image**: Click right arrow or press → key
-* **Zoom In/Out**: Use mouse wheel or zoom buttons
-* **Pan**: Click and drag on image when zoomed in
+* 보정 타겟이 포함된 이미지의 경우 이 상자를 선택하세요
+* 처리 중 타겟 탐지 속도를 크게 향상시킵니다
+* 자세한 내용은 [타겟 이미지 선택](choosing-target-images.md)을 참조하세요
 
 ***
 
-## Duplicate File Handling
+## 프로젝트 내 파일 관리
 
-Chloros automatically detects and ignores duplicate files:
+### 파일 제거
 
-* Files with identical filenames are skipped
-* Prevents accidental double-processing
-* Warning message displayed when duplicates are detected
+프로젝트에서 불필요한 이미지를 제거하려면:
 
-{% hint style="warning" %}
-**Important**: Do not rename or modify your original image files before importing. Chloros relies on original filenames and metadata for proper processing.
+1. 파일 브라우저 테이블에서 하나 이상의 이미지를 선택합니다
+2. **&quot;선택 항목 제거&quot;** 버튼을 클릭합니다
+3. 제거를 확인합니다(파일은 디스크에서 삭제되지 않고 프로젝트에서만 제거됨)
+
+### 정렬 및 필터링
+
+* **열별 정렬**: 이미지 정렬을 위해 열 헤더를 클릭합니다
+* **타임스탬프 정렬**: 촬영 순서대로 정렬할 때 유용합니다
+* **카메라 모델 필터**: 여러 대의 카메라를 사용할 경우 카메라 유형별로 이미지를 그룹화합니다
+
+***
+
+## 이미지 미리보기
+
+### 전체 이미지 보기
+
+파일 브라우저에서 이미지 썸네일을 클릭하면 메인 미리보기 영역에 표시됩니다:
+
+1. 이미지가 중앙 미리보기 패널에 나타납니다
+2. 확대/축소 컨트롤을 사용하여 이미지 세부 사항을 확인합니다
+3. 화살표 키로 이미지 간 이동
+
+### 빠른 탐색
+
+* **이전 이미지**: 왼쪽 화살표 클릭 또는 ← 키 입력
+* **다음 이미지**: 오른쪽 화살표 클릭 또는 → 키 입력
+* **확대/축소**: 마우스 휠 또는 확대/축소 버튼 사용
+* **이동**: 확대 시 이미지 클릭 후 드래그
+
+***
+
+## 중복 파일 처리
+
+Chloros는 중복 파일을 자동으로 감지하여 무시합니다:
+
+* 동일한 파일명을 가진 파일은 건너뜁니다
+* 실수로 중복 처리되는 것을 방지합니다
+* 중복이 감지되면 경고 메시지가 표시됩니다
+
+{% hint style=&quot;warning&quot; %}
+**중요**: 원본 이미지 파일을 가져오기 전에 이름을 변경하거나 수정하지 마십시오. Chloros는 올바른 처리를 위해 원본 파일명과 메타데이터에 의존합니다.
 {% endhint %}
 
 ***
 
-## Mixed Camera Datasets
+## 혼합 카메라 데이터셋
 
-If your project contains images from multiple MAPIR cameras:
+프로젝트에 여러 MAPIR 카메라의 이미지가 포함된 경우:
 
-1. Chloros automatically detects each camera model
-2. Each camera type is processed with its appropriate calibration profile
-3. File Browser displays camera model in the Camera Model column
-4. Processing applies correct settings for each camera type
+1. Chloros는 각 카메라 모델을 자동으로 감지합니다
+2. 각 카메라 유형은 해당 보정 프로필로 처리됩니다
+3. 파일 브라우저의 &#x27;카메라 모델&#x27; 열에 카메라 모델이 표시됩니다
+4. 처리 과정에서 각 카메라 유형에 맞는 올바른 설정이 적용됩니다
 
-**Example scenario**: Survey3W RGN + Survey3N OCN dual-camera setup
-
-***
-
-## Best Practices
-
-### Organize Before Import
-
-* Keep calibration target images in the same folder as survey images
-* Maintain original folder structure from your camera/SD card
-* Don't mix datasets from different sessions in one project
-
-### File Naming
-
-* Preserve original camera filenames (IMG\_0001.RAW, etc.)
-* Don't rename files before import
-* Original names contain important metadata
-
-### Calibration Target Images
-
-* Always include 1-2 calibration target images per session
-* Capture targets before and after the capture session
-* Place targets in the same lighting conditions as capture area
-* Mark target images using the Target checkbox to speed up processing
+**예시 시나리오**: Survey3W RGN + Survey3N OCN 듀얼 카메라 설정
 
 ***
 
-## Common Issues and Solutions
+## 모범 사례
 
-### Images Not Appearing After Import
+### 가져오기 전 정리
 
-**Possible causes:**
+* 교정 대상 이미지를 측량 이미지와 동일한 폴더에 보관하십시오
+* 카메라/SD 카드의 원본 폴더 구조를 유지하십시오
+* 서로 다른 세션의 데이터 세트를 하나의 프로젝트에 혼합하지 마십시오
 
-* File format not supported (only RAW+JPG and JPG from MAPIR cameras)
-* Images are from non-MAPIR cameras (see [Supported Cameras](../supported-cameras.md))
-* File corruption or incomplete transfer from SD card
+### 파일 명명
 
-**Solution**: Verify file format and camera model compatibility
+* 원본 카메라 파일명(IMG\_0001.RAW 등)을 보존하십시오
+* 가져오기 전에 파일명을 변경하지 마십시오
+* 원본 이름에는 중요한 메타데이터가 포함되어 있습니다
 
-### Camera Model Not Detected
+### 보정 대상 이미지
 
-**Possible causes:**
-
-* Modified EXIF metadata
-* Images edited in external software
-* Incomplete file transfer
-
-**Solution**: Re-import original, unmodified files from camera/SD card
-
-### Missing Timestamps
-
-**Possible causes:**
-
-* Camera clock not set correctly
-* EXIF data stripped by external software
-
-**Solution**: Verify camera time settings were correct during capture
+* 세션당 항상 1~2장의 보정 대상 이미지를 포함하세요
+* 촬영 세션 전후에 대상 이미지를 촬영하세요
+* 대상 이미지를 촬영 영역과 동일한 조명 조건에 배치하세요
+* 처리 속도 향상을 위해 대상 이미지에는 &#x27;대상&#x27; 체크박스를 표시하세요
 
 ***
 
-## Next Steps
+## 일반적인 문제 및 해결 방법
 
-Once your files are imported:
+### 가져오기 후 이미지가 표시되지 않음
 
-1. **Review the file list** - Ensure all images loaded correctly
-2. **Check camera models** - Verify correct camera detection
-3. **Mark target images** - See [Choosing Target Images](choosing-target-images.md)
-4. **Adjust settings** - Configure processing options in [Project Settings](adjusting-project-settings.md)
-5. **Start processing** - See [Starting the Processing](starting-the-processing.md)
+**가능한 원인:**
 
-For detailed information about project configuration, see [Adjusting Project Settings](adjusting-project-settings.md).
+* 지원되지 않는 파일 형식 (MAPIR 카메라의 RAW+JPG 및 JPG만 지원)
+* MAPIR 카메라가 아닌 다른 카메라의 이미지 ([지원 카메라](../supported-cameras.md) 참조)
+* 파일 손상 또는 SD 카드에서 불완전한 전송
+
+**해결 방법**: 파일 형식 및 카메라 모델 호환성 확인
+
+### 카메라 모델 미탐지
+
+**가능한 원인:**
+
+* 수정된 EXIF 메타데이터
+* 외부 소프트웨어로 편집된 이미지
+* 불완전한 파일 전송
+
+**해결 방법**: 카메라/SD 카드에서 수정되지 않은 원본 파일을 재가져오기
+
+### 타임스탬프 누락
+
+**가능한 원인:**
+
+* 카메라 시계가 올바르게 설정되지 않음
+* 외부 소프트웨어에 의해 EXIF 데이터가 제거됨
+
+**해결 방법**: 촬영 당시 카메라 시간 설정이 정확한지 확인
+
+***
+
+## 다음 단계
+
+파일 가져오기 완료 후:
+
+1. **파일 목록 검토** - 모든 이미지가 올바르게 로드되었는지 확인
+2. **카메라 모델 확인** - 카메라 감지가 정확한지 검증
+3. **대상 이미지 표시** - [대상 이미지 선택](choosing-target-images.md) 참조
+4. **설정 조정** - [프로젝트 설정](adjusting-project-settings.md)에서 처리 옵션 구성
+5. **처리 시작** - [처리 시작](starting-the-processing.md) 참조
+
+프로젝트 구성에 대한 자세한 내용은 [프로젝트 설정 조정](adjusting-project-settings.md)을 참조하십시오.

@@ -4,169 +4,165 @@ metaLinks:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/download
 ---
 
-# Download
+# 다운로드
 
-Download the latest version of Chloros for Windows to get started with multispectral image processing.
+다중 스펙트럼 이미지 처리를 시작하려면 Windows용 최신 버전 Chloros를 다운로드하십시오.
 
-### System Requirements
+### 시스템 요구 사항
 
-| Requirement          | Minimum                         | Recommended                     |
+| 요구 사항          | 최소 사양                         | 권장 사양                     |
 | -------------------- | ------------------------------- | ------------------------------- |
-| **Operating System** | Windows 10 (64-bit)             | Windows 11 (64-bit)             |
-| **Processor**        | Intel Core i5 or equivalent     | Intel Core i7 or better         |
-| **Memory (RAM)**     | 8GB                             | 16GB or more                    |
-| **Graphics Card**    | DirectX 11 compatible           | NVIDIA GPU with 4GB+ VRAM       |
-| **Storage**          | 2GB free space                  | SSD with 10GB+ free space       |
-| **Display**          | 1920x1080                       | 2560x1440 or higher             |
-| **Internet**         | Required for license activation | Required for license activation |
+| **운영 체제** | Windows 10 (64비트)             | Windows 11 (64비트)             |
+| **프로세서**        | Intel Core i5 또는 동급     | Intel Core i7 이상         |
+| **메모리 (RAM)**     | 8GB                             | 16GB 이상                    |
+| **그래픽 카드**    | DirectX 11 호환           | NVIDIA GPU (4GB+ VRAM)       |
+| **저장 공간**          | 2GB 여유 공간                  | SSD (10GB+ 여유 공간)       |
+| **디스플레이**          | 1920x1080                       | 2560x1440 이상             |
+| **인터넷**         | 라이선스 활성화 필수 | 라이선스 활성화 필수 |
 
-{% hint style="info" %}
-**GPU Acceleration**: Chloros+ users with NVIDIA GPUs (4GB+ VRAM) can use CUDA acceleration for significantly faster processing.
+{% hint style=&quot;info&quot; %}
+**GPU 가속**: NVIDIA GPU(4GB 이상 VRAM)를 사용하는 Chloros+ 사용자는 CUDA 가속을 통해 훨씬 빠른 처리가 가능합니다.
 {% endhint %}
 
 ***
 
-## Download Chloros
+## Chloros 다운로드
 
-### <a href="https://drive.google.com/file/d/1HjwrUY4M7HGxDbMybO7iPe_6JoHnUGr4/view?usp=drive_link" class="button primary">Download Chloros Here</a>
+### <a href="https://drive.google.com/file/d/1HjwrUY4M7HGxDbMybO7iPe_6JoHnUGr4/view?usp=drive_link" class="button primary">Chloros 다운로드</a>
 
-### Latest Stable Release
+### 최신 안정 버전
 
-**Chloros Installer for Windows**
+**Windows용 Chloros 설치 프로그램**
 
-* **Version**: 1.0.3
-* **Release Date**: December ?, 2025
-* **File Size**: 1.6GB
-* **File Type**: .exe (Windows Installer)
+* **버전**: 1.0.3
+* **출시일**: 2025년 12월 ?일
+* **파일 크기**: 1.6GB
+* **파일 유형**: .exe (Windows 설치 프로그램)
 
-#### **Installation Steps:**
+#### **설치 단계:**
 
-1. Download the `CHLOROS INSTALLER - CURRENT VERSION.exe` file
-2. Double-click the installer to begin installation
-3. Follow the installation wizard prompts
-4. Choose installation directory (default: `C:\Program Files\Chloros\`)
-5. Complete installation and launch Chloros
-6. Sign in with your MAPIR Cloud Chloros+ account (or continue with free version)
+1. `CHLOROS INSTALLER - CURRENT VERSION.exe` 파일을 다운로드합니다.
+2. 설치 프로그램을 더블 클릭하여 설치를 시작합니다.
+3. 설치 마법사의 안내를 따릅니다.
+4. 설치 디렉터리를 선택합니다 (기본값: `C:\Program Files\Chloros\`).
+5. 설치를 완료하고 Chloros를 실행합니다.
+6. MAPIR Cloud Chloros+ 계정으로 로그인 (또는 무료 버전으로 계속 사용)
 
-{% hint style="success" %}
-The installer automatically adds `chloros-cli` to your system PATH for command-line access.
+{% hint style=&quot;success&quot; %}
+설치 프로그램은 명령줄 접근을 위해 시스템 PATH에 `chloros-cli`를 자동으로 추가합니다.
 {% endhint %}
 
 ***
 
-## Additional Resources
+## 추가 자료
 
 ### Python SDK
 
-For developers and automation workflows, install the Chloros Python SDK:
+개발자 및 자동화 워크플로우를 위해 다음을 설치하십시오:
 
 ```bash
 pip install chloros-sdk
 ```
 
-**Documentation**: [API: Python SDK](api-python-sdk.md)
+**문서**: [API: Python SDK](api-python-sdk.md)
 
-**Requirements**: Chloros Desktop must be installed, Chloros+ license required
-
-***
-
-## What's Included
-
-The Chloros installation includes:
-
-* ✅ **Chloros Desktop GUI** - Full-featured graphical interface
-* ✅ **Chloros (Browser)** - Web-based interface for lower-spec systems
-* ✅ **Chloros CLI** - Command-line interface (requires Chloros+ license)
-* ✅ **Backend Engine** - Image processing pipeline
-* ✅ **Camera Profiles** - Pre-configured MAPIR camera templates
+**필수 조건**: Chloros 데스크톱 설치 완료, Chloros+ 라이선스 필요
 
 ***
 
-## Upgrade to Chloros+
+## 포함 내용
 
-Unlock advanced features with a Chloros+ subscription:
+Chloros 설치에는 다음이 포함됩니다:
 
-* 🚀 **Multi-threaded Processing** - Process images in parallel
-* ⚡ **GPU (CUDA) Acceleration** - Leverage NVIDIA GPU power
-* 💻 **CLI Access** - Automate with command-line tools
-* 🐍 **Python SDK** - Programmatic API access
-* 📱 **Multiple Devices** - Use on 2-10+ devices (plan dependent)
-* 🧮 **Custom Formulas** - Create custom multispectral indices
-
-<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">View Chloros+ Plans &#x26; Pricing</a></p>
+* ✅ **Chloros 데스크톱 GUI** - 모든 기능을 갖춘 그래픽 인터페이스
+* ✅ **Chloros (브라우저)** - 저사양 시스템을 위한 웹 기반 인터페이스
+* ✅ **Chloros CLI** - 명령줄 인터페이스 (Chloros+ 라이선스 필요)
+* ✅ **백엔드 엔진** - 이미지 처리 파이프라인
+* ✅ **카메라 프로필** - 사전 구성된 MAPIR 카메라 템플릿
 
 ***
 
-## Installation Help
+## Chloros+로 업그레이드
 
-### Troubleshooting
+Chloros+ 구독으로 고급 기능 활용:
 
-**Installation fails with error message:**
+* 🚀 **멀티스레드 처리** - 병렬 이미지 처리
+* ⚡ **GPU(CUDA) 가속화** - NVIDIA GPU 성능 활용
+* 💻 **CLI 액세스** - 명령줄 도구로 자동화
+* 🐍 **Python SDK** - 프로그래매틱 API 접근
+* 📱 **다중 기기** - 2~10대 이상 기기에서 사용 가능 (플랜에 따라 다름)
+* 🧮 **사용자 정의 공식** - 맞춤형 다중 스펙트럼 지수 생성
 
-* Ensure you have administrator rights
-* Temporarily disable antivirus software
-* Check that you meet minimum system requirements
+<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Chloros+ 플랜 및 가격 보기</a></p>***
 
-**Application won't start:**
+## 설치 도움말
 
-* Try Chloros (Browser) version
-* Verify Windows 10/11 (64-bit) is installed
-* Update graphics drivers
-* Check Windows Event Viewer for error details
-* Contact support with error logs
+### 문제 해결
 
-**License activation issues:**
+**설치 중 오류 메시지가 발생합니다:**
 
-* Ensure internet connection is active
-* Verify credentials at [https://cloud.mapir.camera](https://cloud.mapir.camera)
-* Check firewall isn't blocking Chloros
-* See [Chloros+ Login](chloros+-login.md) for detailed instructions
+* 관리자 권한이 있는지 확인하세요
+* 바이러스 백신 소프트웨어를 일시적으로 비활성화하세요
+* 최소 시스템 요구 사항을 충족하는지 확인하세요
 
-### Getting Support
+**애플리케이션이 실행되지 않습니다:**
 
-Need help with installation or setup?
+* Chloros (브라우저) 버전 사용해 보기
+* Windows 10/11 (64비트) 설치 여부 확인
+* 그래픽 드라이버 업데이트
+* Windows 이벤트 뷰어에서 오류 세부 정보 확인
+* 오류 로그와 함께 지원팀에 문의하십시오
 
-* 📧 **Email**: info@mapir.camera
-* 🌐 **Website**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
-* 📚 **Documentation**: [Getting Started](./)
-* ❓ **FAQ**: [Frequently Asked Questions](faq.md)
+**라이선스 활성화 문제:**
+
+* 인터넷 연결이 활성화되었는지 확인하십시오
+* [https://cloud.mapir.camera](https://cloud.mapir.camera)에서 자격 증명을 확인하십시오
+* 방화벽이 Chloros를 차단하지 않는지 확인하십시오
+* 자세한 안내는 [Chloros+ 로그인](chloros+-login.md) 참조
+
+### 지원 받기
+
+설치 또는 설정 관련 도움이 필요하신가요?
+
+* 📧 **이메일**: info@mapir.camera
+* 🌐 **웹사이트**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
+* 📚 **문서**: [시작하기](./)
+* ❓ **FAQ**: [자주 묻는 질문](faq.md)
 
 ***
 
-## Change Log
+## 변경 내역
 
 <details>
 
-<summary>Version 1.0.3</summary>
+<summary>버전 1.0.3</summary>
 
-### **Release Date**: December ?, 2025
+### **출시일**: 2025년 12월 ?일
 
-#### New Features
+#### 신규 기능
 
-* Initial Launch
+* 초기 출시
 
-#### Improvements
+#### 개선 사항
 
-* Initial Launch
+* 초기 출시
 
-#### Bug Fixes
+#### 버그 수정
 
-* Initial Launch
+* 초기 출시
 
-#### Known Issues
+#### 알려진 문제점
 
-* Initial Launch
+* 초기 출시
 
-</details>
+</details>***
 
-***
+## 라이선스 계약
 
-## License Agreement
+**독점 소프트웨어** - 저작권 (c) 2025 MAPIR Inc.
 
-**Proprietary Software** - Copyright (c) 2025 MAPIR Inc.
+무단 사용, 배포 또는 수정은 금지됩니다.
 
-Unauthorized use, distribution, or modification is prohibited.
+**무료 버전**: 기능 제한이 있는 개인 및 상업적 사용 가능
 
-**Free Version**: Available for personal and commercial use with feature limitations
-
-**Chloros+**: Subscription-based license for advanced features and commercial deployments
+**Chloros+**: 고급 기능 및 상업적 배포를 위한 구독 기반 라이선스

@@ -1,86 +1,86 @@
-# Index/LUT Sandbox
+# 인덱스/LUT 샌드박스
 
-The Index/LUT Sandbox is an interactive workspace within the Chloros Image Viewer that allows you to experiment with multispectral index calculations and color visualizations in real-time. This powerful tool helps you test different indices, refine value ranges, and create publication-ready visualizations without reprocessing your entire dataset.
+인덱스/LUT 샌드박스는 Chloros 이미지 뷰어 내의 대화형 작업 공간으로, 다중 스펙트럼 인덱스 계산과 컬러 시각화를 실시간으로 실험할 수 있게 합니다. 이 강력한 도구를 사용하면 전체 데이터셋을 재처리하지 않고도 다양한 인덱스를 테스트하고, 값 범위를 조정하며, 출판 가능한 시각화를 생성할 수 있습니다.
 
-## What is the Index/LUT Sandbox?
+## 인덱스/LUT 샌드박스란?
 
-### Purpose
+### 목적
 
-The Sandbox provides:
+샌드박스는 다음을 제공합니다:
 
-* **Real-time index calculation** - Apply any vegetation index instantly
-* **Interactive LUT adjustment** - Fine-tune color gradients and ranges
-* **Workflow optimization** - Determine best settings before batch processing
+* **실시간 인덱스 계산** - 모든 식생 지수를 즉시 적용
+* **대화형 LUT 조정** - 색상 그라데이션 및 범위 미세 조정
+* **워크플로 최적화** - 일괄 처리 전 최적 설정 결정
 
-### Sandbox vs. Project Processing
+### 샌드박스 vs. 프로젝트 처리
 
-**Index/LUT Sandbox (Interactive):**
+**인덱스/LUT 샌드박스 (대화형):**
 
-* Single image at a time
-* Instant feedback
-* Experimental and iterative
-* No permanent changes to files
-* Perfect for exploring and testing
+* 한 번에 단일 이미지 처리
+* 즉각적인 피드백
+* 실험적이며 반복적
+* 파일에 영구적 변경 없음
+* 탐색 및 테스트에 최적
 
-**Project Processing (Batch):**
+**프로젝트 처리 (일괄):**
 
-* Entire dataset at once
-* Pre-configured settings
-* Permanent output files
-* Time-intensive
-* Best when settings are finalized
+* 전체 데이터셋 한 번에 처리
+* 사전 설정된 옵션
+* 영구적인 출력 파일 생성
+* 시간이 많이 소요됨
+* 설정이 확정된 경우 최적
 
-{% hint style="success" %}
-**Best Workflow**: Use the Sandbox to experiment and find optimal index and LUT settings, then apply those settings during Project Processing for your entire dataset.
+{% hint style=&quot;success&quot; %}
+**최적 워크플로**: 샌드박스를 활용해 최적의 인덱스 및 LUT 설정을 실험하고 찾은 후, 프로젝트 처리 시 전체 데이터셋에 해당 설정을 적용하세요.
 {% endhint %}
 
 ***
 
-## Working with the Index/LUT Sandbox
+## 인덱스/LUT 샌드박스 활용법
 
-### Understanding Pre-Calculated Indices
+### 사전 계산된 인덱스 이해하기
 
-In Chloros, indices can be applied during project processing. To determine which index and LUT settings you want to apply to exports it is easiest to use the image viewer sandbox.
+Chloros에서는 프로젝트 처리 중 인덱스를 적용할 수 있습니다. 내보내기에 적용할 인덱스 및 LUT 설정을 결정하는 가장 쉬운 방법은 이미지 뷰어 샌드박스를 사용하는 것입니다.
 
-The sandbox allows you to:
+샌드박스를 통해 다음을 수행할 수 있습니다:
 
-* **Apply new index and color gradients (LUTs)** to visualize the data
-* **Adjust visualization settings** interactively
-* **View** already-calculated index images
-* **Inspect** pixel values at all zoom levels
+* **새로운 인덱스 및 색상 그라데이션(LUT) 적용**으로 데이터 시각화
+* **시각화 설정** 대화형 조정
+* **이미 계산된** 인덱스 이미지 **보기**
+* 모든 확대/축소 수준에서 픽셀 값 **검사**
 
-### Opening the Sandbox
+### 샌드박스 열기
 
-The Index/LUT Sandbox is accessed in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> sidebar tab:
+인덱스/LUT 샌드박스는 **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 사이드바 탭에서 접근할 수 있습니다:
 
-1. Click an image in the file browser image grid, it opens in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab
-2. Click **the Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab to open the left pop-out sidebar if it's not already open
+1. 파일 브라우저 이미지 그리드에서 이미지를 클릭하면 **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 탭에 열립니다
+2. **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 탭을 클릭하면 왼쪽 팝아웃 사이드바가 열립니다(아직 열려 있지 않은 경우)
 
-### Selecting an Image to Apply an Index/LUT to
+### 인덱스/LUT 적용 대상 이미지 선택
 
-To work with an index in the Image Viewer <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> sandbox:
+이미지 뷰어 <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 샌드박스에서 인덱스를 작업하려면:
 
-1. **Open an image** from the main image grid by clicking on it
-2. The **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab will then open
-3. Click the **Layer dropdown** (top-right of viewer)
-4. Select the layer from the dropdown:
-   * RAW (Reflectance)
+1. 메인 이미지 그리드에서 이미지를 클릭하여 **열기**
+2. **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 탭이 열립니다
+3. **레이어 드롭다운**(뷰어 우측 상단)을 클릭합니다
+4. 드롭다운에서 레이어를 선택합니다:
+   * RAW (반사율)
 
-### Applying an Index to an Image
+### 이미지에 인덱스 적용하기
 
-Once the image is fullscreen and the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab sidebar is open:
+이미지가 전체 화면으로 표시되고 **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 탭 사이드바가 열리면:
 
-1. Check the Index box at the top of the sidebar
-2. Choose your camera's filter from the left dropdown
-3. Choose the desired index formula from the right dropdown
-4. Drag the filter channel color circles to the locations in the index formula below
-5. Once the formula is valid the image will update and show the index values
-6. Move your mouse cursor around to see the values at the cursor's location
-7. Zoom in to see individual pixels and their associated values
+1. 사이드바 상단의 인덱스 상자를 선택하세요
+2. 왼쪽 드롭다운에서 카메라 필터를 선택하세요
+3. 오른쪽 드롭다운에서 원하는 인덱스 공식을 선택하세요
+4. 필터 채널 색상 원을 아래 인덱스 공식의 위치로 드래그하세요
+5. 공식이 유효하면 이미지가 업데이트되어 인덱스 값이 표시됩니다
+6. 마우스 커서를 이동하여 커서 위치의 값을 확인하세요
+7. 확대하여 개별 픽셀과 연관된 값 확인
 
-Each index has a specific value range and meaning:
+각 인덱스는 특정 값 범위와 의미를 가집니다:
 
-#### NDVI Example
+#### NDVI 예시
 
 ```
 Formula: (NIR - Red) / (NIR + Red)
@@ -96,293 +96,293 @@ Bare soil: 0.0 to 0.2
 Water: -0.1 to 0.1
 ```
 
-For complete index formula documentation, see [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md).
+전체 인덱스 공식 문서는 [다중 스펙트럼 인덱스 공식](../project-settings/multispectral-index-formulas.md)을 참조하세요.
 
 ***
 
-## Working with LUTs (Look-Up Tables)
+## LUT(룩업 테이블) 작업
 
-### What is a LUT?
+### LUT란 무엇인가요?
 
-A **Look-Up Table (LUT)** maps numerical index values to colors for visualization:
+**룩업 테이블(LUT)**은 시각화를 위해 수치 인덱스 값을 색상으로 매핑합니다:
 
-* **Input**: Index pixel value (e.g., NDVI 0.65)
-* **Output**: RGB color (e.g., bright green)
-* **Purpose**: Make patterns easier to see and interpret
+* **입력**: 인덱스 픽셀 값 (예: NDVI 0.65)
+* **출력**: RGB 색상 (예: 밝은 녹색)
+* **목적**: 패턴을 더 쉽게 보고 해석할 수 있도록 함
 
-**Grayscale vs. Color LUT:**
+**그레이스케일 대 컬러 LUT:**
 
-* Grayscale: Scientific and neutral, shows raw data
-* Color LUT: Intuitive and impactful, highlights patterns and differences
+* 그레이스케일: 과학적이고 중립적이며, 원시 데이터를 보여줌
+* 컬러 LUT: 직관적이고 인상적이며, 패턴과 차이를 강조함
 
-{% hint style="success" %}
-**Visualization Power**: Applying a color LUT to a grayscale index image makes it dramatically easier to identify patterns, anomalies, and areas of interest at a glance.
+{% hint style=&quot;success&quot; %}
+**시각화 효과**: 그레이스케일 인덱스 이미지에 컬러 LUT를 적용하면 패턴, 이상치, 관심 영역을 한눈에 식별하기가 획기적으로 쉬워집니다.
 {% endhint %}
 
-### Applying a LUT to an Index Image
+### 인덱스 이미지에 LUT 적용하기
 
-Once you have an index image showing
+인덱스 이미지가 준비되면
 
-1. Click the <img src="../.gitbook/assets/image.png" alt="" data-size="line"> "+Add LUT" button
-2. Select the color gradient
-3. Adjust the clipping min/max end points
-4. Adjust the Clipping Mode
-5. Check the Index box in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab sidebar to apply the LUT
+1. <img src="../.gitbook/assets/image.png" alt="" data-size="line"> &quot;+LUT 추가&quot; 버튼
+2. 색상 그라데이션 선택
+3. 클리핑 최소/최대 종점 조정
+4. 클리핑 모드 조정
+5. **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 탭 사이드바의 **인덱스** 상자를 선택하여 LUT 적용
 
-### Choosing a Color Gradient
+### 색상 그라데이션 선택
 
-**Selecting a gradient:**
+**그라데이션 선택 방법:**
 
-1. In the LUT panel, locate the **colored gradient bar**
-2. Hover your mouse over it to view available gradient presets
-3. Select desired gradient
-4. The image **updates immediately** with new colors when the Index box is checked
+1. LUT 패널에서 **색상 그라데이션 바** 찾기
+2. 마우스를 올려 놓으면 사용 가능한 그라데이션 프리셋 확인
+3. 원하는 그라데이션 선택
+4. 인덱스 상자가 선택되면 이미지가 **즉시 업데이트**되어 새로운 색상으로 변경
 
-{% hint style="success" %}
-**Best Practice**: For vegetation indices like NDVI, the Red-Yellow-Green gradient is most intuitive because it aligns with natural color associations (green=healthy, yellow=moderate, red=stressed).
+{% hint style=&quot;success&quot; %}
+**권장 사항**: NDVI와 같은 식생 지수의 경우, Red-Yellow-Green 그라데이션이 자연스러운 색상 연관성(녹색=건강, 노란색=보통, 빨간색=스트레스)과 일치하므로 가장 직관적입니다.
 {% endhint %}
 
-### Adjusting Color Classes
+### 색상 클래스 조정
 
-The **Classes control** determines how many discrete color steps appear in your gradient:
+**클래스 제어**는 그라데이션에 표시되는 개별 색상 단계의 수를 결정합니다:
 
-**Class count options:**
+**클래스 수 옵션:**
 
-* **2-5 classes**: Very broad categories, distinct zones
-* **6-10 classes**: Balanced, good for classification
-* **11-20 classes**: Smooth gradients, continuous appearance
-* **20+ classes**: Near-continuous, maximum smoothness
+* **2-5개 클래스**: 매우 넓은 범주, 뚜렷한 구역
+* **6-10개 클래스**: 균형 잡힌, 분류에 적합
+* **11-20개 클래스**: 부드러운 그라데이션, 연속적인 외관
+* **20개 이상 클래스**: 거의 연속적, 최대 부드러움
 
-**How to adjust:**
+**조정 방법:**
 
-1. In the LUT panel, locate the **color swatch squares below the gradient bar**
-2. Adjust the number of classes by adding with the + button
-3. Remove the number of classes by double clicking on a color swatch
-4. The gradient updates **in real-time** on the image
+1. LUT 패널에서 **그라데이션 바 아래의 색상 견본 사각형**을 찾습니다
+2. + 버튼을 눌러 클래스 수를 추가합니다
+3. 색상 견본을 더블 클릭하여 클래스 수를 제거합니다
+4. 이미지에 **실시간**으로 그라데이션이 업데이트됩니다
 
-**Effect on visualization:**
+**시각화에 미치는 영향:**
 
-* **Fewer classes** (3-5): Creates distinct zones, simplified classification, easier to distinguish categories
-* **Medium classes** (6-10): Balanced approach, good for most applications
-* **More classes** (15-20): Smooth transitions, detailed variation, photographic appearance
+* **적은 클래스** (3-5): 뚜렷한 영역 생성, 단순화된 분류, 범주 구분 용이
+* **중간 클래스** (6-10): 균형 잡힌 접근법, 대부분의 용도에 적합
+* **클래스 수 증가** (15-20): 부드러운 전환, 세밀한 변형, 사진 같은 표현
 
-**When to use:**
+**사용 시점:**
 
-* **Few classes (3-5)**: Presentation slides, classification maps, simple reports
-* **Medium classes (6-10)**: General analysis, balanced detail, standard reports
-* **Many classes (15-20)**: Scientific analysis, detailed inspection, publication-quality outputs
+* **소수 클래스 (3-5)**: 프레젠테이션 슬라이드, 분류 지도, 간단한 보고서
+* **중간 클래스 (6-10)**: 일반 분석, 균형 잡힌 세부 사항, 표준 보고서
+* **다수 클래스 (15-20)**: 과학적 분석, 상세 검사, 출판물 수준의 결과물
 
-### Fine-Tuning Value Ranges
+### 값 범위 미세 조정
 
-The **value range controls** determine which index values map to which colors in your gradient:
+**값 범위 제어**는 그라데이션에서 어떤 색상 지수가 어떤 색상에 매핑되는지 결정합니다:
 
-**Range controls in LUT panel:**
+**LUT 패널의 범위 제어:**
 
-* **Minimum value**: Lower bound of the color scale
-* **Maximum value**: Upper bound of the color scale
-* **Intermediate values**: Automatically distributed between min and max (based on class count)
+* **최소값**: 색상 척도의 하한
+* **최대값**: 색상 척도의 상한
+* **중간 값**: 최소값과 최대값 사이에서 자동 분배됨 (클래스 수 기준)
 
-#### Adjusting Min/Max Values
+#### 최소/최대값 조정
 
-**To adjust value ranges:**
+**값 범위 조정 방법:**
 
-1. In the LUT panel, locate the **Min Value** and **Max Value** input fields
-2. Click the **Min Value** field
-3. Type the desired minimum value (e.g., `0.2`)
-4. Press **Enter** or click outside the field
-5. Repeat for **Max Value** field (e.g., `0.9`)
-6. The visualization **updates immediately**
+1. LUT 패널에서 **최소값** 및 **최대값** 입력 필드를 찾습니다
+2. **최소값** 필드를 클릭합니다
+3. 원하는 최소값을 입력합니다 (예: `0.2`)
+4. **Enter** 키를 누르거나 필드 외부를 클릭합니다
+5. **최대값** 필드에도 동일하게 반복합니다 (예: `0.9`)
+6. 시각화 결과가 **즉시 업데이트**됩니다
 
-{% hint style="info" %}
-**Auto-Scaling**: When you first apply a LUT, Chloros automatically sets the min/max to the actual data range in the image. You can then narrow this range to focus on specific value ranges of interest.
+{% hint style=&quot;info&quot; %}
+**자동 스케일링**: LUT를 처음 적용하면 Chloros가 이미지의 실제 데이터 범위에 따라 최소/최대값을 자동 설정합니다. 이후 관심 있는 특정 값 범위에 집중하기 위해 이 범위를 좁힐 수 있습니다.
 {% endhint %}
 
-**Example NDVI range adjustments:**
+**범위 조정 예시:**
 
-* **Full range**: `-1.0` to `1.0` (show all possible values)
-* **Vegetation-focused**: `0.2` to `0.9` (exclude bare soil and water)
-* **Healthy vegetation only**: `0.5` to `0.9` (highlight only vigorous plants)
-* **Stress detection**: `0.2` to `0.5` (emphasize problem areas)
-* **Custom range**: Adjust based on your observed pixel values
+* **전체 범위**: `-1.0` ~ `1.0` (가능한 모든 값 표시)
+* **식생 집중**: `0.2` ~ `0.9` (노출된 토양 및 물 제외)
+* **건강한 식생만**: `0.5` ~ `0.9` (생장 상태가 양호한 식물만 강조)
+* **스트레스 감지**: `0.2` ~ `0.5` (문제 지역 강조)
+* **사용자 지정 범위**: 관측된 픽셀 값에 따라 조정
 
-**Why adjust ranges?**
+**범위 조정의 이유**
 
-* **Increase contrast** in your area of interest
-* **Exclude irrelevant values** (e.g., water bodies, bare soil)
-* **Standardize visualization** across multiple images or dates
-* **Emphasize subtle differences** within a narrow value range
+* 관심 영역의 **대비 강화**
+* **관련 없는 값 제외** (예: 수역, 맨땅)
+* 여러 이미지 또는 날짜 간 **표현 표준화**
+* 좁은 값 범위 내 **미세한 차이 강조**
 
-### Clipping Out-of-Range Values
+### 범위 초과 값 클리핑
 
-When pixel values fall outside your defined min/max range, you can control how they're displayed using **clipping modes**.
+픽셀 값이 정의된 최소/최대 범위를 벗어날 경우, **클리핑 모드**를 사용하여 표시 방식을 제어할 수 있습니다.
 
-#### **Available clipping mode options:**
+#### **사용 가능한 클리핑 모드 옵션:**
 
-#### 1. Minimum and Maximum
+#### 1. 최소값 및 최대값
 
-* Pixels **below minimum** → display using the **first color** in gradient (e.g., red)
-* Pixels **above maximum** → display using the **last color** in gradient (e.g., green)
-* **Use case**: Emphasize extremes, show full data range with saturated colors at limits
-* **Example**: NDVI values below 0.2 all appear red, values above 0.9 all appear green
+* 픽셀 값이 **최소값 미만** → 그라데이션의 **첫 번째 색상**(예: 빨강)으로 표시
+* **최대값 초과** 픽셀 → 그라데이션의 **마지막 색상**(예: 녹색)으로 표시
+* **사용 사례**: 극단값 강조, 한계값에 채도 높은 색상으로 전체 데이터 범위 표시
+* **예시**: NDVI 값 0.2 미만은 모두 빨간색, 0.9 초과 값은 모두 녹색으로 표시
 
-#### 2. Transparent Background
+#### 2. 투명 배경
 
-* Pixels **outside the range** become **fully transparent**
-* Only pixels **within range** show color gradient
-* **Use case**: GIS overlay, isolating specific value ranges, highlighting only areas of interest
-* **Example**: Show only NDVI 0.4-0.7 in color, everything else transparent
+* **범위 밖** 픽셀은 **완전히 투명**하게 됨
+* **범위 내** 픽셀만 색상 그라데이션 표시
+* **사용 사례**: GIS 오버레이, 특정 값 범위 분리, 관심 영역만 강조
+* **예시**: NDVI 0.4-0.7 범위만 색상 표시, 나머지는 투명
 
-{% hint style="warning" %}
-**Transparency Limitation**: Transparent pixels will appear as the background color in the viewer. When exported during processing, transparency is preserved in PNG format but not in JPG.
+{% hint style=&quot;warning&quot; %}
+**투명도 제한**: 투명한 픽셀은 뷰어에서 배경색으로 표시됩니다. 처리 중 내보낼 때 PNG 형식에서는 투명도가 유지되지만 JPG에서는 유지되지 않습니다.
 {% endhint %}
 
-#### 3. Index Background
+#### 3. 인덱스 배경
 
-* Pixels **outside range** display in **grayscale** (showing raw index values)
-* Pixels **within range** show **color gradient**
-* **Use case**: Subtle highlighting, maintain context while emphasizing areas of interest
-* **Example**: Color-highlight stressed vegetation (NDVI 0.3-0.5) while showing healthy areas in gray
+* **범위 외** 픽셀은 **그레이스케일**로 표시 (원시 인덱스 값 표시)
+* **범위 내** 픽셀은 **색상 그라데이션** 표시
+* **사용 사례**: 미묘한 강조 표시, 관심 영역을 강조하면서 컨텍스트 유지
+* **예시**: 스트레스 받은 식생(NDVI 0.3-0.5)을 컬러로 강조 표시하고 건강한 영역은 회색으로 표시
 
-#### 4. Original Background
+#### 4. 원본 배경
 
-* Pixels **outside range** display the **original multispectral image**
-* Pixels **within range** show **color gradient**
-* **Use case**: Most intuitive - combines natural image context with analytical color overlay
-* **Example**: See the actual field/crop appearance with color-coded stress areas overlaid
+* **범위 외** 픽셀은 **원본 다중 스펙트럼 이미지** 표시
+* **범위 내** 픽셀은 **색상 그라데이션** 표시
+* **사용 사례**: 가장 직관적 - 자연스러운 이미지 컨텍스트와 분석적 컬러 오버레이 결합
+* **예시**: 실제 필드/작물 외관 확인과 함께 스트레스 영역 컬러 코딩 오버레이
 
-### Choosing the Right Clipping Mode
+### 적절한 클리핑 모드 선택
 
-| Clipping Mode              | Best For                                   | Visualization Style          |
+| 클리핑 모드              | 최적 적용 분야                                   | 시각화 스타일          |
 | -------------------------- | ------------------------------------------ | ---------------------------- |
-| **Minimum and Maximum**    | Full data display, scientific analysis     | All pixels colored           |
-| **Transparent Background** | GIS overlays, isolating specific ranges    | Color on range, blank beyond |
-| **Index Background**       | Subtle emphasis, maintaining data context  | Color on range, gray beyond  |
-| **Original Background**    | Reports, presentations, intuitive analysis | Color on range, photo beyond |
+| **최소값 및 최대값**    | 전체 데이터 표시, 과학적 분석     | 모든 픽셀에 색상 적용           |
+| **투명 배경** | GIS 오버레이, 특정 범위 분리    | 범위 내 색상, 범위 외 공백 |
+| **색인 배경**       | 미묘한 강조, 데이터 맥락 유지     | 범위 내 컬러, 범위 외 회색  |
+| **원본 배경**    | 보고서, 프레젠테이션, 직관적 분석 | 범위 내 컬러, 범위 외 사진 |
 
-### Creating Custom LUT Colors
+### 사용자 정의 LUT 색상 생성
 
-For full control over your visualization, you can create **custom color gradients** by editing individual color stops.
+시각화를 완벽하게 제어하려면 개별 색상 정지점을 편집하여 **사용자 정의 색상 그라데이션**을 생성할 수 있습니다.
 
-**To create a custom gradient:**
+**사용자 정의 그라데이션 생성 방법:**
 
-1. In the LUT panel, locate the **gradient preview bar**
-2. Look for **color swatch squares** below the gradient
-3. **Click a color stop** to select it
-4. A **color picker** opens
-5. Choose a new color using:
-   * **Color wheel**: Visual color selection
-   * **RGB/HSV sliders**: Precise color control
-   * **Hex code entry**: Exact color specification (e.g., `#FF0000` for red)
-6. Click off the color picker **to apply the new color**
-7. The gradient **updates immediately** on the image
+1. LUT 패널에서 **그라데이션 미리보기 막대**를 찾습니다
+2. 그라데이션 아래의 **색상 견본 사각형**을 확인합니다
+3. **색상 정지점을 클릭**하여 선택합니다
+4. **색상 선택기**가 열립니다
+5. 다음을 사용하여 새 색상을 선택합니다:
+   * **색상환**: 시각적 색상 선택
+   * **RGB/HSV 슬라이더**: 정밀한 색상 제어
+   * **16진수 코드 입력**: 정확한 색상 지정 (예: 빨간색 `#FF0000`)
+6. 색상 선택기 밖을 클릭하여 **새 색상을 적용**
+7. 이미지의 그라데이션이 **즉시 업데이트**됩니다
 
-**Adding or removing color stops:**
+**색상 정지점 추가 또는 제거:**
 
-* **Add a stop**: Click the + icon to add a new swatch at the end
-* **Remove a stop**: Double click the color square to remove the swatch
+* **정지점 추가**: + 아이콘을 클릭하여 끝에 새 색상 견본 추가
+* **정지점 제거**: 색상 사각형을 더블 클릭하여 견본 제거
 
-**Customization strategies:**
+**사용자 정의 전략:**
 
-* **Invert gradient**: Flip color order to reverse the meaning (e.g., green=low, red=high)
-* **Brand colors**: Match your organization's color palette for reports
-* **Colorblind-friendly**: Use orange-blue or purple-yellow combinations
-* **Print optimization**: Choose colors that work in both color and grayscale printing
-* **Multi-threshold**: Use distinct colors at specific value thresholds for classification
+* **그라데이션 반전**: 색상 순서를 뒤집어 의미 역전 (예: 녹색=낮음, 빨간색=높음)
+* **브랜드 색상**: 보고서용으로 조직의 색상 팔레트에 맞추기
+* **색맹 친화적**: 주황-파랑 또는 보라-노랑 조합 사용
+* **인쇄 최적화**: 컬러 및 그레이스케일 인쇄 모두에서 효과적인 색상 선택
+* **다중 임계값**: 특정 값 임계값에서 분류를 위한 구분된 색상 사용
 
-{% hint style="info" %}
-**Saving Custom Gradients**: Custom gradients can be saved and reused. Click the save icon in the LUT panel to preserve your custom color schemes for future use.
+{% hint style=&quot;info&quot; %}
+**사용자 정의 그라데이션 저장**: 사용자 정의 그라데이션을 저장하여 재사용할 수 있습니다. LUT 패널의 저장 아이콘을 클릭하여 향후 사용을 위해 사용자 정의 색상 구성표를 보존하세요.
 {% endhint %}
 
 ***
 
-## Interactive Workflow
+## 인터랙티브 워크플로
 
-### Real-Time Updates
+### 실시간 업데이트
 
-All LUT adjustments in the sandbox update the image **instantly and interactively**:
+샌드박스 내 모든 LUT 조정은 이미지를 **즉시 및 인터랙티브하게** 업데이트합니다:
 
-* **Switch layer** → Image changes immediately
-* **Select gradient** → Colors update instantly
-* **Adjust value range** → Contrast changes in real-time
-* **Change classes** → Gradient smoothness updates immediately
-* **Modify clipping** → Background display changes instantly
-* **Edit colors** → Custom gradient applies immediately
+* **레이어 전환** → 이미지 즉시 변경
+* **그라디언트 선택** → 색상 즉시 업데이트
+* **값 범위 조정** → 대비 실시간 변경
+* **클래스 변경** → 그라디언트 부드러움 즉시 업데이트
+* **클리핑 수정** → 배경 표시 즉시 변경
+* **색상 편집** → 사용자 정의 그라디언트 즉시 적용
 
-**No "Apply" button needed** - all changes are live and interactive!
+**&quot;적용&quot; 버튼 불필요** - 모든 변경 사항은 실시간으로 상호작용됩니다!
 
-{% hint style="success" %}
-**Live Feedback**: The instant visual feedback allows you to rapidly experiment with different settings until you find the optimal visualization for your analysis needs.
+{% hint style=&quot;success&quot; %}
+**실시간 피드백**: 즉각적인 시각적 피드백을 통해 분석 요구에 최적화된 시각화를 찾을 때까지 다양한 설정을 빠르게 실험할 수 있습니다.
 {% endhint %}
 
-### Iterative Refinement Workflow
+### 반복적 개선 워크플로우
 
-**Typical LUT optimization workflow:**
+**일반적인 LUT 최적화 워크플로우:**
 
-1. **Select index layer** (e.g., RAW (Reflectance))
-2. **Apply index** - Choose camera filter and index formula, drag colored circles to appropriate location in the index formula
-3. **Apply LUT gradient** - Start with Red-Yellow-Green preset
-4. **Inspect pixel values** - Move cursor around, note value ranges
-5. **Adjust min/max** - Narrow to focus on vegetation (e.g., 0.2 to 0.9)
-6. **Choose clipping** - Try "Original Background" for context
-7. **Refine colors** - Customize gradient if needed for specific emphasis
-8. **Finalize settings** - Document settings and copy to Project Settings for export processing
+1. **지수 레이어 선택** (예: RAW (반사도))
+2. **지수 적용** - 카메라 필터 및 지수 공식 선택, 색상 원을 지수 공식 내 적절한 위치로 드래그
+3. **LUT 그라데이션 적용** - Red-Yellow-Green 프리셋으로 시작
+4. **픽셀 값 검사** - 커서를 이동하며 값 범위를 확인
+5. **최소/최대값 조정** - 식생에 집중하도록 범위를 좁힘 (예: 0.2 ~ 0.9)
+6. **클리핑 선택** - 맥락 파악을 위해 &quot;Original Background&quot; 시도
+7. **색상 세밀 조정** - 특정 강조를 위해 필요 시 그라디언트 맞춤 설정
+8. **설정 확정** - 설정 기록 후 내보내기 처리용 프로젝트 설정으로 복사
 
-### Pixel Value Inspection
+### 픽셀 값 확인
 
-Understanding actual pixel values is crucial for setting effective LUT ranges:
+효과적인 LUT 범위 설정을 위해 실제 픽셀 값 이해가 필수적입니다:
 
-**How to inspect values:**
+**값 확인 방법:**
 
-1. Pixel values show when the image has either the Index, or both the Index and LUT **boxes checked**.
-2. **Move your cursor** over different areas of the image
-3. **Observe pixel values** displayed in the legend as you hover
-4. Zoom in to see individual pixels highlighted with a floating value
-5. **Take notes** of value ranges for different features:
-   * **Healthy vegetation**: e.g., NDVI 0.55-0.85
-   * **Stressed vegetation**: e.g., NDVI 0.30-0.50
-   * **Bare soil**: e.g., NDVI 0.05-0.25
-   * **Water** (if present): e.g., NDVI -0.05 to 0.10
+1. 이미지에서 인덱스 상자 또는 인덱스와 LUT 상자 **둘 다 선택** 시 픽셀 값이 표시됩니다.
+2. 커서를 이미지 상의 다양한 영역 위로 **이동**하세요
+3. 커서를 올릴 때 표시되는 레전드의 **픽셀 값**을 관찰하세요
+4. 확대하여 개별 픽셀이 부동 값과 함께 강조 표시되는 것을 확인하세요
+5. 다양한 특징에 대한 값 범위를 **기록**하세요:
+   * **건강한 식생**: 예: NDVI 0.55-0.85
+   * **스트레스 받은 식생**: 예: NDVI 0.30-0.50
+   * **노출된 토양**: 예: NDVI 0.05-0.25
+   * **물** (존재 시): 예: NDVI -0.05 ~ 0.10
 
-**Using pixel values to set LUT ranges:**
+**픽셀 값을 이용한 LUT 범위 설정:**
 
-After inspecting pixel values, adjust your LUT min/max accordingly:
+픽셀 값을 확인한 후 LUT 최소/최대값을 적절히 조정하십시오:
 
-**Example scenario:**
+**예시 시나리오:**
 
-* **Observation**: Soil values = 0.05-0.25, Stressed = 0.25-0.50, Healthy = 0.50-0.85
-* **Goal**: Visualize only plant health (exclude soil)
-* **LUT settings**: Min = `0.25`, Max = `0.85`
-* **Clipping**: "Original Background" to see soil in natural color
-* **Result**: Color gradient only applies to vegetation, soil shows as original image
+* **관측 결과**: 토양 값 = 0.05-0.25, 스트레스 상태 = 0.25-0.50, 건강한 상태 = 0.50-0.85
+* **목표**: 식물 건강 상태만 시각화(토양 제외)
+* **LUT 설정**: 최소값 = `0.25`, 최대값 = `0.85`
+* **클리핑**: &quot;Original Background&quot;로 설정하여 토양을 자연색으로 표시
+* **결과**: 색상 그라데이션은 식생에만 적용되며, 토양은 원본 이미지로 표시됨
 
-{% hint style="info" %}
-**Dynamic Range**: Different crops, seasons, and growth stages will have different value ranges. Always inspect pixel values in your specific dataset before setting LUT ranges.
+{% hint style=&quot;info&quot; %}
+**동적 범위**: 작물 종류, 계절, 생장 단계에 따라 값 범위가 다릅니다. LUT 범위를 설정하기 전에 항상 특정 데이터셋의 픽셀 값을 확인하십시오.
 {% endhint %}
 
 ***
 
-## Custom Indices (Chloros+)
+## 사용자 정의 지수 (Chloros+)
 
-### Creating Custom Index Formulas
+### 사용자 정의 인덱스 공식 생성
 
-{% hint style="info" %}
-**Where to Create**: Custom indices can be configured in **Project Settings** before processing, as well as in the Image Viewer sandbox sidebar.
+{% hint style=&quot;info&quot; %}
+**생성 위치**: 사용자 정의 인덱스는 처리 전 **프로젝트 설정**에서 구성할 수 있으며, 이미지 뷰어 샌드박스 사이드바에서도 설정 가능합니다.
 {% endhint %}
 
-**To create a custom index:**
+**사용자 정의 지수 생성 방법:**
 
-1. **Open Project Settings** (before processing) or Image Viewer sandbox sidebar
-2. Navigate to the **Index formula dropdown**
-3. Look for **"Custom"** option (must be logged in with Chloros+ license)
-4. **Define your formula** using band variables:
-   * Band names: `NIR`, `Red`, `Green`, `Blue`, `RedEdge`, etc.
-   * Operators: `+`, `-`, `*`, `/`, `^` (exponent)
-   * Functions: `sqrt()`, `abs()`, etc. (if supported)
-   * Parentheses: `()` for order of operations
-5. **Name your index** (e.g., "MyIndex" or "CustomNDVI")
-6. **Save the configuration**
+1. **프로젝트 설정**(처리 전) 또는 이미지 뷰어 샌드박스 사이드바 열기
+2. **지수 공식 드롭다운**으로 이동
+3. **&quot;사용자 정의&quot;** 옵션 찾기 (Chloros+ 라이선스로 로그인해야 함)
+4. 밴드 변수를 사용하여 **공식을 정의**하세요:
+   * 밴드 이름: `NIR`, `Red`, `Green`, `Blue`, `RedEdge` 등
+   * 연산자: `+`, `-`, `*`, `/`, `^` (지수)
+   * 함수: `sqrt()`, `abs()` 등 (지원되는 경우)
+   * 괄호: 연산 순서를 위한 `()`
+5. **인덱스 이름 지정** (예: &quot;MyIndex&quot; 또는 &quot;CustomNDVI&quot;)
+6. **구성 저장**
 
-**Example custom formulas:**
+**사용자 정의 공식 예시:**
 
 ```
 Modified NDVI with offset:
@@ -398,22 +398,22 @@ Exponential index:
 (NIR / Red) ^ 2
 ```
 
-{% hint style="warning" %}
-**Formula Validation**: Ensure your formula uses bands available in your camera. For example, RedEdge is only available on cameras with a RedEdge filter.
+{% hint style=&quot;warning&quot; %}
+**공식 유효성 검사**: 공식에 카메라에서 사용 가능한 밴드가 포함되었는지 확인하십시오. 예를 들어, RedEdge는 RedEdge 필터가 장착된 카메라에서만 사용 가능합니다.
 {% endhint %}
 
 ***
 
-## Next Steps
+## 다음 단계
 
-Now that you understand the Index/LUT Sandbox:
+이제 인덱스/LUT 샌드박스를 이해하셨다면:
 
-* **Apply to processing**: Use discovered settings in [Project Settings](../project-settings/page-2.md)
-* **Batch process**: Apply optimized indices to full datasets
-* **Learn more**: Read [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md)
+* **처리 적용**: [프로젝트 설정](../project-settings/project-settings.md)에서 발견된 설정 사용
+* **일괄 처리**: 전체 데이터셋에 최적화된 인덱스 적용
+* **자세히 알아보기**: [다중 스펙트럼 인덱스 공식](../project-settings/multispectral-index-formulas.md) 참조
 
-Related documentation:
+관련 문서:
 
-* [**Image Layers**](image-layers.md) - Layer management and visualization
-* [**Opening an Image Full Screen**](page-3.md) - Image Viewer basics
-* [**Processing Images (GUI)**](../processing-images-gui/page-1.md) - Full processing workflow
+* [**이미지 레이어**](image-layers.md) - 레이어 관리 및 시각화
+* [**이미지 전체 화면 열기**](opening-an-image-full-screen.md) - 이미지 뷰어 기본 사항
+* [**이미지 처리(GUI)**](../processing-images-gui/adding-files-to-a-project.md) - 전체 처리 워크플로

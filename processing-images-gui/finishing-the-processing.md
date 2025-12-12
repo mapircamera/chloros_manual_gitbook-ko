@@ -1,306 +1,306 @@
-# Finishing the Processing
+# 처리 완료
 
-Once Chloros completes processing, it's time to review your results, verify output quality, and prepare your processed images for use in your workflow. This page guides you through the final steps and next actions.
+Chloros 처리가 완료되면 결과를 검토하고 출력 품질을 확인한 후 워크플로에서 사용할 수 있도록 처리된 이미지를 준비해야 합니다. 이 페이지는 최종 단계와 다음 작업을 안내합니다.
 
-## Processing Complete Indication
+## 처리 완료 표시
 
-When processing finishes successfully, you'll see several indicators:
+처리가 성공적으로 완료되면 다음과 같은 여러 지표가 표시됩니다:
 
-* ✅ **Progress bar**: Reaches 100% completion
-* ✅ **Debug Log**: Shows "Processing Complete" message
-* ✅ **Start button**: Becomes enabled again (ready for next processing run)
-* ✅ **Output files**: All processed images saved to camera model subfolder
-
-***
-
-## Locating Your Processed Images
-
-### Opening the Output Folder
-
-1. Click the **Main Menu** <img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="line"> icon (top left)
-2. Select **"Open Project Folder"**
-3. Your file explorer opens to the project directory
-4. Locate your project by name
+* ✅ **진행률 표시줄**: 100% 완료에 도달
+* ✅ **디버그 로그**: &quot;처리 완료&quot; 메시지 표시
+* ✅ **시작 버튼**: 다시 활성화됨 (다음 처리 실행 준비 완료)
+* ✅ **출력 파일**: 처리된 모든 이미지가 카메라 모델 하위 폴더에 저장됨
 
 ***
 
-## Reviewing Processed Images
+## 처리된 이미지 찾기
 
-### Quick Preview in File Explorer
+### 출력 폴더 열기
 
-**Windows built-in preview:**
-
-1. Navigate to camera model subfolder
-2. Select an image file
-3. Preview appears in Windows Explorer preview pane
-4. Use arrow keys to browse through images
-
-### Preview in External Image Viewers
-
-**Recommended viewers:**
-
-* **QGIS** - Free GIS software (best for georeferenced multispectral analysis)
-* **IrfanView** - Fast, lightweight image viewer (supports TIFF)
-* **Adobe Photoshop** - Professional editing (TIFF support)
-* **GIMP** - Free alternative to Photoshop
-* **Windows Photos** - Basic viewing (may not support 16-bit TIFF)
-
-### Preview in Chloros Image Viewer
-
-Use Chloros's built-in Image Viewer for advanced visualization:
-
-1. Click an image thumbnail in the File Browser
-2. Image opens in the main preview area
-3. Click **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab in left sidebar
-4. Use [Index/LUT Sandbox](../image-viewer-gui/index-lut-sandbox.md) for interactive analysis
-
-See [Image Viewer](../image-viewer-gui/page-3.md) for detailed instructions.
+1. **메인 메뉴** <img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="line"> 아이콘(왼쪽 상단)을 클릭하세요
+2. **&quot;프로젝트 폴더 열기&quot;**를 선택하세요
+3. 파일 탐색기가 프로젝트 디렉터리로 열립니다
+4. 프로젝트 이름을 찾아 선택하세요
 
 ***
 
-## Reviewing the Debug Log
+## 처리된 이미지 확인하기
 
-### Check for Warnings or Errors
+### 파일 탐색기에서 빠른 미리보기
 
-1. Open **Debug Log** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> tab
-2. Scroll through messages
-3. Look for yellow warnings or red errors
-4. Review any issues noted
-5. Contact MAPIR support for assistance
+**XPROTX 내장 미리보기:**
 
-### Saving the Log
+1. 카메라 모델 하위 폴더로 이동
+2. 이미지 파일 선택
+3. XPROTX 탐색기 미리보기 창에 미리보기 표시
+4. 화살표 키로 이미지 탐색
 
-To keep a record of processing or to send to MAPIR Support:
+### 외부 이미지 뷰어에서 미리 보기
 
-1. Click **"Copy"** or **"Download"** button
-2. Save as text file in project folder
-3. Include with project documentation
-4. Send to MAPIR support if issues encountered
+**권장 뷰어:**
 
-***
+* **QGIS** - 무료 GIS 소프트웨어 (지리 참조 다중 스펙트럼 분석에 최적)
+* **IrfanView** - 빠르고 가벼운 이미지 뷰어 (TIFF 지원)
+* **Adobe Photoshop** - 전문 편집 (TIFF 지원)
+* **GIMP** - Photoshop의 무료 대안
+* **Windows 사진** - 기본 보기 (16비트 TIFF 미지원 가능)
 
-## Common Output Issues and Solutions
+### Chloros 이미지 뷰어에서 미리보기
 
-### Issue: Missing Output Files
+고급 시각화를 위해 Chloros의 내장 이미지 뷰어를 사용하세요:
 
-**Possible causes:**
+1. 파일 브라우저에서 이미지 썸네일을 클릭하세요
+2. 이미지가 메인 미리보기 영역에 열립니다
+3. 왼쪽 사이드바의 **이미지 뷰어** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> 탭을 클릭하세요
+4. [인덱스/LUT 샌드박스](../image-viewer-gui/index-lut-sandbox.md)를 사용하여 대화형 분석을 수행하세요
 
-* Files didn't meet processing criteria
-* Target-only images (excluded from export)
-* Disk space ran out during export
-* File corruption during processing
-
-**Solutions:**
-
-1. Check Debug Log for skip/error messages
-2. Verify disk space was sufficient
-3. Count files: Should match (original count - target count) × (indices + 1)
-4. Re-import and reprocess any missing files
-
-### Issue: Dark or Bright Edges (Vignetting Still Visible)
-
-**Possible causes:**
-
-* Vignette correction disabled
-* Camera/lens not in Chloros profile database
-* Extreme vignetting beyond correction capability
-
-**Solutions:**
-
-1. Verify vignette correction was enabled in Project Settings
-2. Check camera model correctly detected
-3. Contact MAPIR support if vignetting persists
-
-### Issue: Incorrect Colors or Values
-
-**Possible causes:**
-
-* No calibration targets detected
-* Wrong calibration target model selected
-* Reflectance calibration disabled
-* Poor quality target images
-
-**Solutions:**
-
-1. Verify reflectance calibration was enabled
-2. Check "Target found" messages in Debug Log
-3. Review target image quality
-4. Reprocess with proper targets marked
-
-### Issue: NDVI Values Seem Wrong
-
-**Expected NDVI ranges:**
-
-* **Water, rocks, soil**: -0.1 to 0.2
-* **Sparse/unhealthy vegetation**: 0.2 to 0.4
-* **Moderate vegetation**: 0.4 to 0.6
-* **Healthy, dense vegetation**: 0.6 to 0.9
-
-**If values are outside these ranges:**
-
-1. Verify reflectance calibration was applied
-2. Verify light sensor log was included
-3. Check calibration targets were detected
-4. Ensure correct camera model was detected
-5. Review target image capture timing and conditions
+자세한 지침은 [이미지 뷰어](../image-viewer-gui/opening-an-image-full-screen.md)를 참조하세요.
 
 ***
 
-## Using Your Processed Images
+## 디버그 로그 검토
 
-### For Photogrammetry / Orthomosaic Creation
+### 경고 또는 오류 확인
 
-**Recommended workflow:**
+1. **디버그 로그** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> 탭
+2. 메시지를 스크롤하여 확인
+3. 노란색 경고 또는 빨간색 오류 표시 찾기
+4. 기록된 문제점 검토
+5. MAPIR 지원팀에 문의하여 도움 받기
 
-1. **Import calibrated reflectance images** into photogrammetry software:
+### 로그 저장
+
+처리 기록 보관 또는 MAPIR 지원팀에 전송을 위해:
+
+1. **&quot;복사&quot;** 또는 **&quot;다운로드&quot;** 버튼 클릭
+2. 프로젝트 폴더에 텍스트 파일로 저장
+3. 프로젝트 문서에 포함
+4. 문제가 발생하면 XPROTX 지원팀에 전송
+
+***
+
+## 일반적인 출력 문제 및 해결 방법
+
+### 문제: 누락된 출력 파일
+
+**가능한 원인:**
+
+* 파일이 처리 기준을 충족하지 않음
+* 대상 전용 이미지(내보내기에서 제외됨)
+* 내보내기 중 디스크 공간 부족
+* 처리 중 파일 손상
+
+**해결 방법:**
+
+1. 디버그 로그에서 건너뜀/오류 메시지 확인
+2. 디스크 공간이 충분했는지 확인
+3. 파일 수 확인: (원본 수 - 대상 수) × (인덱스 + 1)
+4. 누락된 파일 재가져오기 및 재처리
+
+### 문제: 어두운/밝은 가장자리 (비네팅 여전히 가시적)
+
+**가능한 원인:**
+
+* 비네팅 보정 비활성화
+* 카메라/렌즈가 Chloros 프로파일 데이터베이스에 없음
+* 보정 범위를 초과하는 극심한 비네팅
+
+**해결 방법:**
+
+1. 프로젝트 설정에서 비네팅 보정이 활성화되었는지 확인
+2. 카메라 모델이 올바르게 감지되었는지 확인
+3. 비네팅이 지속될 경우 MAPIR 지원팀에 문의
+
+### 문제: 색상 또는 값 오류
+
+**가능한 원인:**
+
+* 보정 대상 감지 실패
+* 잘못된 보정 대상 모델 선택
+* 반사율 보정 비활성화
+* 저품질 대상 이미지
+
+**해결 방법:**
+
+1. 반사율 보정이 활성화되었는지 확인
+2. 디버그 로그의 &quot;타겟 발견&quot; 메시지 확인
+3. 타겟 이미지 품질 검토
+4. 올바른 타겟을 표시하여 재처리
+
+### 문제: NDVI 값이 잘못된 것 같습니다
+
+**예상 NDVI 범위:**
+
+* **물, 암석, 토양**: -0.1 ~ 0.2
+* **희박/불건강한 식생**: 0.2 ~ 0.4
+* **중간 정도 식생**: 0.4 ~ 0.6
+* **건강하고 밀집된 식생**: 0.6 ~ 0.9
+
+**값이 이 범위를 벗어나는 경우:**
+
+1. 반사율 보정이 적용되었는지 확인
+2. 광 센서 로그가 포함되었는지 확인
+3. 보정 타겟이 감지되었는지 확인
+4. 올바른 카메라 모델이 감지되었는지 확인
+5. 타겟 이미지 촬영 시점 및 조건 검토
+
+***
+
+## 처리된 이미지 사용하기
+
+### 사진측량 / 정사모자이크 생성용
+
+**권장 워크플로:**
+
+1. **보정된 반사율 이미지**를 사진측량 소프트웨어에 임포트:
    * Pix4Dmapper
    * Agisoft Metashape
    * DroneDeploy
    * WebODM
-2. **Keep EXIF metadata**: Ensure GPS data preserved for geotagging
-3. **Calibrated workflows**: Use reflectance images for scientific accuracy
-4. **Process index mosaics**: Create NDVI orthomosaics from individual index images
-5. **Export georeferenced GeoTIFF**: For use in GIS applications
+2. **EXIF 메타데이터 유지**: 지오태깅을 위해 GPS 데이터 보존
+3. **보정된 워크플로**: 과학적 정확성을 위해 반사율 이미지 사용
+4. **인덱스 모자이크 처리**: 개별 인덱스 이미지에서 NDVI 정사모자이크 생성
+5. **지리 참조된 GeoTIFF 내보내기**: GIS 애플리케이션에서 사용
 
-### For GIS Analysis
+### GIS 분석용
 
-**Recommended workflow:**
+**권장 워크플로우:**
 
-1. **Load into QGIS, ArcGIS, or similar**
-2. **Use 16-bit TIFF** reflectance images for multi-band analysis
-3. **Use index images** (NDVI, NDRE) as ready-to-use vegetation layers
-4. **Raster calculator**: Combine bands for custom analysis
-5. **Export**: Create classification maps, change detection, vegetation health maps
+1. **QGIS, ArcGIS 또는 유사 소프트웨어로 로드**
+2. **16비트 TIFF** 반사율 이미지 사용 (다중 밴드 분석용)
+3. **지수 이미지** (NDVI, NDRE) 사용 (즉시 사용 가능한 식생 레이어)
+4. **래스터 계산기**: 맞춤형 분석을 위한 밴드 결합
+5. **내보내기**: 분류 지도, 변화 감지, 식생 건강도 지도 생성
 
-### For Direct Analysis / Reporting
+### 직접 분석/보고용
 
-**Recommended workflow:**
+**권장 워크플로:**
 
-1. **Use index images with LUT colors** for visual reports
-2. **Extract statistics**: Mean NDVI per field/plot
-3. **Time series**: Compare indices across multiple sessions
-4. **Generate reports**: Include maps, statistics, and visualizations
-
-***
-
-## Archiving and Backup
-
-### Recommended Backup Strategy
-
-**What to save:**
-
-* ✅ **Original RAW/JPG images** - Archive on separate drive/cloud
-* ✅ **Processed outputs** - Keep calibrated images and indices
-* ✅ **Project file** - Contains all settings for reprocessing if needed
-* ✅ **Debug Log** - Documents processing details
-* ✅ **Calibration target images** - For verification and reprocessing
-
-**Storage recommendations:**
-
-* **Immediate backup**: External hard drive
-* **Long-term archive**: Cloud storage (Google Drive, Dropbox, etc.)
-* **Critical data**: Keep 2-3 copies in different locations
+1. 시각적 보고를 위해 **LUT 색상이 적용된 지수 이미지 사용**
+2. **통계 추출**: 필드/플롯별 평균 NDVI
+3. **시계열 분석**: 여러 세션 간 지수 비교
+4. **보고서 생성**: 지도, 통계, 시각화 자료 포함
 
 ***
 
-## Next Processing Runs
+## 보관 및 백업
 
-### Reusing Project Settings
+### 권장 백업 전략
 
-If processing similar datasets in the future:
+**저장 대상:**
 
-1. **Save Project Template** (if not already done)
-2. **Create new project** using saved template
-3. **Import new images**
-4. **Process** with identical settings for consistency
+* ✅ **원본 RAW/JPG 이미지** - 별도 드라이브/클라우드에 보관
+* ✅ **처리된 출력물** - 보정된 이미지와 지수 보관
+* ✅ **프로젝트 파일** - 재처리 시 필요한 모든 설정 포함
+* ✅ **디버그 로그** - 처리 세부사항 기록
+* ✅ **보정 대상 이미지** - 검증 및 재처리용
 
-### Batch Processing Multiple Sessions
+**저장 권장 사항:**
 
-For multiple sessions/datasets:
-
-**Option 1: GUI - Multiple Projects**
-
-* Create separate project for each session
-* Use consistent template settings
-* Process one at a time
-
-**Option 2: Chloros CLI (Chloros+ only)**
-
-* Automate batch processing
-* Process multiple folders with scripts
-* See [CLI Documentation](../CLI.md)
-
-**Option 3: Python SDK (Chloros+ only)**
-
-* Programmatic control
-* Integration with analysis pipelines
-* See [API Documentation](../api-python-sdk.md)
+* **즉시 백업**: 외장 하드 드라이브
+* **장기 보관**: 클라우드 저장소 (Google Drive, Dropbox 등)
+* **중요 데이터**: 서로 다른 위치에 2~3개 복사본 보관
 
 ***
 
-## Troubleshooting Post-Processing
+## 향후 처리 작업
 
-### Re-Processing with Different Settings
+### 프로젝트 설정 재사용
 
-If results aren't satisfactory:
+향후 유사한 데이터셋 처리 시:
 
-1. Keep original images (never delete)
-2. Open same project in Chloros
-3. Adjust settings in Project Settings panel
-4. Process again - outputs will overwrite previous results
+1. **프로젝트 템플릿 저장** (아직 저장하지 않은 경우)
+2. 저장된 템플릿으로 **새 프로젝트 생성**
+3. **새 이미지 가져오기**
+4. 일관성을 위해 동일한 설정으로 **처리**
 
-### Processing Subset of Images
+### 여러 세션 일괄 처리
 
-To reprocess only specific images:
+여러 세션/데이터셋의 경우:
 
-1. Create new project
-2. Import only the images needing reprocessing
-3. Use same settings template
-4. Process smaller dataset
+**옵션 1: GUI - 다중 프로젝트**
 
-### Getting Help
+* 각 세션별로 별도 프로젝트 생성
+* 일관된 템플릿 설정 사용
+* 한 번에 하나씩 처리
 
-If you encounter issues:
+**옵션 2: Chloros CLI (Chloros+ 전용)**
 
-* 📧 **Email**: info@mapir.camera (include Debug Log)
-* 🌐 **Support**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
-* 📚 **FAQ**: [Frequently Asked Questions](../faq.md)
-* 📖 **Documentation**: [Chloros Manual](../)
+* 배치 처리 자동화
+* 스크립트로 여러 폴더 처리
+* [CLI 문서](../CLI.md) 참조
 
-***
+**옵션 3: Python SDK (Chloros+ 전용)**
 
-## Summary: Complete Workflow
-
-You've now completed the full Chloros processing workflow:
-
-1. ✅ **Created project** - See [Projects](../projects.md)
-2. ✅ **Added files** - See [Adding Files](page-1.md)
-3. ✅ **Adjusted settings** - See [Adjusting Project Settings](adjusting-project-settings.md)
-4. ✅ **Marked targets** - See [Choosing Target Images](choosing-target-images.md)
-5. ✅ **Started processing** - See [Starting the Processing](starting-the-processing.md)
-6. ✅ **Monitored progress** - See [Monitoring the Processing](monitoring-the-processing.md)
-7. ✅ **Reviewed results** - This page
-
-**Your calibrated, reflectance-corrected multispectral images are ready for analysis!**
+* 프로그래밍 방식 제어
+* 분석 파이프라인과의 통합
+* [API 문서](../api-python-sdk.md) 참조
 
 ***
 
-## Additional Resources
+## 후처리 문제 해결
 
-### Advanced Features
+### 다른 설정으로 재처리
 
-* [**Image Viewer**](../image-viewer-gui/page-3.md) - Interactive visualization and analysis
-* [**Index/LUT Sandbox**](../image-viewer-gui/index-lut-sandbox.md) - Custom index testing
-* [**Multispectral Index Formulas**](../project-settings/multispectral-index-formulas.md) - Complete index reference
+결과가 만족스럽지 않은 경우:
 
-### Automation & Integration
+1. 원본 이미지 보관 (절대 삭제하지 마세요)
+2. Chloros에서 동일 프로젝트 열기
+3. 프로젝트 설정 패널에서 설정 조정
+4. 재처리 실행 - 출력 결과가 이전 결과를 덮어씁니다
 
-* [**CLI Documentation**](../CLI.md) - Command-line batch processing
-* [**Python SDK**](../api-python-sdk.md) - Programmatic automation
-* [**Chloros+ Features**](../#chloros) - Advanced processing capabilities
+### 이미지 부분 집합 처리
 
-### Support & Learning
+특정 이미지만 재처리하려면:
 
-* [**FAQ**](../faq.md) - Common questions answered
-* [**Calibration Targets**](../calibration-targets.md) - Understanding reflectance calibration
-* [**Supported Cameras**](../supported-cameras.md) - Compatible hardware
+1. 새 프로젝트 생성
+2. 재처리 필요한 이미지만 가져오기
+3. 동일 설정 템플릿 사용
+4. 소규모 데이터셋 처리
+
+### 도움 받기
+
+문제가 발생할 경우:
+
+* 📧 **이메일**: info@mapir.camera (디버그 로그 포함)
+* 🌐 **지원**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
+* 📚 **자주 묻는 질문**: [자주 묻는 질문](../faq.md)
+* 📖 **문서**: [Chloros 매뉴얼](../)
+
+***
+
+## 요약: 전체 워크플로
+
+이제 Chloros 처리 워크플로우 전체를 완료했습니다:
+
+1. ✅ **프로젝트 생성** - [프로젝트](../projects.md) 참조
+2. ✅ **파일 추가** - [파일 추가](adding-files-to-a-project.md) 참조
+3. ✅ **설정 조정** - [프로젝트 설정 조정](adjusting-project-settings.md) 참조
+4. ✅ **대상 이미지 선택** - [대상 이미지 선택](choosing-target-images.md) 참조
+5. ✅ **처리 시작** - [처리 시작](starting-the-processing.md) 참조
+6. ✅ **진행 상황 모니터링** - [처리 모니터링](monitoring-the-processing.md) 참조
+7. ✅ **결과 검토** - 본 페이지
+
+**보정 및 반사율 보정이 완료된 다중 스펙트럼 이미지가 분석 준비 완료되었습니다!**
+
+***
+
+## 추가 리소스
+
+### 고급 기능
+
+* [**이미지 뷰어**](../image-viewer-gui/opening-an-image-full-screen.md) - 대화형 시각화 및 분석
+* [**지수/LUT 샌드박스**](../image-viewer-gui/index-lut-sandbox.md) - 사용자 정의 지수 테스트
+* [**다중 스펙트럼 지수 공식**](../project-settings/multispectral-index-formulas.md) - 완전한 지수 참조 자료
+
+### 자동화 및 통합
+
+* [**CLI 문서**](../CLI.md) - 명령줄 배치 처리
+* [**Python SDK**](../api-python-sdk.md) - 프로그래밍 기반 자동화
+* [**Chloros+ 기능**](../#chloros) - 고급 처리 기능
+
+### 지원 및 학습
+
+* [**자주 묻는 질문(FAQ)**](../faq.md) - 일반적인 질문 답변
+* [**교정 대상**](../calibration-targets.md) - 반사율 교정 이해
+* [**지원 카메라**](../supported-cameras.md) - 호환 하드웨어

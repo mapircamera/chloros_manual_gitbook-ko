@@ -1,234 +1,234 @@
-# Adjusting Project Settings
+# 프로젝트 설정 조정
 
-Before processing your images, it's important to configure your project settings to match your workflow requirements. The Project Settings <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> panel provides comprehensive control over calibration, processing options, multispectral indices, and export formats.
+이미지 처리 전에 워크플로 요구 사항에 맞게 프로젝트 설정을 구성하는 것이 중요합니다. 프로젝트 설정 패널은 보정, 처리 옵션, 다중 스펙트럼 지수 및 내보내기 형식에 대한 포괄적인 제어를 제공합니다. <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> 패널은 보정, 처리 옵션, 다중 스펙트럼 지수 및 내보내기 형식에 대한 포괄적인 제어를 제공합니다.
 
-## Accessing Project Settings
+## 프로젝트 설정 접근 방법
 
-1. Open your project in Chloros
-2. Click the **Project Settings** <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> icon in the left sidebar
-3. The Project Settings panel displays all configuration options
+1. Chloros에서 프로젝트를 엽니다.
+2. 왼쪽 사이드바의 **프로젝트 설정** <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> 아이콘을 클릭합니다
+3. 프로젝트 설정 패널에 모든 구성 옵션이 표시됩니다
 
-{% hint style="info" %}
-**Settings are saved automatically** with your project. When you reopen a project, all settings are restored.
+{% hint style=&quot;info&quot; %}
+**설정은 프로젝트와 함께 자동 저장됩니다**. 프로젝트를 다시 열면 모든 설정이 복원됩니다.
 {% endhint %}
 
 ***
 
-## Quick Setup for Common Workflows
+## 일반적인 워크플로우를 위한 빠른 설정
 
-### Default Settings (Recommended for Most Users)
+### 기본 설정 (대부분의 사용자에게 권장)
 
-For typical MAPIR Survey3 camera workflows, the default settings work well:
+일반적인 MAPIR Survey3 카메라 워크플로우에는 기본 설정이 적합합니다:
 
-* ✅ **Vignette correction**: Enabled
-* ✅ **Reflectance calibration**: Enabled (requires images of MAPIR targets)
-* ✅ **Debayer method**: High Quality (Faster)
-* ✅ **Export format**: TIFF (16-bit)
+* ✅ **비네트 보정**: 활성화됨
+* ✅ **반사율 보정**: 활성화됨 (MAPIR 타겟 이미지 필요)
+* ✅ **디베이어 방법**: 고품질 (빠름)
+* ✅ **내보내기 형식**: TIFF (16비트)
 
-Simply import your images and start processing with these defaults.
-
-***
-
-## Project Settings Overview
-
-The Project Settings panel is organized into several categories. Below is a summary of each section. For complete documentation, see [Project Settings](../project-settings/page-2.md).
-
-### Target Detection
-
-Controls how Chloros identifies calibration targets in your images.
-
-**Key settings:**
-
-* **Minimum calibration sample area**: Size threshold for target detection (default: 25 pixels)
-* **Minimum target clustering**: Similarity threshold for grouping target regions (default: 60)
-
-**When to adjust:**
-
-* Increase sample area if getting false detections
-* Decrease if targets aren't being detected
-* Adjust clustering if targets are being split into multiple detections
-
-### Processing
-
-Main image processing and calibration options.
-
-**Key settings:**
-
-* **Vignette correction**: Compensates for lens darkening at edges ✅ Recommended
-* **Reflectance calibration**: Normalizes values using calibration targets ✅ Recommended
-* **Debayer method**: Algorithm for converting RAW to 3-channels multi-spectral
-* **Minimum recalibration interval**: Time between using calibration targets (0 = use all)
-
-**Advanced settings:**
-
-* **Light sensor timezone offset**: For PPK time synchronization (default: 0)
-* **Apply PPK corrections**: Uses GPS/exposure pin data from .daq files
-* **Exposure Pin 1/2**: Assigns cameras to exposure pins for dual-camera setups
-
-### Index (Multispectral Indices)
-
-Configure which vegetation indices to calculate and export.
-
-**How to add indices:**
-
-1. Click **"Add index"** button
-2. Select an index from the dropdown menu (NDVI, NDRE, GNDVI, etc.)
-3. Configure visualization settings (LUT colors, value ranges)
-4. Add multiple indices as needed
-
-**Popular indices:**
-
-* **NDVI**: General vegetation health (most common)
-* **NDRE**: Early stress detection with RedEdge
-* **GNDVI**: Chlorophyll concentration sensitive
-* **OSAVI**: Works well with visible soil
-* **EVI**: High leaf area index (LAI) regions
-
-**Custom formulas (Chloros+ only):**
-
-* Create custom multispectral index formulas
-* Use band math with all image channels
-* Save custom formulas for reuse
-
-For all available indices and formulas, see [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md).
-
-### Export
-
-Controls output file format and quality.
-
-**Available formats:**
-
-* **TIFF (16-bit)**: Recommended for GIS and scientific analysis (0-65,535 range)
-* **TIFF (32-bit, Percent)**: Floating-point reflectance values (0.0-1.0 range)
-* **PNG (8-bit)**: Lossless compression for visualization (0-255 range)
-* **JPG (8-bit)**: Smallest files, lossy compression (0-255 range)
+이미지를 가져온 후 이 기본값으로 처리를 시작하세요.
 
 ***
 
-## Saving and Loading Settings
+## 프로젝트 설정 개요
 
-### Save Project Template
+프로젝트 설정 패널은 여러 범주로 구성됩니다. 각 섹션의 요약은 아래와 같습니다. 전체 문서는 [프로젝트 설정](../project-settings/project-settings.md)을 참조하십시오.
 
-Create reusable templates for consistent workflows:
+### 대상 감지
 
-1. Configure all desired settings in the Project Settings panel
-2. Scroll to **"Save Project Template"** section at the bottom
-3. Enter a descriptive template name (e.g., "Survey3N\_RGN\_Agriculture")
-4. Click the save icon
+이미지에서 보정 대상을 식별하는 방식을 제어합니다.
 
-**Benefits:**
+**주요 설정:**
 
-* Apply identical settings across multiple projects
-* Share configurations with team members
-* Maintain consistency for repeated surveys
+* **최소 교정 샘플 영역**: 대상 감지 크기 임계값 (기본값: 25 픽셀)
+* **최소 대상 클러스터링**: 대상 영역 그룹화 유사도 임계값 (기본값: 60)
 
-### Load Template on New Project
+**조정 시점:**
 
-When creating a new project:
+* 오탐이 발생할 경우 샘플 영역 증가
+* 대상이 감지되지 않을 경우 감소
+* 대상이 여러 개로 분할 감지될 경우 클러스터링 조정
 
-1. Select **"New Project"** from main menu
-2. Choose **"Load from template"** option
-3. Select your saved template
-4. All settings are automatically applied
+### 처리
 
-### Working Directory
+주요 이미지 처리 및 보정 옵션.
 
-The **"Save Project Folder"** setting specifies where new projects are created by default:
+**주요 설정:**
 
-* **Default location**: `C:\Users\[Username]\Chloros Projects`
-* **Change location**: Click edit icon and select new folder
-* **When to change**:
-  * Network drive for team collaboration
-  * Different drive with more storage space
-  * Organized folder structure by year/client
+* **비네팅 보정**: 렌즈 가장자리 어두움 보정 ✅ 권장
+* **반사율 보정**: 보정 타깃을 사용한 값 정규화 ✅ 권장
+* **디베이어 방법**: RAW를 3채널 다중 스펙트럼으로 변환하는 알고리즘
+* **최소 재보정 간격**: 보정 대상 사용 간격 (0 = 모두 사용)
+
+**고급 설정:**
+
+* **광센서 시간대 오프셋**: PPK 시간 동기화용 (기본값: 0)
+* **PPK 보정 적용**: .daq 파일의 GPS/노출 핀 데이터 사용
+* **노출 핀 1/2**: 듀얼 카메라 설정 시 카메라를 노출 핀에 할당
+
+### 지수 (다중 스펙트럼 지수)
+
+계산 및 내보낼 식생 지수를 구성합니다.
+
+**지수 추가 방법:**
+
+1. **&quot;지수 추가&quot;** 버튼 클릭
+2. 드롭다운 메뉴에서 지수 선택 (NDVI, NDRE, GNDVI 등)
+3. 시각화 설정 구성 (LUT 색상, 값 범위)
+4. 필요에 따라 여러 지수 추가
+
+**주요 지수:**
+
+* **NDVI**: 일반 식생 건강도 (가장 흔함)
+* **NDRE**: RedEdge와 함께 초기 스트레스 감지
+* **GNDVI**: 엽록소 농도에 민감
+* **OSAVI**: 가시광선 토양과 호환성 우수
+* **EVI**: 높은 잎면적지수(LAI) 지역
+
+**사용자 정의 공식 (Chloros+ 전용):**
+
+* 맞춤형 다중 스펙트럼 지수 공식 생성
+* 모든 이미지 채널에 밴드 연산 적용
+* 재사용을 위한 맞춤형 공식 저장
+
+사용 가능한 모든 지수와 공식은 [다중 스펙트럼 지수 공식](../project-settings/multispectral-index-formulas.md)을 참조하십시오.
+
+### 내보내기
+
+출력 파일 형식과 품질을 제어합니다.
+
+**사용 가능한 형식:**
+
+* **TIFF (16비트)**: GIS 및 과학적 분석에 권장 (0-65,535 범위)
+* **TIFF (32비트, 백분율)**: 부동 소수점 반사율 값 (0.0-1.0 범위)
+* **PNG (8비트)**: 시각화를 위한 무손실 압축 (0-255 범위)
+* **JPG (8비트)**: 가장 작은 파일 크기, 손실 압축 (0-255 범위)
 
 ***
 
-## PPK (Post-Processed Kinematic) Setup
+## 설정 저장 및 불러오기
 
-If using MAPIR DAQ recorders with GPS for precise geolocation:
+### 프로젝트 템플릿 저장
 
-### Prerequisites
+일관된 워크플로우를 위한 재사용 가능한 템플릿 생성:
 
-* MAPIR DAQ with GPS (GNSS) module
-* .daq log file with exposure pin entries
-* Camera connected to DAQ exposure pins during capture session
+1. 프로젝트 설정 패널에서 원하는 모든 설정을 구성합니다.
+2. 하단의 **&quot;프로젝트 템플릿 저장&quot;** 섹션으로 스크롤합니다.
+3. 설명적인 템플릿 이름을 입력합니다(예: &quot;Survey3N\_RGN\_Agriculture&quot;).
+4. 저장 아이콘을 클릭합니다.
 
-### Configuration Steps
+**장점:**
 
-1. Place the .daq log file in your project folder
-2. In Project Settings, enable **"Apply PPK corrections"** checkbox
-3. Set **"Light sensor timezone offset"** if needed (default: 0 for UTC)
-4. Assign cameras to exposure pins:
-   * **Single camera**: Automatically assigned to Pin 1
-   * **Dual cameras**: Manually assign each camera to correct pin
+* 여러 프로젝트에 동일한 설정 적용
+* 팀원과 구성 공유
+* 반복 조사 시 일관성 유지
 
-**Exposure Pin Assignment:**
+### 새 프로젝트에 템플릿 불러오기
 
-* **Exposure Pin 1**: Select camera model from dropdown
-* **Exposure Pin 2**: Select second camera or "Do Not Use"
-* Same camera cannot be assigned to both pins
+새 프로젝트 생성 시:
 
-{% hint style="warning" %}
-**Important**: Exposure pins must be correctly assigned to their respective cameras. Incorrect assignment will result in wrong geolocation data.
+1. 메인 메뉴에서 **&quot;새 프로젝트&quot;** 선택
+2. **&quot;템플릿에서 불러오기&quot;** 옵션 선택
+3. 저장된 템플릿 선택
+4. 모든 설정 자동 적용
+
+### 작업 디렉터리
+
+**&quot;프로젝트 폴더 저장&quot;** 설정은 새 프로젝트가 기본적으로 생성되는 위치를 지정합니다:
+
+* **기본 위치**: `C:\Users\[Username]\Chloros Projects`
+* **위치 변경**: 편집 아이콘을 클릭하고 새 폴더 선택
+* **변경 시점**:
+  * 팀 협업을 위한 네트워크 드라이브
+  * 더 많은 저장 공간이 있는 다른 드라이브
+  * 연도/고객별 체계적인 폴더 구조
+
+***
+
+## PPK(사후 처리 동적 측량) 설정
+
+정밀 지리 위치 측정을 위해 GPS 기능이 탑재된 MAPIR DAQ 레코더 사용 시:
+
+### 필수 조건
+
+* GPS(GNSS) 모듈이 장착된 MAPIR DAQ
+* 노출 핀 항목이 포함된 .daq 로그 파일
+* 촬영 세션 중 DAQ 노출 핀에 연결된 카메라
+
+### 구성 단계
+
+1. .daq 로그 파일을 프로젝트 폴더에 배치
+2. 프로젝트 설정에서 **&quot;PPK 보정 적용&quot;** 체크박스 활성화
+3. 필요 시 **&quot;광센서 시간대 오프셋&quot;** 설정 (기본값: UTC 기준 0)
+4. 카메라를 노출 핀에 할당:
+   * **단일 카메라**: 핀 1에 자동 할당
+   * **듀얼 카메라**: 각 카메라를 올바른 핀에 수동 할당
+
+**노출 핀 할당:**
+
+* **노출 핀 1**: 드롭다운에서 카메라 모델 선택
+* **노출 핀 2**: 두 번째 카메라 선택 또는 &quot;사용 안 함&quot;
+* 동일 카메라를 두 핀에 동시에 할당할 수 없음
+
+{% hint style=&quot;warning&quot; %}
+**중요**: 노출 핀은 반드시 해당 카메라에 정확히 할당되어야 합니다. 잘못된 할당은 부정확한 지리 위치 데이터로 이어집니다.
 {% endhint %}
 
 ***
 
-## Advanced Scenarios
+## 고급 시나리오
 
-### Multi-Camera Projects
+### 다중 카메라 프로젝트
 
-When processing images from multiple MAPIR cameras in one project:
+하나의 프로젝트에서 여러 MAPIR 카메라의 이미지를 처리할 때:
 
-1. Chloros automatically detects each camera model
-2. Each camera gets appropriate processing profile
-3. PPK: Manually assign each camera to correct exposure pin
-4. All cameras use same export format and indices
+1. Chloros가 각 카메라 모델을 자동으로 감지합니다
+2. 각 카메라에 적절한 처리 프로필이 적용됩니다
+3. PPK: 각 카메라를 올바른 노출 핀에 수동으로 할당합니다
+4. 모든 카메라는 동일한 내보내기 형식과 인덱스를 사용합니다
 
-**Example**: Survey3W RGN + Survey3N OCN dual-camera rig
+**예시**: Survey3W RGN + Survey3N OCN 듀얼 카메라 장비
 
-### Time-Lapse or Multi-Date Surveys
+### 타임랩스 또는 다중 날짜 측량
 
-For repeated surveys of the same area over time:
+동일 지역을 시간 경과에 따라 반복 측량할 경우:
 
-1. Create a template with your standard settings
-2. Use consistent calibration target setup each session
-3. Process each date as a separate project
-4. Use identical settings for comparable results
-5. Export in same format for temporal analysis
+1. 표준 설정으로 템플릿 생성
+2. 매 세션 일관된 교정 타겟 설정 사용
+3. 각 날짜별 별도 프로젝트로 처리
+4. 비교 가능한 결과 위해 동일 설정 사용
+5. 시간적 분석을 위해 동일 형식으로 내보내기
 
-### Large Datasets
+### 대규모 데이터셋
 
-For projects with many images (500+):
+이미지가 많은 프로젝트(500장 이상)의 경우:
 
-* Consider breaking into smaller projects by date or area
-* Use Chloros+ parallel processing for faster results
-* Consider CLI or API for batch automation
-* Adjust minimum recalibration interval to reduce target detection time
-
-***
-
-## Verifying Your Settings
-
-Before starting to process, review these key settings:
-
-* [ ] Camera model correctly detected in File Browser
-* [ ] Vignette correction enabled
-* [ ] Reflectance calibration enabled
-* [ ] At least one calibration target image imported
-* [ ] Desired multispectral indices added
-* [ ] Export format appropriate for your workflow
-* [ ] PPK settings configured (if using .daq with expposure events)
+* 날짜별 또는 지역별로 소규모 프로젝트로 분할하는 것을 고려하세요
+* 더 빠른 결과를 위해 Chloros+ 병렬 처리를 사용하세요
+* 배치 자동화를 위해 CLI 또는 API를 고려하세요
+* 타겟 탐지 시간을 줄이기 위해 최소 재보정 간격을 조정하세요
 
 ***
 
-## Next Steps
+## 설정 확인
 
-Once your settings are configured:
+처리 시작 전 다음 주요 설정을 검토하세요:
 
-1. **Mark calibration target images** - See [Choosing Target Images](choosing-target-images.md)
-2. **Start processing** - See [Starting the Processing](starting-the-processing.md)
-3. **Monitor progress** - See [Monitoring the Processing](monitoring-the-processing.md)
+* [ ] 파일 브라우저에서 카메라 모델이 정확히 감지되었는지
+* [ ] 비네트 보정이 활성화되었는지
+* [ ] 반사율 보정이 활성화되었는지
+* [ ] 보정 대상 이미지 최소 1개 이상이 불러와졌는지
+* [ ] 원하는 다중 스펙트럼 지수가 추가되었는지
+* [ ] 워크플로우에 적합한 내보내기 형식인지
+* [ ] PPK 설정 구성 완료(노출 이벤트가 포함된 .daq 사용 시)
 
-For complete details on all available settings, see the [Project Settings](../project-settings/page-2.md) reference documentation.
+***
+
+## 다음 단계
+
+설정이 완료되면:
+
+1. **보정 대상 이미지 표시** - [대상 이미지 선택](choosing-target-images.md) 참조
+2. **처리 시작** - [처리 시작](starting-the-processing.md) 참조
+3. **진행 상황 모니터링** - [처리 모니터링](monitoring-the-processing.md) 참조
+
+사용 가능한 모든 설정의 상세 내용은 [프로젝트 설정](../project-settings/project-settings.md) 참조 문서를 참조하십시오.

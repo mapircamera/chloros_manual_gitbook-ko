@@ -1,352 +1,352 @@
-# Image Layers
+# 이미지 레이어
 
-The Image Layers dropdown in the Chloros Image Viewer allows you to quickly switch between different versions of the same image - from the original captures to processed reflectance outputs and calculated index images.
+Chloros 이미지 뷰어의 &#x27;이미지 레이어&#x27; 드롭다운 메뉴를 사용하면 동일한 이미지의 다양한 버전(원본 캡처부터 처리된 반사율 출력 및 계산된 지수 이미지까지)을 빠르게 전환할 수 있습니다.
 
-## What are Image Layers?
+## 이미지 레이어란 무엇인가요?
 
-In Chloros, **layers** refer to the different image outputs available for a single source image. When you process images, Chloros creates multiple versions:
+Chloros에서 **레이어**는 단일 소스 이미지에 대해 사용할 수 있는 다양한 이미지 출력을 의미합니다. 이미지를 처리할 때 Chloros는 여러 버전을 생성합니다:
 
-* **Original images** (JPG and RAW files from your camera)
-* **Reflectance calibrated** outputs (if reflectance calibration was enabled)
-* **Target images** (if the image contains calibration targets)
-* **Index images** (NDVI, NDRE, GNDVI, etc. if indices were configured)
+* **원본 이미지** (카메라의 JPG 및 RAW 파일)
+* **반사율 보정** 출력 (반사율 보정이 활성화된 경우)
+* **표적 이미지** (이미지에 보정 표적이 포함된 경우)
+* **인덱스 이미지** (인덱스가 설정된 경우 NDVI, NDRE, GNDVI 등)
 
-The **Layer Selector dropdown** in the top-right of the Image Viewer lets you instantly switch between these versions without leaving the viewer.
+이미지 뷰어 우측 상단의 **레이어 선택기 드롭다운**을 사용하면 뷰어를 벗어나지 않고도 이러한 버전 간에 즉시 전환할 수 있습니다.
 
 ***
 
-## Available Layer Types
+## 사용 가능한 레이어 유형
 
 ### JPG
 
-* The original JPG preview image from your camera
-* Always available for all images
-* Unprocessed, as captured by the camera
-* Fastest to load and display
+* 카메라에서 직접 출력된 원본 JPG 미리보기 이미지
+* 모든 이미지에 항상 사용 가능
+* 카메라로 촬영된 그대로의 미처리 상태
+* 로딩 및 표시 속도가 가장 빠름
 
-**When to view:**
+**사용 시점:**
 
-* Quick preview of original capture
-* Checking image composition and framing
-* Verifying capture quality before processing
+* 원본 촬영물의 빠른 미리보기
+* 이미지 구성 및 프레임 확인
+* 처리 전 촬영 품질 검증
 
-### RAW (Original)
+### RAW (원본)
 
-* The original RAW sensor data from your camera
-* Debayered with no post processing applied
-* Higher bit depth than JPG (typically 12-bit or 14-bit sensor data)
+* 카메라의 원본 RAW 센서 데이터
+* 디베이어링 처리되었으나 후처리 미적용
+* JPG보다 높은 비트 심도(일반적으로 12비트 또는 14비트 센서 데이터)
 
-**When to view:**
+**사용 시점:**
 
-* Inspecting original sensor data quality
-* Checking for sensor issues or artifacts
-* Comparing before/after processing results
+* 원본 센서 데이터 품질 검사
+* 센서 문제 또는 아티팩트 확인
+* 처리 전후 결과 비교
 
-### RAW (Target)
+### RAW (타겟)
 
-* Only appears for images identified as containing calibration targets
-* Shows the original RAW image with target detected
-* Used to verify target detection was successful
+* 보정 대상이 포함된 이미지에만 표시됨
+* 대상이 감지된 원본 RAW 이미지 표시
+* 대상 감지 성공 여부 확인용
 
-**When to view:**
+**확인 시점:**
 
-* Confirming calibration targets were detected correctly
-* Checking target image quality
-* Troubleshooting calibration issues
+* 보정 대상이 정확히 감지되었는지 확인
+* 대상 이미지 품질 점검
+* 보정 문제 해결
 
-{% hint style="info" %}
-**Target Layer**: This layer only appears in the dropdown for images that contain calibration targets. Regular capture images will not have this option.
+{% hint style=&quot;info&quot; %}
+**표적 레이어**: 이 레이어는 보정 표적이 포함된 이미지의 드롭다운에서만 나타납니다. 일반 촬영 이미지는 이 옵션을 제공하지 않습니다.
 {% endhint %}
 
-### RAW (Reflectance)
+### RAW (반사율)
 
-* The calibrated reflectance output image
-* Vignette corrected (if enabled in processing)
-* Reflectance calibrated using target data (if enabled)
-* Multi-band TIFF with all camera channels
-* Pixel values represent percent reflectance (when using percent mode)
-* Ready to manipulate with the [Index/LUT Sandbox](index-lut-sandbox.md)
+* 보정된 반사율 출력 이미지
+* 비네팅 보정 적용 (처리 시 활성화된 경우)
+* 타겟 데이터로 반사율 보정됨 (사용 시)
+* 모든 카메라 채널을 포함한 다중 밴드 TIFF
+* 픽셀 값은 백분율 반사율을 나타냄 (퍼센트 모드 사용 시)
+* [인덱스/LUT 샌드박스](index-lut-sandbox.md)로 조작 가능
 
-**When to view:**
+**확인 시점:**
 
-* Inspecting calibrated results
-* Verifying calibration quality
-* Checking pixel values for scientific accuracy
-* Comparing with original to see calibration effects
+* 보정 결과 검토 시
+* 보정 품질 검증 시
+* 과학적 정확성을 위한 픽셀 값 확인 시
+* 원본과의 비교를 통한 보정 효과 확인 시
 
-{% hint style="success" %}
-**Recommended**: Use RAW (Reflectance) layer when checking pixel values for scientific measurements and analysis.
+{% hint style=&quot;success&quot; %}
+**권장**: 과학적 측정 및 분석을 위한 픽셀 값 확인 시 RAW(반사율) 레이어를 사용하십시오.
 {% endhint %}
 
-### RAW (NDVI Index)... and similar
+### RAW (NDVI 지수)... 및 유사 항목
 
-* Calculated vegetation index image (NDVI in this example)
-* The index name changes based on which index was configured during processing
-* Examples: RAW (NDVI Index), RAW (NDRE Index), RAW (GNDVI Index), etc.
-* Single-band grayscale image showing index calculation results
-* One layer appears for each index configured in Project Settings
+* 계산된 식생 지수 이미지 (본 예시에서는 NDVI)
+* 지수명은 처리 중 설정된 지수에 따라 변경됩니다
+* 예시: RAW (NDVI 지수), RAW (NDRE 지수), RAW (GNDVI 지수) 등
+* 지수 계산 결과를 보여주는 단일 밴드 그레이스케일 이미지
+* 프로젝트 설정에서 구성된 각 지수마다 하나의 레이어가 나타남
 
-**Possible index names:**
+**가능한 지수 이름:**
 
-* RAW (NDVI Index)
-* RAW (NDRE Index)
-* RAW (GNDVI Index)
-* RAW (OSAVI Index)
-* RAW (EVI Index)
-* RAW (SAVI Index)
-* And many more... (see [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md))
+* RAW (NDVI 지수)
+* RAW (NDRE 지수)
+* RAW (GNDVI 지수)
+* RAW (OSAVI 지수)
+* RAW (EVI 지수)
+* RAW (SAVI 지수)
+* 기타 다수... ([다중 스펙트럼 지수 공식](../project-settings/multispectral-index-formulas.md) 참조)
 
-**When to view:**
+**사용 시점:**
 
-* Examining index calculation results
-* Checking index value ranges
-* Identifying areas of interest
-* Verifying index images before using in GIS or analysis
-
-***
-
-## Using the Layer Selector
-
-### Opening the Dropdown
-
-1. Open an image in fullscreen mode (click any thumbnail in the Image Viewer)
-2. Locate the **layer dropdown** in the top-right corner of the viewer
-3. The dropdown shows the currently selected layer (e.g., "JPG")
-4. Click the dropdown to see all available layers
-
-### Switching Layers
-
-1. Click the layer dropdown to open the list
-2. All available layers for the current image are shown
-3. Click any layer name to switch to that version
-4. The image updates immediately to show the selected layer
-
-**Quick switching:**
-
-* The dropdown remembers your last selection
-* When navigating to the next image, Chloros attempts to show the same layer type
-* If that layer doesn't exist on the next image, it defaults to JPG
-
-### Layer Availability
-
-Not all layers are available for every image:
-
-**Always available:**
-
-* ✅ JPG (every image has a JPG preview)
-
-**Conditionally available:**
-
-* ⚠️ RAW (Original) - Only if image was captured in RAW or RAW+JPG mode
-* ⚠️ RAW (Target) - Only if image contains detected calibration targets
-* ⚠️ RAW (Reflectance) - Only after processing with reflectance calibration enabled
-* ⚠️ RAW (\[Index] Index) - Only after processing with indices configured
+* 지수 계산 결과 검토 시
+* 지수 값 범위 확인 시
+* 관심 영역 식별 시
+* GIS 또는 분석에 사용하기 전 지수 이미지 검증 시
 
 ***
 
-## Layer Persistence
+## 레이어 선택기 사용법
 
-### Navigating Between Images
+### 드롭다운 열기
 
-When you navigate to a different image (using arrow keys or clicking thumbnails):
+1. 이미지를 전체 화면 모드로 엽니다 (이미지 뷰어에서 아무 썸네일이나 클릭)
+2. 뷰어 우측 상단의 **레이어 드롭다운** 찾기
+3. 드롭다운에 현재 선택된 레이어 표시 (예: &quot;JPG&quot;)
+4. 드롭다운 클릭 시 사용 가능한 모든 레이어 확인
 
-**Layer preference is preserved:**
+### 레이어 전환
 
-* If viewing "RAW (Reflectance)", next image shows "RAW (Reflectance)" (if available)
-* If viewing "RAW (NDVI Index)", next image shows "RAW (NDVI Index)" (if available)
-* If the same layer doesn't exist, defaults to JPG
+1. 레이어 드롭다운 클릭하여 목록 열기
+2. 현재 이미지에 사용 가능한 모든 레이어 표시
+3. 원하는 레이어 이름 클릭하여 해당 버전으로 전환
+4. 선택한 레이어가 즉시 적용되어 이미지가 업데이트됩니다
 
-**Example workflow:**
+**빠른 전환:**
 
-1. Open Image 1, switch to RAW (NDVI Index)
-2. Press → to view Image 2
-3. Image 2 automatically displays RAW (NDVI Index) layer
-4. Continue navigating - all images show NDVI layer
-5. Very efficient for reviewing index results across many images
+* 드롭다운은 마지막 선택 내용을 기억합니다
+* 다음 이미지로 이동 시 Chloros는 동일한 레이어 유형을 표시하려 시도합니다
+* 다음 이미지에 해당 레이어가 존재하지 않으면 기본값인 JPG로 전환됩니다
 
-***
+### 레이어 사용 가능 여부
 
-## Common Workflows
+모든 이미지에 모든 레이어가 사용 가능한 것은 아닙니다:
 
-### Workflow 1: Before/After Comparison
+**항상 사용 가능:**
 
-**Goal**: Compare original vs. calibrated image
+* ✅ JPG (모든 이미지에 JPG 미리보기 제공)
 
-1. Open processed image in Image Viewer
-2. Select **RAW (Original)** from dropdown
-3. Note the vignetting and uncalibrated values
-4. Switch to **RAW (Reflectance)** from dropdown
-5. Compare - vignetting removed, values calibrated
+**조건부 사용 가능:**
 
-### Workflow 2: Index Review
-
-**Goal**: Quickly review NDVI results across dataset
-
-1. Open first processed image
-2. Select **RAW (NDVI Index)** from dropdown
-3. Use → arrow key to navigate to next image
-4. NDVI layer persists automatically
-5. Continue through all images, checking NDVI patterns
-6. Switch to **RAW (NDRE Index)** to compare
-
-### Workflow 3: Target Verification
-
-**Goal**: Verify all target images were detected correctly
-
-1. Navigate to a target image
-2. Select **RAW (Target)** from dropdown
-3. Verify calibration targets are clearly visible and detected
-4. Navigate to next target image
-5. Repeat verification for all targets
-
-### Workflow 4: Pixel Value Inspection
-
-**Goal**: Check reflectance values for scientific accuracy
-
-1. Open processed image
-2. Select **RAW (Reflectance)** layer
-3. Enable **Pixel Percent** mode (button in top-right toolbar)
-4. Move cursor over vegetation areas
-5. Verify pixel values are in expected ranges (30-70% for NIR, 5-15% for Red)
-6. Check soil and water areas for appropriate values
+* ⚠️ RAW (원본) - 이미지가 RAW 또는 RAW+JPG 모드로 촬영된 경우에만
+* ⚠️ RAW (타겟) - 이미지에 감지된 보정 타겟이 포함된 경우에만
+* ⚠️ RAW (반사율) - 반사율 보정 활성화 상태로 처리 후에만 사용 가능
+* ⚠️ RAW (\[인덱스] 인덱스) - 인덱스 설정 상태로 처리 후에만 사용 가능
 
 ***
 
-## Understanding Pixel Values by Layer
+## 레이어 지속성
 
-Different layers show different pixel value ranges:
+### 이미지 간 이동
 
-### JPG Layer
+다른 이미지로 이동할 때(화살표 키 또는 썸네일 클릭):
 
-* **Range**: 0-255 (8-bit)
-* **Meaning**: Display values, gamma-corrected
-* **Use**: Visual inspection only, not for scientific measurement
+**레이어 설정은 유지됩니다:**
 
-### RAW (Original)
+* &quot;RAW (반사율)&quot;을 보고 있을 경우, 다음 이미지는 &quot;RAW (반사율)&quot;을 표시합니다 (사용 가능한 경우)
+* &quot;RAW (NDVI 인덱스)&quot;를 보고 있을 경우, 다음 이미지는 &quot;RAW (NDVI 인덱스)&quot;를 표시합니다 (사용 가능한 경우)
+* 동일한 레이어가 존재하지 않으면 JPG로 기본 설정
 
-* **Range**: 0-65535 (16-bit)
-* **Meaning**: Raw sensor digital numbers
-* **Use**: Checking sensor performance, not calibrated
+**예시 워크플로:**
 
-### RAW (Reflectance)
-
-* **Range**: 0-65,535 (16-bit TIFF) or 0.0-1.0 (32-bit Percent)
-* **Meaning**: Calibrated percent reflectance
-* **Use**: Scientific measurements and analysis
-
-**For 16-bit TIFF:** Divide by 65,535 to get percent reflectance **For 32-bit Percent:** Values directly represent percent (0.5 = 50% reflectance)
-
-### RAW (Index Images)
-
-* **Range**: Varies by index (typically -1.0 to +1.0 for normalized indices)
-* **Meaning**: Index calculation result
-* **Examples**:
-  * NDVI: -1 to +1 (vegetation typically 0.4 to 0.9)
-  * NDRE: -1 to +1 (stress detection)
-  * EVI: 0 to 1 (enhanced vegetation)
+1. 이미지 1 열기, RAW (NDVI Index)로 전환
+2. → 키를 눌러 이미지 2 보기
+3. 이미지 2에 RAW (NDVI Index) 레이어가 자동으로 표시됨
+4. 계속 탐색 - 모든 이미지에 NDVI 레이어 표시
+5. 다수 이미지에서 인덱스 결과 검토에 매우 효율적
 
 ***
 
-## Tips and Best Practices
+## 일반적인 워크플로
 
-### Efficient Layer Switching
+### 워크플로 1: 전후 비교
 
-* **Keyboard shortcut awareness**: While there's no keyboard shortcut for layers, navigation arrows (←/→) work across all layers
-* **Consistent workflows**: Pick one layer (e.g., NDVI) and review entire dataset before switching to another
-* **Quick comparisons**: Toggle between Original and Reflectance to verify processing quality
+**목표**: 원본 vs 보정 이미지 비교
 
-### Performance Considerations
+1. 이미지 뷰어에서 처리된 이미지 열기
+2. 드롭다운에서 **RAW (Original)** 선택
+3. 비네팅 및 보정되지 않은 값 확인
+4. 드롭다운에서 **RAW (반사율)**로 전환
+5. 비교 - 비네팅 제거, 값 보정됨
 
-* **JPG loads fastest**: Use for quick navigation through many images
-* **RAW layers load slower**: Higher resolution and bit depth
-* **Index layers**: Similar speed to Reflectance layers
-* **First load is slowest**: Subsequent views of same layer are cached and faster
+### 워크플로 2: 인덱스 검토
 
-### Quality Verification
+**목표**: 데이터셋 전체에서 NDVI 결과 신속 검토
 
-* **Always check RAW (Original)**: Verify source data quality before trusting processed outputs
-* **Compare layers**: Use layer switching to validate processing worked correctly
-* **Check index ranges**: Use Pixel Percent mode with index layers to verify values are reasonable
+1. 첫 번째 처리된 이미지 열기
+2. 드롭다운에서 **RAW (NDVI 인덱스)** 선택
+3. → 화살표 키로 다음 이미지 이동
+4. NDVI 레이어 자동 유지
+5. 모든 이미지 순차 검토, NDVI 패턴 확인
+6. **RAW (NDRE Index)**로 전환하여 비교
 
-***
+### 워크플로우 3: 타겟 검증
 
-## Troubleshooting
+**목표**: 모든 타겟 이미지가 정확히 감지되었는지 확인
 
-### Layer Not Available
+1. 타겟 이미지로 이동
+2. 드롭다운에서 **RAW (Target)** 선택
+3. 보정 타겟이 선명하게 표시되고 감지되었는지 확인
+4. 다음 대상 이미지로 이동
+5. 모든 대상에 대해 검증을 반복
 
-**Problem**: Expected layer doesn't appear in dropdown
+### 워크플로우 4: 픽셀 값 검사
 
-**Possible causes:**
+**목표**: 과학적 정확성을 위한 반사율 값 확인
 
-* Image wasn't processed (only JPG and RAW (Original) available)
-* Reflectance calibration was disabled during processing
-* Specific index wasn't configured in Project Settings
-* Image is a target-only image (no indices generated for targets)
-
-**Solutions:**
-
-1. Verify image was processed (check output folder for processed files)
-2. Check Project Settings to confirm indices were configured
-3. Reprocess with desired indices enabled
-
-### Wrong Layer Shown
-
-**Problem**: Image opens in unexpected layer
-
-**Cause**: Layer preference from previous image carried forward, but that layer doesn't exist on current image
-
-**Solution**: Chloros automatically falls back to JPG when preferred layer unavailable - this is normal behavior
-
-### Can't See Calibration Targets
-
-**Problem**: RAW (Target) layer doesn't show target detection
-
-**Possible causes:**
-
-* Targets weren't detected during processing
-* Image doesn't actually contain targets
-* Target detection settings too strict
-
-**Solutions:**
-
-1. Check Debug Log for "Target found" messages
-2. Verify image actually contains visible calibration targets
-3. Adjust target detection settings in Project Settings
-4. See [Choosing Target Images](../processing-images-gui/choosing-target-images.md)
+1. 처리된 이미지 열기
+2. **RAW (반사율)** 레이어 선택
+3. **픽셀 백분율** 모드 활성화 (오른쪽 상단 도구 모음의 버튼)
+4. 커서를 식생 영역 위로 이동
+5. 픽셀 값이 예상 범위 내에 있는지 확인 (NIR의 경우 30-70%, Red의 경우 5-15%)
+6. 토양 및 수역 영역의 적절한 값 확인
 
 ***
 
-## Related Features
+## 레이어별 픽셀 값 이해
 
-### Image Viewer Tools
+레이어마다 표시되는 픽셀 값 범위가 다릅니다:
 
-When viewing any layer, you can use:
+### JPG 레이어
 
-* **Zoom controls**: Magnify to inspect details
-* **Pan**: Click and drag to move around zoomed image
-* **Pixel value inspection**: See values at cursor location
-* **Navigation arrows**: Move between images while maintaining layer
-* **Pixel Percent mode**: Toggle between DN and percent display
+* **범위**: 0-255 (8비트)
+* **의미**: 감마 보정된 표시 값
+* **용도**: 시각적 검사 전용, 과학적 측정에 사용 불가
 
-See [Opening an Image Full Screen](page-3.md) for complete Image Viewer documentation.
+### RAW (원본)
 
-### Index/LUT Sandbox
+* **범위**: 0-65535 (16비트)
+* **의미**: 센서 원시 디지털 값
+* **용도**: 센서 성능 확인용, 보정되지 않음
 
-For interactive index testing and visualization:
+### RAW (반사율)
 
-* **Real-time index calculation**: Test different index formulas
-* **LUT color mapping**: Apply color gradients to grayscale indices
-* **Export visualizations**: Save colored index images
+* **범위**: 0-65,535 (16비트 TIFF) 또는 0.0-1.0 (32비트 백분율)
+* **의미**: 보정된 백분율 반사율
+* **용도**: 과학적 측정 및 분석
 
-See [Index/LUT Sandbox](index-lut-sandbox.md) for details.
+**16비트 TIFF의 경우:** 65,535로 나누어 백분율 반사율 구함 **32비트 백분율의 경우:** 값이 직접 백분율을 나타냄 (0.5 = 50% 반사율)
+
+### RAW (지수 이미지)
+
+* **범위**: 지수에 따라 다름 (정규화된 지수의 경우 일반적으로 -1.0 ~ +1.0)
+* **의미**: 지수 계산 결과
+* **예시**:
+  * NDVI: -1 ~ +1 (식생은 일반적으로 0.4 ~ 0.9)
+  * NDRE: -1 ~ +1 (스트레스 감지)
+  * EVI: 0 ~ 1 (강화된 식생)
 
 ***
 
-## Next Steps
+## 팁과 모범 사례
 
-Now that you understand image layers:
+### 효율적인 레이어 전환
 
-* [**Opening an Image Full Screen**](page-3.md) - Complete Image Viewer guide
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Interactive index visualization
-* [**Multispectral Index Formulas**](../project-settings/multispectral-index-formulas.md) - Available indices reference
-* [**Finishing the Processing**](../processing-images-gui/finishing-the-processing.md) - Understanding processed outputs
+* **키보드 단축키 활용**: 레이어 전용 단축키는 없으나, 방향키(←/→)로 모든 레이어 간 이동 가능
+* **일관된 작업 흐름**: 한 레이어(예: NDVI)를 선택한 후 전체 데이터셋 검토 후 다른 레이어로 전환
+* **빠른 비교**: 원본과 반사율 레이어를 전환하며 처리 품질 확인
+
+### 성능 고려사항
+
+* **JPG 로딩 속도 가장 빠름**: 다수 이미지 신속 탐색 시 사용
+* **RAW 레이어 로딩 속도 느림**: 고해상도 및 높은 비트 심도
+* **인덱스 레이어**: 반사율 레이어와 유사한 속도
+* **첫 로딩이 가장 느림**: 동일 레이어 후속 뷰는 캐시되어 더 빠름
+
+### 품질 검증
+
+* **항상 RAW(원본) 확인**: 처리된 출력 신뢰 전 원본 데이터 품질 검증
+* **레이어 비교**: 레이어 전환으로 처리 정상 작동 확인
+* **인덱스 범위 확인**: 인덱스 레이어에 픽셀 퍼센트 모드 적용하여 값의 타당성 검증
+
+***
+
+## 문제 해결
+
+### 레이어 사용 불가
+
+**문제**: 드롭다운에 예상 레이어가 표시되지 않음
+
+**가능한 원인:**
+
+* 이미지가 처리되지 않음 (JPG 및 RAW(원본)만 사용 가능)
+* 처리 중 반사율 보정이 비활성화됨
+* 프로젝트 설정에서 특정 인덱스가 구성되지 않음
+* 이미지가 타겟 전용 이미지임 (타겟용 인덱스 생성되지 않음)
+
+**해결 방법:**
+
+1. 이미지 처리 여부 확인 (출력 폴더에서 처리된 파일 존재 여부 확인)
+2. 프로젝트 설정에서 지수 레이어 구성 여부 확인
+3. 원하는 지수 레이어를 활성화한 상태로 재처리
+
+### 잘못된 레이어 표시
+
+**문제**: 예상치 못한 레이어로 이미지 열림
+
+**원인**: 이전 이미지에서 설정된 레이어 선호도가 현재 이미지로 이어졌으나, 해당 레이어가 현재 이미지에 존재하지 않음
+
+**해결 방법**: Chloros는 선호 레이어를 사용할 수 없을 때 자동으로 JPG로 대체됩니다. 이는 정상적인 동작입니다.
+
+### 교정 타겟이 보이지 않음
+
+**문제**: RAW(타겟) 레이어에 타겟 감지 결과가 표시되지 않음
+
+**가능한 원인:**
+
+* 처리 중 타겟이 감지되지 않음
+* 이미지에 실제 타겟이 포함되지 않음
+* 타겟 감지 설정이 너무 엄격함
+
+**해결 방법:**
+
+1. 디버그 로그에서 &quot;타겟 발견&quot; 메시지 확인
+2. 이미지에 실제 가시적 보정 타겟이 포함되었는지 확인
+3. 프로젝트 설정에서 타겟 감지 설정 조정
+4. [타겟 이미지 선택](../processing-images-gui/choosing-target-images.md) 참조
+
+***
+
+## 관련 기능
+
+### 이미지 뷰어 도구
+
+모든 레이어를 볼 때 다음을 사용할 수 있습니다:
+
+* **확대/축소 컨트롤**: 세부 사항 확인을 위해 확대
+* **패닝**: 확대된 이미지에서 클릭 후 드래그하여 이동
+* **픽셀 값 확인**: 커서 위치의 값 확인
+* **탐색 화살표**: 레이어를 유지한 채 이미지 간 이동
+* **픽셀 퍼센트 모드**: DN과 퍼센트 표시 간 전환
+
+이미지 뷰어 전체 문서는 [이미지 전체 화면 열기](opening-an-image-full-screen.md) 참조.
+
+### 인덱스/LUT 샌드박스
+
+상호작용형 인덱스 테스트 및 시각화를 위해:
+
+* **실시간 인덱스 계산**: 다양한 인덱스 공식 테스트
+* **LUT 컬러 매핑**: 그레이스케일 인덱스에 컬러 그라데이션 적용
+* **시각화 내보내기**: 컬러 인덱스 이미지 저장
+
+자세한 내용은 [인덱스/LUT 샌드박스](index-lut-sandbox.md)를 참조하세요.
+
+***
+
+## 다음 단계
+
+이미지 레이어를 이해하셨다면:
+
+* [**이미지 전체 화면 열기**](opening-an-image-full-screen.md) - 이미지 뷰어 완전 가이드
+* [**인덱스/LUT 샌드박스**](index-lut-sandbox.md) - 대화형 인덱스 시각화
+* [**다중 스펙트럼 지수 공식**](../project-settings/multispectral-index-formulas.md) - 사용 가능한 지수 참조
+* [**처리 완료**](../processing-images-gui/finishing-the-processing.md) - 처리된 출력 결과 이해

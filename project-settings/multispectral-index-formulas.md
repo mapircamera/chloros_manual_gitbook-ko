@@ -6,225 +6,223 @@ metaLinks:
       https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/multispectral-index-formulas
 ---
 
-# Multispectral Index Formulas
+# 다중 스펙트럼 지수 공식
 
-The below index formulas use a combination of Survey3 filter average transmission ranges:
+아래 지수 공식은 Survey3 필터 평균 투과 범위의 조합을 사용합니다:
 
-<table><thead><tr><th align="center">Survey3 Filter Color</th><th width="196.199951171875" align="center">Survey3 Filter Name</th><th width="159.800048828125" align="center">Transmission Range (FWHM)</th><th align="center">Average Transmission</th></tr></thead><tbody><tr><td align="center">Blue</td><td align="center">NGB - Blue</td><td align="center">468-483nm</td><td align="center">475nm</td></tr><tr><td align="center">Cyan</td><td align="center">OCN- Cyan</td><td align="center">476-512nm</td><td align="center">494nm</td></tr><tr><td align="center">Green</td><td align="center">RGN | NGB - Green</td><td align="center">543-558nm</td><td align="center">547nm</td></tr><tr><td align="center">Orange</td><td align="center">OCN - Orange</td><td align="center">598-640nm</td><td align="center">619nm</td></tr><tr><td align="center">Red</td><td align="center">RGN - Red</td><td align="center">653-668nm</td><td align="center">661nm</td></tr><tr><td align="center">RedEdge</td><td align="center">Re - RedEdge</td><td align="center">712-735nm</td><td align="center">724nm</td></tr><tr><td align="center">NIR1</td><td align="center">OCN - NIR1</td><td align="center">798-848nm</td><td align="center">823nm</td></tr><tr><td align="center">NIR2</td><td align="center">RGN | NGB | NIR - NIR2</td><td align="center">835-865nm</td><td align="center">850nm</td></tr></tbody></table>
-
-When these formulas are used the name may end in "\_1" or "\_2", which corresponds to which NIR filter, either NIR1 or NIR2 was used.
+<table><thead><tr><th align="center">Survey3 필터 색상</th><th width="196.199951171875" align="center">Survey3 필터명</th><th width="159.800048828125" align="center">투과 범위 (FWHM)</th><th align="center">평균 투과율</th></tr></thead><tbody><tr><td align="center">Blue</td><td align="center">NGB - Blue</td><td align="center">468-483nm</td><td align="center">475nm</td></tr><tr><td align="center">Cyan</td><td align="center">OCN- Cyan</td><td align="center">476-512nm</td><td align="center">494nm</td></tr><tr><td align="center">Green</td><td align="center">RGN | NGB - Green</td><td align="center">543-558nm</td><td align="center">547nm</td></tr><tr><td align="center">Orange</td><td align="center">OCN - Orange</td><td align="center">598-640nm</td><td align="center">619nm</td></tr><tr><td align="center">Red</td><td align="center">RGN - Red</td><td align="center">653-668nm</td><td align="center">661nm</td></tr><tr><td align="center">RedEdge</td><td align="center">Re - RedEdge</td><td align="center">712-735nm</td><td align="center">724nm</td></tr><tr><td align="center">NIR1</td><td align="center">OCN - NIR1</td><td align="center">798-848nm</td><td align="center">823nm</td></tr><tr><td align="center">NIR2</td><td align="center">RGN | NGB | NIR - NIR2</td><td align="center">835-865nm</td><td align="center">850nm</td></tr></tbody></table>이 공식들을 사용할 때 이름은 &quot;\_1&quot; 또는 &quot;\_2&quot;로 끝날 수 있으며, 이는 NIR 필터 중 NIR1 또는 NIR2가 사용되었음을 나타냅니다.
 
 ***
 
-## EVI - Enhanced Vegetation Index
+## EVI - 향상된 식생 지수
 
-This index was originally developed for use with MODIS data as an improvement over NDVI by optimizing the vegetation signal in areas of high leaf area index (LAI). It is most useful in high LAI regions where NDVI may saturate. It uses the blue reflectance region to correct for soil background signals and to reduce atmospheric influences, including aerosol scattering.
+이 지수는 원래 MODIS 데이터와 함께 사용하기 위해 개발되었으며, 높은 잎 면적 지수(LAI) 지역에서 식생 신호를 최적화함으로써 NDVI를 개선한 것입니다. (LAI)에서 식생 신호를 최적화함으로써 NDVI를 개선한 것입니다. NDVI가 포화될 수 있는 높은 LAI 지역에서 가장 유용합니다. 청색 반사 영역을 사용하여 토양 배경 신호를 보정하고 에어로졸 산란을 포함한 대기 영향을 줄입니다.
 
 $$
 EVI = 2.5 *  {(NIR - Red) \over (NIR + 6 * Red - 7.5 * Blue + 1)}
 $$
 
-EVI values should range from 0 to 1 for vegetation pixels. Bright features such as clouds and white buildings, along with dark features such as water, can result in anomalous pixel values in an EVI image. Before creating an EVI image, you should mask out clouds and bright features from the reflectance image, and optionally threshold the pixel values from 0 to 1.
+EVI 값은 식생 픽셀의 경우 0에서 1 사이여야 합니다. 구름이나 흰색 건물과 같은 밝은 특징과 물과 같은 어두운 특징은 EVI 이미지에서 비정상적인 픽셀 값을 초래할 수 있습니다. EVI 이미지 생성 전, 반사율 이미지에서 구름과 밝은 특징을 마스크 처리하고 선택적으로 픽셀 값을 0에서 1로 임계값 처리해야 합니다.
 
-_Reference: Huete, A., et al. "Overview of the Radiometric and Biophysical Performance of the MODIS Vegetation Indices." Remote Sensing of Environment 83 (2002):195–213._
+_참고문헌: Huete, A. 외. &quot;MODIS 식생 지수의 방사계 및 생물물리적 성능 개요.&quot; Remote Sensing of Environment 83 (2002):195–213._
 
 ***
 
-## FCI1 - Forest Cover Index 1
+## FCI1 - 산림 피복 지수 1
 
-This index distinguishes forest canopies from other types of vegetation using multispectral reflectance imagery that includes a red edge band.
+이 지수는 적색 경계 대역을 포함한 다중 스펙트럼 반사율 영상을 활용하여 산림 캐노피를 다른 유형의 식생과 구분합니다.
 
 $$
 FCI1 = Red * RedEdge
 $$
 
-Forested areas will have lower FCI1 values due to the lower reflectance of trees and the presence of shadows within the canopy.
+산림 지역은 나무의 낮은 반사율과 수관 내 그림자 존재로 인해 FCI1 값이 낮아집니다.
 
-_Reference: Becker, Sarah J., Craig S.T. Daughtry, and Andrew L. Russ. "Robust forest cover indices for multispectral images." Photogrammetric Engineering & Remote Sensing 84.8 (2018): 505-512._
+_참고문헌: Becker, Sarah J., Craig S.T. Daughtry, Andrew L. Russ. &quot;다중 스펙트럼 영상을 위한 견고한 산림 피복 지수.&quot; Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505-512._
 
 ***
 
-## FCI2 - Forest Cover Index 2
+## FCI2 - 산림 피복 지수 2
 
-This index distinguishes forest canopies from other types of vegetation using multispectral reflectance imagery that does not include a red edge band.
+이 지수는 적색 경계 밴드가 포함되지 않은 다중 스펙트럼 반사율 영상을 사용하여 산림 캐노피를 다른 유형의 초지와 구분합니다.
 
 $$
 FCI2 = Red * NIR
 $$
 
-Forested areas will have lower FCI2 values due to the lower reflectance of trees and the presence of shadows within the canopy.
+산림 지역은 나무의 낮은 반사율과 수관 내 그림자 존재로 인해 FCI2 값이 낮아집니다.
 
-_Reference: Becker, Sarah J., Craig S.T. Daughtry, and Andrew L. Russ. "Robust forest cover indices for multispectral images." Photogrammetric Engineering & Remote Sensing 84.8 (2018): 505-512._
+_참고문헌: Becker, Sarah J., Craig S.T. Daughtry, and Andrew L. Russ. &quot;Robust forest cover indices for multispectral images.&quot; Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505-512._
 
 ***
 
-## GEMI - Global Environmental Monitoring Index
+## GEMI - 지구 환경 모니터링 지수
 
-This non-linear vegetation index is used for global environmental monitoring from satellite imagery and attempts to correct for atmospheric effects. It is similar to NDVI but is less sensitive to atmospheric effects. It is affected by bare soil; therefore, it is not recommended for use in areas of sparse or moderately dense vegetation.
+이 비선형 식생 지수는 위성 이미지를 통한 지구 환경 모니터링에 사용되며 대기 효과를 보정하려고 시도합니다. NDVI와 유사하지만 대기 효과에 덜 민감합니다. 노출된 토양의 영향을 받기 때문에 식생이 희박하거나 중간 밀도인 지역에서는 사용을 권장하지 않습니다.
 
 $$
 GEMI = eta (1 - 0.25 * eta) - {Red - 0.125 \over 1 - Red}
 $$
 
-Where:
+여기서:
 
 $$
 eta = {2(NIR^{2}-Red^{2}) + 1.5 * NIR + 0.5 *  Red \over NIR + Red + 0.5}
 $$
 
-_Reference: Pinty, B., and M. Verstraete. GEMI: a Non-Linear Index to Monitor Global Vegetation From Satellites. Vegetation 101 (1992): 15-20._
+_참고문헌: Pinty, B., and M. Verstraete. GEMI: 위성으로 지구 식생을 모니터링하기 위한 비선형 지수. Vegetation 101 (1992): 15-20._
 
 ***
 
-## GARI - Green Atmospherically Resistant Index
+## GARI - Green 대기 저항 지수
 
-This index is more sensitive to a wide range of chlorophyll concentrations and less sensitive to atmospheric effects than NDVI.
+이 지수는 NDVI보다 광범위한 엽록소 농도에 더 민감하고 대기 영향에 덜 민감합니다.
 
 $$
 GARI = {NIR - [Green - \gamma(Blue - Red)] \over NIR + [Green - \gamma(Blue - Red)]   }
 $$
 
-The gamma constant is a weighting function that depends on aerosol conditions in the atmosphere. ENVI uses a value of 1.7, which is the recommended value from Gitelson, Kaufman, and Merzylak (1996, page 296).
+감마 상수는 대기 중 에어로졸 조건에 따라 달라지는 가중치 함수입니다. ENVI는 Gitelson, Kaufman, Merzylak (1996, 296쪽)이 권장하는 값인 1.7을 사용합니다.
 
-_Reference: Gitelson, A., Y. Kaufman, and M. Merzylak. "Use of a Green Channel in Remote Sensing of Global Vegetation from EOS-MODIS." Remote Sensing of Environment 58 (1996): 289-298._
+_참고문헌: Gitelson, A., Y. Kaufman, and M. Merzylak. &quot;Use of a Green Channel in Remote Sensing of Global Vegetation from EOS-MODIS.&quot; Remote Sensing of Environment 58 (1996): 289-298._
 
 ***
 
-## GCI - Green Chlorophyll Index
+## GCI - Green 엽록소 지수
 
-This index is used to estimate leaf chlorophyll content across a wide range of plant species.
+이 지수는 다양한 식물 종에 걸쳐 잎의 엽록소 함량을 추정하는 데 사용됩니다.
 
 $$
 GCI = {NIR \over Green} - 1
 $$
 
-Having broad NIR and green wavelengths provides a better prediction of chlorophyll content while allowing for more sensitivity and a higher signal-to-noise ratio.
+넓은 NIR 및 녹색 파장을 확보하면 클로로필 함량을 더 정확하게 예측할 수 있을 뿐만 아니라 감도와 신호 대 잡음 비율도 향상됩니다.
 
-_Reference: Gitelson, A., Y. Gritz, and M. Merzlyak. "Relationships Between Leaf Chlorophyll Content and Spectral Reflectance and Algorithms for Non-Destructive Chlorophyll Assessment in Higher Plant Leaves." Journal of Plant Physiology 160 (2003): 271-282._
+_참고문헌: Gitelson, A., Y. Gritz, and M. Merzlyak. &quot;잎 엽록소 함량과 분광 반사율 간의 관계 및 고등식물 잎의 비파괴적 엽록소 평가 알고리즘.&quot; Journal of Plant Physiology 160 (2003): 271-282._
 
 ***
 
-## GLI - Green Leaf Index
+## GLI - Green 잎 지수
 
-This index was originally designed for use with a digital RGB camera to measure wheat cover, where the red, green, and blue digital numbers (DNs) range from 0 to 255.
+이 지수는 원래 디지털 RGB 카메라와 함께 밀 덮개 측정에 사용하도록 설계되었으며, 여기서 적색, 녹색, 청색 디지털 수치(DN)는 0에서 255까지의 범위를 가집니다.
 
 $$
 GLI = {(Green - Red) + (Green - Blue)  \over (2 * Green) + Red + Blue }
 $$
 
-GLI values range from -1 to +1. Negative values represent soil and non-living features, while positive values represent green leaves and stems.
+GLI 값은 -1에서 +1 사이입니다. 음수 값은 토양 및 비생물적 특징을 나타내며, 양수 값은 녹색 잎과 줄기를 나타냅니다.
 
-_Reference: Louhaichi, M., M. Borman, and D. Johnson. "Spatially Located Platform and Aerial Photography for Documentation of Grazing Impacts on Wheat." Geocarto International 16, No. 1 (2001): 65-70._
+_참고문헌: Louhaichi, M., M. Borman, and D. Johnson. &quot;밀에 대한 방목 영향 기록을 위한 공간 위치 기반 플랫폼 및 항공 사진.&quot; Geocarto International 16, No. 1 (2001): 65-70._
 
 ***
 
-## GNDVI - Green Normalized Difference Vegetation Index
+## GNDVI - Green 정규화 차분 식생 지수
 
-This index is similar to NDVI except that it measures the green spectrum from 540 to 570 nm instead of the red spectrum. This index is more sensitive to chlorophyll concentration than NDVI.
+이 지수는 NDVI와 유사하나, 적색 스펙트럼 대신 540~570 nm의 녹색 스펙트럼을 측정한다는 점이 다릅니다. 이 지수는 NDVI보다 엽록소 농도에 더 민감합니다.
 
 $$
 GNDVI = {(NIR - Green) \over (NIR + Green)  }
 $$
 
-_Reference: Gitelson, A., and M. Merzlyak. "Remote Sensing of Chlorophyll Concentration in Higher Plant Leaves." Advances in Space Research 22 (1998): 689-692._
+_참고문헌: Gitelson, A., and M. Merzlyak. &quot;Remote Sensing of Chlorophyll Concentration in Higher Plant Leaves.&quot; Advances in Space Research 22 (1998): 689-692._
 
 ***
 
-## GOSAVI - Green Optimized Soil Adjusted Vegetation Index
+## GOSAVI - Green 최적화된 토양 보정 식생 지수
 
-This index was originally designed with color-infrared photography to predict nitrogen requirements for corn. It is similar to OSAVI, but it substitutes the green band for red.
+이 지수는 원래 옥수수의 질소 요구량을 예측하기 위해 컬러-적외선 사진 촬영을 통해 설계되었습니다. OSAVI와 유사하지만, 녹색 밴드를 적색 밴드로 대체합니다.
 
 $$
 GOSAVI = {NIR - Green \over NIR + Green + 0.16)  }
 $$
 
-_Reference: Sripada, R., et al. "Determining In-Season Nitrogen Requirements for Corn Using Aerial Color-Infrared Photography." Ph.D. dissertation, North Carolina State University, 2005._
+_참고문헌: Sripada, R., 등. &quot;항공 컬러-적외선 사진을 이용한 옥수수 생육기 질소 요구량 결정.&quot; 박사 학위 논문, 노스캐롤라이나 주립대학교, 2005._
 
 ***
 
-## GRVI - Green Ratio Vegetation Index
+## GRVI - Green 비율 식생 지수
 
-This index is sensitive to photosynthetic rates in forest canopies, as green and red reflectances are strongly influenced by changes in leaf pigments.
+이 지수는 녹색 및 적색 반사율이 잎 색소 변화에 크게 영향을 받기 때문에 산림 캐노피의 광합성 속도에 민감합니다.
 
 $$
 GRVI = {NIR \over Green }
 $$
 
-_Reference: Sripada, R., et al. "Aerial Color Infrared Photography for Determining Early In-season Nitrogen Requirements in Corn." Agronomy Journal 98 (2006): 968-977._
+_참고문헌: Sripada, R. 외. &quot;옥수수의 초기 생육기 질소 요구량 결정에 대한 항공 컬러 적외선 사진 촬영.&quot; Agronomy Journal 98 (2006): 968-977._
 
 ***
 
-## GSAVI - Green Soil Adjusted Vegetation Index
+## GSAVI - Green 토양 보정 식생 지수
 
-This index was originally designed with color-infrared photography to predict nitrogren requirements for corn. It is similar to SAVI, but it substitutes the green band for red.
+이 지수는 원래 옥수수의 질소 요구량을 예측하기 위해 컬러-적외선 사진 촬영과 함께 설계되었습니다. SAVI와 유사하지만, 녹색 밴드를 적색 밴드로 대체합니다.
 
 $$
 GSAVI = 1.5 * {(NIR - Green) \over (NIR + Green + 0.5)  }
 $$
 
-_Reference: Sripada, R., et al. "Determining In-Season Nitrogen Requirements for Corn Using Aerial Color-Infrared Photography." Ph.D. dissertation, North Carolina State University, 2005._
+_참고문헌: Sripada, R. 외. &quot;항공 컬러-적외선 사진을 이용한 옥수수 생육기 질소 요구량 결정.&quot; 박사 학위 논문, 노스캐롤라이나 주립대학교, 2005._
 
 ***
 
-## LAI - Leaf Area Index
+## LAI - 엽면적지수
 
-This index is used to estimate foliage cover and to forecast crop growth and yield. ENVI computes green LAI using the following empirical formula from Boegh et al (2002):
+이 지수는 잎 덮개율을 추정하고 작물 생장과 수확량을 예측하는 데 사용됩니다. ENVI는 Boegh 등(2002)의 다음 경험적 공식을 사용하여 녹색 LAI를 계산합니다:
 
 $$
 LAI = 3.618 * EVI - 0.118
 $$
 
-Where EVI is:
+여기서 EVI는:
 
 $$
 EVI = 2.5 *  {(NIR - Red) \over (NIR + 6 * Red - 7.5 * Blue + 1)}
 $$
 
-High LAI values typically range from approximately 0 to 3.5. However, when the scene contains clouds and other bright features that produce saturated pixels, the LAI values can exceed 3.5. You should ideally mask out clouds and bright features from your scene before creating an LAI image.
+높은 LAI 값은 일반적으로 약 0에서 3.5 사이입니다. 그러나 장면에 구름 및 포화된 픽셀을 생성하는 기타 밝은 특징이 포함된 경우 LAI 값이 3.5를 초과할 수 있습니다. LAI 이미지를 생성하기 전에 장면에서 구름과 밝은 특징을 가리는 것이 이상적입니다.
 
-_Reference: Boegh, E., H. Soegaard, N. Broge, C. Hasager, N. Jensen, K. Schelde, and A. Thomsen. "Airborne Multi-spectral Data for Quantifying Leaf Area Index, Nitrogen Concentration and Photosynthetic Efficiency in Agriculture." Remote Sensing of Environment 81, no. 2-3 (2002): 179-193._
+_참고문헌: Boegh, E., H. Soegaard, N. Broge, C. Hasager, N. Jensen, K. Schelde, and A. Thomsen. &quot;농업에서 엽면적지수, 질소 농도 및 광합성 효율 정량화를 위한 항공 다중분광 데이터.&quot; Remote Sensing of Environment 81, no. 2-3 (2002): 179-193._
 
 ***
 
-## LCI - Leaf Chlorophyll Index
+## LCI - 엽록소 지수
 
-This index is used to estimate chlorophyll content in higher plants, sensitive to variation in reflectance caused by chlorophyll absorption.
+이 지수는 고등식물의 엽록소 함량을 추정하는 데 사용되며, 엽록소 흡수로 인한 반사율 변화에 민감합니다.
 
 $$
 LCI = {NIR2 - RedEdge \over NIR2 + Red}
 $$
 
-_Reference: Datt, B. "Remote Sensing of Water Content in Eucalyptus Leaves." Journal of Plant Physiology 154, no. 1 (1999): 30-36._
+_참고문헌: Datt, B. &quot;유칼립투스 잎의 수분 함량 원격 감지.&quot; Journal of Plant Physiology 154, 제1호 (1999): 30-36._
 
 ***
 
-## MNLI - Modified Non-Linear Index
+## MNLI - 수정 비선형 지수
 
-This index is an enhancement to the Non-Linear Index (NLI) that incorporates the Soil Adjusted Vegetation Index (SAVI) to account for the soil background. ENVI uses a canopy background adjustment factor (_L_) value of 0.5.
+이 지수는 토양 배경을 고려하기 위해 토양 조정 식생 지수(SAVI)를 통합한 비선형 지수(NLI)의 개선판입니다. ENVI는 캐노피 배경 조정 계수(_L_) 값으로 0.5를 사용합니다.
 
 $$
 MNLI = {(NIR^{2} - Red) * (1 + L) \over (NIR^{2} + Red + L)  }
 $$
 
-_Reference: Yang, Z., P. Willis, and R. Mueller. "Impact of Band-Ratio Enhanced AWIFS Image to Crop Classification Accuracy." Proceedings of the Pecora 17 Remote Sensing Symposium (2008), Denver, CO._
+_참고문헌: Yang, Z., P. Willis, and R. Mueller. &quot;Impact of Band-Ratio Enhanced AWIFS Image to Crop Classification Accuracy.&quot; Proceedings of the Pecora 17 Remote Sensing Symposium (2008), Denver, CO._
 
 ***
 
-## MSAVI2 - Modified Soil Adjusted Vegetation Index 2
+## MSAVI2 - 수정 토양 조정 식생 지수 2
 
-This index is a simpler version of the MSAVI index proposed by Qi, et al (1994), which improves upon the Soil Adjusted Vegetation Index (SAVI). It reduces soil noise and increases the dynamic range of the vegetation signal. MSAVI2 is based on an inductive method that does not use a constant _L_ value (as with SAVI) to highlight healthy vegetation.
+이 지수는 Qi 등(1994)이 제안한 MSAVI 지수의 단순화된 버전으로, 토양 조정 식생 지수(SAVI)를 개선한 것입니다. 토양 노이즈를 줄이고 식생 신호의 동적 범위를 증가시킵니다. MSAVI2는 건강한 식생을 강조하기 위해 SAVI와 같이 일정한 _L_ 값을 사용하지 않는 유도적 방법에 기반합니다.
 
 $$
 MSAVI2 = {2 * NIR + 1 - \sqrt{(2 * NIR + 1)^{2} - 8(NIR - Red)} \over 2}
 $$
 
-_Reference: Qi, J., A. Chehbouni, A. Huete, Y. Kerr, and S. Sorooshian. "A Modified Soil Adjusted Vegetation Index." Remote Sensing of Environment 48 (1994): 119-126._
+_참고문헌: Qi, J., A. Chehbouni, A. Huete, Y. Kerr, and S. Sorooshian. &quot;A Modified Soil Adjusted Vegetation Index.&quot; Remote Sensing of Environment 48 (1994): 119-126._
 
 ***
 
-## NDRE- Normalized Difference RedEdge
+## NDRE- 정규화 차분 RedEdge
 
-This index is similar to NDVI but compares the contrast between NIR with RedEdge instead of Red, which often detects vegetation stress sooner.
+이 지수는 NDVI와 유사하지만, Red 대신 NIR와 RedEdge 간의 대비를 비교하여 식생 스트레스를 더 빨리 감지하는 경우가 많습니다.
 
 $$
 NDRE = {NIR - RedEdge \over NIR + RedEdge  }
@@ -232,104 +230,104 @@ $$
 
 ***
 
-## NDVI - Normalized Difference Vegetation Index
+## NDVI - 정규화 차분 식생 지수
 
-This index is a measure of healthy, green vegetation. The combination of its normalized difference formulation and use of the highest absorption and reflectance regions of chlorophyll make it robust over a wide range of conditions. It can, however, saturate in dense vegetation conditions when LAI becomes high.
+이 지수는 건강하고 푸른 식생을 측정합니다. 정규화된 차분 공식과 엽록소의 최고 흡수 및 반사 영역을 활용하는 조합으로 인해 광범위한 조건에서 견고합니다. 그러나 LAI가 높아질 때 밀집된 식생 조건에서는 포화될 수 있습니다.
 
 $$
 NDVI = {NIR - Red \over NIR + Red  }
 $$
 
-The value of this index ranges from -1 to 1. The common range for green vegetation is 0.2 to 0.8.
+이 지수의 값 범위는 -1에서 1입니다. 녹색 식생의 일반적인 범위는 0.2에서 0.8입니다.
 
-_Reference: Rouse, J., R. Haas, J. Schell, and D. Deering. Monitoring Vegetation Systems in the Great Plains with ERTS. Third ERTS Symposium, NASA (1973): 309-317._
+_참고문헌: Rouse, J., R. Haas, J. Schell, and D. Deering. ERTS를 이용한 대평원 식생 시스템 모니터링. 제3회 ERTS 심포지엄, NASA (1973): 309-317._
 
 ***
 
-## NLI - Non-Linear Index
+## NLI - 비선형 지수
 
-This index assumes that the relationship between many vegetation indices and surface biophysical parameters is non-linear. It linearizes relationships with surface parameters that tend to be non-linear.
+이 지수는 많은 식생 지수와 지표 생물물리학적 매개변수 간의 관계가 비선형적이라고 가정합니다. 비선형적인 경향이 있는 지표 매개변수와의 관계를 선형화합니다.
 
 $$
 NLI = {NIR^{2} - Red \over NIR^{2} + Red  }
 $$
 
-_Reference: Goel, N., and W. Qin. "Influences of Canopy Architecture on Relationships Between Various Vegetation Indices and LAI and Fpar: A Computer Simulation." Remote Sensing Reviews 10 (1994): 309-347._
+_참고문헌: Goel, N., and W. Qin. &quot;관목 구조가 다양한 식생 지수와 LAI 및 Fpar 간의 관계에 미치는 영향: 컴퓨터 시뮬레이션.&quot; 원격 감지 리뷰 10 (1994): 309-347._
 
 ***
 
-## OSAVI - Optimized Soil Adjusted Vegetation Index
+## OSAVI - 최적화된 토양 보정 식생 지수
 
-This index is based on the Soil Adjusted Vegetation Index (SAVI). It uses a standard value of 0.16 for the canopy background adjustment factor. Rondeaux (1996) determined that this value provides greater soil variation than SAVI for low vegetation cover, while demonstrating increased sensitivity to vegetation cover greater than 50%. This index is best used in areas with relatively sparse vegetation where soil is visible through the canopy.
+이 지수는 토양 보정 식생 지수(SAVI)를 기반으로 합니다. 캐노피 배경 보정 계수에 대해 0.16의 표준값을 사용합니다. Rondeaux(1996)는 이 값이 낮은 식생 피복률에서는 SAVI보다 더 큰 토양 변이를 제공하면서도 50% 이상의 식생 피복률에 대해서는 향상된 민감도를 보인다고 결론지었습니다. 이 지수는 상대적으로 식생이 드문 지역, 즉 수관 사이로 토양이 보이는 지역에서 가장 효과적으로 사용됩니다.
 
 $$
 OSAVI = {(NIR - Red) \over (NIR + Red + 0.16)  }
 $$
 
-_Reference: Rondeaux, G., M. Steven, and F. Baret. "Optimization of Soil-Adjusted Vegetation Indices." Remote Sensing of Environment 55 (1996): 95-107._
+_참고문헌: Rondeaux, G., M. Steven, and F. Baret. &quot;Optimization of Soil-Adjusted Vegetation Indices.&quot; Remote Sensing of Environment 55 (1996): 95-107._
 
 ***
 
-## RDVI - Renormalized Difference Vegetation Index
+## RDVI - 재정규화 차분 식생 지수
 
-This index uses the difference between near-infrared and red wavelengths, along with the NDVI, to highlight healthy vegetation. It is insensitive to the effects of soil and sun viewing geometry.
+이 지수는 근적외선과 적색 파장 간의 차이와 NDVI를 함께 사용하여 건강한 식생을 강조합니다. 토양과 태양 관측 기하학적 구조의 영향에 민감하지 않습니다.
 
 $$
 RDVI = {(NIR- Red) \over \sqrt{(NIR + Red)}  }
 $$
 
-_Reference: Roujean, J., and F. Breon. "Estimating PAR Absorbed by Vegetation from Bidirectional Reflectance Measurements." Remote Sensing of Environment 51 (1995): 375-384._
+_참고문헌: Roujean, J., and F. Breon. &quot;Estimating PAR Absorbed by Vegetation from Bidirectional Reflectance Measurements.&quot; Remote Sensing of Environment 51 (1995): 375-384._
 
 ***
 
-## SAVI - Soil Adjusted Vegetation Index
+## SAVI - 토양 보정 식생 지수
 
-This index is similar to NDVI, but it suppresses the effects of soil pixels. It uses a canopy background adjustment factor, _L_, which is a function of vegetation density and often requires prior knowledge of vegetation amounts. Huete (1988) suggests an optimal value of _L_=0.5 to account for first-order soil background variations. This index is best used in areas with relatively sparse vegetation where soil is visible through the canopy.
+이 지수는 NDVI와 유사하지만, 토양 픽셀의 영향을 억제합니다. 이는 수관 배경 조정 계수 _L_을 사용하며, 이는 식생 밀도의 함수이며 종종 식생 양에 대한 사전 지식이 필요합니다. Huete (1988)는 1차 토양 배경 변동을 고려하기 위해 최적 값 _L_=0.5를 제안합니다. 이 지수는 상대적으로 식생이 드문 지역에서, 즉 캐노피를 통해 토양이 보이는 지역에서 가장 효과적으로 사용됩니다.
 
 $$
 SAVI = {1.5 * (NIR- Red) \over (NIR + Red + 0.5)  }
 $$
 
-_Reference: Huete, A. "A Soil-Adjusted Vegetation Index (SAVI)." Remote Sensing of Environment 25 (1988): 295-309._
+_참고문헌: Huete, A. &quot;토양 보정 식생 지수(SAVI).&quot; Remote Sensing of Environment 25 (1988): 295-309._
 
 ***
 
-## TDVI - Transformed Difference Vegetation Index
+## TDVI - 변환 차분 식생 지수
 
-This index is useful for monitoring vegetation cover in urban environments. It does not saturate like NDVI and SAVI.
+이 지수는 도시 환경에서 식생 피복을 모니터링하는 데 유용합니다. NDVI 및 SAVI처럼 포화되지 않습니다.
 
 $$
 TDVI = 1.5 * {(NIR- Red) \over \sqrt{NIR^{2} + Red + 0.5}  }
 $$
 
-_Reference: Bannari, A., H. Asalhi, and P. Teillet. "Transformed Difference Vegetation Index (TDVI) for Vegetation Cover Mapping" In Proceedings of the Geoscience and Remote Sensing Symposium, IGARSS '02, IEEE International, Volume 5 (2002)._
+_참고문헌: Bannari, A., H. Asalhi, and P. Teillet. &quot;식생 피복 지도 작성을 위한 변환 차분 식생 지수(TDVI)&quot; In Proceedings of the Geoscience and Remote Sensing Symposium, IGARSS &#x27;02, IEEE International, Volume 5 (2002)._
 
 ***
 
-## VARI - Visible Atmospherically Resistant Index
+## VARI - 대기 저항 가시 지수
 
-This index is based on the ARVI and is used to estimate the fraction of vegetation in a scene with low sensitivity to atmospheric effects.
+이 지수는 ARVI를 기반으로 하며, 대기 영향에 대한 민감도가 낮은 장면에서 식생의 비율을 추정하는 데 사용됩니다.
 
 $$
 VARI = {Green - Red \over Green + Red - Blue  }
 $$
 
-_Reference: Gitelson, A., et al. "Vegetation and Soil Lines in Visible Spectral Space: A Concept and Technique for Remote Estimation of Vegetation Fraction. International Journal of Remote Sensing 23 (2002): 2537−2562._
+_참고문헌: Gitelson, A. 외. &quot;가시광선 스펙트럼 영역에서의 식생 및 토양 경계선: 식생 비율 원격 추정 개념 및 기법.&quot; International Journal of Remote Sensing 23 (2002): 2537−2562._
 
 ***
 
-## WDRVI - Wide Dynamic Range Vegetation Index
+## WDRVI - 광역 동적 범위 식생 지수
 
-This index is similar to NDVI, but it uses a weighting coefficient (_a_) to reduce the disparity between the contributions of the near-infrared and red signals to the NDVI. The WDRVI is particularly effective in scenes that have moderate-to-high vegetation density when NDVI exceeds 0.6. NDVI tends to level off when vegetation fraction and leaf area index (LAI) increase, whereas the WDRVI is more sensitive to a wider range of vegetation fractions and to changes in LAI.
+이 지수는 NDVI와 유사하지만, 그러나 가중 계수(_a_)를 사용하여 NDVI에 대한 근적외선 및 적색 신호의 기여도 차이를 줄입니다. WDRVI는 NDVI가 0.6을 초과할 때 중간에서 높은 식생 밀도를 가진 장면에서 특히 효과적입니다. NDVI는 식생 분율과 엽면적지수(LAI)가 증가할수록 평탄화되는 경향이 있는 반면, WDRVI는 더 넓은 범위의 식생 분율과 LAI의 변화에 더 민감합니다.
 
 $$
 WDRVI = {(\alpha * NIR- Red) \over (\alpha * NIR + Red)}
 $$
 
-The weighting coefficient (_a_) can range from 0.1 to 0.2. A value of 0.2 is recommended by Henebry, Viña, and Gitelson (2004).
+가중 계수(_a_)는 0.1에서 0.2 사이의 값을 가질 수 있습니다. Henebry, Viña, Gitelson(2004)은 0.2 값을 권장합니다.
 
-_References_
+_참고문헌_
 
-_Gitelson, A. "Wide Dynamic Range Vegetation Index for Remote Quantification of Biophysical Characteristics of Vegetation." Journal of Plant Physiology 161, No. 2 (2004): 165-173._
+_Gitelson, A. &quot;Wide Dynamic Range Vegetation Index for Remote Quantification of Biophysical Characteristics of Vegetation.&quot; Journal of Plant Physiology 161, No. 2 (2004): 165-173._
 
-_Henebry, G., A. Viña, and A. Gitelson. "The Wide Dynamic Range Vegetation Index and its Potential Utility for Gap Analysis." Gap Analysis Bulletin 12: 50-56._
+_Henebry, G., A. Viña, and A. Gitelson. &quot;광역 동적 범위 식생 지수(WDRVI)와 갭 분석(Gap Analysis)에 대한 잠재적 유용성.&quot; 갭 분석 회보 12: 50-56._

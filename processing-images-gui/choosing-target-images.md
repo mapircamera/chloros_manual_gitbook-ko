@@ -1,221 +1,221 @@
-# Choosing Target Images
+# 대상 이미지 선택
 
-Marking which images contain calibration targets is a crucial step that significantly speeds up the Chloros processing pipeline. By pre-selecting target images, you eliminate the need for Chloros to scan every image in your dataset for calibration targets.
+보정 대상이 포함된 이미지를 표시하는 것은 Chloros 처리 파이프라인을 크게 가속화하는 중요한 단계입니다. 대상 이미지를 사전 선택함으로써, Chloros가 데이터셋 내 모든 이미지를 스캔하여 보정 대상을 찾을 필요가 없어집니다.
 
-## Why Mark Target Images?
+## 대상 이미지를 표시해야 하는 이유
 
-### Processing Speed
+### 처리 속도
 
-Without marking target images, Chloros must:
+대상 이미지를 표시하지 않으면 Chloros는 다음 작업을 수행해야 합니다:
 
-* Scan every single image in your project
-* Run target detection algorithms on each image
-* Check hundreds or thousands of images unnecessarily
+* 프로젝트 내 모든 이미지를 스캔
+* 각 이미지에 대해 대상 탐지 알고리즘 실행
+* 불필요하게 수백 또는 수천 개의 이미지 확인
 
-**Result**: Processing can take significantly longer, especially for large datasets.
+**결과**: 특히 대규모 데이터셋의 경우 처리 시간이 크게 증가할 수 있습니다.
 
-### With Marked Target Images
+### 표적 이미지 표시 시
 
-When you check the Target column for specific images:
+특정 이미지의 &#x27;표적&#x27; 열을 체크하면:
 
-* Chloros only scans the checked images for targets
-* Target detection completes much faster
-* Overall processing time is greatly reduced
+* Chloros는 체크된 이미지만 표적을 스캔합니다
+* 표적 탐지가 훨씬 빠르게 완료됩니다
+* 전체 처리 시간이 크게 단축됩니다
 
-{% hint style="success" %}
-**Speed Improvement**: Marking 2-3 target images in a 500-image dataset can reduce target detection time from 30+ minutes to under 1 minute.
+{% hint style=&quot;success&quot; %}
+**속도 향상**: 500개 이미지 데이터셋에서 2~3개의 대상 이미지를 표시하면 대상 탐지 시간이 30분 이상에서 1분 미만으로 단축됩니다.
 {% endhint %}
 
 ***
 
-## How to Mark Target Images
+## 대상 이미지 표시 방법
 
-### Step 1: Identify Your Target Images
+### 1단계: 대상 이미지 식별
 
-Look through your imported images in the File Browser and identify which images contain calibration targets.
+파일 브라우저에서 가져온 이미지를 검토하여 보정 대상이 포함된 이미지를 식별합니다.
 
-**Common scenarios:**
+**일반적인 시나리오:**
 
-* **Pre-capture target**: Captured before starting the session
-* **Post-capture target**: Captured after completing the session
-* **In-field targets**: Targets placed within the capture area
-* **Multiple targets**: 2-3 target images per session (recommended)
+* **촬영 전 타겟**: 세션 시작 전에 촬영된 타겟
+* **촬영 후 타겟**: 세션 완료 후 촬영된 타겟
+* **촬영 영역 내 타겟**: 촬영 영역 내에 배치된 타겟
+* **다중 타겟**: 세션당 2~3개의 타겟 이미지 (권장)
 
-### Step 2: Check the Target Column
+### 2단계: 대상 열 확인
 
-For each image containing a calibration target:
+보정 대상이 포함된 각 이미지에 대해:
 
-1. Locate the image in the File Browser table
-2. Find the **Target** column (rightmost column)
-3. Click the checkbox in the Target column for that image
-4. Repeat for all images containing targets
+1. 파일 브라우저 테이블에서 해당 이미지 찾기
+2. **대상** 열(가장 오른쪽 열) 찾기
+3. 해당 이미지의 대상 열에 있는 체크박스 클릭
+4. 대상이 포함된 모든 이미지에 대해 반복
 
-### Step 3: Verify Your Selection
+### 3단계: 선택 내용 확인
 
-Before processing, double-check:
+처리 전 다음 사항을 다시 확인하세요:
 
-* [ ] All images with calibration targets are checked
-* [ ] No non-target images are accidentally checked
-* [ ] Targets are clearly visible in checked images
-
-***
-
-## Best Practices for Target Images
-
-### Target Capture Guidelines
-
-**Timing:**
-
-* Capture target images immediately before and throughout your capture session
-* Within the same lighting conditions as your DAQ light sensor
-* Ideally capture target images as often as possible for the best results. Otherwise, the light sensor data will be used to adjust the calibration over time.
-
-**Camera Position:**
-
-* Hold camera above target such that is is centered and fills around 40-60% of the image center.
-* Keep camera parallel/nadir to target surface
-
-**Lighting:**
-
-* Same ambient lighting as your DAQ light sensor
-* Avoid shadows on the target surfaces
-* Don't block your light source with your body, vehicle or vegetation
-* Overcast conditions provide most consistent results
-
-**Target Condition:**
-
-* Keep target panels clean and dry
-* All 4 panels should be clearly visible and unobstructed
-* Targets perpendicular/nadir to the light source if possible
-
-### How Many Target Images?
-
-**Minimum:** 1 target image per session. **Recommended:** 3-5 target images per session.
-
-**Best practice schedule:**
-
-* 3-5 images captured shortly after the light sensor is recording
-* Rotate the camera between captures for the best results
-* Optional: periodically mid-session if lighting conditions change constantly
+* [ ] 교정 대상이 포함된 모든 이미지가 선택되었는지
+* [ ] 대상이 아닌 이미지가 실수로 선택되지 않았는지
+* [ ] 선택된 이미지에서 대상이 선명하게 보이는지
 
 ***
 
-## Working with Multiple Cameras
+## 대상 이미지 모범 사례
 
-### Dual-Camera Setups
+### 대상 촬영 가이드라인
 
-If using two MAPIR cameras simultaneously (e.g., Survey3W RGN + Survey3N OCN):
+**시점:**
 
-1. Capture target images with **both cameras** at the same time
-2. Use the **same physical target** for both cameras
-3. Mark target images for **both camera types** in the File Browser
-4. Chloros will use appropriate targets for each camera's calibration
+* 촬영 세션 직전 및 촬영 중 지속적으로 대상 이미지를 촬영하십시오
+* DAQ 광 센서와 동일한 조명 조건에서 촬영하십시오
+* 최상의 결과를 위해 가능한 한 자주 타겟 이미지를 촬영하는 것이 이상적입니다. 그렇지 않을 경우, 광 센서 데이터가 시간이 지남에 따라 보정을 조정하는 데 사용됩니다.
 
-### Camera Model Column
+**카메라 위치:**
 
-The **Camera Model** column helps identify which images came from which camera:
+* 카메라를 타겟 위에 위치시켜 타겟이 중앙에 오고 이미지 중앙의 약 40-60%를 차지하도록 합니다.
+* 카메라를 타겟 표면과 평행/정면(nadir)으로 유지합니다.
+
+**조명:**
+
+* DAQ 광센서와 동일한 주변 조명 환경 유지
+* 대상 표면에 그림자가 생기지 않도록 주의
+* 인체, 차량, 식생 등으로 광원을 가리지 마십시오
+* 흐린 날씨가 가장 일관된 결과를 제공합니다
+
+**대상 상태:**
+
+* 대상 패널을 깨끗하고 건조하게 유지
+* 4개 패널 모두 명확하게 보이고 가려지지 않아야 함
+* 가능하면 대상이 광원에 수직/정면으로 위치하도록
+
+### 대상 이미지 수?
+
+**최소:** 세션당 1장의 대상 이미지. **권장:** 세션당 3~5장의 대상 이미지.
+
+**최적의 작업 일정:**
+
+* 광 센서 녹화 직후 3~5장 촬영
+* 최상의 결과를 위해 촬영 간 카메라 위치 변경
+* 선택 사항: 조명 조건이 지속적으로 변할 경우 세션 중간에 주기적으로 촬영
+
+***
+
+## 다중 카메라 작업
+
+### 듀얼 카메라 설정
+
+두 대의 MAPIR 카메라를 동시에 사용하는 경우(예: Survey3W RGN + Survey3N OCN):
+
+1. **두 카메라**로 동시에 대상 이미지를 캡처합니다
+2. 두 카메라 모두에 **동일한 물리적 대상**을 사용합니다
+3. 파일 브라우저에서 **두 카메라 유형** 모두에 대한 대상 이미지를 표시합니다
+4. Chloros는 각 카메라 보정에 적합한 대상을 사용합니다
+
+### 카메라 모델 열
+
+**카메라 모델** 열은 어떤 이미지가 어느 카메라에서 촬영되었는지 식별하는 데 도움이 됩니다:
 
 * Survey3W\_RGN
 * Survey3N\_OCN
 * Survey3W\_RGB
-* etc.
+* 등
 
-Use this column to verify you've marked targets for each camera type in your project.
-
-***
-
-## Target Detection Settings
-
-### Adjusting Detection Sensitivity
-
-If Chloros isn't detecting your targets correctly, adjust these settings in [Project Settings](adjusting-project-settings.md):
-
-**Minimum calibration sample area:**
-
-* **Default**: 25 pixels
-* **Increase** if getting false detections on small artifacts
-* **Decrease** if targets aren't being detected
-
-**Minimum target clustering:**
-
-* **Default**: 60
-* **Increase** if targets are being split into multiple detections
-* **Decrease** if targets with color variation aren't fully detected
+이 열을 사용하여 프로젝트 내 각 카메라 유형에 대한 표적을 표시했는지 확인하십시오.
 
 ***
 
-## Common Target Image Issues
+## 표적 감지 설정
 
-### Problem: No Targets Detected
+### 감지 민감도 조정
 
-**Possible causes:**
+Chloros가 표적을 정확히 감지하지 못할 경우, [프로젝트 설정](adjusting-project-settings.md)에서 다음 설정을 조정하십시오:
 
-* Target images not marked in File Browser
-* Target too small in frame (< 30% of image)
-* Poor lighting (shadows, glare)
-* Target detection settings too strict
+**최소 보정 샘플 영역:**
 
-**Solutions:**
+* **기본값**: 25 픽셀
+* 작은 아티팩트에서 오탐이 발생할 경우 **증가**
+* 타겟이 감지되지 않을 경우 **감소**
 
-1. Verify Target column is checked for correct images
-2. Review target image quality in preview
-3. Recapture targets if quality is poor
-4. Adjust target detection settings if needed
+**최소 타겟 클러스터링:**
 
-### Problem: False Target Detections
-
-**Possible causes:**
-
-* White buildings, vehicles, or ground cover mistaken for targets
-* Bright patches in vegetation
-* Detection sensitivity too low
-
-**Solutions:**
-
-1. Mark only actual target images to limit detection scope
-2. Increase minimum calibration sample area
-3. Increase minimum target clustering value
-4. Ensure target images show only the target (minimal background clutter)
+* **기본값**: 60
+* **증가**: 타겟이 여러 개로 분할 감지될 경우
+* **감소**: 색상 변이가 있는 타겟이 완전히 감지되지 않을 경우
 
 ***
 
-## Verification Checklist
+## 일반적인 타겟 이미지 문제
 
-Before starting processing, verify your target image selection:
+### 문제: 타겟이 감지되지 않음
 
-* [ ] At least 1 target image marked per session
-* [ ] Target column checkboxes are checked for all target images
-* [ ] Target images captured within same timeframe as survey
-* [ ] Targets clearly visible in preview when clicked
-* [ ] All 4 calibration panels visible in each target image
-* [ ] No shadows or obstructions on targets
-* [ ] For dual-camera: Targets marked for both camera types
+**가능한 원인:**
+
+* 파일 브라우저에서 타겟 이미지가 선택되지 않음
+* 프레임 내 타겟이 너무 작음(이미지의 30% 미만)
+* 불량한 조명 조건 (그림자, 반사광)
+* 타겟 감지 설정이 지나치게 엄격함
+
+**해결 방법:**
+
+1. 타겟 열이 올바른 이미지에 체크되었는지 확인
+2. 미리보기에서 타겟 이미지 품질 검토
+3. 품질이 불량할 경우 타겟 재촬영
+4. 필요 시 타겟 감지 설정 조정
+
+### 문제: 오탐지된 타겟
+
+**가능한 원인:**
+
+* 흰색 건물, 차량 또는 지면 덮개가 표적으로 오인됨
+* 식생 내 밝은 부분
+* 감지 민감도 너무 낮음
+
+**해결 방법:**
+
+1. 실제 표적 이미지만 표시하여 감지 범위 제한
+2. 최소 보정 샘플 영역 증가
+3. 최소 표적 클러스터링 값 증가
+4. 표적 이미지에 표적만 표시되도록 확인 (배경 잡음 최소화)
 
 ***
 
-## Target-Free Processing
+## 검증 체크리스트
 
-### Processing Without Calibration Targets
+처리 시작 전, 표적 이미지 선택을 확인하십시오:
 
-While not recommended for scientific work, you can process without targets:
+* [ ] 세션당 최소 1개의 표적 이미지 표시
+* [ ] 모든 표적 이미지에 대해 표적 열 체크박스 선택
+* [ ] 표적 이미지가 측량과 동일한 시간대에 촬영됨
+* [ ] 클릭 시 미리보기에서 표적이 명확히 보임
+* [ ] 각 표적 이미지에 4개의 보정 패널 모두 표시됨
+* [ ] 대상에 그림자나 가림 현상 없음
+* [ ] 듀얼 카메라의 경우: 두 카메라 유형 모두에 대상 표시됨
 
-1. Leave all Target column checkboxes unchecked
-2. **Disable** "Reflectance calibration" in Project Settings
-3. Vignette correction will still be applied
-4. Output will not be calibrated for absolute reflectance
+***
 
-{% hint style="warning" %}
-**Not Recommended**: Without reflectance calibration, pixel values represent relative brightness only, not scientific reflectance measurements. Use calibration targets for accurate, repeatable results.
+## 대상 이미지 없이 처리하기
+
+### 보정 대상 없이 처리하기
+
+과학적 작업에는 권장되지 않지만, 대상 이미지 없이 처리할 수 있습니다:
+
+1. 모든 대상 열 체크박스를 선택 해제 상태로 둡니다
+2. 프로젝트 설정에서 &quot;반사율 보정&quot;을 **비활성화**합니다
+3. 비네팅 보정은 여전히 적용됩니다
+4. 출력은 절대 반사율로 보정되지 않습니다
+
+{% hint style=&quot;warning&quot; %}
+**권장하지 않음**: 반사율 보정 없이 픽셀 값은 상대적 밝기만을 나타내며, 과학적 반사율 측정값이 아닙니다. 정확하고 반복 가능한 결과를 위해 보정 타깃을 사용하십시오.
 {% endhint %}
 
 ***
 
-## Next Steps
+## 다음 단계
 
-Once you've marked your target images:
+대상 이미지를 표시한 후:
 
-1. **Review your settings** - See [Adjusting Project Settings](adjusting-project-settings.md)
-2. **Start processing** - See [Starting the Processing](starting-the-processing.md)
-3. **Monitor progress** - See [Monitoring the Processing](monitoring-the-processing.md)
+1. **설정 검토** - [프로젝트 설정 조정](adjusting-project-settings.md) 참조
+2. **처리 시작** - [처리 시작](starting-the-processing.md) 참조
+3. **진행 상황 모니터링** - [처리 모니터링](monitoring-the-processing.md) 참조
 
-For more information about calibration targets themselves, see [Calibration Targets](../calibration-targets.md).
+보정 타깃 자체에 대한 자세한 내용은 [보정 타깃](../calibration-targets.md)을 참조하십시오.

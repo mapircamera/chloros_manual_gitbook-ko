@@ -1,48 +1,48 @@
 # API : Python SDK
 
-The **Chloros Python SDK** provides programmatic access to the Chloros image processing engine, enabling automation, custom workflows, and seamless integration with your Python applications and research pipelines.
+**Chloros Python SDK** 는 Chloros 이미지 처리 엔진에 대한 프로그래밍 방식 접근을 제공하여 자동화, 맞춤형 워크플로우 및 Python 애플리케이션 및 연구 파이프라인과의 원활한 통합을 가능하게 합니다.
 
-### Key Features
+### 주요 기능
 
-* 🐍 **Native Python** - Clean, Pythonic API for image processing
-* 🔧 **Full API Access** - Complete control over Chloros processing
-* 🚀 **Automation** - Build custom batch processing workflows
-* 🔗 **Integration** - Embed Chloros in existing Python applications
-* 📊 **Research-Ready** - Perfect for scientific analysis pipelines
-* ⚡ **Parallel Processing** - Scales to your CPU cores (Chloros+)
+* 🐍 **네이티브 Python** - 깔끔하고 파이썬적인 이미지 처리 API
+* 🔧 **완전한 API 접근** - Chloros 처리에 대한 완벽한 제어
+* 🚀 **자동화** - 맞춤형 배치 처리 워크플로 구축
+* 🔗 **통합** - 기존 애플리케이션에 Chloros 임베드
+* 📊 **연구용 준비 완료** - 과학적 분석 파이프라인에 최적화
+* ⚡ **병렬 처리** - CPU 코어 수에 따라 확장 가능 (Chloros+)
 
-### Requirements
+### 요구 사항
 
-| Requirement          | Details                                                             |
+| 요구 사항          | 세부 사항                                                             |
 | -------------------- | ------------------------------------------------------------------- |
-| **Chloros Desktop**  | Must be installed locally                                           |
-| **License**          | Chloros+ ([paid plan required](https://cloud.mapir.camera/pricing)) |
-| **Operating System** | Windows 10/11 (64-bit)                                              |
-| **Python**           | Python 3.7 or higher                                                |
-| **Memory**           | 8GB RAM minimum (16GB recommended)                                  |
-| **Internet**         | Required for license activation                                     |
+| **Chloros 데스크톱**  | 로컬에 설치되어야 함                                           |
+| **라이선스**          | Chloros+ ([유료 플랜 필요](https://cloud.mapir.camera/pricing)) |
+| **운영 체제** | Windows 10/11 (64비트)                                              |
+| **XPROTX**           | XPROTX 3.7 이상                                                |
+| **메모리**           | 최소 8GB RAM (권장 16GB)                                  |
+| **인터넷**         | 라이선스 활성화에 필요                                     |
 
-{% hint style="warning" %}
-**License Requirement**: The Python SDK requires a paid Chloros+ subscription for API access. Standard (free) plans do not have API/SDK access. Visit [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing) to upgrade.
+{% hint style=&quot;warning&quot; %}
+**라이선스 요구 사항**: Python SDK는 API 접근을 위해 유료 Chloros+ 구독이 필요합니다. 표준(무료) 플랜은 API/SDK 접근 권한이 없습니다. [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)를 방문하여 업그레이드하세요.
 {% endhint %}
 
-## Quick Start
+## 빠른 시작
 
-### Installation
+### 설치
 
-Install via pip:
+pip를 통해 설치:
 
 ```bash
 pip install chloros-sdk
 ```
 
-{% hint style="info" %}
-**First-Time Setup**: Before using the SDK, activate your Chloros+ license by opening Chloros, Chloros (Browser) or Chloros CLI and logging in with your credentials. This only needs to be done once.
+{% hint style=&quot;info&quot; %}
+**초기 설정**: SDK 사용 전, Chloros+ 라이선스를 활성화하세요. Chloros, Chloros (브라우저) 또는 Chloros CLI를 열고 자격 증명으로 로그인하여 Chloros+ 라이선스를 활성화하십시오. 이 작업은 한 번만 수행하면 됩니다.
 {% endhint %}
 
-### Basic Usage
+### 기본 사용법
 
-Process a folder with just a few lines:
+몇 줄로 폴더 처리하기:
 
 ```python
 from chloros_sdk import process_folder
@@ -51,9 +51,9 @@ from chloros_sdk import process_folder
 results = process_folder("C:\\DroneImages\\Flight001")
 ```
 
-### Full Control
+### 전체 제어
 
-For advanced workflows:
+고급 워크플로우를 위해:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -80,39 +80,39 @@ chloros.process(mode="parallel", wait=True)
 
 ***
 
-## Installation Guide
+## 설치 가이드
 
-### Prerequisites
+### 필수 조건
 
-Before installing the SDK, ensure you have:
+SDK 설치 전 다음을 확인하십시오:
 
-1. **Chloros Desktop** installed ([download](download.md))
-2. **Python 3.7+** installed ([python.org](https://www.python.org))
-3. **Active Chloros+ license** ([upgrade](https://cloud.mapir.camera/pricing))
+1. **Chloros 데스크톱** 설치 ([다운로드](download.md))
+2. **Python 3.7 이상** 설치 ([python.org](https://www.python.org))
+3. **활성 Chloros+ 라이선스** ([업그레이드](https://cloud.mapir.camera/pricing))
 
-### Install via pip
+### pip를 통한 설치
 
-**Standard installation:**
+**표준 설치:**
 
 ```bash
 pip install chloros-sdk
 ```
 
-**With progress monitoring support:**
+**진행 상황 모니터링 지원 포함:**
 
 ```bash
 pip install chloros-sdk[progress]
 ```
 
-**Development installation:**
+**개발 설치:**
 
 ```bash
 pip install chloros-sdk[dev]
 ```
 
-### Verify Installation
+### 설치 확인
 
-Test that the SDK is installed correctly:
+SDK가 올바르게 설치되었는지 테스트:
 
 ```python
 import chloros_sdk
@@ -121,23 +121,23 @@ print(f"Chloros SDK version: {chloros_sdk.__version__}")
 
 ***
 
-## First-Time Setup
+## 초기 설정
 
-### License Activation
+### 라이선스 활성화
 
-The SDK uses the same license as Chloros, Chloros (Browser), and Chloros CLI. Activate once via the GUI or CLI:
+SDK는 Chloros, Chloros(브라우저), Chloros 및 CLI와 동일한 라이선스를 사용합니다. GUI 또는 CLI를 통해 한 번 활성화하십시오:
 
-1. Open **Chloros or Chloros (Browser)** and login on the User <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> tab. Or, open the **CLI**.
-2. Enter your Chloros+ credentials and log in
-3. License is cached locally (persists across reboots)
+1. **Chloros 또는 Chloros(브라우저)**를 열고 사용자 탭에서 로그인하십시오. <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> 탭에서 로그인합니다. 또는 **CLI**를 엽니다.
+2. Chloros+ 자격 증명을 입력하고 로그인합니다.
+3. 라이선스는 로컬에 캐시됩니다(재부팅 후에도 유지됨).
 
-{% hint style="success" %}
-**One-Time Setup**: After logging in via the GUI or CLI, the SDK automatically uses the cached license. No additional authentication needed!
+{% hint style=&quot;success&quot; %}
+**일회성 설정**: GUI 또는 CLI를 통해 로그인한 후에는 SDK가 자동으로 캐시된 라이선스를 사용합니다. 추가 인증이 필요하지 않습니다!
 {% endhint %}
 
-### Test Connection
+### 연결 테스트
 
-Verify the SDK can connect to Chloros:
+SDK가 Chloros에 연결 가능한지 확인:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -152,13 +152,13 @@ print(f"Backend running: {status['running']}")
 
 ***
 
-## API Reference
+## API 참조
 
-### ChlorosLocal Class
+### ChlorosLocal 클래스
 
-Main class for local Chloros image processing.
+로컬 Chloros 이미지 처리를 위한 메인 클래스입니다.
 
-#### Constructor
+#### 생성자
 
 ```python
 ChlorosLocal(
@@ -170,17 +170,17 @@ ChlorosLocal(
 )
 ```
 
-**Parameters:**
+**매개변수:**
 
-| Parameter                 | Type | Default                   | Description                           |
+| 매개변수                 | 유형 | 기본값                   | 설명                           |
 | ------------------------- | ---- | ------------------------- | ------------------------------------- |
-| `api_url`                 | str  | `"http://localhost:5000"` | URL of local Chloros backend          |
-| `auto_start_backend`      | bool | `True`                    | Automatically start backend if needed |
-| `backend_exe`             | str  | `None` (auto-detect)      | Path to backend executable            |
-| `timeout`                 | int  | `30`                      | Request timeout in seconds            |
-| `backend_startup_timeout` | int  | `60`                      | Timeout for backend startup (seconds) |
+| `api_url`                 | str  | `"http://localhost:5000"` | 로컬 Chloros 백엔드의 URL          |
+| `auto_start_backend`      | bool | `True`                    | 필요 시 백엔드 자동 시작 |
+| `backend_exe`             | str  | `None` (자동 감지)      | 백엔드 실행 파일 경로            |
+| `timeout`                 | int  | `30`                      | 요청 시간 초과(초)            |
+| `backend_startup_timeout` | int  | `60`                      | 백엔드 시작 시간 초과(초) |
 
-**Examples:**
+**예시:**
 
 ```python
 # Default (auto-start backend)
@@ -198,22 +198,22 @@ chloros = ChlorosLocal(timeout=60)
 
 ***
 
-### Methods
+### 메서드
 
 #### `create_project(project_name, camera=None)`
 
-Create a new Chloros project.
+새로운 Chloros 프로젝트 생성.
 
-**Parameters:**
+**매개변수:**
 
-| Parameter      | Type | Required | Description                                              |
-| -------------- | ---- | -------- | -------------------------------------------------------- |
-| `project_name` | str  | Yes      | Name for the project                                     |
-| `camera`       | str  | No       | Camera template (e.g., "Survey3N\_RGN", "Survey3W\_OCN") |
+| 매개변수      | 유형 | 필수 | 설명                                              |
+| --------| | | | |
+| `project_name` | 문자열 | 예      | 프로젝트 이름                                     |
+| `camera`       | 문자열 | 아니오 | 카메라 템플릿 (예: &quot;Survey3N\_RGN&quot;, &quot;Survey3W\_OCN&quot;) |
 
-**Returns:** `dict` - Project creation response
+**반환값:** `dict` - 프로젝트 생성 응답
 
-**Example:**
+**예시:**
 
 ```python
 # Basic project
@@ -227,18 +227,18 @@ chloros.create_project("DroneField_A", camera="Survey3N_RGN")
 
 #### `import_images(folder_path, recursive=False)`
 
-Import images from a folder.
+폴더에서 이미지 가져오기.
 
-**Parameters:**
+**매개변수:**
 
-| Parameter     | Type     | Required | Description                        |
+| 매개변수     | 유형     | 필수 | 설명                        |
 | ------------- | -------- | -------- | ---------------------------------- |
-| `folder_path` | str/Path | Yes      | Path to folder with images         |
-| `recursive`   | bool     | No       | Search subfolders (default: False) |
+| `folder_path` | 문자열/경로 | 예      | 이미지 폴더 경로         |
+| `recursive`   | 부울     | 아니오       | 하위 폴더 검색 (기본값: False) |
 
-**Returns:** `dict` - Import results with file count
+**반환값:** `dict` - 파일 수 포함 가져오기 결과
 
-**Example:**
+**예시:**
 
 ```python
 # Import from folder
@@ -252,32 +252,32 @@ chloros.import_images("C:\\DroneImages", recursive=True)
 
 #### `configure(**settings)`
 
-Configure processing settings.
+처리 설정 구성.
 
-**Parameters:**
+**매개변수:**
 
-| Parameter                 | Type | Default                 | Description                     |
+| 매개변수                 | 유형 | 기본값                 | 설명                     |
 | ------------------------- | ---- | ----------------------- | ------------------------------- |
-| `debayer`                 | str  | "High Quality (Faster)" | Debayer method                  |
-| `vignette_correction`     | bool | `True`                  | Enable vignette correction      |
-| `reflectance_calibration` | bool | `True`                  | Enable reflectance calibration  |
-| `indices`                 | list | `None`                  | Vegetation indices to calculate |
-| `export_format`           | str  | "TIFF (16-bit)"         | Output format                   |
-| `ppk`                     | bool | `False`                 | Enable PPK corrections          |
-| `custom_settings`         | dict | `None`                  | Advanced custom settings        |
+| `debayer`                 | str  | &quot;고품질 (빠름)&quot; | 디베이어 방법                  |
+| `vignette_correction`     | bool | `True`                  | 비네트 보정 활성화      |
+| `reflectance_calibration` | bool | `True`                  | 반사율 보정 활성화  |
+| `indices`                 | list | `None`                  | 계산할 식생 지수 |
+| `export_format`           | 문자열 | &quot;TIFF (16비트)&quot;         | 출력 형식                   |
+| `ppk`                     | 부울 | `False`                 | PPK 보정 활성화          |
+| `custom_settings`         | dict | `None`                  | 고급 사용자 설정        |
 
-**Export Formats:**
+**내보내기 형식:**
 
-* `"TIFF (16-bit)"` - Recommended for GIS/photogrammetry
-* `"TIFF (32-bit, Percent)"` - Scientific analysis
-* `"PNG (8-bit)"` - Visual inspection
-* `"JPG (8-bit)"` - Compressed output
+* `"TIFF (16-bit)"` - GIS/사진측량 권장
+* `"TIFF (32-bit, Percent)"` - 과학적 분석
+* `"PNG (8-bit)"` - 시각적 검사
+* `"JPG (8-bit)"` - 압축 출력
 
-**Available Indices:**
+**사용 가능한 인덱스:**
 
-NDVI, NDRE, GNDVI, OSAVI, CIG, EVI, SAVI, MSAVI, MTVI2, and more.
+NDVI, NDRE, GNDVI, OSAVI, CIG, EVI, SAVI, MSAVI, MTVI2 등.
 
-**Example:**
+**예시:**
 
 ```python
 # Basic configuration
@@ -302,24 +302,24 @@ chloros.configure(
 
 #### `process(mode="parallel", wait=True, progress_callback=None)`
 
-Process the project images.
+프로젝트 이미지를 처리합니다.
 
-**Parameters:**
+**매개변수:**
 
-| Parameter           | Type     | Default      | Description                               |
-| ------------------- | -------- | ------------ | ----------------------------------------- |
-| `mode`              | str      | `"parallel"` | Processing mode: "parallel" or "serial"   |
-| `wait`              | bool     | `True`       | Wait for completion                       |
-| `progress_callback` | callable | `None`       | Progress callback function(progress, msg) |
-| `poll_interval`     | float    | `2.0`        | Polling interval for progress (seconds)   |
+| 매개변수           | 유형     | 기본값      | 설명                               |
+| --------------| -------------- | -------- | ------------ | ----------------------------------------- |
+| `mode`              | str      | `"parallel"` | 처리 모드: &quot;parallel&quot; 또는 &quot;serial&quot;   |
+| `wait`              | bool     | `True`       | 완료 대기                       |
+| `progress_callback` | callable | `None`       | 진행 상황 콜백 함수(진행률, 메시지) |
+| `poll_interval`     | 부동소수점    | `2.0`        | 진행률 폴링 간격 (초)   |
 
-**Returns:** `dict` - Processing results
+**반환값:** `dict` - 처리 결과
 
-{% hint style="warning" %}
-**Parallel Mode**: Requires Chloros+ license. Automatically scales to your CPU cores (up to 16 workers).
+{% hint style=&quot;warning&quot; %}
+**병렬 모드**: Chloros+ 라이선스 필요. CPU 코어 수에 따라 자동 확장(최대 16개 작업자).
 {% endhint %}
 
-**Example:**
+**예시:**
 
 ```python
 # Simple processing
@@ -343,11 +343,11 @@ chloros.process(wait=False)
 
 #### `get_config()`
 
-Get current project configuration.
+현재 프로젝트 구성 가져오기.
 
-**Returns:** `dict` - Current project configuration
+**반환값:** `dict` - 현재 프로젝트 구성
 
-**Example:**
+**예시:**
 
 ```python
 config = chloros.get_config()
@@ -358,11 +358,11 @@ print(config['Project Settings'])
 
 #### `get_status()`
 
-Get backend status information.
+백엔드 상태 정보를 가져옵니다.
 
-**Returns:** `dict` - Backend status
+**반환값:** `dict` - 백엔드 상태
 
-**Example:**
+**예시:**
 
 ```python
 status = chloros.get_status()
@@ -374,9 +374,9 @@ print(f"URL: {status['url']}")
 
 #### `shutdown_backend()`
 
-Shutdown the backend (if started by SDK).
+백엔드를 종료합니다(SDK로 시작된 경우).
 
-**Example:**
+**예시:**
 
 ```python
 chloros.shutdown_backend()
@@ -384,29 +384,29 @@ chloros.shutdown_backend()
 
 ***
 
-### Convenience Functions
+### 편의 함수
 
 #### `process_folder(folder_path, **options)`
 
-One-line convenience function to process a folder.
+폴더를 처리하는 한 줄 편의 함수.
 
-**Parameters:**
+**매개변수:**
 
-| Parameter                 | Type     | Default         | Description                    |
+| 매개변수                 | 유형     | 기본값         | 설명                    |
 | ------------------------- | -------- | --------------- | ------------------------------ |
-| `folder_path`             | str/Path | Required        | Path to folder with images     |
-| `project_name`            | str      | Auto-generated  | Project name                   |
-| `camera`                  | str      | `None`          | Camera template                |
-| `indices`                 | list     | `["NDVI"]`      | Indices to calculate           |
-| `vignette_correction`     | bool     | `True`          | Enable vignette correction     |
-| `reflectance_calibration` | bool     | `True`          | Enable reflectance calibration |
-| `export_format`           | str      | "TIFF (16-bit)" | Output format                  |
-| `mode`                    | str      | `"parallel"`    | Processing mode                |
-| `progress_callback`       | callable | `None`          | Progress callback              |
+| `folder_path`             | str/Path | 필수        | 이미지가 있는 폴더 경로     |
+| `project_name`            | str      | 자동 생성  | 프로젝트 이름                   |
+| `camera`                  | 문자열      | `None`          | 카메라 템플릿                |
+| `indices`                 | 목록     | `["NDVI"]`      | 계산할 인덱스           |
+| `vignette_correction`     | bool     | `True`          | 비네팅 보정 활성화     |
+| `reflectance_calibration` | bool     | `True`          | 반사율 보정 활성화 |
+| `export_format`           | str      | &quot;TIFF (16-bit)&quot; | 출력 형식                  |
+| `mode`                    | 문자열      | `"parallel"`    | 처리 모드                |
+| `progress_callback`       | 콜러블    | `None`          | 진행 상황 콜백              |
 
-**Returns:** `dict` - Processing results
+**반환값:** `dict` - 처리 결과
 
-**Example:**
+**예시:**
 
 ```python
 from chloros_sdk import process_folder
@@ -435,9 +435,9 @@ results = process_folder(
 
 ***
 
-## Context Manager Support
+## 컨텍스트 매니저 지원
 
-The SDK supports context managers for automatic cleanup:
+SDK는 자동 정리 기능을 위한 컨텍스트 매니저를 지원합니다:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -453,11 +453,11 @@ with ChlorosLocal() as chloros:
 
 ***
 
-## Complete Examples
+## 완전한 예시
 
-### Example 1: Basic Processing
+### 예시 1: 기본 처리
 
-Process a folder with default settings:
+기본 설정으로 폴더 처리:
 
 ```python
 from chloros_sdk import process_folder
@@ -470,9 +470,9 @@ print(f"Processing complete: {results}")
 
 ***
 
-### Example 2: Custom Workflow
+### 예시 2: 사용자 정의 워크플로
 
-Full control over processing pipeline:
+처리 파이프라인에 대한 완전한 제어:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -512,9 +512,9 @@ print("Processing complete!")
 
 ***
 
-### Example 3: Batch Processing Multiple Folders
+### 예제 3: 다중 폴더 일괄 처리
 
-Process multiple flight datasets:
+여러 비행 데이터셋 처리:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -564,9 +564,9 @@ print("All flights processed!")
 
 ***
 
-### Example 4: Research Pipeline Integration
+### 예제 4: 연구 파이프라인 통합
 
-Integrate Chloros with data analysis:
+Chloros를 데이터 분석과 통합:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -619,9 +619,9 @@ print(df)
 
 ***
 
-### Example 5: Custom Progress Monitoring
+### 예시 5: 사용자 정의 진행 상황 모니터링
 
-Advanced progress tracking with logging:
+로깅을 통한 고급 진행 상황 추적:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -658,9 +658,9 @@ logging.info("Processing complete!")
 
 ***
 
-### Example 6: Error Handling
+### 예시 6: 오류 처리
 
-Robust error handling for production use:
+생산 환경용 강력한 오류 처리:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -710,9 +710,9 @@ else:
 
 ***
 
-### Example 7: Command-Line Tool
+### 예시 7: 명령줄 도구
 
-Build a custom CLI tool with the SDK:
+SDK를 사용한 맞춤형 CLI 도구 구축:
 
 ```python
 #!/usr/bin/env python
@@ -775,7 +775,7 @@ if __name__ == '__main__':
     sys.exit(main())
 ```
 
-**Usage:**
+**사용법:**
 
 ```bash
 python my_processor.py "C:\Flight001" "C:\Flight002" --indices NDVI NDRE GNDVI
@@ -783,11 +783,11 @@ python my_processor.py "C:\Flight001" "C:\Flight002" --indices NDVI NDRE GNDVI
 
 ***
 
-## Exception Handling
+## 예외 처리
 
-The SDK provides specific exception classes for different error types:
+SDK는 다양한 오류 유형에 대한 특정 예외 클래스를 제공합니다:
 
-### Exception Hierarchy
+### 예외 계층 구조
 
 ```python
 ChlorosError                    # Base exception
@@ -799,7 +799,7 @@ ChlorosError                    # Base exception
 └── ChlorosConfigurationError  # Configuration errors
 ```
 
-### Exception Examples
+### 예외 예시
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -824,11 +824,11 @@ except ChlorosError as e:
 
 ***
 
-## Advanced Topics
+## 고급 주제
 
-### Custom Backend Configuration
+### 사용자 정의 백엔드 구성
 
-Use a custom backend location or configuration:
+사용자 정의 백엔드 위치 또는 구성을 사용합니다:
 
 ```python
 chloros = ChlorosLocal(
@@ -839,9 +839,9 @@ chloros = ChlorosLocal(
 )
 ```
 
-### Non-Blocking Processing
+### 비차단 처리
 
-Start processing and continue with other tasks:
+처리를 시작하고 다른 작업을 계속합니다:
 
 ```python
 # Start processing (non-blocking)
@@ -861,9 +861,9 @@ while True:
 print("Processing complete!")
 ```
 
-### Memory Management
+### 메모리 관리
 
-For large datasets, process in batches:
+대규모 데이터 세트의 경우 배치 처리:
 
 ```python
 from pathlib import Path
@@ -888,15 +888,15 @@ for i in range(0, len(images), batch_size):
 
 ***
 
-## Troubleshooting
+## 문제 해결
 
-### Backend Not Starting
+### 백엔드 시작 실패
 
-**Issue:** SDK fails to start backend
+**문제:** SDK 백엔드 시작 실패
 
-**Solutions:**
+**해결 방법:**
 
-1. Verify Chloros Desktop is installed:
+1. Chloros 데스크톱 설치 여부 확인:
 
 ```python
 import os
@@ -904,8 +904,8 @@ backend_path = r"C:\Program Files\MAPIR\Chloros\resources\backend\chloros-backen
 print(f"Backend exists: {os.path.exists(backend_path)}")
 ```
 
-2. Check Windows Firewall isn't blocking
-3. Try manual backend path:
+2. Windows 방화벽 차단 여부 확인
+3. 수동 백엔드 경로 시도:
 
 ```python
 chloros = ChlorosLocal(backend_exe="C:\\Path\\To\\chloros-backend.exe")
@@ -913,14 +913,14 @@ chloros = ChlorosLocal(backend_exe="C:\\Path\\To\\chloros-backend.exe")
 
 ***
 
-### License Not Detected
+### 라이선스 미검출
 
-**Issue:** SDK warns about missing license
+**문제:** SDK에서 라이선스 미검출 경고 발생
 
-**Solutions:**
+**해결 방법:**
 
-1. Open Chloros, Chloros (Browser) or Chloros CLI and login.
-2. Verify license is cached:
+1. Chloros, Chloros (브라우저) 또는 Chloros CLI에 접속하여 로그인하십시오.
+2. 라이선스가 캐시되었는지 확인하십시오:
 
 ```python
 from pathlib import Path
@@ -931,15 +931,15 @@ cache_path = Path(os.getenv('APPDATA')) / 'Chloros' / 'cache'
 print(f"Cache exists: {cache_path.exists()}")
 ```
 
-3. Contact support: info@mapir.camera
+3. 지원팀에 문의하십시오: info@mapir.camera
 
 ***
 
-### Import Errors
+### 가져오기 오류
 
-**Issue:** `ModuleNotFoundError: No module named 'chloros_sdk'`
+**문제:** `ModuleNotFoundError: No module named 'chloros_sdk'`
 
-**Solutions:**
+**해결 방법:**
 
 ```bash
 # Verify installation
@@ -955,36 +955,36 @@ python -c "import sys; print(sys.path)"
 
 ***
 
-### Processing Timeout
+### 처리 시간 초과
 
-**Issue:** Processing times out
+**문제:** 처리 시간 초과 발생
 
-**Solutions:**
+**해결 방법:**
 
-1. Increase timeout:
+1. 타임아웃 증가:
 
 ```python
 chloros = ChlorosLocal(timeout=120)  # 2 minutes
 ```
 
-2. Process smaller batches
-3. Check available disk space
-4. Monitor system resources
+2. 더 작은 배치 처리
+3. 사용 가능한 디스크 공간 확인
+4. 시스템 리소스 모니터링
 
 ***
 
-### Port Already in Use
+### 포트 사용 중
 
-**Issue:** Backend port 5000 occupied
+**문제:** 백엔드 포트 5000 점유됨
 
-**Solutions:**
+**해결 방법:**
 
 ```python
 # Use different port
 chloros = ChlorosLocal(api_url="http://localhost:5001")
 ```
 
-Or find and close conflicting process:
+또는 충돌 프로세스 찾아 종료:
 
 ```powershell
 # PowerShell
@@ -993,36 +993,36 @@ Get-NetTCPConnection -LocalPort 5000
 
 ***
 
-## Performance Tips
+## 성능 팁
 
-### Optimize Processing Speed
+### 처리 속도 최적화
 
-1. **Use Parallel Mode** (requires Chloros+)
+1. **병렬 모드 사용** (Chloros+ 필요)
 
 ```python
 chloros.process(mode="parallel")  # Up to 16 workers
 ```
 
-2. **Reduce Output Resolution** (if acceptable)
+2. **출력 해상도 낮추기** (수용 가능한 경우)
 
 ```python
 chloros.configure(export_format="PNG (8-bit)")  # Faster than TIFF
 ```
 
-3. **Disable Unnecessary Indices**
+3. **불필요한 인덱스 비활성화**
 
 ```python
 # Only calculate needed indices
 chloros.configure(indices=["NDVI"])  # Not all indices
 ```
 
-4. **Process on SSD** (not HDD)
+4. **SSD에서 처리하기** (HDD가 아닌)
 
 ***
 
-### Memory Optimization
+### 메모리 최적화
 
-For large datasets:
+대규모 데이터셋의 경우:
 
 ```python
 # Process in batches instead of all at once
@@ -1031,9 +1031,9 @@ For large datasets:
 
 ***
 
-### Background Processing
+### 백그라운드 처리
 
-Free up Python for other tasks:
+다른 작업을 위해 Python를 확보:
 
 ```python
 chloros.process(wait=False)  # Non-blocking
@@ -1044,9 +1044,9 @@ chloros.process(wait=False)  # Non-blocking
 
 ***
 
-## Integration Examples
+## 통합 예시
 
-### Django Integration
+### Django 통합
 
 ```python
 # views.py
@@ -1121,47 +1121,47 @@ chloros.process(progress_callback=notebook_progress)
 
 ## FAQ
 
-### Q: Does the SDK require an internet connection?
+### Q: SDK 사용 시 인터넷 연결이 필요한가요?
 
-**A:** Only for initial license activation. After logging in via Chloros, Chloros (Browser) or Chloros CLI the license is cached locally and works offline for 30 days.
-
-***
-
-### Q: Can I use the SDK on a server without GUI?
-
-**A:** Yes! Requirements:
-
-* Windows Server 2016 or later
-* Chloros installed (one-time)
-* License activated on any machine (cached license copied to server)
+**A:** 초기 라이선스 활성화 시에만 필요합니다. Chloros, Chloros(브라우저) 또는 Chloros CLI를 통해 로그인한 후 라이선스는 로컬에 캐시되어 30일 동안 오프라인에서 작동합니다.
 
 ***
 
-### Q: What's the difference between Desktop, CLI, and SDK?
+### Q: GUI가 없는 서버에서 SDK를 사용할 수 있나요?
 
-| Feature         | Desktop GUI | CLI Command Line | Python SDK  |
+**A:** 가능합니다! 요구 사항:
+
+* Windows Server 2016 이상
+* Chloros 설치 완료 (일회성)
+* 라이선스가 활성화된 기기 (캐시된 라이선스가 서버로 복사됨)
+
+***
+
+### Q: 데스크톱, CLI, SDK의 차이점은 무엇인가요?
+
+| 기능         | 데스크톱 GUI | XPROTX 명령줄 인터페이스 | XPROTX XPROTX XPROTX  |
 | --------------- | ----------- | ---------------- | ----------- |
-| **Interface**   | Point-click | Command          | Python API  |
-| **Best For**    | Visual work | Scripting        | Integration |
-| **Automation**  | Limited     | Good             | Excellent   |
-| **Flexibility** | Basic       | Good             | Maximum     |
-| **License**     | Chloros+    | Chloros+         | Chloros+    |
+| **인터페이스**   | 포인트 클릭 | 명령어          | Python API  |
+| **최적 용도**    | 시각적 작업 | 스크립팅        | 통합 |
+| **자동화**  | 제한적     | 양호             | 우수   |
+| **유연성** | 기본       | 양호             | 최상     |
+| **라이선스**     | Chloros+    | Chloros+         | Chloros+    |
 
 ***
 
-### Q: Can I distribute apps built with the SDK?
+### Q: SDK로 제작한 애플리케이션을 배포할 수 있나요?
 
-**A:** SDK code can be integrated into your applications, but:
+**A:** SDK 코드는 애플리케이션에 통합될 수 있으나:
 
-* End users need Chloros installed
-* End users need active Chloros+ licenses
-* Commercial distribution requires OEM licensing
+* 최종 사용자는 Chloros가 설치되어 있어야 합니다
+* 최종 사용자는 유효한 Chloros+ 라이선스가 필요합니다
+* 상업적 배포에는 OEM 라이선스가 필요합니다
 
-Contact info@mapir.camera for OEM inquiries.
+OEM 관련 문의는 info@mapir.camera로 연락하십시오.
 
 ***
 
-### Q: How do I update the SDK?
+### Q: SDK는 어떻게 업데이트하나요?
 
 ```bash
 pip install --upgrade chloros-sdk
@@ -1169,9 +1169,9 @@ pip install --upgrade chloros-sdk
 
 ***
 
-### Q: Where are processed images saved?
+### Q: 처리된 이미지는 어디에 저장되나요?
 
-By default, in the Project Path :
+기본적으로 프로젝트 경로에 저장됩니다:
 
 ```
 Project_Path/
@@ -1181,9 +1181,9 @@ Project_Path/
 
 ***
 
-### Q: Can I process images from Python scripts running on schedule?
+### Q: 예약 실행되는 Python 스크립트로 이미지를 처리할 수 있나요?
 
-**A:** Yes! Use Windows Task Scheduler with Python scripts:
+**A:** 네! Windows 작업 스케줄러와 Python 스크립트를 함께 사용하세요:
 
 ```python
 # scheduled_processing.py
@@ -1193,13 +1193,13 @@ from chloros_sdk import process_folder
 results = process_folder("C:\\Flights\\Today")
 ```
 
-Schedule via Task Scheduler to run daily.
+작업 스케줄러를 통해 매일 실행되도록 설정하세요.
 
 ***
 
-### Q: Does the SDK support async/await?
+### Q: SDK가 비동기/대기(async/await)를 지원하나요?
 
-**A:** Current version is synchronous. For async behavior, use `wait=False` or run in separate thread:
+**A:** 현재 버전은 동기식입니다. 비동기 동작을 원하시면 `wait=False`를 사용하거나 별도 스레드에서 실행하세요:
 
 ```python
 import threading
@@ -1215,26 +1215,26 @@ thread.start()
 
 ***
 
-## Getting Help
+## 도움말 받기
 
-### Documentation
+### 문서
 
-* **API Reference**: This page
+* **API 참조**: 본 페이지
 
-### Support Channels
+### 지원 채널
 
-* **Email**: info@mapir.camera
-* **Website**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
-* **Pricing**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
+* **이메일**: info@mapir.camera
+* **웹사이트**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
+* **가격**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
 
-### Sample Code
+### 샘플 코드
 
-All examples listed here are tested and production-ready. Copy and adapt them for your use case.
+여기에 나열된 모든 예제는 테스트를 거쳐 생산 환경에서 바로 사용 가능합니다. 사용 사례에 맞게 복사하여 수정하십시오.
 
 ***
 
-## License
+## 라이선스
 
-**Proprietary Software** - Copyright (c) 2025 MAPIR Inc.
+**독점 소프트웨어** - Copyright (c) 2025 MAPIR Inc.
 
-SDK requires an active Chloros+ subscription. Unauthorized use, distribution, or modification is prohibited.
+SDK는 유효한 Chloros+ 구독이 필요합니다. 무단 사용, 배포 또는 수정은 금지됩니다.

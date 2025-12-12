@@ -1,255 +1,255 @@
-# Project Settings
+# 프로젝트 설정
 
-The Project Settings <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> sidebar in Chloros allows you to configure all aspects of image processing, calibration target detection, multispectral index calculations, and export options for your project. These settings are saved with your project and can be saved as templates for reuse across multiple projects.
+프로젝트 설정 <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> 사이드바를 통해 이미지 처리, 교정 대상 감지, 다중 스펙트럼 지수 계산 및 프로젝트 내보내기 옵션 등 모든 측면을 구성할 수 있습니다. 이러한 설정은 프로젝트와 함께 저장되며 여러 프로젝트에서 재사용할 수 있는 템플릿으로 저장할 수 있습니다.
 
-## Accessing Project Settings
+## 프로젝트 설정 접근 방법
 
-To access Project Settings:
+프로젝트 설정에 접근하려면:
 
-1. Open a project in Chloros
-2. Click the **Project Settings**  <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> tab in the left sidebar
-3. The settings panel will display all available configuration options organized by category
-
-***
-
-## Target Detection
-
-These settings control how Chloros detects and processes calibration targets in your images.
-
-### Minimum calibration sample area (px)
-
-* **Type**: Number
-* **Range**: 0 to 10,000 pixels
-* **Default**: 25 pixels
-* **Description**: Sets the minimum area (in pixels) required for a detected region to be considered a valid calibration target sample. Smaller values will detect smaller targets but may increase false positives. Larger values require bigger, clearer target regions for detection.
-* **When to adjust**:
-  * Increase if you're getting false detections on small image artifacts
-  * Decrease if your calibration targets appear small in your images and are not being detected
-
-### Minimum Target Clustering (0-100)
-
-* **Type**: Number
-* **Range**: 0 to 100
-* **Default**: 60
-* **Description**: Controls the clustering threshold for grouping similar colored regions when detecting calibration targets. Higher values require more similar colors to be grouped together, resulting in more conservative target detection. Lower values allow more color variation within a target group.
-* **When to adjust**:
-  * Increase if calibration targets are being split into multiple detections
-  * Decrease if calibration targets with color variation are not being fully detected
+1. Chloros에서 프로젝트를 엽니다
+2. 왼쪽 사이드바의 **프로젝트 설정**  <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> 탭을 클릭합니다
+3. 설정 패널에 카테고리별로 분류된 모든 구성 옵션이 표시됩니다
 
 ***
 
-## Processing
+## 타겟 감지
 
-These settings control how Chloros processes and calibrates your images.
+이 설정은 Chloros가 이미지에서 보정 타겟을 감지하고 처리하는 방식을 제어합니다.
 
-### Vignette correction
+### 최소 보정 샘플 영역 (px)
 
-* **Type**: Checkbox
-* **Default**: Enabled (checked)
-* **Description**: Applies vignette correction to compensate for lens darkening at the edges of images. Vignetting is a common optical phenomenon where the corners and edges of an image appear darker than the center due to lens characteristics.
-* **When to disable**: Only disable if your camera/lens combination has already applied vignette correction, or if you want to manually correct vignetting in post-processing.
+* **유형**: 숫자
+* **범위**: 0 ~ 10,000 픽셀
+* **기본값**: 25 픽셀
+* **설명**: 검출된 영역이 유효한 보정 대상 샘플로 간주되기 위해 필요한 최소 영역(픽셀 단위)을 설정합니다. 값이 작을수록 더 작은 대상을 검출하지만 오탐이 증가할 수 있습니다. 값이 클수록 더 크고 선명한 대상 영역이 검출에 필요합니다.
+* **조정 시기**:
+  * 작은 이미지 아티팩트에 대한 오탐이 발생할 경우 증가
+  * 보정 대상이 이미지에 작게 나타나고 감지되지 않을 경우 감소
 
-### Reflectance calibration / white balance
+### 최소 대상 클러스터링 (0-100)
 
-* **Type**: Checkbox
-* **Default**: Enabled (checked)
-* **Description**: Enables automatic reflectance calibration using detected calibration targets in your images. This normalizes the reflectance values across your dataset and ensures consistent measurements regardless of lighting conditions.
-* **When to disable**: Disable only if you want to process raw, uncalibrated images or if you're using a different calibration workflow.
-
-### Debayer method
-
-* **Type**: Dropdown selection
-* **Options**:
-  * High Quality (Faster) - Currently the only option available
-* **Default**: High Quality (Faster)
-* **Description**: Selects the demosaicing algorithm used to convert raw Bayer pattern sensor data into full-color images. The "High Quality (Faster)" method provides an optimal balance between processing speed and image quality.
-* **Note**: Additional debayer methods may be added in future versions of Chloros.
-
-### Minimum recalibration interval
-
-* **Type**: Number
-* **Range**: 0 to 3,600 seconds
-* **Default**: 0 seconds
-* **Description**: Sets the minimum time interval (in seconds) between using calibration targets. When set to 0, Chloros will use every detected calibration target. When set to a higher value, Chloros will only use calibration targets that are separated by at least this many seconds, reducing processing time for datasets with frequent calibration target captures.
-* **When to adjust**:
-  * Set to 0 for maximum calibration accuracy when lighting conditions vary
-  * Increase (e.g., to 60-300 seconds) for faster processing when lighting is consistent and you have frequent calibration target images
-
-### Light sensor timezone offset
-
-* **Type**: Number
-* **Range**: -12 to +12 hours
-* **Default**: 0 hours
-* **Description**: Specifies the timezone offset (in hours from UTC) for light sensor data timestamps. This is used when processing PPK (Post-Processed Kinematic) data files to ensure correct time synchronization between image captures and GPS data.
-* **When to adjust**: Set this to your local timezone offset if your PPK data uses local time instead of UTC. For example:
-  * Pacific Time: -8 or -7 (depending on DST)
-  * Eastern Time: -5 or -4 (depending on DST)
-  * Central European Time: +1 or +2 (depending on DST)
-
-### Apply PPK corrections
-
-* **Type**: Checkbox
-* **Default**: Disabled (unchecked)
-* **Description**: Enables the use of Post-Processed Kinematic (PPK) corrections from MAPIR DAQ recorders containing a GPS (GNSS). When enabled, Chloros will use any .daq log files containing exposure pin data in your project directory and apply precise geolocation corrections to your images.
-* **Requirement**: .daq log file with exposure pin entries must be present in your project directory
-* **When to enable**: It is recommended to always enable PPK correction if you have exposure feedback entries in your .daq log file.
-
-### Exposure Pin 1
-
-* **Type**: Dropdown selection
-* **Visibility**: Only visible when "Apply PPK corrections" is enabled AND exposure data is available for Pin 1
-* **Options**:
-  * Camera model names detected in the project
-  * "Do Not Use" - Ignore this exposure pin
-* **Default**: Auto-selected based on project configuration
-* **Description**: Assigns a specific camera to Exposure Pin 1 for PPK time synchronization. The exposure pin records the exact timing when the camera shutter is triggered, which is critical for accurate PPK geolocation.
-* **Auto-selection behavior**:
-  * Single camera + single pin: Automatically selects the camera
-  * Single camera + two pins: Pin 1 automatically assigned to the camera
-  * Multiple cameras: Manual selection required
-
-### Exposure Pin 2
-
-* **Type**: Dropdown selection
-* **Visibility**: Only visible when "Apply PPK corrections" is enabled AND exposure data is available for Pin 2
-* **Options**:
-  * Camera model names detected in the project
-  * "Do Not Use" - Ignore this exposure pin
-* **Default**: Auto-selected based on project configuration
-* **Description**: Assigns a specific camera to Exposure Pin 2 for PPK time synchronization when using a dual-camera setup.
-* **Auto-selection behavior**:
-  * Single camera + single pin: Pin 2 automatically set to "Do Not Use"
-  * Single camera + two pins: Pin 2 automatically set to "Do Not Use"
-  * Multiple cameras: Manual selection required
-* **Note**: The same camera cannot be assigned to both Pin 1 and Pin 2 simultaneously.
+* **유형**: 숫자
+* **범위**: 0 ~ 100
+* **기본값**: 60
+* **설명**: 보정 대상 감지 시 유사한 색상 영역을 그룹화하는 클러스터링 임계값을 제어합니다. 값이 높을수록 더 유사한 색상이 함께 그룹화되어 대상 감지가 보수적으로 이루어집니다. 값이 낮을수록 대상 그룹 내 색상 변이가 더 허용됩니다.
+* **조정 시점**:
+  * 보정 대상이 여러 감지로 분할될 경우 증가
+  * 색상 변이가 있는 보정 대상이 완전히 감지되지 않을 경우 감소
 
 ***
 
-## Index
+## 처리
 
-These settings allow you to configure multispectral indices for analysis and visualization.
+이 설정은 Chloros가 이미지를 처리하고 보정하는 방식을 제어합니다.
 
-### Add index
+### 비네팅 보정
 
-* **Type**: Special index configuration panel
-* **Description**: Opens an interactive panel where you can select and configure multispectral vegetation indices (NDVI, NDRE, EVI, etc.) to calculate during image processing. You can add multiple indices, each with its own visualization settings.
-* **Available indices**: The system includes 30+ pre-defined multispectral indices including:
-  * NDVI (Normalized Difference Vegetation Index)
-  * NDRE (Normalized Difference RedEdge)
-  * EVI (Enhanced Vegetation Index)
+* **유형**: 체크박스
+* **기본값**: 활성화됨 (체크됨)
+* **설명**: 이미지 가장자리에서 발생하는 렌즈 어두워짐을 보정하기 위해 비네팅 보정을 적용합니다. 비네팅은 렌즈 특성으로 인해 이미지의 모서리와 가장자리가 중앙보다 어둡게 보이는 일반적인 광학 현상입니다.
+* **비활성화 시점**: 카메라/렌즈 조합이 이미 비네팅 보정을 적용한 경우, 또는 후처리에서 수동으로 비네팅을 보정하려는 경우에만 비활성화하십시오.
+
+### 반사율 보정 / 화이트 밸런스
+
+* **유형**: 체크박스
+* **기본값**: 활성화 (선택됨)
+* **설명**: 이미지에서 감지된 보정 타깃을 사용하여 자동 반사율 보정을 활성화합니다. 이는 데이터셋 전반에 걸쳐 반사율 값을 정규화하고 조명 조건에 관계없이 일관된 측정을 보장합니다.
+* **비활성화 시점**: 보정되지 않은 원본 이미지를 처리하려는 경우 또는 다른 보정 워크플로를 사용하는 경우에만 비활성화하십시오.
+
+### 디베이어 방법
+
+* **유형**: 드롭다운 선택
+* **옵션**:
+  * 고품질(빠름) - 현재 유일하게 사용 가능한 옵션
+* **기본값**: 고품질(빠름)
+* **설명**: 원시 베이어 패턴 센서 데이터를 풀컬러 이미지로 변환하는 데모사이징 알고리즘을 선택합니다. &quot;고품질(빠름)&quot; 방식은 처리 속도와 화질 간의 최적 균형을 제공합니다.
+* **참고**: 향후 Chloros 버전에서 추가 디베이어 방법이 제공될 수 있습니다.
+
+### 최소 재보정 간격
+
+* **유형**: 숫자
+* **범위**: 0 ~ 3,600초
+* **기본값**: 0초
+* **설명**: 보정 대상 사용 간 최소 시간 간격(초)을 설정합니다. 0으로 설정 시, Chloros는 감지된 모든 보정 타깃을 사용합니다. 더 높은 값으로 설정 시, Chloros는 최소 이 시간 간격 이상으로 분리된 보정 타깃만 사용하므로, 보정 타깃 촬영이 빈번한 데이터 세트의 처리 시간을 단축합니다.
+* **조정 시기**:
+  * 조명 조건이 변동될 때 최대 교정 정확도를 위해 0으로 설정
+  * 조명이 일관되고 교정 대상 이미지 획득 빈도가 높을 때 처리 속도 향상을 위해 증가(예: 60-300초)
+
+### 광센서 시간대 오프셋
+
+* **유형**: 숫자
+* **범위**: -12 ~ +12시간
+* **기본값**: 0시간
+* **설명**: 광 센서 데이터 타임스탬프의 시간대 오프셋(UTC 기준 시간)을 지정합니다. PPK(사후 동적 측량) 데이터 파일 처리 시 이미지 캡처와 GPS 데이터 간 정확한 시간 동기화를 보장하기 위해 사용됩니다.
+* **조정 시점**: PPK 데이터가 UTC 대신 현지 시간을 사용하는 경우 현지 시간대 오프셋으로 설정합니다. 예시:
+  * 태평양 표준시: -8 또는 -7 (일광 절약 시간제 적용 여부에 따라 다름)
+  * 동부 표준시: -5 또는 -4 (일광 절약 시간제 적용 여부에 따라 다름)
+  * 중부 유럽 시간: +1 또는 +2 (일광 절약 시간제 적용 여부에 따라 다름)
+
+### PPK 보정 적용
+
+* **유형**: 체크박스
+* **기본값**: 비활성화 (체크 해제)
+* **설명**: GPS(GNSS)를 포함하는 MAPIR DAQ 레코더의 후처리 동적(PPK) 보정 사용을 활성화합니다. 활성화 시 Chloros는 프로젝트 디렉터리에 노출 핀 데이터가 포함된 모든 .daq 로그 파일을 사용하여 이미지에 정밀한 지리적 위치 보정을 적용합니다.
+* **필수 조건**: 프로젝트 디렉터리에 노출 핀 항목이 포함된 .daq 로그 파일이 존재해야 함
+* **활성화 시기**: .daq 로그 파일에 노출 피드백 항목이 있는 경우 항상 PPK 보정을 활성화하는 것이 권장됨.
+
+### 노출 핀 1
+
+* **유형**: 드롭다운 선택
+* **표시 여부**: &quot;PPK 보정 적용&quot;이 활성화되고 핀 1에 노출 데이터가 있을 때만 표시됨
+* **옵션**:
+  * 프로젝트에서 감지된 카메라 모델명
+  * &quot;사용 안 함&quot; - 이 노출 핀 무시
+* **기본값**: 프로젝트 구성에 따라 자동 선택
+* **설명**: PPK 시간 동기화를 위해 노출 핀 1에 특정 카메라를 할당합니다. 노출 핀은 카메라 셔터가 작동하는 정확한 시점을 기록하며, 이는 정확한 PPK 위치 측정에 필수적입니다.
+* **자동 선택 동작**:
+  * 단일 카메라 + 단일 핀: 카메라를 자동 선택
+  * 단일 카메라 + 두 핀: 핀 1이 카메라에 자동 할당
+  * 다중 카메라: 수동 선택 필요
+
+### 노출 핀 2
+
+* **유형**: 드롭다운 선택
+* **표시 여부**: &quot;PPK 보정 적용&quot; 활성화 시 AND 핀 2에 노출 데이터가 존재할 때만 표시
+* **옵션**:
+  * 프로젝트에서 감지된 카메라 모델명
+  * &quot;사용 안 함&quot; - 이 노출 핀 무시
+* **기본값**: 프로젝트 구성에 따라 자동 선택
+* **설명**: 듀얼 카메라 설정 시 PPK 시간 동기화를 위해 노출 핀 2에 특정 카메라를 할당합니다.
+* **자동 선택 동작**:
+  * 단일 카메라 + 단일 핀: 핀 2가 자동으로 &quot;사용하지 않음&quot;으로 설정
+  * 단일 카메라 + 두 핀: 핀 2 자동으로 &quot;사용하지 않음&quot; 설정
+  * 다중 카메라: 수동 선택 필요
+* **참고**: 동일한 카메라를 핀 1과 핀 2에 동시에 할당할 수 없습니다.
+
+***
+
+## 인덱스
+
+이 설정으로 분석 및 시각화를 위한 다중 스펙트럼 지수를 구성할 수 있습니다.
+
+### 지수 추가
+
+* **유형**: 특수 지수 구성 패널
+* **설명**: 이미지 처리 시 계산할 다중 스펙트럼 식생 지수(NDVI, NDRE, EVI 등)를 선택하고 구성할 수 있는 대화형 패널을 엽니다. 각각 별도의 시각화 설정을 가진 여러 지수를 추가할 수 있습니다.
+* **사용 가능한 지수**: 시스템에는 다음을 포함한 30개 이상의 사전 정의된 다중 스펙트럼 지수가 포함됩니다:
+  * NDVI (정규화 차분 식생 지수)
+  * NDRE (정규화 차분 RedEdge)
+  * EVI (강화 식생 지수)
   * GNDVI, SAVI, OSAVI, MSAVI2
-  * And many more (see [Multispectral Index Formulas](multispectral-index-formulas.md) for complete list)
-* **Features**:
-  * Select from pre-defined index formulas
-  * Configure visualization color gradients (LUT - Look-Up Tables)
-  * Set threshold values for analysis
-  * Create custom index formulas
+  * 기타 다수 (전체 목록은 [다중 스펙트럼 지수 공식](multispectral-index-formulas.md) 참조)
+* **주요 기능**:
+  * 사전 정의된 지수 공식 선택
+  * 시각화 색상 그라데이션 설정 (LUT - 룩업 테이블)
+  * 분석용 임계값 설정
+  * 사용자 정의 지수 공식 생성
 
-### Custom Formulas (Chloros+ Feature)
+### 사용자 정의 공식 (Chloros+ 기능)
 
-* **Type**: Array of custom formula definitions
-* **Description**: Allows you to create and save custom multispectral index formulas using band math. Custom formulas are saved with your project settings and can be used just like built-in indices.
-* **How to create**:
-  1. In the Index configuration panel, look for the custom formula option
-  2. Define your formula using band identifiers (e.g., NIR, Red, Green, Blue)
-  3. Save the formula with a descriptive name
-* **Formula syntax**: Standard mathematical operations are supported, including:
-  * Arithmetic: `+`, `-`, `*`, `/`
-  * Parentheses for order of operations
-  * Band references: NIR, Red, Green, Blue, RedEdge, Cyan, Orange, NIR1, NIR2
-
-***
-
-## Export
-
-These settings control the format and quality of exported processed images.
-
-### Calibrated image format
-
-* **Type**: Dropdown selection
-* **Options**:
-  * **TIFF (16-bit)** - Uncompressed 16-bit TIFF format
-  * **TIFF (32-bit, Percent)** - 32-bit floating-point TIFF with reflectance values as percentages
-  * **PNG (8-bit)** - Compressed 8-bit PNG format
-  * **JPG (8-bit)** - Compressed 8-bit JPEG format
-* **Default**: TIFF (16-bit)
-* **Description**: Selects the file format for saving processed and calibrated images.
-* **Format recommendations**:
-  * **TIFF (16-bit)**: Recommended for scientific analysis and professional workflows. Preserves maximum data quality with no compression artifacts. Best for multispectral analysis and further processing in GIS software.
-  * **TIFF (32-bit, Percent)**: Best for workflows that require reflectance values as percentages (0-100%). Offers maximum precision for radiometric measurements.
-  * **PNG (8-bit)**: Good for web viewing and general visualization. Smaller file sizes with lossless compression, but reduced dynamic range.
-  * **JPG (8-bit)**: Smallest file sizes, best for previews and web display only. Uses lossy compression which is not suitable for scientific analysis.
+* **유형**: 사용자 정의 공식 정의 배열
+* **설명**: 밴드 연산을 사용하여 사용자 정의 다중 스펙트럼 지수 공식을 생성하고 저장할 수 있습니다. 사용자 정의 공식은 프로젝트 설정과 함께 저장되며 내장 지수와 동일하게 사용할 수 있습니다.
+* **생성 방법**:
+  1. 지수 구성 패널에서 사용자 정의 공식 옵션을 찾습니다.
+  2. 밴드 식별자(예: NIR, Red, Green, Blue)를 사용하여 공식을 정의합니다.
+  3. 설명적인 이름으로 공식을 저장합니다
+* **공식 구문**: 표준 수학 연산이 지원되며, 다음을 포함합니다:
+  * 산술 연산: `+`, `-`, `*`, `/`
+  * 연산 순서를 위한 괄호
+  * 밴드 참조: NIR, Red, Green, Blue, RedEdge, Cyan, Orange, NIR1, NIR2
 
 ***
 
-## Save Project Template
+## 내보내기
 
-This feature allows you to save your current project settings as a reusable template.
+이 설정은 처리된 이미지의 내보내기 형식과 품질을 제어합니다.
 
-* **Type**: Text input + Save button
-* **Description**: Enter a descriptive name for your settings template and click the save icon. The template will store all your current project settings (target detection, processing options, indices, and export format) for easy reuse in future projects.
-* **Use cases**:
-  * Create templates for different camera systems (RGB, multispectral, NIR)
-  * Save standard configurations for specific crop types or analysis workflows
-  * Share consistent settings across a team
-* **How to use**:
-  1. Configure all your desired project settings
-  2. Enter a template name (e.g., "RedEdge Survey3 NDVI Standard")
-  3. Click the save icon
-  4. The template can now be loaded when creating new projects
+### 보정된 이미지 형식
 
-***
-
-## Save Project Folder
-
-This setting specifies where new projects are saved by default.
-
-* **Type**: Directory path display + Edit button
-* **Default**: `C:\Users\[Username]\Chloros Projects`
-* **Description**: Shows the current default directory where new Chloros projects are created. Click the edit icon to select a different directory.
-* **When to change**:
-  * Set to a network drive for team collaboration
-  * Change to a drive with more storage space for large datasets
-  * Organize projects by year, client, or project type in different folders
-* **Note**: Changing this setting only affects NEW projects. Existing projects remain in their original locations.
+* **유형**: 드롭다운 선택
+* **옵션**:
+  * **TIFF (16비트)** - 압축되지 않은 16비트 TIFF 형식
+  * **TIFF (32비트, 백분율)** - 반사율 값을 백분율로 표시하는 32비트 부동 소수점 TIFF
+  * **PNG (8비트)** - 압축된 8비트 PNG 형식
+  * **JPG (8비트)** - 압축된 8비트 JPEG 형식
+* **기본값**: TIFF (16비트)
+* **설명**: 처리 및 보정된 이미지를 저장할 파일 형식을 선택합니다.
+* **권장 형식**:
+  * **TIFF (16비트)**: 과학적 분석 및 전문 워크플로우에 권장됩니다. 압축 아티팩트 없이 최대 데이터 품질을 유지합니다. 다중 스펙트럼 분석 및 GIS 소프트웨어에서의 추가 처리에 최적입니다.
+  * **TIFF (32비트, 백분율)**: 반사율 값을 백분율(0-100%)로 요구하는 워크플로우에 최적. 방사계 측정을 위한 최대 정밀도 제공.
+  * **PNG (8비트)**: 웹 뷰잉 및 일반 시각화에 적합. 무손실 압축으로 파일 크기는 작지만, 동적 범위가 감소합니다.
+  * **JPG (8비트)**: 가장 작은 파일 크기, 미리보기 및 웹 표시 전용으로 최적. 과학적 분석에 적합하지 않은 손실 압축을 사용합니다.
 
 ***
 
-## Settings Persistence
+## 프로젝트 템플릿 저장
 
-All project settings are automatically saved with your project file (`.mapir` project format). When you reopen a project, all settings are restored exactly as you left them.
+이 기능은 현재 프로젝트 설정을 재사용 가능한 템플릿으로 저장할 수 있게 합니다.
 
-### Settings Hierarchy
-
-Settings are applied in the following order:
-
-1. **System defaults** - Built-in defaults defined by Chloros
-2. **Template settings** - If you load a template when creating a project
-3. **Saved project settings** - Settings saved with the project file
-4. **Manual adjustments** - Any changes you make during the current session
-
-### Settings and Image Processing
-
-Most settings changes (especially in Processing and Export categories) will trigger reprocessing of images to reflect the new settings. However, some settings are "export-only" and don't require immediate reprocessing:
-
-* Save Project Template
-* Working Directory
-* Calibrated image format (applies when exporting)
+* **입력 방식**: 텍스트 입력 + 저장 버튼
+* **설명**: 설정 템플릿에 설명적인 이름을 입력하고 저장 아이콘을 클릭하세요. 템플릿은 현재 프로젝트의 모든 설정(대상 감지, 처리 옵션, 지수, 내보내기 형식)을 저장하여 향후 프로젝트에서 쉽게 재사용할 수 있습니다.
+* **사용 사례**:
+  * 다양한 카메라 시스템별 템플릿 생성 (RGB, 다중 스펙트럼, NIR)
+  * 특정 작물 유형 또는 분석 워크플로우용 표준 구성 저장
+  * 팀 내 일관된 설정 공유
+* **사용 방법**:
+  1. 원하는 모든 프로젝트 설정 구성
+  2. 템플릿 이름 입력 (예: &quot;RedEdge Survey3 NDVI 표준&quot;)
+  3. 저장 아이콘 클릭
+  4. 새 프로젝트 생성 시 템플릿을 불러올 수 있음
 
 ***
 
-## Best Practices
+## 프로젝트 폴더 저장 위치
 
-1. **Start with defaults**: The default settings work well for most MAPIR camera systems and typical workflows.
-2. **Create templates**: Once you've optimized settings for a specific workflow or camera, save them as a template to ensure consistency across projects.
-3. **Test before full processing**: When experimenting with new settings, test on a small subset of images before processing your entire dataset.
-4. **Document your settings**: Use descriptive template names that indicate the camera system, processing type, and intended use (e.g., "Survey3\_RGB\_NDVI\_Agriculture").
-5. **Export format selection**: Choose your export format based on your end use:
-   * Scientific analysis → TIFF (16-bit or 32-bit)
-   * GIS processing → TIFF (16-bit)
-   * Quick visualization → PNG (8-bit)
-   * Web sharing → JPG (8-bit)
+이 설정은 새 프로젝트의 기본 저장 위치를 지정합니다.
+
+* **유형**: 디렉터리 경로 표시 + 편집 버튼
+* **기본값**: `C:\Users\[Username]\Chloros Projects`
+* **설명**: 새 Chloros 프로젝트가 생성되는 현재 기본 디렉터리를 표시합니다. 편집 아이콘을 클릭하여 다른 디렉터리를 선택하세요.
+* **변경 시점**:
+  * 팀 협업을 위해 네트워크 드라이브로 설정
+  * 대용량 데이터셋을 위해 저장 공간이 더 많은 드라이브로 변경
+  * 연도, 고객사, 프로젝트 유형별로 다른 폴더에 프로젝트 정리
+* **참고**: 이 설정 변경은 새 프로젝트에만 적용됩니다. 기존 프로젝트는 원래 위치에 유지됩니다.
 
 ***
 
-For more information on multispectral indices in Chloros, see [Multispectral Index Formulas](multispectral-index-formulas.md) page.
+## 설정 지속성
+
+모든 프로젝트 설정은 프로젝트 파일(`.mapir` 프로젝트 형식)과 함께 자동 저장됩니다. 프로젝트를 다시 열면 모든 설정이 종료 시점 그대로 복원됩니다.
+
+### 설정 적용 우선순위
+
+설정은 다음 순서로 적용됩니다:
+
+1. **시스템 기본값** - Chloros에서 정의한 내장 기본값
+2. **템플릿 설정** - 프로젝트 생성 시 템플릿을 불러온 경우
+3. **저장된 프로젝트 설정** - 프로젝트 파일과 함께 저장된 설정
+4. **수동 조정** - 현재 세션 중 변경한 모든 사항
+
+### 설정과 이미지 처리
+
+대부분의 설정 변경(특히 &#x27;처리&#x27; 및 &#x27;내보내기&#x27; 범주)은 새 설정을 반영하기 위해 이미지 재처리를 유발합니다. 그러나 일부 설정은 &#x27;내보내기 전용&#x27;으로 즉시 재처리가 필요하지 않습니다:
+
+* 프로젝트 템플릿 저장
+* 작업 디렉터리
+* 보정된 이미지 형식 (내보낼 때 적용됨)
+
+***
+
+## 모범 사례
+
+1. **기본값으로 시작하기**: 대부분의 MAPIR 카메라 시스템과 일반적인 워크플로에는 기본 설정이 잘 작동합니다.
+2. **템플릿 생성하기**: 특정 워크플로나 카메라에 최적화된 설정을 찾았다면, 프로젝트 간 일관성을 보장하기 위해 템플릿으로 저장하세요.
+3. **전체 처리 전 테스트**: 새로운 설정을 실험할 때는 전체 데이터셋을 처리하기 전에 소량의 이미지 샘플로 테스트하십시오.
+4. **설정 문서화**: 카메라 시스템, 처리 유형, 사용 목적(예: &quot;Survey3\_RGB\_NDVI\_Agriculture&quot;)을 나타내는 설명적인 템플릿 이름을 사용하십시오.
+5. **내보내기 형식 선택**: 최종 용도에 따라 내보내기 형식을 선택하세요:
+   * 과학적 분석 → TIFF (16비트 또는 32비트)
+   * GIS 처리 → TIFF (16비트)
+   * 빠른 시각화 → PNG (8비트)
+   * 웹 공유 → JPG (8비트)
+
+***
+
+Chloros의 다중 스펙트럼 지수에 대한 자세한 내용은 [다중 스펙트럼 지수 공식](multispectral-index-formulas.md) 페이지를 참조하십시오.
