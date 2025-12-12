@@ -16,7 +16,7 @@
 ## 이미지 처리(GUI)
 
 * [프로젝트 설정 조정](processing-images-gui/adjusting-project-settings.md)
-* [프로젝트에 파일 추가](processing-images-gui/page-1.md)
+* [프로젝트에 파일 추가](processing-images-gui/adding-files-to-a-project.md)
 * [대상 이미지 선택](processing-images-gui/choosing-target-images.md)
 * [처리 시작](processing-images-gui/starting-the-processing.md)
 * [처리 모니터링](processing-images-gui/monitoring-the-processing.md)
@@ -24,11 +24,11 @@
 
 ## 프로젝트 설정
 
-* [프로젝트 설정](project-settings/page-2.md)
+* [프로젝트 설정](project-settings/project-settings.md)
 * [다중 스펙트럼 지수 공식](project-settings/multispectral-index-formulas.md)
 
 ## 이미지 뷰어(GUI)
 
-* [이미지 전체 화면 열기](image-viewer-gui/page-3.md)
+* [이미지 전체 화면 열기](image-viewer-gui/opening-an-image-full-screen.md)
 * [이미지 레이어](image-viewer-gui/image-layers.md)
 * [인덱스/LUT 샌드박스](image-viewer-gui/index-lut-sandbox.md)
