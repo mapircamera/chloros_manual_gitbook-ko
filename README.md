@@ -4,7 +4,9 @@ metaLinks: {}
 
 # 시작하기
 
-<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>Chloros는 [MAPIR](https://www.mapir.camera)에서 제공하는 이미지 및 기타 센서 데이터 처리용 소프트웨어 애플리케이션입니다.
+<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>
+
+Chloros는 [MAPIR](https://www.mapir.camera)에서 제공하는 이미지 및 기타 센서 데이터 처리용 소프트웨어 애플리케이션입니다.
 
 ***
 

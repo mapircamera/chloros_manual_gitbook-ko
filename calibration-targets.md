@@ -9,7 +9,9 @@ metaLinks:
 
 MAPIR는 다양한 응용 분야를 커버하기 위해 여러 교정 타겟을 제공합니다. 아래에 보이는 소형 T4-R50에는 250~2,500 nm 범위의 광 반사율 측정이 완료된 4개의 패널이 포함되어 있습니다.
 
-<figure><img src=".gitbook/assets/t4-r50_2.jpg" alt=""><figcaption><p>MAPIR T4-R50</p></figcaption></figure>T4 확산 기준 타겟은 다음과 같은 반사율 곡선을 가집니다. [데이터 다운로드](https://cdn.shopify.com/s/files/1/0972/5566/files/MAPIR_Diffuse_Reflectance_Standard_Calibration_Target_Data_T4.xlsx?v=1741759157):
+<figure><img src=".gitbook/assets/t4-r50_2.jpg" alt=""><figcaption><p>MAPIR T4-R50</p></figcaption></figure>
+
+T4 확산 기준 타겟은 다음과 같은 반사율 곡선을 가집니다. [데이터 다운로드](https://cdn.shopify.com/s/files/1/0972/5566/files/MAPIR_Diffuse_Reflectance_Standard_Calibration_Target_Data_T4.xlsx?v=1741759157):
 
 <figure><img src=".gitbook/assets/MAPIR Diffuse Reflectance Standard Calibration Target Data T4 (250-2500nm).png" alt=""><figcaption><p>MAPIR T4 반사율 :: 250-2500nm</p></figcaption></figure>
 
