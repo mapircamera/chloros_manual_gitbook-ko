@@ -15,7 +15,7 @@ T4 확산 기준 타겟은 다음과 같은 반사율 곡선을 가집니다. [�
 
 <figure><img src=".gitbook/assets/MAPIR Diffuse Reflectance Standard Calibration Target Data T4 (250-2500nm).png" alt=""><figcaption><p>MAPIR T4 반사율 :: 250-2500nm</p></figcaption></figure>
 
-<figure><img src=".gitbook/assets/MAPIR Diffuse Reflectance Standard Calibration Target Data T4 (400-1000nm).png" alt=""><figcaption><p>MAPIR T4 반사율 :: 400-1000nm</p></figcaption></figure>반사율 그래프를 보면 값이 파장(x축) 대 반사율 백분율(y축)로 표시되어 있음을 확인할 수 있습니다. 교정 타겟의 이미지를 캡처하면 카메라 센서 밴드 각각이 감지하는 스펙트럼 범위 내에서 픽셀 값과 반사율 백분율 간의 관계를 생성합니다.
+<figure><img src=".gitbook/assets/MAPIR Diffuse Reflectance Standard Calibration Target Data T4 (400-1000nm).png" alt=""><figcaption><p>MAPIR T4 반사율 :: 400-1000nm</p></figcaption></figure>반사율 그래프를 보면 값이 파장(x축) 대 반사율 백분율(y축)로 표시되어 있음을 확인할 수 있습니다. 교정 타깃의 이미지를 캡처하면 카메라 센서 밴드 각각이 감지하는 스펙트럼 범위 내에서 픽셀 값과 반사율 백분율 간의 관계를 생성합니다.
 
 즉, 당사 카메라로 촬영한 모든 이미지에서 [T4-R50](https://www.mapir.camera/collections/calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t3-r50) 또는 [T4-R125](https://www.mapir.camera/collections/multispectral-reflectance-reference-calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t4-r125)와 같은 당사의 반사율 타깃 사진을 사용하여 이미지의 반사율을 보정할 수 있습니다. 보정된 이미지의 각 픽셀은 반사율 백분율에 해당합니다.
 

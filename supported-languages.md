@@ -77,13 +77,13 @@ chloros-cli language --list
 
 자세한 내용은 [CLI 문서](CLI.md)를 참조하세요.
 
-### Chloros Python SDK 환경에서
+### Chloros Python SDK에서
 
 SDK 초기화 시 언어 매개변수를 설정하면 메시지와 출력을 원하는 언어로 확인할 수 있습니다.
 
 ## 지원 범위
 
-38개 언어 모두 다음 환경에서 완벽하게 지원됩니다:
+다음 환경에서 38개 언어 모두 완벽하게 지원됩니다:
 
 * **Chloros 데스크톱** - 전체 GUI 번역
 * **Chloros 브라우저** - 모든 언어 지원 웹 인터페이스

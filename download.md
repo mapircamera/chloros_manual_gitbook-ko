@@ -15,8 +15,8 @@ metaLinks:
 | **운영 체제** | Windows 10 (64비트)             | Windows 11 (64비트)             |
 | **프로세서**        | Intel Core i5 또는 동급     | Intel Core i7 이상         |
 | **메모리 (RAM)**     | 8GB                             | 16GB 이상                    |
-| **그래픽 카드**    | DirectX 11 호환           | NVIDIA GPU (4GB+ VRAM)       |
-| **저장 공간**          | 2GB 여유 공간                  | SSD (10GB+ 여유 공간)       |
+| **그래픽 카드**    | DirectX 11 호환           | 4GB+ VRAM 탑재 NVIDIA GPU       |
+| **저장 공간**          | 2GB 여유 공간                  | 10GB+ 여유 공간 SSD       |
 | **디스플레이**          | 1920x1080                       | 2560x1440 이상             |
 | **인터넷**         | 라이선스 활성화 필수 | 라이선스 활성화 필수 |
 
@@ -44,7 +44,7 @@ metaLinks:
 1. `CHLOROS INSTALLER - CURRENT VERSION.exe` 파일을 다운로드합니다.
 2. 설치 프로그램을 더블 클릭하여 설치를 시작합니다.
 3. 설치 마법사의 안내를 따릅니다.
-4. 설치 디렉터리를 선택합니다 (기본값: `C:\Program Files\Chloros\`).
+4. 설치 디렉터리를 선택합니다(기본값: `C:\Program Files\Chloros\`).
 5. 설치를 완료하고 Chloros를 실행합니다.
 6. MAPIR Cloud Chloros+ 계정으로 로그인 (또는 무료 버전으로 계속 사용)
 
@@ -54,11 +54,11 @@ metaLinks:
 
 ***
 
-## 추가 자료
+## 추가 리소스
 
 ### Python SDK
 
-개발자 및 자동화 워크플로우를 위해 다음을 설치하십시오:
+개발자 및 자동화 워크플로를 위해 Chloros Python SDK를 설치하십시오:
 
 ```bash
 pip install chloros-sdk
@@ -70,7 +70,7 @@ pip install chloros-sdk
 
 ***
 
-## 포함 내용
+## 포함 항목
 
 Chloros 설치에는 다음이 포함됩니다:
 
@@ -87,10 +87,10 @@ Chloros 설치에는 다음이 포함됩니다:
 Chloros+ 구독으로 고급 기능 활용:
 
 * 🚀 **멀티스레드 처리** - 병렬 이미지 처리
-* ⚡ **GPU(CUDA) 가속화** - NVIDIA GPU 성능 활용
+* ⚡ **GPU(CUDA) 가속** - NVIDIA GPU 성능 활용
 * 💻 **CLI 액세스** - 명령줄 도구로 자동화
 * 🐍 **Python SDK** - 프로그래매틱 API 접근
-* 📱 **다중 기기** - 2~10대 이상 기기에서 사용 가능 (플랜에 따라 다름)
+* 📱 **다중 기기** - 2~10개 이상 기기에서 사용 가능 (플랜에 따라 다름)
 * 🧮 **사용자 정의 공식** - 맞춤형 다중 스펙트럼 지수 생성
 
 <p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Chloros+ 플랜 및 가격 보기</a></p>***
@@ -99,13 +99,13 @@ Chloros+ 구독으로 고급 기능 활용:
 
 ### 문제 해결
 
-**설치 중 오류 메시지가 발생합니다:**
+**설치 실패 시 오류 메시지:**
 
 * 관리자 권한이 있는지 확인하세요
 * 바이러스 백신 소프트웨어를 일시적으로 비활성화하세요
 * 최소 시스템 요구 사항을 충족하는지 확인하세요
 
-**애플리케이션이 실행되지 않습니다:**
+**애플리케이션이 실행되지 않음:**
 
 * Chloros (브라우저) 버전 사용해 보기
 * Windows 10/11 (64비트) 설치 여부 확인

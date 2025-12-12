@@ -125,19 +125,19 @@ print(f"Chloros SDK version: {chloros_sdk.__version__}")
 
 ### 라이선스 활성화
 
-SDK는 Chloros, Chloros(브라우저), Chloros 및 CLI와 동일한 라이선스를 사용합니다. GUI 또는 CLI를 통해 한 번 활성화하십시오:
+SDK는 Chloros, Chloros(브라우저), Chloros 및 CLI와 동일한 라이선스를 사용합니다. GUI 또는 CLI를 통해 한 번만 활성화하십시오:
 
 1. **Chloros 또는 Chloros(브라우저)**를 열고 사용자 탭에서 로그인하십시오. <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> 탭에서 로그인합니다. 또는 **CLI**를 엽니다.
 2. Chloros+ 자격 증명을 입력하고 로그인합니다.
 3. 라이선스는 로컬에 캐시됩니다(재부팅 후에도 유지됨).
 
 {% hint style=&quot;success&quot; %}
-**일회성 설정**: GUI 또는 CLI를 통해 로그인한 후에는 SDK가 자동으로 캐시된 라이선스를 사용합니다. 추가 인증이 필요하지 않습니다!
+**일회성 설정**: GUI 또는 CLI를 통해 로그인한 후에는 SDK가 자동으로 캐시된 라이선스를 사용합니다. 추가 인증이 필요 없습니다!
 {% endhint %}
 
 ### 연결 테스트
 
-SDK가 Chloros에 연결 가능한지 확인:
+SDK가 Chloros에 연결되는지 확인하십시오:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -176,9 +176,9 @@ ChlorosLocal(
 | ------------------------- | ---- | ------------------------- | ------------------------------------- |
 | `api_url`                 | str  | `"http://localhost:5000"` | 로컬 Chloros 백엔드의 URL          |
 | `auto_start_backend`      | bool | `True`                    | 필요 시 백엔드 자동 시작 |
-| `backend_exe`             | str  | `None` (자동 감지)      | 백엔드 실행 파일 경로            |
+| `backend_exe`             | str  | `None` (자동-detect)      | 백엔드 실행 파일 경로            |
 | `timeout`                 | int  | `30`                      | 요청 시간 초과(초)            |
-| `backend_startup_timeout` | int  | `60`                      | 백엔드 시작 시간 초과(초) |
+| `backend_startup_timeout` | int  | `60`                      | 백엔드 시작 시간 초과(초) (초) |
 
 **예시:**
 
@@ -207,9 +207,9 @@ chloros = ChlorosLocal(timeout=60)
 **매개변수:**
 
 | 매개변수      | 유형 | 필수 | 설명                                              |
-| --------| | | | |
-| `project_name` | 문자열 | 예      | 프로젝트 이름                                     |
-| `camera`       | 문자열 | 아니오 | 카메라 템플릿 (예: &quot;Survey3N\_RGN&quot;, &quot;Survey3W\_OCN&quot;) |
+| -------------- | ---- | -------- | -------------------------------------------------------- |
+| `project_name` | str  | Yes      | 프로젝트 이름                                     |
+| `camera`       | str  | No       | 카메라 템플릿 (예: &quot;Survey3N\_RGN&quot;, &quot;Survey3W\_OCN&quot;) |
 
 **반환값:** `dict` - 프로젝트 생성 응답
 
@@ -236,7 +236,7 @@ chloros.create_project("DroneField_A", camera="Survey3N_RGN")
 | `folder_path` | 문자열/경로 | 예      | 이미지 폴더 경로         |
 | `recursive`   | 부울     | 아니오       | 하위 폴더 검색 (기본값: False) |
 
-**반환값:** `dict` - 파일 수 포함 가져오기 결과
+**반환값:** `dict` - 파일 수와 함께 가져오기 결과
 
 **예시:**
 
@@ -258,9 +258,9 @@ chloros.import_images("C:\\DroneImages", recursive=True)
 
 | 매개변수                 | 유형 | 기본값                 | 설명                     |
 | ------------------------- | ---- | ----------------------- | ------------------------------- |
-| `debayer`                 | str  | &quot;고품질 (빠름)&quot; | 디베이어 방법                  |
-| `vignette_correction`     | bool | `True`                  | 비네트 보정 활성화      |
-| `reflectance_calibration` | bool | `True`                  | 반사율 보정 활성화  |
+| `debayer`                 | 문자열 | &quot;고품질 (빠름)&quot; | 디베이어 방법                  |
+| `vignette_correction`     | 부울 | `True`                  | 비네트 보정 활성화      |
+| `reflectance_calibration` | bool | `True`                  | 반사율 보정 활성화      |
 | `indices`                 | list | `None`                  | 계산할 식생 지수 |
 | `export_format`           | 문자열 | &quot;TIFF (16비트)&quot;         | 출력 형식                   |
 | `ppk`                     | 부울 | `False`                 | PPK 보정 활성화          |
@@ -307,11 +307,11 @@ chloros.configure(
 **매개변수:**
 
 | 매개변수           | 유형     | 기본값      | 설명                               |
-| --------------| -------------- | -------- | ------------ | ----------------------------------------- |
+| ------------------- | -------- | ------------ | ----------------------------------------- |
 | `mode`              | str      | `"parallel"` | 처리 모드: &quot;parallel&quot; 또는 &quot;serial&quot;   |
 | `wait`              | bool     | `True`       | 완료 대기                       |
-| `progress_callback` | callable | `None`       | 진행 상황 콜백 함수(진행률, 메시지) |
-| `poll_interval`     | 부동소수점    | `2.0`        | 진행률 폴링 간격 (초)   |
+| `progress_callback` | callable | `None`       | 진행 상황 콜백 함수(progress, msg) |
+| `poll_interval`     | float    | `2.0`        | 진행 상황 폴링 간격 (초)   |
 
 **반환값:** `dict` - 처리 결과
 
@@ -343,7 +343,7 @@ chloros.process(wait=False)
 
 #### `get_config()`
 
-현재 프로젝트 구성 가져오기.
+현재 프로젝트 구성을 가져옵니다.
 
 **반환값:** `dict` - 현재 프로젝트 구성
 
@@ -374,7 +374,7 @@ print(f"URL: {status['url']}")
 
 #### `shutdown_backend()`
 
-백엔드를 종료합니다(SDK로 시작된 경우).
+백엔드를 종료합니다 (SDK로 시작된 경우).
 
 **예시:**
 
@@ -394,15 +394,15 @@ chloros.shutdown_backend()
 
 | 매개변수                 | 유형     | 기본값         | 설명                    |
 | ------------------------- | -------- | --------------- | ------------------------------ |
-| `folder_path`             | str/Path | 필수        | 이미지가 있는 폴더 경로     |
-| `project_name`            | str      | 자동 생성  | 프로젝트 이름                   |
+| `folder_path`             | 문자열/경로 | 필수        | 이미지 포함 폴더 경로     |
+| `project_name`            | 문자열      | 자동 생성    | 프로젝트 이름                   |
 | `camera`                  | 문자열      | `None`          | 카메라 템플릿                |
 | `indices`                 | 목록     | `["NDVI"]`      | 계산할 인덱스           |
 | `vignette_correction`     | bool     | `True`          | 비네팅 보정 활성화     |
 | `reflectance_calibration` | bool     | `True`          | 반사율 보정 활성화 |
 | `export_format`           | str      | &quot;TIFF (16-bit)&quot; | 출력 형식                  |
 | `mode`                    | 문자열      | `"parallel"`    | 처리 모드                |
-| `progress_callback`       | 콜러블    | `None`          | 진행 상황 콜백              |
+| `progress_callback`       | 콜러블 | `None`          | 진행 상황 콜백              |
 
 **반환값:** `dict` - 처리 결과
 
@@ -828,7 +828,7 @@ except ChlorosError as e:
 
 ### 사용자 정의 백엔드 구성
 
-사용자 정의 백엔드 위치 또는 구성을 사용합니다:
+사용자 지정 백엔드 위치 또는 구성을 사용합니다:
 
 ```python
 chloros = ChlorosLocal(
@@ -863,7 +863,7 @@ print("Processing complete!")
 
 ### 메모리 관리
 
-대규모 데이터 세트의 경우 배치 처리:
+대규모 데이터 세트의 경우 배치로 처리합니다:
 
 ```python
 from pathlib import Path
@@ -896,7 +896,7 @@ for i in range(0, len(images), batch_size):
 
 **해결 방법:**
 
-1. Chloros 데스크톱 설치 여부 확인:
+1. Chloros 데스크톱 설치 확인:
 
 ```python
 import os
@@ -904,7 +904,7 @@ backend_path = r"C:\Program Files\MAPIR\Chloros\resources\backend\chloros-backen
 print(f"Backend exists: {os.path.exists(backend_path)}")
 ```
 
-2. Windows 방화벽 차단 여부 확인
+2. Windows 방화벽이 차단하지 않는지 확인
 3. 수동 백엔드 경로 시도:
 
 ```python
@@ -915,11 +915,11 @@ chloros = ChlorosLocal(backend_exe="C:\\Path\\To\\chloros-backend.exe")
 
 ### 라이선스 미검출
 
-**문제:** SDK에서 라이선스 미검출 경고 발생
+**문제:** SDK에서 라이선스 누락 경고
 
 **해결 방법:**
 
-1. Chloros, Chloros (브라우저) 또는 Chloros CLI에 접속하여 로그인하십시오.
+1. Chloros, Chloros (브라우저) 또는 Chloros CLI를 열고 로그인하십시오.
 2. 라이선스가 캐시되었는지 확인하십시오:
 
 ```python
@@ -931,7 +931,7 @@ cache_path = Path(os.getenv('APPDATA')) / 'Chloros' / 'cache'
 print(f"Cache exists: {cache_path.exists()}")
 ```
 
-3. 지원팀에 문의하십시오: info@mapir.camera
+3. 지원팀에 문의: info@mapir.camera
 
 ***
 
@@ -957,17 +957,17 @@ python -c "import sys; print(sys.path)"
 
 ### 처리 시간 초과
 
-**문제:** 처리 시간 초과 발생
+**문제:** 처리 시간 초과
 
 **해결 방법:**
 
-1. 타임아웃 증가:
+1. 시간 초과 값 증가:
 
 ```python
 chloros = ChlorosLocal(timeout=120)  # 2 minutes
 ```
 
-2. 더 작은 배치 처리
+2. 더 작은 배치로 처리
 3. 사용 가능한 디스크 공간 확인
 4. 시스템 리소스 모니터링
 
@@ -984,7 +984,7 @@ chloros = ChlorosLocal(timeout=120)  # 2 minutes
 chloros = ChlorosLocal(api_url="http://localhost:5001")
 ```
 
-또는 충돌 프로세스 찾아 종료:
+또는 충돌하는 프로세스를 찾아 종료:
 
 ```powershell
 # PowerShell
@@ -1016,7 +1016,7 @@ chloros.configure(export_format="PNG (8-bit)")  # Faster than TIFF
 chloros.configure(indices=["NDVI"])  # Not all indices
 ```
 
-4. **SSD에서 처리하기** (HDD가 아닌)
+4. **SSD에서 처리** (HDD 아님)
 
 ***
 
@@ -1033,7 +1033,7 @@ chloros.configure(indices=["NDVI"])  # Not all indices
 
 ### 백그라운드 처리
 
-다른 작업을 위해 Python를 확보:
+Python를 다른 작업에 활용:
 
 ```python
 chloros.process(wait=False)  # Non-blocking
@@ -1119,11 +1119,11 @@ chloros.process(progress_callback=notebook_progress)
 
 ***
 
-## FAQ
+## 자주 묻는 질문
 
 ### Q: SDK 사용 시 인터넷 연결이 필요한가요?
 
-**A:** 초기 라이선스 활성화 시에만 필요합니다. Chloros, Chloros(브라우저) 또는 Chloros CLI를 통해 로그인한 후 라이선스는 로컬에 캐시되어 30일 동안 오프라인에서 작동합니다.
+**A:** 초기 라이선스 활성화 시에만 필요합니다. Chloros, Chloros(브라우저) 또는 Chloros CLI를 통해 로그인한 후에는 라이선스가 로컬에 캐시되어 30일 동안 오프라인에서도 작동합니다.
 
 ***
 
@@ -1132,8 +1132,8 @@ chloros.process(progress_callback=notebook_progress)
 **A:** 가능합니다! 요구 사항:
 
 * Windows Server 2016 이상
-* Chloros 설치 완료 (일회성)
-* 라이선스가 활성화된 기기 (캐시된 라이선스가 서버로 복사됨)
+* Chloros 설치 완료 (1회성)
+* 라이선스 활성화된 기기 존재 (캐시된 라이선스 서버로 복사됨)
 
 ***
 
@@ -1142,16 +1142,16 @@ chloros.process(progress_callback=notebook_progress)
 | 기능         | 데스크톱 GUI | XPROTX 명령줄 인터페이스 | XPROTX XPROTX XPROTX  |
 | --------------- | ----------- | ---------------- | ----------- |
 | **인터페이스**   | 포인트 클릭 | 명령어          | Python API  |
-| **최적 용도**    | 시각적 작업 | 스크립팅        | 통합 |
-| **자동화**  | 제한적     | 양호             | 우수   |
-| **유연성** | 기본       | 양호             | 최상     |
+| **최적 용도**    | 시각적 작업 | 스크립팅        | 통합         |
+| **자동화**  | 제한적     | 양호             | 우수     |
+| **유연성** | 기본적       | 양호             | 최대     |
 | **라이선스**     | Chloros+    | Chloros+         | Chloros+    |
 
 ***
 
-### Q: SDK로 제작한 애플리케이션을 배포할 수 있나요?
+### Q: SDK로 빌드한 애플리케이션을 배포할 수 있나요?
 
-**A:** SDK 코드는 애플리케이션에 통합될 수 있으나:
+**A:** SDK 코드는 애플리케이션에 통합할 수 있지만:
 
 * 최종 사용자는 Chloros가 설치되어 있어야 합니다
 * 최종 사용자는 유효한 Chloros+ 라이선스가 필요합니다
@@ -1197,7 +1197,7 @@ results = process_folder("C:\\Flights\\Today")
 
 ***
 
-### Q: SDK가 비동기/대기(async/await)를 지원하나요?
+### Q: SDK는 비동기/대기(async/await)를 지원하나요?
 
 **A:** 현재 버전은 동기식입니다. 비동기 동작을 원하시면 `wait=False`를 사용하거나 별도 스레드에서 실행하세요:
 
@@ -1225,16 +1225,16 @@ thread.start()
 
 * **이메일**: info@mapir.camera
 * **웹사이트**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
-* **가격**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
+* **가격 정보**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
 
 ### 샘플 코드
 
-여기에 나열된 모든 예제는 테스트를 거쳐 생산 환경에서 바로 사용 가능합니다. 사용 사례에 맞게 복사하여 수정하십시오.
+여기에 나열된 모든 예제는 테스트를 거쳐 실제 사용이 가능합니다. 사용 사례에 맞게 복사하여 수정하여 사용하십시오.
 
 ***
 
 ## 라이선스
 
-**독점 소프트웨어** - Copyright (c) 2025 MAPIR Inc.
+**독점 소프트웨어** - 저작권 (c) 2025 MAPIR Inc.
 
 SDK는 유효한 Chloros+ 구독이 필요합니다. 무단 사용, 배포 또는 수정은 금지됩니다.

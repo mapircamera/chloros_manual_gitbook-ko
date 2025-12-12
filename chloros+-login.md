@@ -40,4 +40,4 @@ GUI에 표시되는 플랜 만료일은 라이선스가 무효화되는 시점�
 
 각 Chloros+ 플랜은 등록 가능한 기기 수가 다릅니다. Chloros+ 계정으로 로그인하는 모든 기기는 등록 기기 수에 포함됩니다. MAPIR 클라우드 계정 페이지에서 기기 이름을 변경하거나 제거할 수 있습니다.
 
-<table><thead><tr><th width="168.5999755859375" align="right">Chloros+ 플랜</th><th align="center">구리</th><th align="center">브론즈</th><th align="center">실버</th><th align="center">골드</th></tr></thead><tbody><tr><td align="right">지원 기기</td><td align="center">2</td><td align="center">2</td><td align="center">5</td><td align="center">10</td></tr></tbody></table>
+<table><thead><tr><th width="168.5999755859375" align="right">XPROTX 플랜</th><th align="center">구리</th><th align="center">브론즈</th><th align="center">실버</th><th align="center">골드</th></tr></thead><tbody><tr><td align="right">지원 기기</td><td align="center">2</td><td align="center">2</td><td align="center">5</td><td align="center">10</td></tr></tbody></table>
