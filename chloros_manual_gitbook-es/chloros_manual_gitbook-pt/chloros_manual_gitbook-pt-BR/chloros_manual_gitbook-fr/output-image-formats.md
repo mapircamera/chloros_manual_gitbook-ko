@@ -4,21 +4,21 @@ metaLinks:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/output-image-formats
 ---
 
-# Output Image Formats
+# 출력 이미지 형식
 
-### TIFF (16-bit)
+### TIFF(16비트)
 
-16-bit (pixel digital number 0 - 65535) TIFF (.tif) format output.
+16비트(픽셀 디지털 숫자 0 - 65535) TIFF(.tif) 형식 출력.
 
-### TIFF (32-bit, Percent %)
+### TIFF(32비트, 퍼센트 %)
 
-32-bit (pixel float 0.0 - 1.0) TIFF (.tif) format output. Pixel values represent reflectance percentages where 0.0 = 0% and 1.0 = 100%.
+32비트(픽셀 부동 0.0 - 1.0) TIFF(.tif) 형식 출력. 픽셀 값은 0.0 = 0% 및 1.0 = 100%인 반사율 백분율을 나타냅니다.
 
-### **JPG (8-bit)**
+### **JPG(8비트)**
 
-8-bit (pixel digital number 0 -255) JPG (.jpg) format output.
+8비트(픽셀 디지털 숫자 0 -255) JPG(.jpg) 형식 출력.
 
-### **PNG (8-bit)**
+### **PNG(8비트)**
 
-8-bit (pixel digital number 0 - 255) PNG (.png) format output. Lossless compression suitable for web viewing and visualization.
+8비트(픽셀 디지털 숫자 0 - 255) PNG(.png) 형식 출력. 웹 보기 및 시각화에 적합한 무손실 압축입니다.
 
