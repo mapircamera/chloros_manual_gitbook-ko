@@ -1,5 +1,5 @@
 ---
-description: Lab-measured panels used to calibrate captured data in post-processing
+description: 포스트 프로세싱에서 캡처된 데이터를 보정하는 데 사용되는 실험실 측정 패널
 metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/calibration-targets
