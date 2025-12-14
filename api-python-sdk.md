@@ -1,6 +1,6 @@
 # API : Python SDK
 
-**Chloros Python SDK** 는 Chloros 이미지 처리 엔진에 대한 프로그래밍 방식 접근을 제공하여 자동화, 맞춤형 워크플로우 및 Python 애플리케이션 및 연구 파이프라인과의 원활한 통합을 가능하게 합니다.
+**Chloros Python SDK** 는 Chloros 이미지 처리 엔진에 대한 프로그래매틱 접근을 제공하여 자동화, 맞춤형 워크플로우 및 Python 애플리케이션 및 연구 파이프라인과의 원활한 통합을 가능하게 합니다.
 
 ### 주요 기능
 
@@ -132,12 +132,12 @@ SDK는 Chloros, Chloros(브라우저), Chloros 및 CLI와 동일한 라이선스
 3. 라이선스는 로컬에 캐시됩니다(재부팅 후에도 유지됨).
 
 {% hint style=&quot;success&quot; %}
-**일회성 설정**: GUI 또는 CLI를 통해 로그인한 후에는 SDK가 자동으로 캐시된 라이선스를 사용합니다. 추가 인증이 필요 없습니다!
+**일회성 설정**: GUI 또는 CLI를 통해 로그인한 후, SDK는 자동으로 캐시된 라이선스를 사용합니다. 추가 인증이 필요 없습니다!
 {% endhint %}
 
 ### 연결 테스트
 
-SDK가 Chloros에 연결되는지 확인하십시오:
+SDK가 Chloros에 연결 가능한지 확인:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -176,9 +176,9 @@ ChlorosLocal(
 | ------------------------- | ---- | ------------------------- | ------------------------------------- |
 | `api_url`                 | str  | `"http://localhost:5000"` | 로컬 Chloros 백엔드의 URL          |
 | `auto_start_backend`      | bool | `True`                    | 필요 시 백엔드 자동 시작 |
-| `backend_exe`             | str  | `None` (자동-detect)      | 백엔드 실행 파일 경로            |
+| `backend_exe`             | str  | `None` (자동 감지)      | 백엔드 실행 파일 경로            |
 | `timeout`                 | int  | `30`                      | 요청 시간 초과(초)            |
-| `backend_startup_timeout` | int  | `60`                      | 백엔드 시작 시간 초과(초) (초) |
+| `backend_startup_timeout` | int  | `60`                      | 백엔드 시작 시간 초과(초) |
 
 **예시:**
 
@@ -209,7 +209,7 @@ chloros = ChlorosLocal(timeout=60)
 | 매개변수      | 유형 | 필수 | 설명                                              |
 | -------------- | ---- | -------- | -------------------------------------------------------- |
 | `project_name` | str  | Yes      | 프로젝트 이름                                     |
-| `camera`       | str  | No       | 카메라 템플릿 (예: &quot;Survey3N\_RGN&quot;, &quot;Survey3W\_OCN&quot;) |
+| `camera`       | 문자열 | 아니오 | 카메라 템플릿 (예: &quot;Survey3N\_RGN&quot;, &quot;Survey3W\_OCN&quot;) |
 
 **반환값:** `dict` - 프로젝트 생성 응답
 
@@ -233,10 +233,10 @@ chloros.create_project("DroneField_A", camera="Survey3N_RGN")
 
 | 매개변수     | 유형     | 필수 | 설명                        |
 | ------------- | -------- | -------- | ---------------------------------- |
-| `folder_path` | 문자열/경로 | 예      | 이미지 폴더 경로         |
-| `recursive`   | 부울     | 아니오       | 하위 폴더 검색 (기본값: False) |
+| `folder_path` | str/Path | Yes      | 이미지 폴더 경로         |
+| `recursive`   | bool     | No       | 하위 폴더 검색 (기본값: False) |
 
-**반환값:** `dict` - 파일 수와 함께 가져오기 결과
+**반환값:** `dict` - 파일 수와 함께 가져온 결과
 
 **예시:**
 
@@ -259,11 +259,11 @@ chloros.import_images("C:\\DroneImages", recursive=True)
 | 매개변수                 | 유형 | 기본값                 | 설명                     |
 | ------------------------- | ---- | ----------------------- | ------------------------------- |
 | `debayer`                 | 문자열 | &quot;고품질 (빠름)&quot; | 디베이어 방법                  |
-| `vignette_correction`     | 부울 | `True`                  | 비네트 보정 활성화      |
-| `reflectance_calibration` | bool | `True`                  | 반사율 보정 활성화      |
+| `vignette_correction`     | bool | `True`                  | 비네트 보정 활성화      |
+| `reflectance_calibration` | bool | `True`                  | 반사율 보정 활성화  |
 | `indices`                 | list | `None`                  | 계산할 식생 지수 |
-| `export_format`           | 문자열 | &quot;TIFF (16비트)&quot;         | 출력 형식                   |
-| `ppk`                     | 부울 | `False`                 | PPK 보정 활성화          |
+| `export_format`           | str  | &quot;TIFF (16-bit)&quot;         | 출력 형식                   |
+| `ppk`                     | bool | `False`                 | PPK 보정 활성화          |
 | `custom_settings`         | dict | `None`                  | 고급 사용자 설정        |
 
 **내보내기 형식:**
@@ -343,7 +343,7 @@ chloros.process(wait=False)
 
 #### `get_config()`
 
-현재 프로젝트 구성을 가져옵니다.
+현재 프로젝트 구성 가져오기.
 
 **반환값:** `dict` - 현재 프로젝트 구성
 
@@ -374,7 +374,7 @@ print(f"URL: {status['url']}")
 
 #### `shutdown_backend()`
 
-백엔드를 종료합니다 (SDK로 시작된 경우).
+백엔드를 종료합니다(SDK로 시작된 경우).
 
 **예시:**
 
@@ -394,15 +394,15 @@ chloros.shutdown_backend()
 
 | 매개변수                 | 유형     | 기본값         | 설명                    |
 | ------------------------- | -------- | --------------- | ------------------------------ |
-| `folder_path`             | 문자열/경로 | 필수        | 이미지 포함 폴더 경로     |
-| `project_name`            | 문자열      | 자동 생성    | 프로젝트 이름                   |
+| `folder_path`             | str/Path | 필수        | 이미지 포함 폴더 경로     |
+| `project_name`            | str      | 자동 생성  | 프로젝트 이름                   |
 | `camera`                  | 문자열      | `None`          | 카메라 템플릿                |
 | `indices`                 | 목록     | `["NDVI"]`      | 계산할 인덱스           |
-| `vignette_correction`     | bool     | `True`          | 비네팅 보정 활성화     |
+| `vignette_correction`     | bool     | `True`          | 비네트 보정 활성화     |
 | `reflectance_calibration` | bool     | `True`          | 반사율 보정 활성화 |
-| `export_format`           | str      | &quot;TIFF (16-bit)&quot; | 출력 형식                  |
+| `export_format`           | 문자열      | &quot;TIFF (16비트)&quot; | 출력 형식                  |
 | `mode`                    | 문자열      | `"parallel"`    | 처리 모드                |
-| `progress_callback`       | 콜러블 | `None`          | 진행 상황 콜백              |
+| `progress_callback`       | 콜러블    | `None`          | 진행 상황 콜백              |
 
 **반환값:** `dict` - 처리 결과
 
@@ -512,7 +512,7 @@ print("Processing complete!")
 
 ***
 
-### 예제 3: 다중 폴더 일괄 처리
+### 예시 3: 여러 폴더 일괄 처리
 
 여러 비행 데이터셋 처리:
 
@@ -660,7 +660,7 @@ logging.info("Processing complete!")
 
 ### 예시 6: 오류 처리
 
-생산 환경용 강력한 오류 처리:
+생산 환경용 견고한 오류 처리:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -712,7 +712,7 @@ else:
 
 ### 예시 7: 명령줄 도구
 
-SDK를 사용한 맞춤형 CLI 도구 구축:
+SDK를 사용하여 사용자 정의 CLI 도구 구축:
 
 ```python
 #!/usr/bin/env python
@@ -828,7 +828,7 @@ except ChlorosError as e:
 
 ### 사용자 정의 백엔드 구성
 
-사용자 지정 백엔드 위치 또는 구성을 사용합니다:
+사용자 정의 백엔드 위치 또는 구성을 사용합니다:
 
 ```python
 chloros = ChlorosLocal(
@@ -863,7 +863,7 @@ print("Processing complete!")
 
 ### 메모리 관리
 
-대규모 데이터 세트의 경우 배치로 처리합니다:
+대규모 데이터 세트의 경우 배치 처리:
 
 ```python
 from pathlib import Path
@@ -896,7 +896,7 @@ for i in range(0, len(images), batch_size):
 
 **해결 방법:**
 
-1. Chloros 데스크톱 설치 확인:
+1. Chloros 데스크톱 설치 여부 확인:
 
 ```python
 import os
@@ -904,7 +904,7 @@ backend_path = r"C:\Program Files\MAPIR\Chloros\resources\backend\chloros-backen
 print(f"Backend exists: {os.path.exists(backend_path)}")
 ```
 
-2. Windows 방화벽이 차단하지 않는지 확인
+2. Windows 방화벽 차단 여부 확인
 3. 수동 백엔드 경로 시도:
 
 ```python
@@ -915,7 +915,7 @@ chloros = ChlorosLocal(backend_exe="C:\\Path\\To\\chloros-backend.exe")
 
 ### 라이선스 미검출
 
-**문제:** SDK에서 라이선스 누락 경고
+**문제:** SDK가 라이선스 미검출을 경고함
 
 **해결 방법:**
 
@@ -931,7 +931,7 @@ cache_path = Path(os.getenv('APPDATA')) / 'Chloros' / 'cache'
 print(f"Cache exists: {cache_path.exists()}")
 ```
 
-3. 지원팀에 문의: info@mapir.camera
+3. 지원팀에 문의하십시오: info@mapir.camera
 
 ***
 
@@ -984,7 +984,7 @@ chloros = ChlorosLocal(timeout=120)  # 2 minutes
 chloros = ChlorosLocal(api_url="http://localhost:5001")
 ```
 
-또는 충돌하는 프로세스를 찾아 종료:
+또는 충돌하는 프로세스 찾아 종료:
 
 ```powershell
 # PowerShell
@@ -1033,7 +1033,7 @@ chloros.configure(indices=["NDVI"])  # Not all indices
 
 ### 백그라운드 처리
 
-Python를 다른 작업에 활용:
+Python를 다른 작업에 활용하기:
 
 ```python
 chloros.process(wait=False)  # Non-blocking
@@ -1119,11 +1119,11 @@ chloros.process(progress_callback=notebook_progress)
 
 ***
 
-## 자주 묻는 질문
+## FAQ
 
 ### Q: SDK 사용 시 인터넷 연결이 필요한가요?
 
-**A:** 초기 라이선스 활성화 시에만 필요합니다. Chloros, Chloros(브라우저) 또는 Chloros CLI를 통해 로그인한 후에는 라이선스가 로컬에 캐시되어 30일 동안 오프라인에서도 작동합니다.
+**A:** 초기 라이선스 활성화 시에만 필요합니다. Chloros, Chloros(브라우저) 또는 Chloros CLI를 통해 로그인한 후 라이선스는 로컬에 캐시되어 30일 동안 오프라인에서 작동합니다.
 
 ***
 
@@ -1132,14 +1132,14 @@ chloros.process(progress_callback=notebook_progress)
 **A:** 가능합니다! 요구 사항:
 
 * Windows Server 2016 이상
-* Chloros 설치 완료 (1회성)
-* 라이선스 활성화된 기기 존재 (캐시된 라이선스 서버로 복사됨)
+* Chloros 설치 완료 (일회성)
+* 라이선스 활성화된 기기 (캐시된 라이선스 서버로 복사)
 
 ***
 
 ### Q: 데스크톱, CLI, SDK의 차이점은 무엇인가요?
 
-| 기능         | 데스크톱 GUI | XPROTX 명령줄 인터페이스 | XPROTX XPROTX XPROTX  |
+| 기능         | 데스크톱 GUI | XPROTX 명령줄 인터페이스 | XPROTX XPROTX  |
 | --------------- | ----------- | ---------------- | ----------- |
 | **인터페이스**   | 포인트 클릭 | 명령어          | Python API  |
 | **최적 용도**    | 시각적 작업 | 스크립팅        | 통합         |
@@ -1149,9 +1149,9 @@ chloros.process(progress_callback=notebook_progress)
 
 ***
 
-### Q: SDK로 빌드한 애플리케이션을 배포할 수 있나요?
+### Q: SDK로 제작한 앱을 배포할 수 있나요?
 
-**A:** SDK 코드는 애플리케이션에 통합할 수 있지만:
+**A:** SDK 코드는 애플리케이션에 통합할 수 있으나:
 
 * 최종 사용자는 Chloros가 설치되어 있어야 합니다
 * 최종 사용자는 유효한 Chloros+ 라이선스가 필요합니다
@@ -1183,7 +1183,7 @@ Project_Path/
 
 ### Q: 예약 실행되는 Python 스크립트로 이미지를 처리할 수 있나요?
 
-**A:** 네! Windows 작업 스케줄러와 Python 스크립트를 함께 사용하세요:
+**A:** 네! Python 스크립트와 함께 Windows 작업 스케줄러를 사용하세요:
 
 ```python
 # scheduled_processing.py
@@ -1224,12 +1224,12 @@ thread.start()
 ### 지원 채널
 
 * **이메일**: info@mapir.camera
-* **웹사이트**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
-* **가격 정보**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
+* **웹사이트**: [https://www.mapir.camera/community/contact](https://example.com)(https://www.mapir.camera/community/contact)
+* **가격**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
 
 ### 샘플 코드
 
-여기에 나열된 모든 예제는 테스트를 거쳐 실제 사용이 가능합니다. 사용 사례에 맞게 복사하여 수정하여 사용하십시오.
+여기에 나열된 모든 예제는 테스트를 거쳐 생산 환경에서 바로 사용 가능합니다. 사용 사례에 맞게 복사하여 수정하여 사용하십시오.
 
 ***
 

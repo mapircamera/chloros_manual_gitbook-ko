@@ -3,7 +3,6 @@ metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/download
 ---
-
 # 다운로드
 
 다중 스펙트럼 이미지 처리를 시작하려면 Windows용 최신 버전 Chloros를 다운로드하십시오.
@@ -15,8 +14,8 @@ metaLinks:
 | **운영 체제** | Windows 10 (64비트)             | Windows 11 (64비트)             |
 | **프로세서**        | Intel Core i5 또는 동급     | Intel Core i7 이상         |
 | **메모리 (RAM)**     | 8GB                             | 16GB 이상                    |
-| **그래픽 카드**    | DirectX 11 호환           | 4GB+ VRAM 탑재 NVIDIA GPU       |
-| **저장 공간**          | 2GB 여유 공간                  | 10GB+ 여유 공간 SSD       |
+| **그래픽 카드**    | DirectX 11 호환           | 4GB 이상 VRAM 탑재 NVIDIA GPU       |
+| **저장 공간**          | 2GB 여유 공간                  | 10GB 이상 여유 공간 SSD       |
 | **디스플레이**          | 1920x1080                       | 2560x1440 이상             |
 | **인터넷**         | 라이선스 활성화 필수 | 라이선스 활성화 필수 |
 
@@ -30,9 +29,11 @@ metaLinks:
 
 ### <a href="https://drive.google.com/file/d/1HjwrUY4M7HGxDbMybO7iPe_6JoHnUGr4/view?usp=drive_link" class="button primary">Chloros 다운로드</a>
 
-### 최신 안정 버전
+### 최신 안정 <a href="https://drive.google.com/file/d/1HjwrUY4M7HGxDbMybO7iPe_6JoHnUGr4/view?usp=drive_link" class="button primary">버전</a>
 
-**Windows용 Chloros 설치 프로그램**
+
+
+**Chloros 설치 프로그램 (Windows용)**
 
 * **버전**: 1.0.3
 * **출시일**: 2025년 12월 ?일
@@ -54,11 +55,11 @@ metaLinks:
 
 ***
 
-## 추가 리소스
+## 추가 자료
 
 ### Python SDK
 
-개발자 및 자동화 워크플로를 위해 Chloros Python SDK를 설치하십시오:
+개발자 및 자동화 워크플로를 위해 다음을 설치하십시오:
 
 ```bash
 pip install chloros-sdk
@@ -66,11 +67,11 @@ pip install chloros-sdk
 
 **문서**: [API: Python SDK](api-python-sdk.md)
 
-**필수 조건**: Chloros 데스크톱 설치 완료, Chloros+ 라이선스 필요
+**필요 사항**: Chloros 데스크톱 설치 필수, Chloros+ 라이선스 필요
 
 ***
 
-## 포함 항목
+## 포함 내용
 
 Chloros 설치에는 다음이 포함됩니다:
 
@@ -84,10 +85,10 @@ Chloros 설치에는 다음이 포함됩니다:
 
 ## Chloros+로 업그레이드
 
-Chloros+ 구독으로 고급 기능 활용:
+Chloros+ 구독으로 고급 기능을 활용하세요:
 
 * 🚀 **멀티스레드 처리** - 병렬 이미지 처리
-* ⚡ **GPU(CUDA) 가속** - NVIDIA GPU 성능 활용
+* ⚡ **GPU(CUDA) 가속화** - NVIDIA GPU 성능 활용
 * 💻 **CLI 액세스** - 명령줄 도구로 자동화
 * 🐍 **Python SDK** - 프로그래매틱 API 접근
 * 📱 **다중 기기** - 2~10개 이상 기기에서 사용 가능 (플랜에 따라 다름)
@@ -99,25 +100,25 @@ Chloros+ 구독으로 고급 기능 활용:
 
 ### 문제 해결
 
-**설치 실패 시 오류 메시지:**
+**설치 중 오류 메시지가 발생합니다:**
 
 * 관리자 권한이 있는지 확인하세요
 * 바이러스 백신 소프트웨어를 일시적으로 비활성화하세요
 * 최소 시스템 요구 사항을 충족하는지 확인하세요
 
-**애플리케이션이 실행되지 않음:**
+**애플리케이션이 실행되지 않습니다:**
 
 * Chloros (브라우저) 버전 사용해 보기
 * Windows 10/11 (64비트) 설치 여부 확인
 * 그래픽 드라이버 업데이트
 * Windows 이벤트 뷰어에서 오류 세부 정보 확인
-* 오류 로그와 함께 지원팀에 문의하십시오
+* 오류 로그와 함께 지원팀에 문의하세요
 
 **라이선스 활성화 문제:**
 
-* 인터넷 연결이 활성화되었는지 확인하십시오
-* [https://cloud.mapir.camera](https://cloud.mapir.camera)에서 자격 증명을 확인하십시오
-* 방화벽이 Chloros를 차단하지 않는지 확인하십시오
+* 인터넷 연결이 활성화되었는지 확인하세요
+* [https://cloud.mapir.camera](https://cloud.mapir.camera)에서 인증 정보를 확인하세요
+* 방화벽이 Chloros를 차단하지 않는지 확인하세요
 * 자세한 안내는 [Chloros+ 로그인](chloros+-login.md) 참조
 
 ### 지원 받기
@@ -166,3 +167,5 @@ Chloros+ 구독으로 고급 기능 활용:
 **무료 버전**: 기능 제한이 있는 개인 및 상업적 사용 가능
 
 **Chloros+**: 고급 기능 및 상업적 배포를 위한 구독 기반 라이선스
+
+<figure><img src=".gitbook/assets/t3-125_2.jpg" alt=""><figcaption></figcaption></figure>

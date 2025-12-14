@@ -14,9 +14,9 @@ Chloros 및 Chloros(브라우저)를 처음 실행하면 백엔드가 시작됩�
 
 활성화 시, 시작 처리 버튼은 이미지 처리 파이프라인을 시작합니다.
 
-### <img src=".gitbook/assets/image (4).png" alt="" data-size="line"> 진행률 표시줄 <img src=".gitbook/assets/image (5).png" alt="" data-size="line">모든 파일을 순차적으로 처리하는 무료 Chloros 모드에서는 진행률 표시줄이 두 단계(대상 감지 및 처리)를 표시합니다.
+### <img src=".gitbook/assets/image (4).png" alt="" data-size="line"> 진행률 표시줄 <img src=".gitbook/assets/image (5).png" alt="" data-size="line">모든 파일을 순차적으로 처리하는 무료 Chloros 모드에서는 진행률 표시줄이 2단계(대상 감지 및 처리)를 표시합니다.
 
-모든 파일을 동시에 처리하는 유료 Chloros+ 라이선스 모드에서는 진행률 표시줄이 네 단계(감지, 분석, 보정, 내보내기)를 표시합니다. Chloros+ 진행률 표시줄 위에 마우스 커서를 올리면 확장된 4단계 진행률 패널이 드롭다운되어 진행 상황을 확인할 수 있습니다. 상단 진행률 표시줄을 클릭하면 드롭다운 패널이 고정되고, 다시 클릭하면 해제됩니다.
+모든 파일을 동시에 처리하는 유료 Chloros+ 라이선스 모드에서는 진행률 표시줄이 4단계(감지, 분석, 보정, 내보내기)를 표시합니다. Chloros+ 진행률 표시줄 위에 마우스 커서를 올리면 확장된 4단계 진행률 패널이 드롭다운되어 진행 상황을 확인할 수 있습니다. 상단 진행률 표시줄을 클릭하면 드롭다운 패널이 고정되고, 다시 클릭하면 해제됩니다.
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
 
@@ -38,7 +38,7 @@ Chloros 및 Chloros(브라우저)를 처음 실행하면 백엔드가 시작됩�
 
 #### <img src=".gitbook/assets/icon_log.JPG" alt="" data-size="line"> 디버그 로그
 
-문제가 발생할 경우 디버그 출력 로그를 검토하십시오. 로그를 복사/다운로드하여 [MAPIR 지원팀](https://www.mapir.camera/community/contact)에 보내 도움을 받으십시오.
+문제가 발생할 경우 디버그 출력 로그를 검토하십시오. 로그를 복사/다운로드하여 [MAPIR 지원](https://www.mapir.camera/community/contact)으로 보내 도움을 받으십시오.
 
 #### <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> [사용자 로그인](chloros+-login.md)
 
