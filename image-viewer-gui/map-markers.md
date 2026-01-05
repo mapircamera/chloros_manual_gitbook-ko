@@ -86,7 +86,7 @@ GPS 데이터가 포함된 각 이미지는 지도 상의 마커로 표시됩니
 
 지도 레이어 유형을 선택할 수 있습니다(왼쪽부터 오른쪽 순):
 
- <img src="../.gitbook/assets/image (23).png" alt="" data-size="original">### 지형
+ <img src="../.gitbook/assets/image (23).png" alt="" data-size="line">### 지형
 
 고도 프로필과 세부 정보(도로 등)가 포함된 지도 타일 표시
 

@@ -352,7 +352,7 @@ Exponential index:
 (NIR / Red) ^ 2
 ```
 
-{% hint style=&quot;warning&quot; %}
+{% endhint %}
 
 ****공식 유효성 검사**: 카메라에서 사용 가능한 밴드를 공식에 사용했는지 확인하십시오. 예를 들어, RedEdge는 RedEdge 필터가 장착된 카메라에서만 사용 가능합니다.
 {% endhint %}

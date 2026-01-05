@@ -6,7 +6,7 @@
 
 로그인 시 계정 정보가 표시됩니다:
 
-<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>## CLI 로그인
+<figure><img src=".gitbook/assets/user_account.JPG" alt="" data-size="line"><figcaption></figcaption></figure>## CLI 로그인
 
 Chloros+ 자격 증명으로 로그인하여 CLI 처리를 활성화하세요.
 
