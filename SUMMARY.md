@@ -29,6 +29,8 @@
 
 ## 이미지 뷰어 (GUI)
 
+* [이미지 그리드](image-viewer-gui/image-grid.md)
 * [이미지 전체 화면 열기](image-viewer-gui/opening-an-image-full-screen.md)
 * [이미지 레이어](image-viewer-gui/image-layers.md)
 * [지수/LUT 샌드박스](image-viewer-gui/index-lut-sandbox.md)
+* [지도 마커](image-viewer-gui/map-markers.md)
