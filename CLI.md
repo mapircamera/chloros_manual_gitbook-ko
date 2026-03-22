@@ -1,48 +1,66 @@
 # CLI : 명령줄
 
-<figure><img src=".gitbook/assets/cli.JPG" alt=""><figcaption></figcaption></figure>**Chloros CLI**는 Chloros 이미지 처리 엔진에 대한 강력한 명령줄 접근을 제공하여, 이미징 워크플로우의 자동화, 스크립팅 및 헤드리스 운영을 가능하게 합니다.
+<figure><img src=".gitbook/assets/cli.JPG" alt=""><figcaption></figcaption></figure>**Chloros CLI**는 Chloros 이미지 처리 엔진에 대한 강력한 명령줄 액세스 기능을 제공하여, 이미징 워크플로우를 위한 자동화, 스크립팅 및 헤드리스 운영을 가능하게 합니다.
 
 ### 주요 기능
 
-* 🚀 **자동화** - 다중 데이터셋의 배치 처리 스크립팅
-* 🔗 **통합** - 기존 워크플로우 및 파이프라인에 임베드
+* 🚀 **자동화** - 여러 데이터 세트의 일괄 처리를 스크립트로 자동화
+* 🔗 **통합** - 기존 워크플로우 및 파이프라인에 원활하게 통합
 * 💻 **헤드리스 운영** - GUI 없이 실행
 * 🌍 **다국어 지원** - 38개 언어 지원
-* ⚡ **병렬 처리** - CPU에 따라 동적 확장 (최대 16개 병렬 작업자)
+* ⚡ **병렬 처리** - [동적 컴퓨팅 적응(Dynamic Compute Adaptation)](processing-architecture/dynamic-compute-adaptation.md)이 하드웨어에 맞게 자동으로 최적화합니다
 
 ### 요구 사항
 
-| 요구 사항          | 세부 사항                                                             |
+| 요구 사항          | 세부 정보                                                             |
 | -------------------- | ------------------------------------------------------------------- |
-| **운영 체제** | Windows 10/11 (64비트)                                              |
+| **운영 체제** | Windows 10/11 (64비트), Linux x86_64 (amd64), Linux arm64 (NVIDIA Jetson JetPack 6) |
 | **라이선스**          | Chloros+ ([유료 플랜 필요](https://cloud.mapir.camera/pricing)) |
-| **메모리**           | 최소 8GB RAM (권장 16GB)                                  |
-| **인터넷**         | 라이선스 활성화 필수                                     |
-| **디스크 공간**       | 프로젝트 규모에 따라 다름                                              |
+| **메모리**           | 최소 8GB RAM (16GB 권장)                                  |
+| **인터넷**         | 라이선스 활성화에 필요                                     |
+| **디스크 공간**       | 프로젝트 크기에 따라 다름                                              |
 
-{% hint style=&quot;warning&quot; %}
-**라이선스 요구 사항**: CLI 사용에는 유료 Chloros+ 구독이 필요합니다. 표준(무료) 플랜은 CLI 접근 권한이 없습니다. [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)를 방문하여 업그레이드하세요.
+{% hint style="warning" %}
+**라이선스 요구 사항**: CLI를 사용하려면 유료 Chloros+ 구독이 필요합니다. 스탠다드(무료) 요금제에서는 CLI에 액세스할 수 없습니다. 업그레이드를 원하시면 [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)를 방문하십시오.
 {% endhint %}
 
 ## 빠른 시작
 
 ### 설치
 
-CLI는 Chloros 설치 프로그램에 자동으로 포함됩니다:
+#### Windows
 
-1. **Chloros 설치 프로그램.exe**를 다운로드하여 실행하세요
-2. 설치 마법사를 완료하세요
-3. CLI 설치 위치: `C:\Program Files\Chloros\resources\cli\chloros-cli.exe`
+CLI는 Chloros 설치 프로그램에 자동으로 포함되어 있습니다:
 
-{% hint style=&quot;success&quot; %}
-설치 프로그램이 자동으로 `chloros-cli`를 시스템 PATH에 추가합니다. 설치 후 터미널을 재시작하십시오.
+1. **Chloros Installer.exe**를 다운로드하여 실행하십시오.
+2. 설치 마법사를 완료하십시오.
+3. CLI가 다음 위치에 설치되었습니다: `C:\Program Files\Chloros\resources\cli\chloros-cli.exe`
+
+{% hint style="success" %}
+설치 프로그램이 시스템 PATH에 `chloros-cli`를 자동으로 추가합니다. 설치 후 터미널을 재시작하십시오.
 {% endhint %}
+
+#### Linux
+
+사용 중인 아키텍처에 맞는 `.deb` 패키지를 설치하십시오:
+
+```bash
+# Linux amd64
+sudo dpkg -i chloros-amd64.deb
+
+# Linux arm64 (NVIDIA Jetson, JetPack 6)
+sudo dpkg -i chloros-arm64-jp6.deb
+```
+
+자세한 Linux 설정 방법은 [Linux 설치](linux/linux-installation.md)를 참조하십시오.
 
 ### 초기 설정
 
-CLI 사용 전, Chloros+ 라이선스를 활성화하세요:
+CLI를 사용하기 전에 Chloros+ 라이선스를 활성화하십시오:
 
-```bash
+**Windows:**
+
+```powershell
 # Login with your Chloros+ account
 chloros-cli login user@example.com 'your_password'
 
@@ -53,12 +71,33 @@ chloros-cli status
 chloros-cli process "C:\Images\Dataset001"
 ```
 
+**Linux:**
+
+```bash
+# Login with your Chloros+ account
+chloros-cli login user@example.com 'your_password'
+
+# Check license status
+chloros-cli status
+
+# Process your first project
+chloros-cli process ~/images/dataset001
+```
+
 ### 기본 사용법
 
-기본 설정으로 폴더 처리:
+기본 설정으로 폴더를 처리합니다:
+
+**Windows:**
 
 ```powershell
 chloros-cli process "C:\Images\Dataset001"
+```
+
+**Linux:**
+
+```bash
+chloros-cli process ~/images/dataset001
 ```
 
 ***
@@ -77,7 +116,7 @@ chloros-cli [global-options] <command> [command-options]
 
 ### `process` - 이미지 처리
 
-보정된 폴더 내 이미지 처리.
+보정 기능을 사용하여 폴더 내의 이미지를 처리합니다.
 
 **구문:**
 
@@ -87,27 +126,34 @@ chloros-cli process <input-folder> [options]
 
 **예시:**
 
-```powershell
+```bash
+# Windows
 chloros-cli process "C:\Datasets\Survey_001" --vignette --reflectance
+
+# Linux
+chloros-cli process ~/datasets/survey_001 --vignette --reflectance
 ```
 
-#### 처리 명령 옵션
+#### 명령어 옵션
 
 | 옵션                | 유형    | 기본값        | 설명                                                                            |
 | --------------------- | ------- | -------------- | -------------------------------------------------------------------------------------- |
 | `<input-folder>`      | 경로    | _필수_     | RAW/JPG 다중 스펙트럼 이미지가 포함된 폴더                                         |
 | `-o, --output`        | 경로    | 입력과 동일  | 처리된 이미지의 출력 폴더                                                     |
-| `-n, --project-name`  | 문자열  | 자동 생성 | 사용자 정의 프로젝트 이름                                                                    |
+| `-n, --project-name`  | 문자열  | 자동 생성 | 사용자 지정 프로젝트 이름                                                                    |
 | `--vignette`          | 플래그    | 활성화        | 비네팅 보정 활성화                                                             |
 | `--no-vignette`       | 플래그    | -              | 비네팅 보정 비활성화                                                            |
-| `--reflectance`       | 플래그    | 활성화        | 반사율 보정 활성화                                                         |
+| `--reflectance`       | 플래그    | 활성화됨        | 반사율 보정 활성화                                                         |
 | `--no-reflectance`    | 플래그    | -              | 반사율 보정 비활성화                                                        |
-| `--ppk`               | 플래그    | 비활성화       | .daq 광센서 데이터로부터 PPK 보정 적용                                      |
-| `--format`            | 선택      | TIFF (16비트)  | 출력 형식: `TIFF (16-bit)`, `TIFF (32-bit, Percent)`, `PNG (8-bit)`, `JPG (8-bit)` |
+| `--ppk`               | 플래그    | 비활성화       | .daq 광 센서 데이터로부터 PPK 보정 적용                                      |
+| `--format`            | 선택  | TIFF (16비트)  | 출력 형식: `TIFF (16-bit)`, `TIFF (32-bit, Percent)`, `PNG (8-bit)`, `JPG (8-bit)` |
 | `--min-target-size`   | 정수 | 자동           | 보정 패널 감지를 위한 최소 대상 크기(픽셀)                          |
 | `--target-clustering` | 정수 | 자동           | 대상 클러스터링 임계값(0-100)                                                    |
-| `--exposure-pin-1`    | 문자열  | 없음           | 카메라 모델별 노출 고정 (핀 1)                                                 |
-| `--exposure-pin-2`    | 문자열  | 없음           | 카메라 모델별 노출 고정 (핀 2)                                                 |
+| `--debayer`           | 선택  | `standard`     | 디베이어 방법: `standard` 또는 `texture-aware` (Chloros+ 전용)                          |
+| `--target`, `--targets` | 플래그  | 비활성화       | &quot;target&quot; 또는 &quot;targets&quot; 하위 폴더에서만 보정 대상 검색 (처리 속도 향상) |
+| `--indices`           | 목록    | 없음           | 계산할 식생 지수 (예: `--indices NDVI NDRE GNDVI`)                    |
+| `--exposure-pin-1`    | 문자열  | 없음           | 카메라 모델별 노출값 고정 (핀 1)                                                 |
+| `--exposure-pin-2`    | 문자열  | 없음           | 카메라 모델의 노출 고정 (핀 2)                                                 |
 | `--recal-interval`    | 정수 | 자동           | 재보정 간격 (초)                                                      |
 | `--timezone-offset`   | 정수 | 0              | 시간대 오프셋 (시간)                                                               |
 
@@ -125,17 +171,17 @@ chloros-cli login <email> <password>
 
 **예시:**
 
-```powershell
+```bash
 chloros-cli login user@example.com 'MyP@ssw0rd123'
 ```
 
-{% hint style=&quot;warning&quot; %}
-**특수 문자**: `$`, `!` 또는 공백과 같은 문자가 포함된 비밀번호는 작은 따옴표(&#x27;&#x27;)로 묶어 사용하십시오.
+{% hint style="warning" %}
+**특수 문자**: `$`, `!` 또는 공백과 같은 문자가 포함된 비밀번호는 작은 따옴표로 묶어 주십시오.
 {% endhint %}
 
 **출력:**<figure><img src=".gitbook/assets/cli login_w.JPG" alt=""><figcaption></figcaption></figure>***
 
-### `logout` - 저장된 자격 증명 삭제
+### `logout` - 자격 증명 삭제
 
 저장된 자격 증명을 삭제하고 계정에서 로그아웃합니다.
 
@@ -147,7 +193,7 @@ chloros-cli logout
 
 **예시:**
 
-```powershell
+```bash
 chloros-cli logout
 ```
 
@@ -158,7 +204,7 @@ chloros-cli logout
 ℹ Credentials cleared from cache
 ```
 
-{% hint style=&quot;info&quot; %}
+{% hint style="info" %}
 **SDK 사용자**: Python SDK는 또한 Python 스크립트 내에서 자격 증명을 지우는 프로그래밍 방식의 `logout()` 메서드를 제공합니다. 자세한 내용은 [Python SDK 문서](api-python-sdk.md#logout)를 참조하십시오.
 {% endhint %}
 
@@ -176,7 +222,7 @@ chloros-cli status
 
 **예시:**
 
-```powershell
+```bash
 chloros-cli status
 ```
 
@@ -195,9 +241,9 @@ chloros-cli status
 
 ***
 
-### `export-status` - 내보내기 진행 상태 확인
+### `export-status` - 내보내기 진행 상황 확인
 
-처리 중 또는 처리 후 스레드 4의 내보내기 진행 상태를 모니터링합니다.
+처리 중이거나 처리 후 스레드 4의 내보내기 진행 상황을 모니터링합니다.
 
 **구문:**
 
@@ -207,11 +253,11 @@ chloros-cli export-status
 
 **예시:**
 
-```powershell
+```bash
 chloros-cli export-status
 ```
 
-**사용 사례:** 처리 실행 중 이 명령을 호출하여 내보내기 진행 상황을 확인합니다.***
+**사용 사례:** 처리 중일 때 이 명령을 호출하여 내보내기 진행 상황을 확인합니다.***
 
 ### `language` - 인터페이스 언어 관리
 
@@ -232,7 +278,7 @@ chloros-cli language <language-code>
 
 **예시:**
 
-```powershell
+```bash
 # View current language
 chloros-cli language
 
@@ -248,20 +294,20 @@ chloros-cli language ja
 
 #### 지원 언어 (총 38개)
 
-| 코드    | 언어               | 기본 언어명      |
+| 코드    | 언어              | 원어명      |
 | ------- | --------------------- | ---------------- |
 | `en`    | 영어               | English          |
 | `es`    | 스페인어               | Español          |
 | `pt`    | 포르투갈어            | Português        |
 | `fr`    | 프랑스어                | Français         |
 | `de`    | 독일어                | Deutsch          |
-| `it`    | 이탈리아어               | Italiano         |
+| `it`    | 이탈리아어              | Italiano         |
 | `ja`    | 일본어              | 日本語              |
 | `ko`    | 한국어                | 한국어              |
 | `zh`    | 중국어(간체)  | 简体中文             |
 | `zh-TW` | 중국어(번체) | 繁體中文             |
 | `ru`    | 러시아어               | Русский          |
-| `nl`    | 네덜란드어                 | Nederlands       |
+| `nl`    | 네덜란드어                | Nederlands       |
 | `ar`    | 아랍어                | العربية          |
 | `pl`    | 폴란드어                | Polski           |
 | `tr`    | 터키어               | Türkçe           |
@@ -274,30 +320,30 @@ chloros-cli language ja
 | `no`    | 노르웨이어             | Norsk            |
 | `fi`    | 핀란드어               | Suomi            |
 | `el`    | 그리스어                 | Ελληνικά         |
-| `cs`    | 체코어                 | Čeština          |
+| `cs`    | 체코어                | Čeština          |
 | `hu`    | 헝가리어             | Magyar           |
 | `ro`    | 루마니아어              | Română           |
 | `uk`    | 우크라이나어             | Українська       |
 | `pt-BR` | 브라질 포르투갈어  | Português Brasileiro |
 | `zh-HK` | 광둥어             | 粵語             |
 | `ms`    | 말레이어                 | Bahasa Melayu    |
-| `sk`    | 슬로바키아어                | Slovenčina       |
-| `bg`    | 불가리아어             | Български        |
-| `hr`    | 크로아티아어              | Hrvatski         |
+| `sk`    | 슬로바키아어                | 슬로베니아어       |
+| `bg`    | 불가리아어             | 불가리아어        |
+| `hr`    | 크로아티아어              | 크로아티아어         |
 | `lt`    | 리투아니아어            | Lietuvių         |
 | `lv`    | 라트비아어               | Latviešu         |
-| `et`    | 에스토니아어         | 에스토니아어      |
-| `sl`    | 슬로베니아어         | 슬로베니아어      |
+| `et`    | 에스토니아어              | Eesti            |
+| `sl`    | 슬로베니아어             | Slovenščina      |
 
-{% hint style=&quot;success&quot; %}
-**자동 지속성**: 귀하의 언어 선호도는 `~/.chloros/cli_language.json`에 저장되며 모든 세션에 걸쳐 유지됩니다.
+{% hint style="success" %}
+**자동 저장**: 언어 기본 설정은 `~/.chloros/cli_language.json`에 저장되며 모든 세션에서 유지됩니다.
 {% endhint %}
 
 ***
 
 ### `set-project-folder` - 기본 프로젝트 폴더 설정
 
-기본 프로젝트 폴더 위치 변경 (GUI와 공유).
+기본 프로젝트 폴더 위치를 변경합니다(Windows의 GUI와 공유됨).
 
 **구문:**
 
@@ -307,8 +353,12 @@ chloros-cli set-project-folder <folder-path>
 
 **예시:**
 
-```powershell
+```bash
+# Windows
 chloros-cli set-project-folder "C:\Projects\2025"
+
+# Linux
+chloros-cli set-project-folder ~/projects/2025
 ```
 
 ***
@@ -325,14 +375,19 @@ chloros-cli get-project-folder
 
 **예시:**
 
-```powershell
+```bash
 chloros-cli get-project-folder
 ```
 
 **출력:**
 
 ```
+
+# Windows
 ℹ Current project folder: C:\Projects\2025
+
+# Linux
+ℹ Current project folder: /home/user/.local/share/chloros/projects
 ```
 
 ***
@@ -349,61 +404,131 @@ chloros-cli reset-project-folder
 
 ***
 
-## 글로벌 옵션
+### `selftest` - 시스템 진단 실행
+
+시스템 구성을 확인하기 위해 7가지 진단 검사를 실행합니다.
+
+**구문:**
+
+```bash
+chloros-cli selftest
+```
+
+**실행되는 진단 항목:**
+
+1. 버전 확인
+2. 포트 사용 가능 여부 (5000)
+3. 백엔드 시작
+4. API 연결 테스트
+5. 시스템 정보 및 GPU 감지
+6. 노이즈 제거기 모델 확인
+7. CUDA 사용 가능 여부 확인
+
+{% hint style="info" %}
+**문제 해결에 유용함**: 설치 후 `selftest`를 실행하여 시스템이 올바르게 구성되었는지 확인하십시오. 특히 GPU 및 CUDA 설정을 확인해야 할 수 있는 Linux/Jetson의 경우 더욱 그렇습니다.
+{% endhint %}
+
+***
+
+### `update` - 업데이트 확인 (Linux 전용)
+
+Linux 시스템에서 CLI 업데이트를 확인하고 설치합니다.
+
+**구문:**
+
+```bash
+# Check for updates without installing
+chloros-cli update --check
+
+# Check for and install updates
+chloros-cli update
+```
+
+| 옵션    | 설명                        |
+| --------- | ---------------------------------- |
+| `--check` | 업데이트 확인만 수행하고 설치하지 않음 |
+
+{% hint style="info" %}
+이 명령은 Linux에서만 사용할 수 있습니다. Windows에서는 설치 프로그램을 통해 업데이트가 제공됩니다.
+{% endhint %}
+
+***
+
+## 전역 옵션
 
 이 옵션들은 모든 명령어에 적용됩니다:
 
-| 옵션          | 유형    | 기본값       | 설명                                                 |
-| --------------- | ------- | ------------- | ------------------------------------------------ |
-| `--backend-exe` | 경로    | 자동 감지 | 백엔드 실행 파일 경로                       |
-| `--port`        | 정수 | 5000          | 백엔드 API 포트 번호                          |
-| `--restart`     | 플래그    | -             | 백엔드 강제 재시작 (기존 프로세스 종료) |
-| `--version`     | 플래그    | -             | 버전 정보 표시 후 종료                |
-| `--help`        | 플래그    | -             | 도움말 정보 표시 후 종료                   |
+| 옵션            | 유형    | 기본값       | 설명                                      |
+| ----------------- | ------- | ------------- | ------------------------------------------------ |
+| `--backend-exe`   | 경로    | 자동 감지 | 백엔드 실행 파일의 경로                       |
+| `--port`          | 정수    | 5000          | 백엔드 API 포트 번호                          |
+| `--restart`       | 플래그    | -             | 백엔드 강제 재시작 (기존 프로세스 종료) |
+| `--version`       | 플래그    | -             | 버전 정보 표시 후 종료                |
+| `--help`          | 플래그    | -             | 도움말 정보 표시 후 종료                   |
 
-**글로벌 옵션 예시:**
+{% hint style="info" %}
+**백엔드 자동 감지**: `--backend-exe` 경로는 플랫폼별로 자동 감지됩니다:
+* **Windows**: `C:\Program Files\MAPIR\Chloros\resources\backend\chloros-backend.exe`
+* **Linux (.deb)**: `/usr/lib/chloros/chloros-backend`
+* **Linux (수동)**: `/opt/mapir/chloros/backend/chloros-backend`
+{% endhint %}
+
+**전역 옵션 예시:**
+
+**Windows:**
 
 ```powershell
 chloros-cli --port 5001 process "C:\Datasets\Survey_001"
+```
+
+**Linux:**
+
+```bash
+chloros-cli --port 5001 process ~/datasets/survey_001
 ```
 
 ***
 
 ## 처리 설정 가이드
 
-### 병렬 처리
+### 병렬 처리 및 동적 컴퓨트 적응
 
-Chloros+ CLI **자동으로 확장**하여 컴퓨터 성능에 맞춰 병렬 처리를 수행합니다:**작동 방식:**
+Chloros 1.1.0에는 [동적 컴퓨트 적응](processing-architecture/dynamic-compute-adaptation.md) 기능이 포함되어 있습니다. 이 처리 엔진은 **사용자의 하드웨어를 자동으로 감지**하여 최적의 전략을 선택합니다:
 
-* CPU 코어 및 RAM 감지
-* 작업자 할당: **CPU 코어 수 × 2** (하이퍼스레딩 사용)
-* **최대: 16개 병렬 작업자** (안정성 확보)**시스템 등급:**
+| 플랫폼 | 전략 | 워커 | 파이프라인 | 참고 사항 |
+| --- | --- | --- | --- | --- |
+| **Jetson Nano 8GB** | `GPU_SINGLE` | 1 | `tiled_gpu` | 메모리 효율적, 직렬화 |
+| **Jetson Orin NX 16GB** | `GPU_PARALLEL` | 3 | `fused_gpu` | 병렬 GPU 처리 |
+| **8GB GPU 탑재 데스크톱** | `GPU_SINGLE` | 3 | `tiled_gpu` | 우수한 데스크톱 성능 |
+| **12GB 이상 GPU 탑재 데스크톱** | `GPU_PARALLEL` | 3-4 | `fused_gpu` | 최적의 데스크톱 성능 |
+| **CPU 전용 시스템** | `CPU_PARALLEL` | 코어 수 - 1 | `cpu_fallback` | GPU 불필요 |
 
-| 시스템 유형   | CPU        | RAM      | 작업자  | 성능     |
-| ---------| **고성능**  | 16+ 코어  | 32+ GB   | 최대 16개 | 최고 속도   |
-| **중급** | 8-15 코어 | 16-31 GB | 8-16     | 우수한 속도 |
-| **저급**   | 4-7 코어 | 8-15 GB  | 4-8      | 좋은 속도      |
-
-{% hint style=&quot;success&quot; %}
-**자동 최적화**: CLI는 시스템 사양을 자동으로 감지하여 최적의 병렬 처리를 구성합니다. 수동 설정 불필요!
+{% hint style="success" %}
+**수동 설정 불필요!** Chloros는 CPU, GPU, RAM 및 (Jetson의 경우) 열 센서를 자동으로 감지한 후 최적의 처리 파이프라인을 자동으로 구성합니다.
 {% endhint %}
 
 ### 디베이어 방법
 
-CLI는 기본값이자 권장 디베이어 알고리즘으로 **고품질(빠름)**을 사용합니다:
+| 방법 | CLI 플래그 | 품질 | 속도 | 라이선스 |
+| --- | --- | --- | --- | --- |
+| **표준 (빠름, 중간 품질)** | `--debayer standard` | 양호 | 빠름 | 무료 / Chloros+ |
+| **텍스처 인식 (느림, 최고 품질)** | `--debayer texture-aware` | 최고 | 느림 | Chloros+ 전용 |
 
-| 방법                      | 품질 | 속도 | 설명                                 |
-| --------------------------- | ------- | ----- | ------------------------------------------- |
-| **고품질(빠름)** ⭐ | ⭐⭐⭐⭐    | ⚡⚡⚡   | 가장자리 인식 알고리즘 (기본값, 권장) |
+기본 디베이어 방식은 **표준**입니다.**텍스처 인식** 방식은 최고 품질의 출력을 위해 AI/ML 노이즈 제거 모델을 사용하지만, Chloros+ 라이선스와 NVIDIA GPU가 필요합니다.
 
-### 비네트 보정
+```bash
+# Use Texture Aware debayer (Chloros+ only)
+chloros-cli process ~/datasets/field_a --debayer texture-aware
+```
 
-**기능:** 이미지 가장자리의 빛 감쇠(카메라 이미지에 흔히 나타나는 어두운 모서리)를 보정합니다.
+### 비네팅 보정
 
-* **기본적으로 활성화됨** - 대부분의 사용자는 이 기능을 켜두어야 합니다
-* 비활성화하려면 `--no-vignette`를 사용하세요
+**기능:** 이미지 가장자리의 밝기 저하(카메라 이미지에서 흔히 나타나는 모서리 부분의 어두움)를 보정합니다.
 
-{% hint style=&quot;success&quot; %}
+* **기본적으로 활성화됨** - 대부분의 사용자는 이 기능을 활성화한 상태로 유지해야 합니다.
+* 비활성화하려면 `--no-vignette`를 사용하십시오.
+
+{% hint style="success" %}
 **권장 사항**: 프레임 전체에 걸쳐 균일한 밝기를 보장하려면 항상 비네팅 보정을 활성화하십시오.
 {% endhint %}
 
@@ -411,31 +536,31 @@ CLI는 기본값이자 권장 디베이어 알고리즘으로 **고품질(빠름
 
 보정 패널을 사용하여 센서의 원시 값을 표준화된 반사율 백분율로 변환합니다.
 
-* **기본 활성화됨** - 식생 분석에 필수적
-* 이미지에 보정 대상 패널 필요
-* 비활성화하려면 `--no-reflectance` 사용
+* **기본적으로 활성화됨** - 식생 분석에 필수적입니다
+* 이미지에 보정 대상 패널이 필요합니다
+* 비활성화하려면 `--no-reflectance`를 사용하십시오
 
-{% hint style=&quot;info&quot; %}
-**필수 조건**: 정확한 반사율 변환을 위해 보정 패널이 이미지에 적절히 노출되고 가시적이어야 합니다.
+{% hint style="info" %}
+**요구 사항**: 정확한 반사율 변환을 위해 이미지에 보정 패널이 적절하게 노출되고 명확하게 보이도록 하십시오.
 {% endhint %}
 
 ### PPK 보정
 
-**기능:** DAQ-A-SD 로그 데이터를 사용한 사후 동적 보정(PPK)을 적용하여 GPS 정확도를 향상시킵니다.
+**기능:** DAQ-A-SD 로그 데이터를 사용하여 후처리 운동학 보정을 적용하여 GPS 정확도를 향상시킵니다.
 
 * **기본적으로 비활성화됨**
-* 활성화하려면 `--ppk` 사용
-* MAPIR DAQ-A-SD 광 센서의 .daq 파일을 프로젝트 폴더에 포함해야 함.
+* 활성화하려면 `--ppk`를 사용하십시오
+* MAPIR DAQ-A-SD 광 센서에서 생성된 .daq 파일이 프로젝트 폴더에 있어야 합니다.
 
 ### 출력 형식
 
-<table><thead><tr><th width="197">형식</th><th width="130.20001220703125">비트 심도</th><th width="116.5999755859375">파일 크기</th><th>최적 용도</th></tr></thead><tbody><tr><td><strong>TIFF (16비트)</strong> ⭐</td><td>16비트 정수</td><td>대용량</td><td>GIS 분석, 사진 측량 (권장)</td></tr><tr><td><strong>TIFF (32비트, 백분율)</strong></td><td>32비트 부동 소수점</td><td>매우 큰</td><td>과학적 분석, 연구</td></tr><tr><td><strong>PNG (8비트)</strong></td><td>8비트 정수</td><td>중간</td><td>육안 검사, 웹 공유</td></tr><tr><td><strong>JPG (8비트)</strong></td><td>8비트 정수</td><td>소형</td><td>빠른 미리보기, 압축 출력</td></tr></tbody></table>***
+<table><thead><tr><th width="197">형식</th><th width="130.20001220703125">비트 심도</th><th width="116.5999755859375">파일 크기</th><th>최적 용도</th></tr></thead><tbody><tr><td><strong>TIFF (16비트)</strong> ⭐</td><td>16비트 정수</td><td>대용량</td><td>GIS 분석, 사진 측량 (권장)</td></tr><tr><td><strong>TIFF (32비트, 백분율)</strong></td><td>32비트 부동 소수점</td><td>매우 대용량</td><td>과학적 분석, 연구</td></tr><tr><td><strong>PNG (8비트)</strong></td><td>8비트 정수</td><td>중간</td><td>육안 검사, 웹 공유</td></tr><tr><td><strong>JPG (8비트)</strong></td><td>8비트 정수</td><td>소형</td><td>빠른 미리보기, 압축된 출력</td></tr></tbody></table>***
 
 ## 자동화 및 스크립팅
 
-### PowerShell 일괄 처리
+### PowerShell 일괄 처리 (Windows)
 
-여러 데이터셋 폴더 자동 처리:
+Windows에서 여러 데이터셋 폴더를 자동으로 처리합니다:
 
 ```powershell
 # process_all_datasets.ps1
@@ -459,9 +584,9 @@ foreach ($dataset in $datasets) {
 Write-Host "All datasets processed!" -ForegroundColor Green
 ```
 
-### Windows 일괄 스크립트
+### Windows 배치 스크립트 (Windows)
 
-일괄 처리를 위한 간단한 루프:
+Windows에서 배치 처리를 위한 간단한 루프:
 
 ```batch
 @echo off
@@ -486,9 +611,35 @@ echo All datasets processed!
 pause
 ```
 
-### Python 자동화 스크립트
+### Bash 배치 처리 (Linux)
 
-오류 처리를 포함한 고급 자동화:
+Linux에서 여러 데이터셋 폴더 처리:
+
+```bash
+#!/bin/bash
+# process_all_datasets.sh
+
+for dataset in ~/datasets/2026/*/; do
+    name=$(basename "$dataset")
+    echo "Processing $name..."
+
+    chloros-cli process "$dataset" \
+        --vignette \
+        --reflectance
+
+    if [ $? -eq 0 ]; then
+        echo "✓ $name complete"
+    else
+        echo "✗ $name failed"
+    fi
+done
+
+echo "All datasets processed!"
+```
+
+### Python 자동화 스크립트 (크로스 플랫폼)
+
+오류 처리가 포함된 고급 자동화 (Windows 및 Linux에서 작동):
 
 ```python
 import subprocess
@@ -513,6 +664,9 @@ def process_dataset(input_folder):
 
 def main():
     """Process all datasets in a directory"""
+    # Adjust path for your platform
+    # Windows: Path('C:/Datasets/2025')
+    # Linux:   Path.home() / 'datasets' / '2025'
     datasets_dir = Path('C:/Datasets/2025')
     log_file = Path('processing_log.txt')
     
@@ -567,13 +721,13 @@ if __name__ == '__main__':
 
 ***
 
-## 처리 워크플로
+## 처리 워크플로우
 
-### 표준 워크플로
+### 표준 워크플로우
 
 1. **입력**: RAW/JPG 이미지 쌍이 포함된 폴더
-2. **탐색**: CLI 지원 이미지 파일 자동 스캔
-3. **처리**: 병렬 모드(Chloros+)로 CPU 코어 수에 따라 확장
+2. **탐색**: CLI가 지원되는 이미지 파일을 자동으로 스캔합니다
+3. **처리**: 병렬 모드는 CPU 코어 수에 따라 확장됩니다 (Chloros+)
 4. **출력**: 처리된 이미지가 포함된 카메라 모델별 하위 폴더 생성
 
 ### 출력 구조 예시
@@ -592,30 +746,33 @@ MyProject/
 
 ### 예상 처리 시간
 
-100장(각 12MP) 이미지 처리 시 일반적인 소요 시간:
+이미지 100장(각 12MP)의 일반적인 처리 시간:
 
-| 모드              | 시간      | 하드웨어                                     |
-| ----------------- | --------- | -------------------------------------------- |
-| **병렬 모드** | 5-10분  | i7/Ryzen 7, 16GB RAM, SSD (최대 16개 작업자) |
-| **병렬 모드** | 10-15분 | i5/Ryzen 5, 8GB RAM, HDD (최대 8개 작업자)   |
+| 플랫폼 | 모드 | 예상 시간 | 비고 |
+| --- | --- | --- | --- |
+| **데스크톱 12GB+ GPU** | `GPU_PARALLEL` | 5-10분 | 가장 빠른 옵션 |
+| **데스크톱 8GB GPU** | `GPU_SINGLE` | 10-15분 | 우수한 성능 |
+| **Jetson Orin NX 16GB** | `GPU_PARALLEL` | 15-25분 | 엣지 컴퓨팅 |
+| **Jetson Nano 8GB** | `GPU_SINGLE` | 30-60분 | 메모리 제약 |
+| **CPU 전용** | `CPU_PARALLEL` | 20-40분 | GPU 불필요 |
 
-{% hint style=&quot;info&quot; %}
-**성능 팁**: 처리 시간은 이미지 수, 해상도 및 컴퓨터 사양에 따라 달라집니다.
+{% hint style="info" %}
+**성능 팁**: 처리 시간은 이미지 수, 해상도, 디베이어 방식 및 하드웨어에 따라 달라집니다. 텍스처 인식 디베이어는 표준 방식보다 훨씬 더 오래 걸립니다. 자세한 내용은 [동적 컴퓨팅 적응](processing-architecture/dynamic-compute-adaptation.md)을 참조하십시오.
 {% endhint %}
 
 ***
 
 ## 문제 해결
 
-### CLI 찾을 수 없음
+### CLI를 찾을 수 없음
 
-**오류:**
+**Windows 오류:**
 
 ```
 'chloros-cli' is not recognized as an internal or external command
 ```
 
-**해결 방법:**
+**Windows 해결 방법:**
 
 1. 설치 위치 확인:
 
@@ -623,7 +780,7 @@ MyProject/
 dir "C:\Program Files\Chloros\resources\cli\chloros-cli.exe"
 ```
 
-2. PATH에 없는 경우 전체 경로 사용:
+2. PATH에 포함되어 있지 않은 경우 전체 경로 사용:
 
 ```powershell
 "C:\Program Files\Chloros\resources\cli\chloros-cli.exe" process "C:\Datasets\Field_A"
@@ -634,6 +791,33 @@ dir "C:\Program Files\Chloros\resources\cli\chloros-cli.exe"
    * PATH 변수 편집
    * 추가: `C:\Program Files\Chloros\resources\cli`
    * 터미널 재시작
+
+**Linux 오류:**
+
+```
+chloros-cli: command not found
+```
+
+**Linux 해결 방법:**
+
+1. 설치 확인:
+
+```bash
+which chloros-cli
+dpkg -L chloros-amd64  # or chloros-arm64-jp6
+```
+
+2. 셸 재로드:
+
+```bash
+source ~/.bashrc
+```
+
+3. 권한 확인:
+
+```bash
+sudo chmod +x /usr/bin/chloros-cli
+```
 
 ***
 
@@ -646,18 +830,32 @@ Backend failed to start within 30 seconds
 
 **해결 방법:**
 
-1. 백엔드가 이미 실행 중인지 확인 (먼저 종료)
-2. 방화벽이 차단하지 않는지 확인
-3. 다른 포트 시도:
+1. 백엔드가 이미 실행 중인지 확인하십시오(먼저 종료하십시오).
+2. 방화벽이 차단하고 있지 않은지 확인하십시오(Windows) 또는 포트 사용 가능 여부를 확인하십시오(Linux: `lsof -i :5000`)
+3. 다른 포트를 사용해 보세요:
 
-```powershell
+```bash
+# Windows
 chloros-cli --port 5001 process "C:\Datasets\Field_A"
+
+# Linux
+chloros-cli --port 5001 process ~/datasets/field_a
 ```
 
-4. 백엔드 강제 재시작:
+4. 백엔드를 강제 재시작하세요:
 
-```powershell
+```bash
+# Windows
 chloros-cli --restart process "C:\Datasets\Field_A"
+
+# Linux
+chloros-cli --restart process ~/datasets/field_a
+```
+
+5. Linux 오류 시, 백엔드 실행 파일이 있는지 확인하세요:
+
+```bash
+ls -la /usr/lib/chloros/chloros-backend
 ```
 
 ***
@@ -671,24 +869,24 @@ Chloros+ license required for CLI access
 
 **해결 방법:**
 
-1. 유효한 Chloros+ 구독이 있는지 확인하십시오
+1. 유효한 Chloros+ 구독이 있는지 확인하십시오.
 2. 자격 증명으로 로그인하십시오:
 
-```powershell
+```bash
 chloros-cli login user@example.com 'password'
 ```
 
-3. 라이선스 상태를 확인하십시오:
+3. 라이선스 상태 확인:
 
-```powershell
+```bash
 chloros-cli status
 ```
 
-4. 지원팀에 문의하십시오: info@mapir.camera
+4. 지원팀에 문의: info@mapir.camera
 
 ***
 
-### 이미지 미검출**오류:**
+### 이미지를 찾을 수 없음**오류:**
 
 ```
 
@@ -698,21 +896,21 @@ No images found in the specified folder
 **해결 방법:**
 
 1. 폴더에 지원되는 형식(.RAW, .TIF, .JPG)이 포함되어 있는지 확인하십시오.
-2. 폴더 경로가 올바른지 확인하십시오(공백이 포함된 경로는 따옴표로 묶으십시오).
-3. 폴더에 대한 읽기 권한이 있는지 확인하십시오
-4. 파일 확장자가 올바른지 확인하십시오
+2. 폴더 경로가 올바른지 확인하십시오(공백이 포함된 경로의 경우 따옴표를 사용하십시오).
+3. 폴더에 대한 읽기 권한이 있는지 확인하십시오.
+4. 파일 확장자가 올바른지 확인하십시오.
 
 ***
 
 ### 처리 중지 또는 멈춤**해결 방법:**
 
-1. 사용 가능한 디스크 공간을 확인하십시오(출력에 충분한지 확인)
-2. 메모리를 확보하기 위해 다른 애플리케이션을 닫으십시오
-3. 이미지 수를 줄이십시오(배치로 처리)
+1. 사용 가능한 디스크 공간 확인 (출력용 공간이 충분한지 확인)
+2. 다른 응용 프로그램을 닫아 메모리를 확보하십시오
+3. 이미지 수를 줄이십시오 (일괄 처리)
 
 ***
 
-### 포트 사용 중**오류:**
+### 포트가 이미 사용 중입니다**오류:**
 
 ```
 
@@ -721,49 +919,68 @@ Port 5000 is already in use
 
 **해결 방법:**
 
-다른 포트를 지정하세요:
+**Windows:**
 
 ```powershell
 chloros-cli --port 5001 process "C:\Datasets\Field_A"
+```
+
+**Linux:**
+
+```bash
+# Find what's using port 5000
+lsof -i :5000
+
+# Use a different port
+chloros-cli --port 5001 process ~/datasets/field_a
 ```
 
 ***
 
 ## 자주 묻는 질문
 
-### Q: CLI 사용에 라이선스가 필요한가요?
+### Q: CLI를 사용하려면 라이선스가 필요한가요?
 
-**A:**예! CLI는 유료**Chloros+ 라이선스**가 필요합니다.
+**A:**네! CLI를 사용하려면 유료**Chloros+ 라이선스**가 필요합니다.
 
-* ❌ 표준(무료) 플랜: CLI 비활성화
-* ✅ Chloros+ (유료) 플랜: CLI 완전 활성화
+* ❌ Standard(무료) 플랜: CLI 사용 불가
+* ✅ Chloros+(유료) 플랜: CLI 완전 사용 가능
 
 구독하기: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
 
 ***
 
-### Q: GUI 없이 서버에서 CLI를 사용할 수 있나요?**A:** 네! CLI는 완전히 헤드리스(headless)로 실행됩니다. 요구 사항:
-
+### Q: GUI가 없는 서버에서 CLI를 사용할 수 있나요?**A:** 네! CLI는 완전히 헤드리스(headless) 모드로 실행됩니다. 이는 Linux의 주요 사용 사례입니다.**Windows 서버:**
 * Windows Server 2016 이상
-* Visual C++ 재배포 가능 패키지 설치
-* 충분한 RAM (최소 8GB, 권장 16GB)
-* 모든 머신에서 일회성 GUI 라이선스 활성화
+* Visual C++ 재배포 가능 패키지 설치됨
+
+**Linux 서버:**
+* Ubuntu 20.04 이상 / Debian 11 이상 (amd64) 또는 JetPack 6 (arm64)
+* `.deb` 패키지를 통해 설치
+
+**두 플랫폼 모두:**
+* 최소 8GB RAM (16GB 권장)
+* 일회성 라이선스 활성화: `chloros-cli login user@example.com 'password'`
 
 ***
 
-### Q: 처리된 이미지는 어디에 저장되나요?**A:**기본적으로 처리된 이미지는 입력 파일과**동일한 폴더** 내 카메라 모델별 하위 폴더(예: `Survey3N_RGN/`)에 저장됩니다.
+### Q: 처리된 이미지는 어디에 저장되나요?**A:**기본적으로 처리된 이미지는**입력 파일과 동일한 폴더** 내의 카메라 모델 하위 폴더(예: `Survey3N_RGN/`)에 저장됩니다.
 
-다른 출력 폴더를 지정하려면 `-o` 옵션을 사용하세요:
+다른 출력 폴더를 지정하려면 `-o` 옵션을 사용하십시오:
 
-```powershell
+```bash
+# Windows
 chloros-cli process "C:\Input" -o "D:\Output"
+
+# Linux
+chloros-cli process ~/input -o ~/output
 ```
 
 ***
 
-### Q: 여러 폴더를 동시에 처리할 수 있나요?**A:** 한 번의 명령으로 직접 처리할 수는 없지만, 스크립팅을 사용해 폴더를 순차적으로 처리할 수 있습니다. [자동화 및 스크립팅](CLI.md#automation--scripting) 섹션을 참조하세요.***
+### Q: 여러 폴더를 한 번에 처리할 수 있나요?**A:** 하나의 명령어로 직접 처리할 수는 없지만, 스크립트를 사용하여 폴더를 순차적으로 처리할 수 있습니다. [자동화 및 스크립팅](CLI.md#automation--scripting) 섹션을 참조하십시오.***
 
-### Q: CLI 출력을 로그 파일에 저장하려면 어떻게 하나요?**PowerShell:**
+### Q: CLI 출력을 로그 파일에 저장하려면 어떻게 해야 합니까?**PowerShell:**
 
 ```powershell
 chloros-cli process "C:\Datasets\Field_A" | Tee-Object -FilePath "processing.log"
@@ -775,23 +992,29 @@ chloros-cli process "C:\Datasets\Field_A" | Tee-Object -FilePath "processing.log
 chloros-cli process "C:\Datasets\Field_A" > processing.log 2>&1
 ```
 
+**Linux Bash:**
+
+```bash
+chloros-cli process ~/datasets/field_a 2>&1 | tee processing.log
+```
+
 ***
 
-### Q: 처리 중 Ctrl+C를 누르면 어떻게 되나요?**A:** CLI는 다음과 같이 동작합니다:
+### Q: 처리 중에 Ctrl+C를 누르면 어떻게 되나요?**A:** CLI는 다음과 같이 동작합니다:
 
-1. 처리 과정을 정상적으로 중지합니다
+1. 정상적으로 처리를 중지합니다
 2. 백엔드를 종료합니다
-3. 종료 코드 130으로 종료합니다
+3. 코드 130으로 종료합니다
 
 부분적으로 처리된 이미지가 출력 폴더에 남아 있을 수 있습니다.
 
 ***
 
-### Q: CLI 처리를 자동화할 수 있나요?**A:** 물론입니다! CLI는 자동화를 위해 설계되었습니다. PowerShell, 배치 파일 및 Python 예제는 [자동화 및 스크립팅](CLI.md#automation--scripting)을 참조하십시오.***
+### Q: CLI 처리를 자동화할 수 있나요?**A:** 물론입니다! CLI는 자동화를 위해 설계되었습니다. PowerShell (Windows), Batch (Windows), Bash(Linux) 및 Python(크로스 플랫폼) 예제를 참조하십시오.***
 
-### Q: CLI 버전을 어떻게 확인하나요?**A:**
+### Q: CLI 버전을 확인하려면 어떻게 해야 합니까?**A:**
 
-```powershell
+```bash
 chloros-cli --version
 ```
 
@@ -799,7 +1022,7 @@ chloros-cli --version
 
 ```
 
-Chloros CLI 1.0.2
+Chloros CLI 1.1.0
 ```
 
 ***
@@ -810,7 +1033,7 @@ Chloros CLI 1.0.2
 
 CLI에서 직접 도움말 정보를 확인하세요:
 
-```powershell
+```bash
 # General help
 chloros-cli --help
 
@@ -826,21 +1049,31 @@ chloros-cli language --help
 * **웹사이트**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
 * **가격**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)***
 
-## 완전한 예시
+## 전체 예제
 
-### 예시 1: 기본 처리
+### 예제 1: 기본 처리
 
-기본 설정(비네팅, 반사율)으로 처리:
+기본 설정(비네트, 반사율)으로 처리:
+
+**Windows:**
 
 ```powershell
 chloros-cli process "C:\Datasets\Field_A_2025_01_15"
 ```
 
+**Linux:**
+
+```bash
+chloros-cli process ~/datasets/field_a_2025_01_15
+```
+
 ***
 
-### 예시 2: 고품질 과학적 출력
+### 예제 2: 고품질 과학적 출력
 
 32비트 부동소수점 TIFF:
+
+**Windows:**
 
 ```powershell
 chloros-cli process "C:\Datasets\Field_A" ^
@@ -849,11 +1082,22 @@ chloros-cli process "C:\Datasets\Field_A" ^
   --reflectance
 ```
 
+**Linux:**
+
+```bash
+chloros-cli process ~/datasets/field_a \
+  --format "TIFF (32-bit, Percent)" \
+  --vignette \
+  --reflectance
+```
+
 ***
 
-### 예시 3: 빠른 미리보기 처리
+### 예제 3: 빠른 미리보기 처리
 
-빠른 검토를 위한 보정 없는 8비트 PNG:
+신속한 검토를 위해 보정되지 않은 8비트 PNG:
+
+**Windows:**
 
 ```powershell
 chloros-cli process "C:\Datasets\Field_A" ^
@@ -862,11 +1106,22 @@ chloros-cli process "C:\Datasets\Field_A" ^
   --no-reflectance
 ```
 
+**Linux:**
+
+```bash
+chloros-cli process ~/datasets/field_a \
+  --format "PNG (8-bit)" \
+  --no-vignette \
+  --no-reflectance
+```
+
 ***
 
-### 예시 4: PPK 보정 처리
+### 예제 4: PPK 보정 처리
 
-반사율과 함께 PPK 보정 적용:
+반사율을 사용하여 PPK 보정 적용:
+
+**Windows:**
 
 ```powershell
 chloros-cli process "C:\Datasets\Field_A" ^
@@ -874,11 +1129,21 @@ chloros-cli process "C:\Datasets\Field_A" ^
   --reflectance
 ```
 
+**Linux:**
+
+```bash
+chloros-cli process ~/datasets/field_a \
+  --ppk \
+  --reflectance
+```
+
 ***
 
-### 예시 5: 사용자 지정 출력 위치
+### 예제 5: 사용자 지정 출력 위치
 
-특정 형식으로 다른 드라이브에 처리:
+특정 형식으로 다른 위치에 처리:
+
+**Windows:**
 
 ```powershell
 chloros-cli process "C:\Input\Raw_Images" ^
@@ -886,13 +1151,21 @@ chloros-cli process "C:\Input\Raw_Images" ^
   --format "TIFF (16-bit)"
 ```
 
+**Linux:**
+
+```bash
+chloros-cli process ~/input/raw_images \
+  -o ~/output/processed \
+  --format "TIFF (16-bit)"
+```
+
 ***
 
-### 예시 6: 인증 워크플로
+### 예제 6: 인증 워크플로
 
-인증 흐름 완료:
+전체 인증 흐름 (모든 플랫폼에서 동일):
 
-```powershell
+```bash
 # Step 1: Login
 chloros-cli login user@example.com 'MyP@ssw0rd'
 
@@ -900,7 +1173,9 @@ chloros-cli login user@example.com 'MyP@ssw0rd'
 chloros-cli status
 
 # Step 3: Process images
-chloros-cli process "C:\Datasets\Field_A"
+# Windows: chloros-cli process "C:\Datasets\Field_A"
+# Linux:   chloros-cli process ~/datasets/field_a
+chloros-cli process ~/datasets/field_a
 
 # Step 4: Logout (optional, when switching accounts)
 chloros-cli logout
@@ -908,11 +1183,11 @@ chloros-cli logout
 
 ***
 
-### 예시 7: 다국어 사용
+### 예제 7: 다국어 사용
 
-인터페이스 언어 변경:
+인터페이스 언어 변경 (모든 플랫폼에서 동일):
 
-```powershell
+```bash
 # List available languages
 chloros-cli language --list
 
@@ -920,7 +1195,9 @@ chloros-cli language --list
 chloros-cli language es
 
 # Process with Spanish interface
-chloros-cli process "C:\Vuelos\Campo_A"
+# Windows: chloros-cli process "C:\Vuelos\Campo_A"
+# Linux:   chloros-cli process ~/vuelos/campo_a
+chloros-cli process ~/vuelos/campo_a
 
 # Change back to English
 chloros-cli language en
