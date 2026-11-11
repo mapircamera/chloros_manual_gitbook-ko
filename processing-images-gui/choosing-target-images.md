@@ -144,7 +144,9 @@ Chloros가 타겟을 올바르게 감지하지 못하는 경우, [프로젝트 �
 * 작은 아티팩트에서 오탐지가 발생하는 경우 **값을 늘리세요*** 타겟이 감지되지 않는 경우 **값을 줄이세요**
 
 **최소 타겟 클러스터링(0-100):*** **기본값**: 60
-* **타겟이 여러 개의 탐지 결과로 분할되는 경우** **값을 늘리세요*** **색상 변화가 있는 타겟이 완전히 탐지되지 않는 경우** **값을 줄이세요**{% hint style="info" %}**CLI 팁**: `chloros-cli process`는 동일한 조정 매개변수(`--min-target-size`, `--target-clustering`)을 지원하며, `--target`/`--targets` 플래그를 사용하면 전체 입력 폴더를 ‘타겟 패널 전용’으로 지정할 수 있습니다. [CLI 참조](../reference/cli-reference.md)를 참조하십시오.
+* **타겟이 여러 개의 탐지 결과로 분할되는 경우** **값을 늘리세요*** **색상 변화가 있는 타겟이 완전히 탐지되지 않는 경우** **값을 줄이세요**
+{% hint style="info" %}
+**CLI 팁**: `chloros-cli process`는 동일한 조정 매개변수(`--min-target-size`, `--target-clustering`)을 지원하며, `--target`/`--targets` 플래그를 사용하면 전체 입력 폴더를 ‘타겟 패널 전용’으로 지정할 수 있습니다. [CLI 참조](../reference/cli-reference.md)를 참조하십시오.
 {% endhint %}
 
 ***

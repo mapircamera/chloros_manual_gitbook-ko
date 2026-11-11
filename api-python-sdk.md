@@ -1,38 +1,42 @@
 # API : Python SDK
 
 {% hint style="info" %}
-**API에 대한 전체 내용을 찾고 계신가요?** 이 페이지는 실습 튜토리얼입니다. 모든 공개 클래스, 메서드, 정확한 시그니처, 그리고 복사하여 붙여넣을 수 있는 예제는 AI 어시스턴트에 최적화된 [SDK 참조](reference/sdk-reference.md)에 수록되어 있습니다.**AI 어시스턴트를 사용하고 계신가요?** 채팅창에 이 URL를 붙여넣으면, 최신 버전의 Chloros 1.2.0 API 전체 내용을 확인할 수 있습니다:
+**전체 API를 찾고 계신가요?** 이 페이지는 실습용 튜토리얼입니다. 모든 공개 클래스, 메서드, 정확한 시그니처 및 복사하여 바로 사용할 수 있는 예제는 AI 어시스턴트에 최적화된 [SDK 레퍼런스](reference/sdk-reference.md)에 수록되어 있습니다.**AI 어시스턴트를 사용하고 계신가요?** 채팅창에 이 URL을 붙여넣으면 최신 Chloros 1.3.0 API 전체를 확인할 수 있습니다:
 
 `https://mapir.gitbook.io/chloros/reference/sdk-reference.md`
 
-이 설명서의 모든 페이지는 소문자 슬러그 + `.md` 형식으로 원본 마크다운 파일로 제공되며, 설명서 전체는 `https://mapir.gitbook.io/chloros/llms.txt`에서 색인되어 있습니다.
+이 설명서의 모든 페이지는 소문자 슬러그 + `.md` 형식으로 원본 마크다운 파일로 제공되며, 전체 설명서는 `https://mapir.gitbook.io/chloros/llms.txt`에서 색인되어 있습니다.
 {% endhint %}
 
-**Chloros Python SDK** (PyPI의 `chloros-sdk`)는 Python에서 데스크톱 앱이 수행할 수 있는 모든 기능, 즉 일괄 이미지 처리, LATTICE 카메라 및 어레이 실시간 제어, DAQ 광센서 세션, 저장된 프로젝트 자동화를 구동합니다. 이는 GUI와 CLI가 사용하는 것과 동일한 로컬 백엔드(`127.0.0.1:5000`상의 HTTP) 위에 구축된 얇은 레이어이므로, 세 가지 환경 모두에서 동작이 동일합니다.
+**Chloros Python SDK**(PyPI의 `chloros-sdk`)는 Python을 통해 데스크톱 앱이 수행할 수 있는 모든 기능—배치 이미지 처리, LATTICE 카메라 및 어레이 실시간 제어, DAQ 광센서 세션, 저장된 프로젝트 자동화—을 구동합니다. 이는 GUI와 CLI가 사용하는 것과 동일한 로컬 백엔드(`127.0.0.1:5000`의 HTTP) 위에 구축된 얇은 레이어이므로, 세 가지 인터페이스 모두에서 동작이 동일합니다.
 
 ## 설치
 
-설치는 두 단계로 이루어집니다. 먼저 Chloros 데스크톱 패키지(처리 백엔드 및 하드웨어 런타임을 제공함)를 설치한 다음, Python 패키지를 설치합니다.
+SDK는 Chloros 데스크톱 패키지와 함께 제공되며, 이 패키지는 처리 백엔드와 하드웨어 런타임도 제공하며 항상 SDK의 버전과 일치합니다.
 
-**1단계 — Chloros 설치.** Windows: [다운로드](download.md) 페이지에서 데스크톱 설치 프로그램(기본 경로: `C:\Program Files\MAPIR\Chloros\`)을 실행합니다. Linux: `.deb` 패키지를 설치하십시오([Linux 설치](linux/linux-installation.md)).**2단계 — SDK 설치** (Python 3.7 이상):
+**1단계 — Chloros 설치.** Windows: [다운로드](download.md) 페이지에서 데스크톱 설치 프로그램(기본 경로 `C:\Program Files\Chloros\`)을 실행합니다. Linux: `.deb` 패키지를 `sudo apt install ./chloros_1.3.0_<arch>.deb`와 함께 설치하십시오 ([Linux 설치](linux/linux-installation.md)).**2단계 — SDK 확인** (Python 3.7 이상). 일반적으로 설치할 항목은 없습니다:
+
+* **Windows:** 설치 프로그램이 번들된 SDK wheel을 시스템 Python에 설치합니다(Python이 설치되어 있지 않으면 이 단계를 건너뜁니다).
+* **Linux:** `.deb`는 시스템 `python3`용 SDK를 `/usr/lib/python3/dist-packages`에 설치합니다. 이 패키지가 권장하는 필수 구성 요소인 `python3-numpy`와 `python3-requests`는 `apt install` 패키지가 함께 제공하지만, `dpkg -i` 패키지는 제공하지 않습니다.
+* **virtualenv**는 시스템 패키지를 인식하지 못하므로, 번들로 제공된 wheel 파일을 virtualenv 내에 설치하십시오: Linux의 경우 `pip install /usr/lib/chloros/sdk/chloros_sdk-*.whl`를, Windows 설치 폴더(기본값: `C:\Program Files\Chloros\sdk\`) 내 `sdk` 폴더에 있는 `chloros_sdk-*.whl`를 설치하십시오.
 
 ```bash
-pip install chloros-sdk
+python3 -c "import chloros_sdk; print(chloros_sdk.__version__)"   # Windows: py -c "…"
 ```
 
-pip가 필요하지 않을 수도 있습니다. 모든 설치 프로그램에는 호환되는 SDK 휠이 포함되어 있습니다. Windows 설치 프로그램은 이를 시스템의 Python에 자동으로 설치하며; Linux `.deb` 설치 프로그램은 이를 `/usr/lib/chloros/sdk/`에 배치하고 정확한 `pip install --user` 명령어를 출력합니다. PyPI는 릴리스 빌드 시 업데이트되므로, `pip install chloros-sdk`는 최신 안정 버전을 반영합니다.
+Chloros 패키지가 설치되어 있지 않은 컴퓨터에서, 해당 SDK가 다른 컴퓨터의 백엔드를 구동하는 경우([pip만 사용한 설치 시 제공되는 내용](#what-a-pip-only-install-gets) 참조), PyPI에서 `pip install chloros-sdk`를 설치하십시오. PyPI는 릴리스 빌드 시 업데이트되므로 최신 안정 버전을 반영합니다.
 
-**3단계 — 각 컴퓨터에서 한 번씩 로그인:**
+**3단계 — 컴퓨터당 한 번 로그인:**
 
 ```bash
 chloros-cli login user@example.com 'YourPassword'
 ```
 
-인증 정보는 `~/.chloros/`에 캐시됩니다(두 플랫폼 모두). Windows에서는 데스크톱 앱의 ‘사용자<img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line">’ 탭을 통해 동일하게 로그인할 수 있습니다. SDK의 경우 유료 Chloros+ 요금제가 필요합니다 — 아래 [라이선스 요구 사항](#license-requirement)을 참조하십시오.
+인증 정보는 `~/.chloros/`에 캐시됩니다(두 플랫폼 모두). Windows에서는 데스크톱 앱의 ‘사용자’ <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> 탭을 통해 동일하게 로그인할 수 있습니다. 이 SDK를 사용하려면 유료 Chloros+ 요금제가 필요합니다 — 아래 [라이선스 요구 사항](#license-requirement)을 참조하십시오.
 
 | 요구 사항 | 세부 정보 |
 | --- | --- |
-| **Chloros 설치** | Windows: 데스크톱 설치 프로그램; Linux: `.deb` 패키지(백엔드 바이너리 제공) |
+| **Chloros 설치** | Windows: 데스크톱 설치 프로그램; Linux: `.deb` 패키지(백엔드 바이너리 및 SDK 제공) |
 | **Python** | 3.7 이상 (3.10에서 개발 및 테스트됨) |
 | **운영 체제** | Windows 10/11 64비트, Ubuntu 22.04 LTS 이상, 또는 NVIDIA Jetson (JetPack 6) |
 | **라이선스** | 유효한 Chloros+ 로그인, 유료 요금제(Copper 이상) |
@@ -46,13 +50,13 @@ import chloros_sdk
 
 results = chloros_sdk.process_folder(
     "C:/DroneImages/Flight001",
-    indices=["NDVI", "NDRE", "GNDVI"],
+    indices=["NDVI", "GNDVI", "OSAVI"],
 )
 ```
 
-(Linux에서는 Linux 경로를 사용하세요: `/home/user/drone_images/flight001`. SDK는 두 플랫폼에서 동일하게 작동합니다.)
+(Linux에서는 Linux 경로를 사용하십시오: `/home/user/drone_images/flight001`. SDK는 두 플랫폼에서 동일하게 작동합니다.)
 
-LATTICE 캡처 폴더를 처리 중이신가요? LATTICE에 최적화된 래퍼를 사용하세요. 이 래퍼는 적절한 기본값(패널 대상 감지 없음, 표준 디베이어)을 적용합니다:
+LATTICE 캡처 폴더를 처리하고 계십니까? LATTICE 전용 래퍼를 사용하세요. 이 래퍼는 적절한 기본값(패널 대상 감지 없음, 표준 디베이어)을 적용합니다:
 
 ```python
 results = chloros_sdk.process_lattice_capture(
@@ -63,7 +67,7 @@ results = chloros_sdk.process_lattice_capture(
 
 ## `ChlorosLocal` — 전체 파이프라인 제어
 
-한 줄로 처리할 수 없는 작업의 경우, `ChlorosLocal`를 사용하십시오. 이 명령어는 첫 실행 시 백엔드(`auto_start_backend=True`)를 시작하고, 프로젝트를 생성 및 구성하며, 진행 상황을 모니터링하고, 실행 후 요약 정보를 반환합니다.
+한 줄 명령어 이상의 작업을 수행하려면 `ChlorosLocal`를 사용하십시오. 이 명령어는 이미 실행 중인 백엔드(데스크톱 앱의 백엔드)를 사용하거나, 첫 사용 시 설치된 백엔드를 시작합니다(`auto_start_backend=True`; Windows의 경우 Chloros 설치 폴더 내 `backend` 폴더에서, 기본값은 `C:\Program Files\Chloros\backend\`), 프로젝트를 생성 및 구성하고, 진행 상황을 모니터링하며, 실행 후 요약 정보를 반환합니다.
 
 ```python
 ChlorosLocal(
@@ -78,10 +82,10 @@ ChlorosLocal(
 ```
 
 {% hint style="info" %}
-`localhost`로 대체하지 말고 기본값인 `http://127.0.0.1:5000`를 유지하십시오. Windows에서, `localhost`는 먼저 `::1`로 변환되며, IPv4 전용 백엔드에서는 요청당 약 2초가 소요됩니다.
+`localhost`로 대체하지 말고 기본값인 `http://127.0.0.1:5000`를 유지하십시오 — Windows에서는 `localhost`가 먼저 `::1`로 해결되며, IPv4 전용 백엔드에서 요청당 약 2초의 비용이 발생합니다.
 {% endhint %}
 
-확실한 정리 처리를 위해 컨텍스트 매니저로 사용하십시오:
+컨텍스트 매니저로 사용하십시오. 블록을 벗어나면 이 인스턴스의 백엔드 사용이 종료될 뿐, 백엔드 자체는 종료되지 않습니다. 백엔드는 다음 스크립트를 위해 계속 실행되며, 30분 동안 사용되지 않으면 자동으로 중지됩니다. `shutdown_backend()`는 이 인스턴스가 시작한 백엔드를 중지합니다.
 
 ```python
 import chloros_sdk
@@ -92,18 +96,19 @@ with chloros_sdk.ChlorosLocal() as cl:
     cl.configure(
         vignette_correction=True,
         reflectance_calibration=True,
-        indices=["NDVI", "NDRE", "GNDVI"],
+        indices=["NDVI", "GNDVI", "OSAVI"],
         export_format="TIFF (16-bit)",
     )
     results = cl.process(mode="parallel", wait=True)
 print(results["summary"])
 ```
 
-`configure()`는 다음 키워드를 지원합니다: `debayer`, `vignette_correction`, `reflectance_calibration`, `indices`, `export_format`, `ppk`, `daq_log_path`, `input_level`, `radiometric_output`, `array_alignment`, `array_alignment_crop`, `array_alignment_interpolation`, 및 `custom_settings`. 주요 값:
+`configure()`는 다음 키워드를 지원합니다: `debayer`, `vignette_correction`, `reflectance_calibration`, `indices`, `export_format`, `ppk`, `daq_log_path`, `input_level`, `radiometric_output`, `array_alignment`, `array_alignment_crop`, `array_alignment_interpolation`, `custom_settings`. 주요 값:
 
 ```python
 # export_format
 "TIFF (16-bit)"           # default, recommended
+"TIFF (8-bit)"            # 8-bit TIFF; what all-8-bit images get for a deeper format
 "TIFF (32-bit, Percent)"  # reflectance percentage as float32
 "PNG (8-bit)"
 "JPG (8-bit)"
@@ -113,7 +118,7 @@ print(results["summary"])
 "Texture Aware (Slow, Highest Quality)"  # neural debayer, Chloros+ only
 ```
 
-LATTICE 전용 노브 (`input_level`, `radiometric_output`, `array_alignment*` 계열)에 대한 자세한 설명과 전체 값 표는 [SDK 참조](reference/sdk-reference.md#supported-values)에 전체 값 표와 함께 문서화되어 있습니다.
+LATTICE 전용 조절기(`input_level`, `radiometric_output`, `array_alignment*` 계열)에 대한 자세한 내용은 [SDK 참조](reference/sdk-reference.md#supported-values)에 전체 값 테이블과 함께 문서화되어 있습니다.
 
 ### 진행 상황 확인
 
@@ -130,7 +135,7 @@ with chloros_sdk.ChlorosLocal() as cl:
 
 ### 실행 후 요약 읽기 — 및 빈 실행 감지
 
-실행이 완료되면, `process()`는 백엔드의 처리 요약 정보를 `result["summary"]`로 첨부합니다. `summary["hints"]`의 각 항목은 주목할 만한 사항 — 예를 들어, 실행 결과가 0인 이유 등 — 모든 힌트는 Python `UserWarning` 형태로 재전송되므로, 딕셔너리를 직접 확인하지 않더라도 빈 실행은 자동으로 진단됩니다:
+실행이 완료되면, `process()`는 백엔드의 처리 요약 정보를 `result["summary"]`로 첨부합니다. `summary["hints"]`의 각 항목은 주목할 만한 사항 — 예를 들어, 실행 결과 출력이 0인 이유 —와 같은 모든 설명이 포함되어 있으며, 모든 힌트는 Python `UserWarning`로도 재출력되므로, 딕셔너리를 확인하지 않더라도 빈 실행은 자동으로 진단됩니다:
 
 ```python
 result = cl.process()
@@ -141,12 +146,12 @@ for hint in result.get("summary", {}).get("hints", []):
 ```
 
 {% hint style="warning" %}
-**실행 결과 이미지가 생성되지 않았을 때 `process()`는 발생하지 않습니다.** 이것이 바로 SDK와 CLI가 의도적으로 다른 유일한 부분입니다: `chloros-cli process`는 &quot;결과물이 요청되었으나 아무것도 작성되지 않음&quot;을 오류로 간주하고 0이 아닌 값으로 종료하는 반면, SDK는 정상적으로 반환하고 `summary` 또는 힌트를 통해 해당 상태를 보고합니다. 파이프라인이 빈 실행 시 중단되어야 한다면, 예외 처리에만 의존하지 말고 직접 확인하십시오 — `summary`를 확인하거나(또는 프로젝트 폴더 내 파일 수를 세어보십시오).
+**실행 결과 이미지가 생성되지 않았을 때 `process()`는 예외를 발생시키지 않습니다.** 이것이 SDK와 CLI가 의도적으로 다른 유일한 부분입니다: `chloros-cli process`는 &quot;제품이 요청되었으나 아무것도 작성되지 않음&quot;을 오류로 간주하고 0이 아닌 값으로 종료하는 반면, SDK는 정상적으로 반환하고 `summary` / 힌트를 통해 해당 상태를 보고합니다. 파이프라인이 이미지가 없는 실행 시 중단되어야 한다면, 예외 처리에만 의존하지 말고 직접 확인하십시오 — `summary`를 검사하거나(또는 프로젝트 폴더 내 파일 수를 세어보십시오).
 {% endhint %}
 
 ## Smart Connect — 라이브 하드웨어
 
-세 가지 헬퍼가 백엔드 하드웨어 풀에서 지속적 세션을 엽니다. 이 풀은 GUI가 사용하는 풀과 동일하므로, SDK 스크립트는 직렬 포트나 네트워크 대역폭을 놓고 경쟁하지 않고 데스크톱 앱과 공존합니다. 세 가지 모두 실행 중인 로컬 백엔드가 없으면 자동으로 로컬 백엔드를 시작합니다.
+세 가지 헬퍼가 백엔드의 하드웨어 풀에서 지속적 세션을 엽니다. 이 풀은 CLI, 기타 스크립트 및 GUI의 카메라 탭에서 사용하는 것과 동일한 풀이므로, SDK 스크립트는 시리얼 포트나 네트워크 대역폭을 놓고 경쟁하지 않고 이들과 공존할 수 있습니다. 세 가지 모두 실행 중인 로컬 백엔드가 없으면 자동으로 로컬 백엔드를 시작합니다. GUI의 DAQ 패널은 이 풀에 포함되지 않습니다. 스크립트에서 열기 전에 GUI에서 광 센서를 먼저 닫아야 합니다.
 
 ### 단일 LATTICE 카메라 — `connect_camera`
 
@@ -159,9 +164,13 @@ with chloros_sdk.connect_camera("213800234") as cam:
     cam.capture("output/")
 ```
 
+{% hint style="info" %}
+**상대 경로는 스크립트가 실행되는 위치로 지정됩니다(1.3.0 버전에서 변경됨).** 로컬 백엔드를 사용할 경우, 상대 경로 `output_dir`(기본값인 `"output"` 포함) — 및 백엔드가 여는 다른 경로들 (`burst_dir`, `profile_path`, `save_path`, `mask_path`) —는 스크립트의 작업 디렉터리를 기준으로 해결되므로, `cam.capture("output/")`는 `<current folder>/output/`에 쓰기를 수행합니다. 1.2.0 버전에서는 설치된 백엔드가 자체 설치 폴더를 기준으로 경로를 해석하여 &quot;액세스가 거부되었습니다&quot;라는 오류가 발생했습니다. 원격 백엔드의 경우, 경로는 입력된 그대로 전송됩니다.
+{% endhint %}
+
 ### 동기화된 어레이 — `connect_array`
 
-`connect_array`는 다중 카메라 리그에 권장되는 진입점입니다. 이 스크립트는 GUI와 동일한 스마트 준비(smart-prep) 흐름을 실행합니다: 네트워크 분석, 동기화 계층 자동 선택, PTP 시간 동기화, 카메라별 픽셀 형식 선택, AE 시딩, GPIO 트리거 준비. **첫 번째 시리얼이 마스터**이며(하드웨어 트리거 펄스를 발사함), 나머지는 슬레이브입니다.
+`connect_array`는 멀티 카메라 리그에 권장되는 진입점입니다. 이 기능은 GUI와 동일한 스마트 준비(smart-prep) 흐름을 실행합니다: 네트워크 분석, 동기화 계층 자동 선택, PTP 시간 동기화, 카메라별 픽셀 형식 선택, AE 시딩 및 GPIO 트리거 준비. **첫 번째 시리얼이 마스터**이며(하드웨어 트리거 펄스를 발사함), 나머지는 슬레이브입니다.
 
 ```python
 with chloros_sdk.connect_array(
@@ -169,11 +178,19 @@ with chloros_sdk.connect_array(
     arr.capture("output/", processing="reflectance")
 ```
 
-트리거를 발동하기 전에 모든 카메라에서 자동 노출이 안정화될 때까지 기다리려면, 어떤 어레이 캡처에든 `smart=True`를 추가하십시오. 캡처 모드(단일 / 연속 / 간격 / 최속), 레코더, 버스트-투-비디오 및 어레이 정렬에 대해서는 [SDK 참조](reference/sdk-reference.md#synchronized-array--arraysession-smart-prep)를 참조하십시오.
+트리거를 발동하기 전에 모든 카메라에서 자동 노출이 안정화될 때까지 대기하려면, 어떤 배열 캡처에든 `smart=True`를 추가하십시오.
+
+1.3.0 버전에서 새로 추가된 `ArraySession`는 파일을 작성하지 않고도 동기화된 프레임을 직접 제공합니다:
+
+* `arr.grab()`는 하나의 트리거로 촬영된 모든 카메라의 프레임을 각각 하나씩 numpy 배열(`{serial: array}`) 형태로 반환합니다; `.group_id`는 공유 트리거이며, `.errors`는 제외된 카메라를 지정합니다.
+* `arr.frame_stream(fps=5.0)`는 사용자 파이프라인에서 실시간 처리를 위해 틱당 이러한 세트 하나를 반환합니다.
+* `arr.continuous("output/")`는 백엔드 자체의 연속 캡처(GUI의 연속 모드)를 실행하고, `ContinuousHandle`와 `status()`를 반환하며, `wait()` 및 `stop()`를 포함하는 `ContinuousHandle`를 반환합니다. 모든 트리거를 높은 속도로 저장해야 할 때는 캡처 루프 대신 이를 사용하십시오.
+
+캡처 모드(단일 / 연속 / 간격 / 최속), 레코더, 버스트-투-비디오 및 어레이 정렬에 대해서는 [SDK 참조](reference/sdk-reference.md#synchronized-array--arraysession-smart-prep)를 참조하십시오.
 
 ### DAQ 광 센서 — `connect_daq_sensor`
 
-인수가 없으면, `connect_daq_sensor()`는 전송 방식을 자동으로 감지합니다(우선순위: 이더넷 → BLE → USB):
+인수가 없으면, `connect_daq_sensor()`는 전송 프로토콜을 자동으로 감지합니다(우선순위: 이더넷 → BLE → USB):
 
 ```python
 with chloros_sdk.connect_daq_sensor() as daq:    # smart-detect USB / BLE / ETH
@@ -181,7 +198,7 @@ with chloros_sdk.connect_daq_sensor() as daq:    # smart-detect USB / BLE / ETH
         print(frame["spectrum"][:10])
 ```
 
-각 프레임은 135포인트의 `spectrum`(보정 시 W/m²/nm), `is_saturated` 플래그, CIE `x`, `y`, `z` 값을 포함합니다. 특정 센서나 전송 방식을 지정하려면 — 이더넷 자동 검색이 첫 번째 시도에서 정상 작동 중인 DAQ-E를 놓칠 수 있는, 여러 네트워크 인터페이스를 갖춘 호스트에서는 이 방법이 신뢰할 수 있는 선택입니다 — 다음의 명시적 힌트를 전달하십시오:
+각 프레임은 135포인트의 `spectrum`(보정 시 W/m²/nm), `is_saturated` 플래그, CIE `x`, `y`, `z`를 포함합니다. 특정 센서나 전송 방식을 지정하려면 하나의 명시적 힌트를 전달하십시오:
 
 ```python
 daq = chloros_sdk.connect_daq_sensor(transport="usb", port="COM3")
@@ -189,40 +206,49 @@ daq = chloros_sdk.connect_daq_sensor(mac="AA:BB:CC:DD:EE:FF")        # implies B
 daq = chloros_sdk.connect_daq_sensor(eth_host="daq-e-xxx.local")     # implies Ethernet
 ```
 
-대소문자 보정 프로필(`cap_id`)은 **SDK** 설정 항목이 아니므로, 대신 `chloros-cli daq pool-connect --cap-id …` / `pool-set-cap`를 통해 선택하십시오.
+대역폭 보정 프로파일(`cap_id`)은 **SDK 조절 기능**이 아니므로, 대신 `chloros-cli daq pool-connect --cap-id …` / `pool-set-cap`를 통해 선택해야 합니다.
 
 ### 저장된 프로젝트 — `open_project`
 
-저장된 Chloros 프로젝트는 연결된 하드웨어(`cameras.json` + `sensors.json` 및 `project.json`)를 유지하며, `chloros_sdk.open_project(path)`는 모든 장치를 한 번에 재연결하고 장치 이름으로 캡처를 실행할 수 있습니다. 참조 문서의 [프로젝트 자동화](reference/sdk-reference.md#project-automation--chlorosproject)를 참조하십시오.
+저장된 Chloros 프로젝트는 연결된 하드웨어(`cameras.json` + `sensors.json` 및 `project.json`)를 유지하며, 또한 `chloros_sdk.open_project(path)`는 카메라, 어레이 및 광 센서를 한 번에 다시 연결하고 장치 이름으로 캡처를 실행할 수 있습니다. 광 센서는 실행 중인 Chloros 백엔드를 통해 저장된 설정 및 캡(cap)과 함께 재연결됩니다. 참조 문서의 [프로젝트 자동화](reference/sdk-reference.md#project-automation--chlorosproject)를 참조하십시오.
 
 ## pip 전용 설치 시 제공되는 기능
 
-하드웨어 표면을 사용하기 전에 모듈 수준의 가용성 플래그를 확인하십시오:
+하드웨어 표면을 사용하기 전에 모듈 수준의 사용 가능 플래그를 확인하십시오:
 
 ```python
 import chloros_sdk
 print(chloros_sdk.__version__)
 print("CAMERA_AVAILABLE =", chloros_sdk.CAMERA_AVAILABLE)    # True iff lattice_sdk imported cleanly
-print("DAQ_AVAILABLE    =", chloros_sdk.DAQ_AVAILABLE)       # True iff daq_sdk imported cleanly
 print("PROJECT_AVAILABLE =", chloros_sdk.PROJECT_AVAILABLE)  # True iff ChlorosProject deps available
 ```
 
-**오직** `pip install chloros-sdk`만 설치되어 있고 Chloros 데스크톱 패키지가 없는 호스트의 경우:
+Chloros 데스크톱 패키지가 없고 **오직** `pip install chloros-sdk`만 설치된 호스트에서는:
 
-* `ChlorosLocal`, `process_folder` 및 `process_lattice_capture`는 **작동하지 않습니다** — 데스크톱 설치 프로그램에 포함된 백엔드 바이너리가 필요합니다.
-* 스마트 커넥트 헬퍼(`connect_camera`, `connect_array`, `connect_daq_sensor`)는 순수한 HTTP 클라이언트이므로 다른 컴퓨터에 있는 백엔드와 연동되어 작동합니다. 하지만 제공된 백엔드는 루프백에만 바인딩되므로, 사용자는 직접 포트를 포워딩해야 합니다(예: `ssh -N -L 5000:127.0.0.1:5000 user@chloros-host`)하고, `backend_url="http://127.0.0.1:5000"`를 `auto_start_backend=False`와 함께 전달해야 합니다. [원격 백엔드 모드](reference/sdk-reference.md#remote-backend-mode-pip-only-host-via-tunnel)를 참조하십시오.
-* 직접 하드웨어 기반 LATTICE 클래스(`LatticeCamera`, `CameraPool`, …)는 임포트할 수 있지만, 데스크톱 패키지에 포함된 Arena SDK 런타임이 필요합니다. 이 런타임이 없으면 `CAMERA_AVAILABLE`는 `False`와 동일합니다.
-* `daq_sdk`(직접 DAQ 클래스)는 PyPI 패키지가 아닌 데스크톱 설치본에 포함되어 있으므로, 따라서 pip만 설치된 호스트에서는 `DAQ_AVAILABLE`가 `False`로 작동합니다. 대신 (터널링된) 백엔드를 대상으로 `connect_daq_sensor()`를 통해 DAQ 센서를 제어하십시오.
+* `ChlorosLocal`, `process_folder` 및 `process_lattice_capture`는 **작동하지 않습니다**. 이 모듈들은 데스크톱 설치 프로그램에 포함된 백엔드 바이너리가 필요합니다.
+* 스마트 커넥트 헬퍼(`connect_camera`, `connect_array`, `connect_daq_sensor`)는 순수한 HTTP 클라이언트이므로 다른 컴퓨터에 있는 백엔드와 연동되어 작동합니다 — 하지만 제공된 백엔드는 루프백에만 바인딩되므로, 사용자는 직접 포트를 포워딩해야 하며(예: `ssh -N -L 5000:127.0.0.1:5000 user@chloros-host`), `backend_url="http://127.0.0.1:5000"`와 함께 `auto_start_backend=False`를 전달해야 합니다. [원격 백엔드 모드](reference/sdk-reference.md#remote-backend-mode-pip-only-host-via-tunnel)를 참조하십시오.
+* 직접 하드웨어 LATTICE 클래스(`LatticeCamera`, `CameraPool`, …)는 가져올 수 있지만, 데스크톱 패키지의 Arena SDK 런타임이 필요합니다. 이 런타임이 없으면 `CAMERA_AVAILABLE`는 `False`가 됩니다.
+* DAQ 센서는 (터널링된) 백엔드(`connect_daq_sensor()`) 또는 프로젝트의 `proj.sensors`를 통해서만 구동되며, 백엔드는 자체 머신에서 센서를 엽니다.
+
+## AI 어시스턴트 — `chloros-mcp`
+
+이 SDK에는 `chloros-mcp`가 포함되어 있습니다. 이는 Claude Desktop, Claude Code, Cursor 및 기타 MCP 클라이언트가 Chloros를 제어할 수 있게 해주는 MCP 서버로, 이미지 처리 및 LATTICE 카메라, 어레이, DAQ 광 센서 작동을 지원합니다. 이 서버의 도구는 본 SDK의 기능을 모두 포함합니다. SDK와 함께 설치되므로, Claude Code의 경우 설정은 한 줄로 완료됩니다:
+
+```bash
+claude mcp add chloros -- chloros-mcp
+```
+
+기타 클라이언트: [AI 어시스턴트와 함께 Chloros 사용하기](ai-assistants.md). 옵션 및 모든 도구: [MCP 서버 (AI 어시스턴트)](reference/sdk-reference.md#mcp-server-ai-assistants).
 
 ## 라이선스 요구 사항
 
-SDK에 액세스하려면 유료 등급(**Copper 이상**: Copper / Bronze / Silver / Gold) 중 하나에서 유효한 Chloros+ 로그인이 필요합니다. 무료 Iron 등급에서는 SDK/CLI에 액세스할 수 없습니다. 이 제한은**서버 측**에서 적용됩니다: 모든 SDK 요청은 활성 세션과 유료 요금제를 모두 포함해야 하며, 그렇지 않을 경우 백엔드는 `403` / `PLAN_UPGRADE_REQUIRED` (`ChlorosLocal`에 의해 `ChlorosLicenseError`로, `connect_*` 헬퍼에 의해 `ChlorosConnectError`로 발생)를 반환합니다. 로그아웃된 호출자는 대신 `401` / `AUTH_REQUIRED` (`ChlorosAuthenticationError`)를 받게 됩니다. `chloros-cli login`를 다시 실행하면 첫 번째 경우는 해결되지만 두 번째 경우는 해결되지 않습니다.
+SDK에 액세스하려면 유료 요금제(**Copper 이상**: Copper / Bronze / Silver / Gold) 중 하나에서 유효한 Chloros+ 로그인이 필요합니다. 무료 Iron 등급은 SDK/CLI에 접근할 수 없습니다. 이 정책은**서버 측**에서 적용됩니다: 모든 SDK 요청에는 활성 세션과 유료 요금제가 모두 포함되어야 하며, 그렇지 않을 경우 백엔드에서 `403` / `PLAN_UPGRADE_REQUIRED` (`ChlorosLocal`에 의해 `ChlorosLicenseError`로, `connect_*` 헬퍼에 의해 `ChlorosConnectError`로 변환됨)를 반환합니다. 로그아웃된 호출자는 대신 `401` / `AUTH_REQUIRED` (`ChlorosAuthenticationError`)를 받게 됩니다. `chloros-cli login`를 다시 실행하면 첫 번째 경우는 해결되지만 두 번째 경우는 해결되지 않습니다.
 
-오프라인 사용은 요금제의 유예 기간 내에 가능합니다. 티어는 서버 검증 캐시(5분) 또는 서명되고 기기에 바인딩된 라이선스 캐시(월간 요금제의 경우 30일, 연간 요금제의 경우 구독 만료일까지)에서 읽힙니다. 유예 기간이 만료되면 요금제는 무료 요금제로 전환되며, 기기가 서버에 한 번 연결될 때까지 SDK 액세스가 중지됩니다. `chloros-cli status`는 무료 요금제에서도 계속 접근 가능하므로 원인을 항상 확인할 수 있습니다. [Chloros+ 로그인](chloros+-login.md)을 참조하십시오.
+오프라인 사용은 요금제의 유예 기간 내에 작동합니다. 티어는 서버 검증 캐시(5분) 또는 서명되고 기기에 바인딩된 라이선스 캐시(월간 요금제의 경우 30일, 연간 요금제의 경우 구독 만료일까지)에서 읽힙니다. 유예 기간이 만료되면 요금제는 무료 티어로 전환되며, 기기가 서버에 한 번 연결될 때까지 SDK 액세스가 중단됩니다. `chloros-cli status`는 무료 티어에서도 계속 접근 가능하므로 원인을 항상 확인할 수 있습니다. [Chloros+ 로그인](chloros+-login.md)을 참조하십시오.
 
 ## 예외
 
-&quot;Chloros에서 발생한 모든 오류&quot;를 처리하기 위해 기본 클래스를 캐치하십시오:
+&quot;Chloros에서 발생한 모든 오류&quot;를 처리하려면 기본 클래스를 캐치하십시오:
 
 ```python
 import chloros_sdk
@@ -237,10 +263,11 @@ except chloros_sdk.ChlorosError as e:
     print(f"Chloros error: {e}")
 ```
 
-모든 파이프라인 예외(`ChlorosBackendError`, `ChlorosConnectionError`, `ChlorosLicenseError`, `ChlorosAuthenticationError`, `ChlorosConfigurationError`, `ChlorosProcessingError`)는 모두 `ChlorosError`에서 파생됩니다. 주의할 점 하나: `ChlorosConnectError` — 이 예외는 오직 `connect_camera` / `connect_array` / `connect_daq_sensor` —는 일반 `Exception`에서 파생되며, `ChlorosError`에서 파생된 것이 **아닙니다**. 따라서 `except ChlorosError`는 이를 감지하지 못합니다. 전체 계층 구조는 [SDK 참조](reference/sdk-reference.md#exceptions)에 나와 있습니다.
+모든 파이프라인 예외(`ChlorosBackendError`, `ChlorosConnectionError`, `ChlorosLicenseError`, `ChlorosAuthenticationError`, `ChlorosConfigurationError`, `ChlorosProcessingError`)는 모두 `ChlorosError`에서 파생됩니다. 한 가지 주의할 점: `ChlorosConnectError` — `connect_camera` / `connect_array` / `connect_daq_sensor`에 의해서만 발생하며 —는 `ChlorosError`가 **아니고** 일반 `Exception`에서 파생되므로, `except ChlorosError`는 이를 포착하지 못합니다. 전체 계층 구조는 [SDK 참조](reference/sdk-reference.md#exceptions)에 나와 있습니다.
 
 ## 참조
 
-* [SDK 참조](reference/sdk-reference.md) — AI 어시스턴트에 최적화된 완전한 API 표면.
-* [CLI 참조](reference/cli-reference.md) — 모든 CLI 하위 명령어는 SDK 호출을 반영합니다.
+* [SDK 참조](reference/sdk-reference.md) — AI 어시스턴트에 최적화된 전체 API 표면.
+* [CLI 참조](reference/cli-reference.md) — 모든 CLI 하위 명령은 SDK 호출을 반영합니다.
+* [AI 어시스턴트와 함께 Chloros 사용하기](ai-assistants.md) — `chloros-mcp` 설정 및 프롬프트 레시피.
 * [다운로드](download.md) — Windows 및 Linux용 설치 프로그램.
