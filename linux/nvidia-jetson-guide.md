@@ -1,8 +1,6 @@
 # NVIDIA Jetson 가이드 NVIDIA Jetson에서 실행되는
 
-Chloros
-는 현장, 무인항공기(UAV), 원격 설치 환경 등 엣지 환경에서 다중 스펙트럼 이미지 처리를 지원합니다. Chloros
-1.3.0은 시작 시 Jetson 모델을 자동으로 감지하고, 감지된 하드웨어에 맞춰 처리 전략을 최적화합니다. **수동으로 조정할 필요가 없습니다.**
+Chloros는 현장, 무인항공기(UAV), 원격 설치 환경 등 엣지 환경에서 다중 스펙트럼 이미지 처리를 지원합니다. Chloros 1.3.0은 시작 시 Jetson 모델을 자동으로 감지하고, 감지된 하드웨어에 맞춰 처리 전략을 최적화합니다. **수동으로 조정할 필요가 없습니다.**
 {% hint style="info" %}
 **
 
@@ -20,8 +18,7 @@ Chloros
 | **Jetson Orin Nano** | 8GB 공유     | `GPU_SINGLE` (작업자 1명, 순차 처리)                     | 엔트리 레벨 엣지 컴퓨팅                                 |
 
 {% hint style="info" %}
-Linux
-arm64 패키지에는 **JetPack 6**이 필요하며, 이는 Jetson Orin 제품군에서 사용할 수 있습니다. 구형 모델(Nano, TX2, Xavier NX)은 JetPack 6을 실행할 수 없으며, 현재 패키지에서 지원되지 않습니다.
+Linux arm64 패키지에는 **JetPack 6**이 필요하며, 이는 Jetson Orin 제품군에서 사용할 수 있습니다. 구형 모델(Nano, TX2, Xavier NX)은 JetPack 6을 실행할 수 없으며, 현재 패키지에서 지원되지 않습니다.
 {% endhint %}
 
 ***
@@ -30,10 +27,7 @@ arm64 패키지에는 **JetPack 6**이 필요하며, 이는 Jetson Orin 제품�
 
 * **JetPack 6.x** (최신 버전 권장)
 * JetPack 6의 **NVIDIA CUDA 및 cuDNN** (이미지에 포함되어 있지 않은 경우 `sudo apt install nvidia-jetpack`)
-* **유료 Chloros
-+ 요금제** — Copper 등급 이상 (모든 CLI
-/SDK
-액세스에 필수; 서버 측에서 강제 적용됨)
+* **유료 Chloros+ 요금제** — Copper 등급 이상 (모든 CLI/SDK액세스에 필수; 서버 측에서 강제 적용됨)
 
 ## 설치
 
@@ -50,17 +44,12 @@ python3 -c "import chloros_sdk; print(chloros_sdk.__version__)"   # the .deb ins
 chloros-cli selftest
 ```
 
-`.deb`는 이 빌드와 호환되는 시스템 `python3`용 Python
-SDK
-를 설치합니다. 번들로 제공되는 휠(wheel)을 설치해야 하는 것은 가상 환경(virtualenv)뿐입니다: `pip install /usr/lib/chloros/sdk/chloros_sdk-*.whl` (완전 오프라인). 일반적인 Linux
-설치 세부 정보, 파일 위치 및 문제 해결 방법은 [Linux
-설치](linux-installation.md)를 참조하십시오.
+`.deb`는 이 빌드와 호환되는 시스템 `python3`용 Python SDK를 설치합니다. 번들로 제공되는 휠(wheel)을 설치해야 하는 것은 가상 환경(virtualenv)뿐입니다: `pip install /usr/lib/chloros/sdk/chloros_sdk-*.whl` (완전 오프라인). 일반적인 Linux 설치 세부 정보, 파일 위치 및 문제 해결 방법은 [Linux 설치](linux-installation.md)를 참조하십시오.
 
 {% hint style="info" %}
 **실행 시 더 이상 압축을 풀지 않습니다.**
 
-1.3.0 버전부터 백엔드와 CLI
-는 `/usr/lib/chloros/` 아래에 압축을 풀지 않은 상태로 설치되므로, 더 이상 시작할 때마다 임시 디렉터리로 파일을 추출하지 않습니다. 해당 폴더가 존재할 경우 임시 파일은 여전히 자동으로 `/mnt/ssd/tmp`에 저장되며, 그렇지 않은 경우 `TMPDIR`를 NVMe(`export TMPDIR=/mnt/nvme/tmp`)의 경로로 설정할 수 있습니다.
+1.3.0 버전부터 백엔드와 CLI는 `/usr/lib/chloros/` 아래에 압축을 풀지 않은 상태로 설치되므로, 더 이상 시작할 때마다 임시 디렉터리로 파일을 추출하지 않습니다. 해당 폴더가 존재할 경우 임시 파일은 여전히 자동으로 `/mnt/ssd/tmp`에 저장되며, 그렇지 않은 경우 `TMPDIR`를 NVMe(`export TMPDIR=/mnt/nvme/tmp`)의 경로로 설정할 수 있습니다.
 {% endhint %}
 
 ***
@@ -69,8 +58,7 @@ SDK
 
 ### 작동 원리
 
-시작 시, Chloros
-는 시스템 프로파일을 생성합니다:
+시작 시, Chloros는 시스템 프로파일을 생성합니다:
 
 1. `/proc/device-tree/model`를 통해 **Jetson 모델을 감지**합니다.
 2. **사용 가능한 공유 GPU/CPU 메모리를 읽습니다** (Jetson은 통합 메모리를 사용합니다)
@@ -114,13 +102,10 @@ SDK
 
 ## Nano 및 Orin Nano에서 Texture Aware에 대한 GPU 주파수 제한
 
-Texture Aware 디베이어는 GPU 신경망 추론을 실행하며, 이는 저전력 Jetson 모델(10~15W급)에서 GPU 클럭 속도가 최대일 때 **과전류 경고**를 유발할 수 있습니다.**Jetson Nano 또는 Orin Nano**에서 `--debayer texture-aware`를 전달하면, CLI
-는 GPU의 최대 주파수를 확인하고, 현재 주파수가 이보다 높을 경우 **510 MHz**(510000000)로 제한합니다:
+Texture Aware 디베이어는 GPU 신경망 추론을 실행하며, 이는 저전력 Jetson 모델(10~15W급)에서 GPU 클럭 속도가 최대일 때 **과전류 경고**를 유발할 수 있습니다.**Jetson Nano 또는 Orin Nano**에서 `--debayer texture-aware`를 전달하면, CLI는 GPU의 최대 주파수를 확인하고, 현재 주파수가 이보다 높을 경우 **510 MHz**(510000000)로 제한합니다:
 
-* CLI
-가 GPU 주파수 sysfs 노드에 쓰기 권한이 있는 경우, 제한이 **자동으로 적용**되고 확인 메시지가 출력됩니다.
-* 그렇지 않은 경우(루트 권한 필요), CLI
-는 제한을 수동으로 적용하기 위한 정확한 `sudo` 명령어를 출력하고, 사용자가 이를 읽을 수 있도록 잠시 대기한 후 계속 진행합니다. 이 경우 처리는 여전히 실행되지만 과전류 경고가 표시될 수 있습니다.
+* CLI가 GPU 주파수 sysfs 노드에 쓰기 권한이 있는 경우, 제한이 **자동으로 적용**되고 확인 메시지가 출력됩니다.
+* 그렇지 않은 경우(루트 권한 필요), CLI는 제한을 수동으로 적용하기 위한 정확한 `sudo` 명령어를 출력하고, 사용자가 이를 읽을 수 있도록 잠시 대기한 후 계속 진행합니다. 이 경우 처리는 여전히 실행되지만 과전류 경고가 표시될 수 있습니다.
 
 처리 전에 직접 상한값을 적용하려면:
 
@@ -131,20 +116,18 @@ echo 510000000 | sudo tee /sys/devices/platform/bus@0/17000000.gpu/devfreq/17000
 고전력 모델(Orin NX 25W, AGX Orin 60W)은 GPU 최대 속도로 작동하며, 상한값이 적용되지 않습니다. Standard 디베이어는 어떤 모델에서도 상한값을 트리거하지 않습니다.
 
 {% hint style="info" %}
-**Jetson에서 Texture Aware는 항상 한 번에 하나의 이미지만 처리합니다.** 각 워커는 자체 CUDA 컨텍스트(약 1GB)와 노이즈 제거 모델의 별도 사본이 필요하지만, 통합 메모리로는 이를 감당할 수 없습니다. 따라서 Jetson에서 Texture Aware 경로는 GPU 액세스가 직렬화된 단일 워커에 고정됩니다. 모든 Jetson에서 Texture Aware는 Standard보다 현저히 느릴 것으로 예상됩니다. Texture Aware는 Survey3
-이미지에 적용됩니다. LATTICE 캡처는 항상 Standard 디베이어를 사용합니다. 사용 가능한 CUDA GPU가 없는 경우 실행 시 Standard가 사용되며, 백엔드에는 그 이유를 설명하는 `[DEBAYER] … needs a CUDA GPU …` 줄이 하나 기록됩니다(`chloros-cli --verbose`와 함께 표시됨).
+**Jetson에서 Texture Aware는 항상 한 번에 하나의 이미지만 처리합니다.** 각 워커는 자체 CUDA 컨텍스트(약 1GB)와 노이즈 제거 모델의 별도 사본이 필요하지만, 통합 메모리로는 이를 감당할 수 없습니다. 따라서 Jetson에서 Texture Aware 경로는 GPU 액세스가 직렬화된 단일 워커에 고정됩니다. 모든 Jetson에서 Texture Aware는 Standard보다 현저히 느릴 것으로 예상됩니다. Texture Aware는 Survey3 이미지에 적용됩니다. LATTICE 캡처는 항상 Standard 디베이어를 사용합니다. 사용 가능한 CUDA GPU가 없는 경우 실행 시 Standard가 사용되며, 백엔드에는 그 이유를 설명하는 `[DEBAYER] … needs a CUDA GPU …` 줄이 하나 기록됩니다(`chloros-cli --verbose`와 함께 표시됨).
 {% endhint %}
 
 ***
 
 ## 열 관리
 
-Jetson 장치는 특히 밀폐된 환경이나 항공기 탑재 환경에서 열 여유 공간이 제한적입니다. Chloros
-는 SoC 온도를 모니터링하고 배치 크기를 자동으로 조절합니다:
+Jetson 장치는 특히 밀폐된 환경이나 항공기 탑재 환경에서 열 여유 공간이 제한적입니다. Chloros는 SoC 온도를 모니터링하고 배치 크기를 자동으로 조절합니다:
 
 | 온도         | 조치                                            |
 | ------------------- | ------------------------------------------------- |
-| **&lt; 70°C**          | 정상 작동 — 최대 처리 속도          |
+| **< 70°C**          | 정상 작동 — 최대 처리 속도          |
 | **70°C** (경고)  | 배치 크기가 점진적으로 축소됨 (70°C~80°C 구간에서 100% → 50%) |
 | **80°C** (위험) | 강력한 처리 속도 제한 (80°C에서 90°C 사이에서 50% → 0%) |
 | **90°C** (종료) | GPU 처리 완전히 중지 — 냉각 필요 |
@@ -161,8 +144,7 @@ Jetson 장치는 **통합 메모리**를 사용합니다. 즉, GPU와 CPU가 동
 
 ### 스왑 경고 및 권장 사항
 
-Jetson에서 처리를 시작하기 전에 CLI
-는 입력 폴더에 있는 RAW 이미지 수를 집계합니다. (`.tif`, `.tiff`, `.raw`, `.dng` — JPG 미리보기는 집계되지 않음)을 집계하고, 실행에 필요한 최대 메모리 용량을 추정한 후, RAM + 스왑 용량이 부족할 가능성이 있는 경우 **시작 전에 경고**를 표시합니다. 경고 메시지의 제목은 `LOW MEMORY WARNING - Jetson Detected`이며, 이미지 개수, RAM, 현재 스왑 용량, 예상 최대 메모리 사용량을 표시한 후, (8GB 미만인 경우는 절대 없음). 스크롤백에서 메시지가 사라지지 않도록 몇 초간 일시 정지한 후 처리가 계속됩니다.**경고에서 사용하는 메모리 추정값:**
+Jetson에서 처리를 시작하기 전에 CLI는 입력 폴더에 있는 RAW 이미지 수를 집계합니다. (`.tif`, `.tiff`, `.raw`, `.dng` — JPG 미리보기는 집계되지 않음)을 집계하고, 실행에 필요한 최대 메모리 용량을 추정한 후, RAM + 스왑 용량이 부족할 가능성이 있는 경우 **시작 전에 경고**를 표시합니다. 경고 메시지의 제목은 `LOW MEMORY WARNING - Jetson Detected`이며, 이미지 개수, RAM, 현재 스왑 용량, 예상 최대 메모리 사용량을 표시한 후, (8GB 미만인 경우는 절대 없음). 스크롤백에서 메시지가 사라지지 않도록 몇 초간 일시 정지한 후 처리가 계속됩니다.**경고에서 사용하는 메모리 추정값:**
 
 | 디베이어 모드 | 기본 | 이미지당 |
 | --- | --- | --- |
@@ -192,8 +174,7 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 ### OOM(메모리 부족) 처리
 
-처리 중, Chloros
-는 GPU 메모리를 모니터링하며, 시스템이 중단되는 대신 점진적으로 성능을 낮춥니다:
+처리 중, Chloros는 GPU 메모리를 모니터링하며, 시스템이 중단되는 대신 점진적으로 성능을 낮춥니다:
 
 1. GPU 메모리 사용률이 **85%**를 초과하면, 선제적으로 배치 크기가 축소됩니다.
 2. 여전히 메모리 부족(OOM) 현상이 발생하면 배치 크기가 **절반**으로 줄어들며, 이후 OOM이 발생할 때마다 다시 절반으로 줄어듭니다. 이후 성공적으로 처리된 각 배치마다 해당 페널티가 한 단계씩 완화됩니다.
@@ -224,9 +205,7 @@ GPU가 Jetson의 RAM을 공유하기 때문에, RAM과 스왑 공간을 합한 �
 ### SSH
 를 통한 헤드리스 운영
 
-Chloros
-CLI
-는 헤드리스 Jetson 배포에 이상적입니다:
+Chloros CLI는 헤드리스 Jetson 배포에 이상적입니다:
 
 ```bash
 # SSH into the Jetson
@@ -241,16 +220,14 @@ chloros-cli export-status
 
 ### LATTICE / DAQ-E 시간 동기화를 위한 상시 가동 백엔드
 
-Jetson이 헤드리스 모드로 LATTICE 카메라나 DAQ-E 광 센서를 제어하는 경우, **사용자 권한으로** 백엔드 systemd 서비스를 활성화하여 PTP 그랜드마스터가 지속적으로 실행되고 SDK
-스크립트가 실행 중인 백엔드를 찾을 수 있도록 하십시오(이 유닛은 설치되어 있지만 기본적으로 활성화되어 있지 않습니다):
+Jetson이 헤드리스 모드로 LATTICE 카메라나 DAQ-E 광 센서를 제어하는 경우, **사용자 권한으로** 백엔드 systemd 서비스를 활성화하여 PTP 그랜드마스터가 지속적으로 실행되고 SDK 스크립트가 실행 중인 백엔드를 찾을 수 있도록 하십시오(이 유닛은 설치되어 있지만 기본적으로 활성화되어 있지 않습니다):
 
 ```bash
 sudo systemctl enable --now chloros-backend@$USER.service    # $USER expands to your user name
 chloros-cli time-sync status
 ```
 
-그러면 백엔드는 사용자로 실행됩니다. 즉, 백엔드가 기록하는 캡처 데이터는 사용자의 것이며, 사용자의 `chloros-cli login`를 사용합니다. 루트 `chloros-backend.service` 및 패키지가 루트 권한 없이 PTP 포트 319/320을 바인딩 가능하게 만드는 방법을 포함한 자세한 내용은 [Linux
-설치](linux-installation.md#always-on-ptp-for-headless-hosts)를 참조하십시오.
+그러면 백엔드는 사용자로 실행됩니다. 즉, 백엔드가 기록하는 캡처 데이터는 사용자의 것이며, 사용자의 `chloros-cli login`를 사용합니다. 루트 `chloros-backend.service` 및 패키지가 루트 권한 없이 PTP 포트 319/320을 바인딩 가능하게 만드는 방법을 포함한 자세한 내용은 [Linux 설치](linux-installation.md#always-on-ptp-for-headless-hosts)를 참조하십시오.
 
 ### systemd를 이용한 자동 처리
 
@@ -310,8 +287,7 @@ chloros-cli process /data/flights/flight_042 \
     --indices NDVI GNDVI OSAVI
 ```
 
-### Jetson에서의 Python
-SDK
+### Jetson에서의 Python SDK
 
 
 ```python
@@ -356,26 +332,15 @@ done
 * **견고한 현장**: PoE 기가비트 이더넷 카메라 연결이 가능한 IP67/IP69K 방수 인클로저
 * **최소 구성/저비용**: 추가 인클로저가 포함된 개발자 키트
 
-구축 시나리오에 맞는 구체적인 하드웨어 권장 사항이 필요하시면 [MAPIR
-지원팀](https://www.mapir.camera/community/contact)에 문의하십시오.
+구축 시나리오에 맞는 구체적인 하드웨어 권장 사항이 필요하시면 [MAPIR지원팀](https://www.mapir.camera/community/contact)에 문의하십시오.
 
 ***
 
 ## 다음 단계
 
-* [Linux
-설치](linux-installation.md) — 일반적인 Linux
-설치 세부 정보
+* [Linux 설치](linux-installation.md) — 일반적인 Linux 설치 세부 정보
 * [동적 컴퓨팅 적응](../processing-architecture/dynamic-compute-adaptation.md) — 전체 컴퓨팅 전략 참조
 * [처리 파이프라인](../processing-architecture/processing-pipeline.md) — 4스레드 파이프라인 이해
-* [CLI : 명령줄](../CLI.md) — CLI
-가이드
-* [API
-: Python
-SDK
-](../api-python-sdk.md) — SDK
-가이드
-* [CLI
-참조](../reference/cli-reference.md) 및 [SDK
-참조](../reference/sdk-reference.md) — 1.3.0 버전의 모든 명령어/API
-목록
+* [CLI : 명령줄](../CLI.md) — CLI 가이드
+* [API: Python SDK](../api-python-sdk.md) — SDK 가이드
+* [CLI 참조](../reference/cli-reference.md) 및 [SDK 참조](../reference/sdk-reference.md) — 1.3.0 버전의 모든 명령어/API 목록

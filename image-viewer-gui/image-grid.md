@@ -20,7 +20,7 @@
 2. **카메라 필터 버튼** — LATTICE 카메라당 하나씩 표시됩니다. ‘카메라별’ 모드에서만 표시됩니다.
 3. **내보내기/보기 모드 버튼** — 각 썸네일이 표시하는 제품 유형을 선택합니다.
 
-창이 너무 좁아 모든 버튼을 표시할 수 없는 경우, 그룹은 오른쪽에서 왼쪽 순서로 마우스를 올렸을 때 나타나는 드롭다운 메뉴로 접힙니다. 먼저 내보내기/보기 버튼이 접히고, 그 다음 카메라 버튼이 접힙니다. 접힌 그룹에는 현재 활성화된 선택 항목이 표시된 단 하나의 버튼만 남게 되며, 이 버튼 위에 마우스를 올리면 전체 버튼 세트가 아래로 밀려나옵니다. **&#x27;트리거별(Per Trigger)&#x27; 및 &#x27;카메라별(Per Camera)&#x27;은 절대 접히지 않습니다.
+창이 너무 좁아 모든 버튼을 표시할 수 없는 경우, 그룹은 오른쪽에서 왼쪽 순서로 마우스를 올렸을 때 나타나는 드롭다운 메뉴로 접힙니다. 먼저 내보내기/보기 버튼이 접히고, 그 다음 카메라 버튼이 접힙니다. 접힌 그룹에는 현재 활성화된 선택 항목이 표시된 단 하나의 버튼만 남게 되며, 이 버튼 위에 마우스를 올리면 전체 버튼 세트가 아래로 밀려나옵니다. **'트리거별(Per Trigger)' 및 '카메라별(Per Camera)'은 절대 접히지 않습니다.
 
 <!-- SCREENSHOT-NEEDED: Image grid toolbar of a LATTICE array project at full width, showing all three button groups inline: Per Trigger / Per Camera, three camera filter buttons labelled "LATT-M3M (serial)", and the export/view buttons including TIFF, RAW (Original), RAW (Radiance), RAW (Reflectance). -->
 

@@ -27,15 +27,9 @@ metaLinks:
 
 <summary>교정 타겟 없이도 이미지의 반사율을 교정할 수 있나요?</summary>
 
-**Survey3
+**Survey3:** 아니요. 비표적 이미지를 촬영할 때 주변에서 촬영한 교정 표적 이미지가 없으면, 이미지의 픽셀 값을 알려진 반사율 백분율과 연관 지을 수 없습니다. 또한 MAPIR 광 센서의 로그 데이터를 포함하지 않으면 주변광 스펙트럼이 측정되지 않아 반사율 결과가 정확하지 않을 것입니다.
 
-:** 아니요. 비표적 이미지를 촬영할 때 주변에서 촬영한 교정 표적 이미지가 없으면, 이미지의 픽셀 값을 알려진 반사율 백분율과 연관 지을 수 없습니다. 또한 MAPIR
-
-광 센서의 로그 데이터를 포함하지 않으면 주변광 스펙트럼이 측정되지 않아 반사율 결과가 정확하지 않을 것입니다.
-
-**LATTICE:** 예. 반사율은 패널 대신 DAQ 광 센서로 측정된 하향 복사조도(ρ = π·L/E)를 기준으로 삼을 수 있습니다. QA를 통과한 프레임 내 타겟이 *존재할* 경우, 해당 타겟은 기본적으로 절대 기준이 됩니다(`--reflectance-source auto`). 단, 플래그와 함께 통과한 경우에는 타겟과 DAQ 체인이 측정 점수를 놓고 경쟁하게 됩니다. 단, 한 가지 예외가 있습니다. “F988 반사율은 장면 내 반사율 패널을 사용하여 보정됩니다. 해당 대역은 DAQ 광 센서의 보정 범위를 벗어나므로, Chloros
-
-는 가장 최근의 패널 캡처 데이터를 적용하고 패널 관측 간에도 이를 유지합니다.” [보정 타겟](calibration-targets.md)을 참조하십시오.
+**LATTICE:** 예. 반사율은 패널 대신 DAQ 광 센서로 측정된 하향 복사조도(ρ = π·L/E)를 기준으로 삼을 수 있습니다. QA를 통과한 프레임 내 타겟이 *존재할* 경우, 해당 타겟은 기본적으로 절대 기준이 됩니다(`--reflectance-source auto`). 단, 플래그와 함께 통과한 경우에는 타겟과 DAQ 체인이 측정 점수를 놓고 경쟁하게 됩니다. 단, 한 가지 예외가 있습니다. “F988 반사율은 장면 내 반사율 패널을 사용하여 보정됩니다. 해당 대역은 DAQ 광 센서의 보정 범위를 벗어나므로, Chloros는 가장 최근의 패널 캡처 데이터를 적용하고 패널 관측 간에도 이를 유지합니다.” [보정 타겟](calibration-targets.md)을 참조하십시오.
 
 </details>
 
@@ -43,9 +37,7 @@ metaLinks:
 
 <summary>DAQ 광 센서가 필요한가요?</summary>
 
-복사도의 경우 필요하지 않습니다: LATTICE 복사도 내보내기 데이터는 각 카메라의 공장 출하 시 방사계 보정값을 기반으로 하므로 DAQ 센서나 타겟이 필요하지 않습니다. **반사율**의 경우 주변광에 대한 기준이 필요합니다. DAQ 광 센서의 하향 측정값이나 프레임 내 보정 타겟 중 하나를 사용하면 됩니다. DAQ 센서를 사용하면**장면에 패널을 배치하지 않고도** 보정된 반사율을 생성할 수 있습니다. 기록된 `.daq` 파일은 타임스탬프를 통해 이미지와 자동으로 매칭됩니다. [보정 타겟](calibration-targets.md) 및 [CLI
-
-참조](reference/cli-reference.md)를 참조하십시오.
+복사도의 경우 필요하지 않습니다: LATTICE 복사도 내보내기 데이터는 각 카메라의 공장 출하 시 방사계 보정값을 기반으로 하므로 DAQ 센서나 타겟이 필요하지 않습니다. **반사율**의 경우 주변광에 대한 기준이 필요합니다. DAQ 광 센서의 하향 측정값이나 프레임 내 보정 타겟 중 하나를 사용하면 됩니다. DAQ 센서를 사용하면**장면에 패널을 배치하지 않고도** 보정된 반사율을 생성할 수 있습니다. 기록된 `.daq` 파일은 타임스탬프를 통해 이미지와 자동으로 매칭됩니다. [보정 타겟](calibration-targets.md) 및 [CLI 참조](reference/cli-reference.md)를 참조하십시오.
 
 </details>
 
@@ -92,7 +84,7 @@ metaLinks:
 
 <details>
 
-<summary>Chloros에서 &quot;이 컴퓨터에서는 프로젝트 폴더의 경로가 너무 깊습니다&quot;라는 메시지가 표시되는 이유는 무엇입니까?</summary>
+<summary>Chloros에서 "이 컴퓨터에서는 프로젝트 폴더의 경로가 너무 깊습니다"라는 메시지가 표시되는 이유는 무엇입니까?</summary>
 
 이는 Windows에서만 발생하는 문제입니다. Windows는 기본적으로 긴 경로 기능이 비활성화되어 있으며, 이 경우 파일 경로의 길이는 260자를 초과할 수 없습니다. Chloros 제품은 프로젝트 폴더 아래로 최대 약 130자까지 위치하므로, Chloros는 1.3.0 이전 버전에서 발생했던 것처럼 아무 작업도 수행하지 못한 채 종료되는 대신, 처리 전에 더 깊은 프로젝트 폴더를 거부합니다. 이 메시지는 허용되는 가장 긴 프로젝트 폴더 경로를 알려줍니다.
 
@@ -143,9 +135,7 @@ LATTICE 카메라에는 이러한 제한이 없습니다. Chloros가 실시간�
 
 <summary><a href="https://www.mapir.camera/collections/software/products/mapir-cloud-subscription">MAPIR Cloud</a>에 이미지를 업로드할 경우, 업로드 전에 Chloros에서 처리해야 하나요?</summary>
 
-당사의 온라인 처리 플랫폼인 [MAPIR
-
-Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription)에 업로드할 계획이라면, 업로드 전에 이미지를 편집하지 마십시오. Cloud에서 동일한 처리 과정은 물론 그 이상의 처리를 모두 수행합니다.
+당사의 온라인 처리 플랫폼인 [MAPIR Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription)에 업로드할 계획이라면, 업로드 전에 이미지를 편집하지 마십시오. Cloud에서 동일한 처리 과정은 물론 그 이상의 처리를 모두 수행합니다.
 
 </details>
 
@@ -153,7 +143,7 @@ Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscr
 
 <summary>MAPIR에서 X 기능을 지원하게 될까요? MAPIR에서 X 기능을 제공했으면 정말 좋겠습니다.</summary>
 
-저희는 제품에 대한 피드백을 항상 환영합니다. 제품에서 문제를 발견하셨거나 개선에 대한 제안이 있으시면 [문의하기](https://www.mapir.camera/community/contact)를 통해 의견을 공유해 주시기 바랍니다. 저희 연구개발(R&amp;D)의 대부분은 고객의 가장 큰 요구 사항을 경청하는 데 중점을 두고 있습니다.
+저희는 제품에 대한 피드백을 항상 환영합니다. 제품에서 문제를 발견하셨거나 개선에 대한 제안이 있으시면 [문의하기](https://www.mapir.camera/community/contact)를 통해 의견을 공유해 주시기 바랍니다. 저희 연구개발(R&D)의 대부분은 고객의 가장 큰 요구 사항을 경청하는 데 중점을 두고 있습니다.
 
 </details>
 
@@ -185,9 +175,7 @@ Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscr
 
 <summary>4스레드 처리 파이프라인이란 무엇입니까?</summary>
 
-Chloros
-는 Chloros
-+ 사용자를 위해 4스레드 파이프라인 아키텍처를 사용합니다: 스레드 1(탐지)은 이미지를 불러와 보정 대상을 탐지하고, 스레드 2(보정)은 반사율 보정을 계산하며, 스레드 3(처리)은 GPU 가속 디베이어링 및 인덱스 계산을 수행하고, 스레드 4(내보내기)는 출력 파일을 작성합니다. 최대 처리량을 위해 여러 이미지를 서로 다른 스레드에서 동시에 처리할 수 있습니다. 자세한 내용은 [처리 파이프라인](processing-architecture/processing-pipeline.md)을 참조하십시오.
+Chloros는 Chloros+ 사용자를 위해 4스레드 파이프라인 아키텍처를 사용합니다: 스레드 1(탐지)은 이미지를 불러와 보정 대상을 탐지하고, 스레드 2(보정)은 반사율 보정을 계산하며, 스레드 3(처리)은 GPU 가속 디베이어링 및 인덱스 계산을 수행하고, 스레드 4(내보내기)는 출력 파일을 작성합니다. 최대 처리량을 위해 여러 이미지를 서로 다른 스레드에서 동시에 처리할 수 있습니다. 자세한 내용은 [처리 파이프라인](processing-architecture/processing-pipeline.md)을 참조하십시오.
 
 </details>
 

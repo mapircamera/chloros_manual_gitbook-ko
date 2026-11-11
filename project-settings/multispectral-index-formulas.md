@@ -12,7 +12,7 @@ metaLinks:
 
 <table><thead><tr><th align="center">Survey3 필터 색상</th><th width="196.199951171875" align="center">Survey3 필터 이름</th><th width="159.800048828125" align="center">투과율 범위 (FWHM)</th><th align="center">평균 투과율</th></tr></thead><tbody><tr><td align="center">Blue</td><td align="center">NGB - Blue</td><td align="center">468-483nm</td><td align="center">475nm</td></tr><tr><td align="center">Cyan</td><td align="center">OCN- Cyan</td><td align="center">476-512nm</td><td align="center">494nm</td></tr><tr><td align="center">Green</td><td align="center">RGN | NGB - Green</td><td align="center">543-558nm</td><td align="center">547nm</td></tr><tr><td align="center">Orange</td><td align="center">OCN - Orange</td><td align="center">598-640nm</td><td align="center">619nm</td></tr><tr><td align="center">Red</td><td align="center">RGN - Red</td><td align="center">653-668nm</td><td align="center">661nm</td></tr><tr><td align="center">RedEdge</td><td align="center">Re - RedEdge</td><td align="center">712-735nm</td><td align="center">724nm</td></tr><tr><td align="center">NIR1</td><td align="center">OCN - NIR1</td><td align="center">798-848nm</td><td align="center">823nm</td></tr><tr><td align="center">NIR2</td><td align="center">RGN | NGB | NIR - NIR2</td><td align="center">835-865nm</td><td align="center">850nm</td></tr></tbody></table>
 
-이러한 공식을 사용할 경우, 이름의 끝부분에 &quot;\_1&quot; 또는 &quot;\_2&quot;가 붙을 수 있으며, 이는 사용된 NIR 필터(NIR1 또는 NIR2)에 따라 달라집니다.
+이러한 공식을 사용할 경우, 이름의 끝부분에 "\_1" 또는 "\_2"가 붙을 수 있으며, 이는 사용된 NIR 필터(NIR1 또는 NIR2)에 따라 달라집니다.
 
 LATTICE M3C(바이엘 트리플 밴드패스) 카메라의 경우, 동일한 인덱스 엔진이 M3C 필터 대역을 사용합니다:
 
@@ -165,7 +165,7 @@ $$
 
 GUI 및 CLI/SDK 사전 설정 목록에서는 x=Red, y=Green, z=NIR (RGN 카메라의 밴드)이며, LATTICE 지수 엔진의 사전 설정은 `nir * red / green**2`입니다. 모든 표면에서 동일한 지수가 계산됩니다.
 
-_참고 문헌: Vincini, M., E. Frazzi, P. D&#x27;Alessio. &quot;A Broad-Band Leaf Chlorophyll Vegetation Index at the Canopy Scale.&quot; Precision Agriculture 9 (2008): 303-319._
+_참고 문헌: Vincini, M., E. Frazzi, P. D'Alessio. "A Broad-Band Leaf Chlorophyll Vegetation Index at the Canopy Scale." Precision Agriculture 9 (2008): 303-319._
 
 ***
 
@@ -191,7 +191,7 @@ $$
 
 EVI 값은 식생 픽셀의 경우 0에서 1 사이의 범위를 가져야 합니다. 구름이나 흰색 건물과 같은 밝은 대상과 물과 같은 어두운 대상은 EVI 이미지에서 비정상적인 픽셀 값을 유발할 수 있습니다. EVI 이미지를 생성하기 전에, 반사도 이미지에서 구름과 밝은 특징을 마스킹하고, 필요에 따라 픽셀 값을 0에서 1 사이로 임계값 처리해야 합니다.
 
-_참고 문헌: Huete, A. 외. &quot;MODIS 식생 지수의 방사측정학적 및 생물물리학적 성능 개요.&quot; Remote Sensing of Environment 83 (2002):195–213._
+_참고 문헌: Huete, A. 외. "MODIS 식생 지수의 방사측정학적 및 생물물리학적 성능 개요." Remote Sensing of Environment 83 (2002):195–213._
 
 ***
 
@@ -207,7 +207,7 @@ $$
 
 산림 지역은 나무의 반사율이 낮고 수관 내에 그림자가 존재하기 때문에 FCI1 값이 더 낮게 나타납니다.
 
-_참고 문헌: Becker, Sarah J., Craig S.T. Daughtry, Andrew L. Russ. &quot;다중 스펙트럼 이미지를 위한 견고한 산림 피복 지수.&quot; Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505-512._
+_참고 문헌: Becker, Sarah J., Craig S.T. Daughtry, Andrew L. Russ. "다중 스펙트럼 이미지를 위한 견고한 산림 피복 지수." Photogrammetric Engineering & Remote Sensing 84.8 (2018): 505-512._
 
 ***
 
@@ -223,7 +223,7 @@ $$
 
 산림 지역은 나무의 반사율이 낮고 수관 내부에 그림자가 존재하기 때문에 FCI2 값이 더 낮게 나타납니다.
 
-_참고 문헌: Becker, Sarah J., Craig S.T. Daughtry, Andrew L. Russ. &quot;다중 스펙트럼 이미지를 위한 견고한 산림 피복 지수.&quot; Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505-512._
+_참고 문헌: Becker, Sarah J., Craig S.T. Daughtry, Andrew L. Russ. "다중 스펙트럼 이미지를 위한 견고한 산림 피복 지수." Photogrammetric Engineering & Remote Sensing 84.8 (2018): 505-512._
 
 ***
 
@@ -259,7 +259,7 @@ $$
 
 감마 상수는 대기 중 에어로졸 조건에 따라 달라지는 가중치 함수입니다. ENVI는 Gitelson, Kaufman 및 Merzylak이 권장한 값인 1.7을 사용합니다 (1996, 296쪽)에서 권장하는 값입니다.
 
-_참고 문헌: Gitelson, A., Y. Kaufman, M. Merzylak. &quot;EOS-MODIS를 이용한 전 지구 식생 원격 감지에서 녹색 채널의 활용.&quot; Remote Sensing of Environment 58 (1996): 289-298._
+_참고 문헌: Gitelson, A., Y. Kaufman, M. Merzylak. "EOS-MODIS를 이용한 전 지구 식생 원격 감지에서 녹색 채널의 활용." Remote Sensing of Environment 58 (1996): 289-298._
 
 ***
 
@@ -273,7 +273,7 @@ $$
 
 광범위한 근적외선(NIR) 및 녹색 파장대를 활용함으로써 엽록소 함량을 더 정확하게 예측할 수 있을 뿐만 아니라, 감도를 높이고 신호 대 잡음비(SNR)를 향상시킬 수 있습니다.
 
-_참고 문헌: Gitelson, A., Y. Gritz, 및 M. Merzlyak. &quot;잎 엽록소 함량과 분광 반사율 간의 관계 및 고등식물 잎의 비파괴적 엽록소 평가를 위한 알고리즘.&quot; Journal of Plant Physiology 160 (2003): 271-282._
+_참고 문헌: Gitelson, A., Y. Gritz, 및 M. Merzlyak. "잎 엽록소 함량과 분광 반사율 간의 관계 및 고등식물 잎의 비파괴적 엽록소 평가를 위한 알고리즘." Journal of Plant Physiology 160 (2003): 271-282._
 
 ***
 
@@ -287,7 +287,7 @@ $$
 
 GLI 값의 범위는 -1에서 +1까지입니다. 음수 값은 토양 및 무생물적 특징을 나타내는 반면, 양수 값은 녹색 잎과 줄기를 나타냅니다.
 
-_참고 문헌: Louhaichi, M., M. Borman, 및 D. Johnson. &quot;밀에 대한 방목 영향 기록을 위한 공간 위치 기반 플랫폼 및 항공 사진 촬영.&quot; Geocarto International 16, 제1호 (2001): 65-70._
+_참고 문헌: Louhaichi, M., M. Borman, 및 D. Johnson. "밀에 대한 방목 영향 기록을 위한 공간 위치 기반 플랫폼 및 항공 사진 촬영." Geocarto International 16, 제1호 (2001): 65-70._
 
 ***
 
@@ -299,7 +299,7 @@ $$
 GNDVI = {(NIR - Green) \over (NIR + Green)  }
 $$
 
-_참고 문헌: Gitelson, A., and M. Merzlyak. &quot;고등식물 잎의 엽록소 농도에 대한 원격 감지.&quot; Advances in Space Research 22 (1998): 689-692._
+_참고 문헌: Gitelson, A., and M. Merzlyak. "고등식물 잎의 엽록소 농도에 대한 원격 감지." Advances in Space Research 22 (1998): 689-692._
 
 ***
 
@@ -355,7 +355,7 @@ $$
 
 LAI 값은 일반적으로 약 0에서 3.5 사이입니다. 그러나 장면에 구름이나 포화 픽셀을 생성하는 기타 밝은 요소가 포함되어 있는 경우, LAI 값이 3.5를 초과할 수 있습니다. LAI 이미지를 생성하기 전에 장면에서 구름과 밝은 요소를 마스킹하여 제거하는 것이 이상적입니다.
 
-_참고 문헌: Boegh, E., H. Soegaard, N. Broge, C. Hasager, N. Jensen, K. Schelde, 및 A. Thomsen. &quot;농업 분야의 잎 면적 지수(LAI), 질소 농도 및 광합성 효율 정량화를 위한 항공 다중 스펙트럼 데이터.&quot; Remote Sensing of Environment 81, 제2-3호 (2002): 179-193._
+_참고 문헌: Boegh, E., H. Soegaard, N. Broge, C. Hasager, N. Jensen, K. Schelde, 및 A. Thomsen. "농업 분야의 잎 면적 지수(LAI), 질소 농도 및 광합성 효율 정량화를 위한 항공 다중 스펙트럼 데이터." Remote Sensing of Environment 81, 제2-3호 (2002): 179-193._
 
 ***
 
@@ -369,7 +369,7 @@ $$
 LCI = {NIR2 - RedEdge \over NIR2 + Red}
 $$
 
-_참고 문헌: Datt, B. &quot;유칼립투스 잎의 수분 함량 원격 감지.&quot; Journal of Plant Physiology 154, 제1호 (1999): 30-36._
+_참고 문헌: Datt, B. "유칼립투스 잎의 수분 함량 원격 감지." Journal of Plant Physiology 154, 제1호 (1999): 30-36._
 
 ***
 
@@ -381,7 +381,7 @@ $$
 MNLI = {(NIR^{2} - Red) * (1 + L) \over (NIR^{2} + Red + L)  }
 $$
 
-_참고 문헌: Yang, Z., P. Willis, R. Mueller. &quot;밴드 비율을 개선한 AWIFS 이미지가 작물 분류 정확도에 미치는 영향.&quot; Pecora 17 원격탐사 심포지엄 논문집 (2008), 콜로라도주 덴버._
+_참고 문헌: Yang, Z., P. Willis, R. Mueller. "밴드 비율을 개선한 AWIFS 이미지가 작물 분류 정확도에 미치는 영향." Pecora 17 원격탐사 심포지엄 논문집 (2008), 콜로라도주 덴버._
 
 ***
 
@@ -393,7 +393,7 @@ $$
 MSAVI2 = {2 * NIR + 1 - \sqrt{(2 * NIR + 1)^{2} - 8(NIR - Red)} \over 2}
 $$
 
-_참고 문헌: Qi, J., A. Chehbouni, A. Huete, Y. Kerr, 및 S. Sorooshian. &quot;A Modified Soil Adjusted Vegetation Index.&quot; Remote Sensing of Environment 48 (1994): 119-126._
+_참고 문헌: Qi, J., A. Chehbouni, A. Huete, Y. Kerr, 및 S. Sorooshian. "A Modified Soil Adjusted Vegetation Index." Remote Sensing of Environment 48 (1994): 119-126._
 
 ***
 
@@ -441,7 +441,7 @@ $$
 NLI = {NIR^{2} - Red \over NIR^{2} + Red  }
 $$
 
-_참고문헌: Goel, N., and W. Qin. &quot;다양한 식생 지수와 LAI 및 Fpar 간의 관계에 미치는 수관 구조의 영향: 컴퓨터 시뮬레이션.&quot; Remote Sensing Reviews 10 (1994): 309-347._
+_참고문헌: Goel, N., and W. Qin. "다양한 식생 지수와 LAI 및 Fpar 간의 관계에 미치는 수관 구조의 영향: 컴퓨터 시뮬레이션." Remote Sensing Reviews 10 (1994): 309-347._
 
 ***
 
@@ -453,7 +453,7 @@ $$
 OSAVI = {(NIR - Red) \over (NIR + Red + 0.16)  }
 $$
 
-_참고 문헌: Rondeaux, G., M. Steven, F. Baret. &quot;토양 보정 식생 지수의 최적화.&quot; Remote Sensing of Environment 55 (1996): 95-107._
+_참고 문헌: Rondeaux, G., M. Steven, F. Baret. "토양 보정 식생 지수의 최적화." Remote Sensing of Environment 55 (1996): 95-107._
 
 ***
 
@@ -465,7 +465,7 @@ $$
 RDVI = {(NIR- Red) \over \sqrt{(NIR + Red)}  }
 $$
 
-_참고 문헌: Roujean, J., and F. Breon. &quot;양방향 반사율 측정을 통한 식생 흡수 PAR 추정.&quot; Remote Sensing of Environment 51 (1995): 375-384._
+_참고 문헌: Roujean, J., and F. Breon. "양방향 반사율 측정을 통한 식생 흡수 PAR 추정." Remote Sensing of Environment 51 (1995): 375-384._
 
 ***
 
@@ -477,7 +477,7 @@ $$
 SAVI = {1.5 * (NIR- Red) \over (NIR + Red + 0.5)  }
 $$
 
-_참고 문헌: Huete, A. &quot;토양 보정 식생 지수(SAVI).&quot; Remote Sensing of Environment 25 (1988): 295-309._
+_참고 문헌: Huete, A. "토양 보정 식생 지수(SAVI)." Remote Sensing of Environment 25 (1988): 295-309._
 
 ***
 
@@ -489,7 +489,7 @@ $$
 TDVI = 1.5 * {(NIR- Red) \over \sqrt{NIR^{2} + Red + 0.5}  }
 $$
 
-_참고 문헌: Bannari, A., H. Asalhi, 및 P. Teillet. “식생 피복 매핑을 위한 변환 차분 식생 지수(TDVI)” 『지구과학 및 원격탐사 심포지엄(IGARSS &#x27;02) 논문집』, IEEE International, 제5권 (2002)._
+_참고 문헌: Bannari, A., H. Asalhi, 및 P. Teillet. “식생 피복 매핑을 위한 변환 차분 식생 지수(TDVI)” 『지구과학 및 원격탐사 심포지엄(IGARSS '02) 논문집』, IEEE International, 제5권 (2002)._
 
 ***
 
@@ -517,6 +517,6 @@ $$
 
 _참고문헌_
 
-_Gitelson, A. &quot;식생의 생물물리학적 특성을 원격 정량화하기 위한 광역 동적 범위 식생 지수(WDRVI).&quot; Journal of Plant Physiology 161, 제2호 (2004): 165-173._
+_Gitelson, A. "식생의 생물물리학적 특성을 원격 정량화하기 위한 광역 동적 범위 식생 지수(WDRVI)." Journal of Plant Physiology 161, 제2호 (2004): 165-173._
 
-_Henebry, G., A. 비냐, 및 A. 기텔슨. &quot;광역 동적 범위 식생 지수(WDRVI)와 갭 분석에 대한 잠재적 유용성.&quot; 갭 분석 회보 12: 50-56._
+_Henebry, G., A. 비냐, 및 A. 기텔슨. "광역 동적 범위 식생 지수(WDRVI)와 갭 분석에 대한 잠재적 유용성." 갭 분석 회보 12: 50-56._

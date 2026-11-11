@@ -199,7 +199,7 @@ Chloros는 인증 정보와 CLI 구성을 단일 크로스 플랫폼 디렉터�
 | `/lib/systemd/system/chloros-backend@.service` | 지정한 사용자로 백엔드를 실행하는 상시 가동 백엔드 서비스(설치됨, **비활성화됨**) — 활성화해야 할 서비스는 [상시 가동 PTP](#always-on-ptp-for-headless-hosts) |
 | `/lib/systemd/system/chloros-backend.service` | 백엔드를 **root**권한으로 실행하는 동일한 서비스(설치됨,**활성화되지 않음**). 이 서비스를 활성화한 시스템이 계속 실행되도록 유지하기 위해 남겨둠 |
 | `/var/log/chloros/` | root 서비스의 상세 로그로, `adm` 그룹이 읽을 수 있음 (패키지가 완전히 제거되면 삭제됨) |
-| `/usr/share/applications/chloros-cli.desktop` | 터미널을 여는 &quot;Chloros CLI&quot; 애플리케이션 메뉴 항목 |
+| `/usr/share/applications/chloros-cli.desktop` | 터미널을 여는 "Chloros CLI" 애플리케이션 메뉴 항목 |
 
 **방화벽 (1.3.0 버전부터 추가됨).** 설치 시점에 `ufw` 또는 `firewalld`가 활성화된 경우, 이 패키지는 UDP 포트 `5002` (DAQ-E 데이터), `5353` (mDNS 검색), `319` 및 `320` (PTP)를 열고, 패키지가 제거되면 해당 규칙을 삭제합니다. 방화벽이 설치되어 있지만 비활성화된 경우, 아무것도 추가하지 않으며 나중에 활성화할 경우 허용해야 할 포트를 표시합니다. TCP 포트는 열지 않습니다. DAQ-E 펌웨어 업데이트 시, 센서가 이미지를 수집하기 위해 TCP를 통해 이 컴퓨터에 다시 연결하는 과정에서 활성화된 방화벽이 해당 연결을 차단하면 `… device never connected back on TCP <port> …` 오류가 발생합니다.
 
@@ -393,7 +393,7 @@ chloros-cli time-sync status
 chloros-cli time-sync peers
 ```
 
-### `lattice` 명령이 &quot;LATTICE 카메라 드라이버를 찾을 수 없음&quot; 오류로 실패함
+### `lattice` 명령이 "LATTICE 카메라 드라이버를 찾을 수 없음" 오류로 실패함
 
 백엔드가 함께 설치된 LATTICE 카메라 런타임을 로드할 수 없습니다. 모든 `lattice` 명령은 백엔드에서 실행되며, CLI 자체에는 카메라 드라이버가 포함되어 있지 않습니다. Chloros(`sudo apt install --reinstall ./chloros_1.3.0_<arch>.deb`)를 재설치하십시오: `.deb`는 백엔드 옆(`/usr/lib/chloros/arena_runtime`)에 런타임을 설치하고, 동적 로더에 이를 등록합니다. 등록 여부를 확인하려면:
 

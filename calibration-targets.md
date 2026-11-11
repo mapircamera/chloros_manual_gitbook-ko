@@ -21,15 +21,7 @@ MAPIR는 다양한 응용 분야를 아우르는 여러 종류의 교정 타겟�
 
 즉, 당사 카메라로 이미지를 촬영할 때마다 [T4-R50](https://www.mapir.camera/collections/calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t3-r50)나 [T4-R125](https://www.mapir.camera/collections/multispectral-reflectance-reference-calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t4-r125)와 같은 반사율 타겟 사진을 사용하여 이미지의 반사율을 보정할 수 있습니다. 보정이 완료되면 이미지의 각 픽셀 값은 반사율 백분율과 일치하게 됩니다.
 
-**Survey3** 출력의 경우, Chloros
-
-에서 보정된 이미지를 일반적인 JPG 또는 TIFF
-
-형식으로 출력하면, 픽셀 값을 이미지 형식의 비트 심도로 나누어 반사율(%)을 계산합니다. 따라서 JPG의 경우 255로, TIFF
-
-의 경우 65,535로 나누면 됩니다. Chloros
-
-에서 PERCENT 형식 출력을 선택하면 각 픽셀의 값이 0.0~1.0(반사율 0%~100%) 범위로 표시됩니다. 다만 일부 이미지 응용 프로그램은 백분율(부동 소수점) 형식의 이미지를 지원하지 않을 수 있으며, 이러한 이미지는 저장 공간 측면에서 용량이 크다는 점을 유의하시기 바랍니다.
+**Survey3** 출력의 경우, Chloros에서 보정된 이미지를 일반적인 JPG 또는 TIFF 형식으로 출력하면, 픽셀 값을 이미지 형식의 비트 심도로 나누어 반사율(%)을 계산합니다. 따라서 JPG의 경우 255로, TIFF의 경우 65,535로 나누면 됩니다. Chloros에서 PERCENT 형식 출력을 선택하면 각 픽셀의 값이 0.0~1.0(반사율 0%~100%) 범위로 표시됩니다. 다만 일부 이미지 응용 프로그램은 백분율(부동 소수점) 형식의 이미지를 지원하지 않을 수 있으며, 이러한 이미지는 저장 공간 측면에서 용량이 크다는 점을 유의하시기 바랍니다.
 
 {% hint style="info" %}
 **LATTICE 반사율은 다른 픽셀 스케일을 사용합니다.** LATTICE 반사율은 DN 32768 = 100% 반사율(65535가 아님)로 저장되며, 모든 파일에는 해당 스케일을 명시하는 XMP `Chloros:PixelScale` 태그가 포함되어 있습니다. 상수를 가정하기보다는 태그를 확인하여 해당 값으로 나누십시오 — [출력 이미지 형식](output-image-formats.md)을 참조하십시오.
@@ -37,38 +29,26 @@ MAPIR는 다양한 응용 분야를 아우르는 여러 종류의 교정 타겟�
 
 ## LATTICE 카메라를 사용한 보정 타겟
 
-LATTICE 카메라를 사용할 경우, 반사율 측정을 위한 보정 타겟은 **선택 사항**입니다. 대신 Chloros
-
-는 DAQ 광 센서로 측정된 하향 복사조도(ρ = π·L/E)를 기준으로 반사율을 산출할 수 있습니다. 이 기준은 프로젝트의 반사율-광원 설정(`chloros-cli process --reflectance-source`)을 통해 선택됩니다. (GUI에는 이에 대한 제어 기능이 없으며, 프로젝트에 저장된 값을 사용하며, 기본값은 `auto`입니다 — [프로젝트 설정](project-settings/project-settings.md) 참조):
+LATTICE 카메라를 사용할 경우, 반사율 측정을 위한 보정 타겟은 **선택 사항**입니다. 대신 Chloros는 DAQ 광 센서로 측정된 하향 복사조도(ρ = π·L/E)를 기준으로 반사율을 산출할 수 있습니다. 이 기준은 프로젝트의 반사율-광원 설정(`chloros-cli process --reflectance-source`)을 통해 선택됩니다. (GUI에는 이에 대한 제어 기능이 없으며, 프로젝트에 저장된 값을 사용하며, 기본값은 `auto`입니다 — [프로젝트 설정](project-settings/project-settings.md) 참조):
 
 | 값 | 동작 |
 | --- | --- |
-| `auto` *(기본값)* | QA를 통과한 프레임 내 타겟이 **절대 기준**이 됩니다. 타겟이 없거나 QA에 실패한 경우, Chloros
-
-는 DAQ 하향 분할값으로 대체합니다. 플래그(패널 드롭 또는 밴드 오류)가 있는 상태에서 QA를 통과한 타깃은 자동으로 우선순위가 부여되지 않습니다. 타깃, 타깃+DAQ 및 DAQ 전용 체인은 홀드아웃 패널에서 측정된 점수 순서대로 시도됩니다. |
+| `auto` *(기본값)* | QA를 통과한 프레임 내 타겟이 **절대 기준**이 됩니다. 타겟이 없거나 QA에 실패한 경우, Chloros는 DAQ 하향 분할값으로 대체합니다. 플래그(패널 드롭 또는 밴드 오류)가 있는 상태에서 QA를 통과한 타깃은 자동으로 우선순위가 부여되지 않습니다. 타깃, 타깃+DAQ 및 DAQ 전용 체인은 홀드아웃 패널에서 측정된 점수 순서대로 시도됩니다. |
 | `target` | 엄격한 타겟 전용 — DAQ 대체 없음. |
 | `daq` | DAQ 우선 — 다운웰링 측정값이 항상 기준이 됩니다. |
 
 LATTICE를 위한 추가 타겟 동작:
 
 * **타겟 기하 구조** — ArUco 마킹 패널, 고정 ROI 패널 및 스트립 타겟이 모두 지원되며, 기하 구조는 프로젝트의 타겟 구성에서 가져옵니다.
-* **단위별 측정된 타겟 데이터** — `--target-reflectance-dir DIR`는 단위별 측정된 타겟 반사율 스캔 데이터가 포함된 디렉터리를 가리킵니다(`<serial>.csv`, 타겟 단위의 일련번호/QR로 조회됨). 타겟을 탐지하지 못한 경우, Chloros
-
-는 공칭 T3/T4P 스펙트럼으로 대체합니다.
+* **단위별 측정된 타겟 데이터** — `--target-reflectance-dir DIR`는 단위별 측정된 타겟 반사율 스캔 데이터가 포함된 디렉터리를 가리킵니다(`<serial>.csv`, 타겟 단위의 일련번호/QR로 조회됨). 타겟을 탐지하지 못한 경우, Chloros는 공칭 T3/T4P 스펙트럼으로 대체합니다.
 * **시간적 고정** — 탐지된 타겟은 주변 프레임을 보정하며, 타겟이 다시 탐지될 때까지 고정됩니다.
 
-전체 플래그 의미 및 예시는 [CLI
-
-참조](reference/cli-reference.md)에 나와 있습니다(“제품별 내보내기 토글” 참조).
+전체 플래그 의미 및 예시는 [CLI 참조](reference/cli-reference.md)에 나와 있습니다(“제품별 내보내기 토글” 참조).
 
 ### F988
 
-&quot;F988 반사율은 장면 내 반사율 패널을 사용하여 보정됩니다. 해당 대역은 DAQ 광 센서의 보정 범위를 벗어나므로, Chloros
+"F988 반사율은 장면 내 반사율 패널을 사용하여 보정됩니다. 해당 대역은 DAQ 광 센서의 보정 범위를 벗어나므로, Chloros는 가장 최근의 패널 캡처 데이터를 적용하고 패널 관측 간에도 이를 유지합니다."
 
-는 가장 최근의 패널 캡처 데이터를 적용하고 패널 관측 간에도 이를 유지합니다.&quot;
-
-F988을 DAQ 전용 보정 모드로 실행할 경우, Chloros
-
-는 해당 밴드의 DAQ 기반 반사율을 거부하고 그 이유를 표시합니다(건너뛰기 사유 `dls-uncalibrated-band-988`). 패널 워크플로가 지원되는 방법입니다.
+F988을 DAQ 전용 보정 모드로 실행할 경우, Chloros는 해당 밴드의 DAQ 기반 반사율을 거부하고 그 이유를 표시합니다(건너뛰기 사유 `dls-uncalibrated-band-988`). 패널 워크플로가 지원되는 방법입니다.
 
 <div><figure><img src=".gitbook/assets/t3-125.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure> <figure><img src=".gitbook/assets/t3-125_2.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure> <figure><img src=".gitbook/assets/t3-125_closed.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure></div>
