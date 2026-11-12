@@ -53,7 +53,7 @@
 > - **`import_images(recursive=True)`는 이미지와 녹화 파일만 집계합니다.** 프로젝트의 `camera_cal/` 파일이 포함된 폴더의 경우, 해당 보정 파일은 더 이상 이미지와 녹화 파일로 집계되지 않으며, 이미 이를 포함하고 있던 프로젝트에서는 해당 파일이 제외됩니다.
 > - **`configure(radiometric_output=...)`가 적용됩니다.** 이제 프로젝트의 `Export radiance` / `Export reflectance` 산출물을 설정합니다. 이전에는 각 프로젝트의 자체 산출물 설정이 우선 적용되었으므로, 따라서 `radiance`, `sensor-response` 및 `all`는 모두 복사도 및 반사도를 내보냈습니다.
 > - **`test_array_sync()`는 카메라의 전원 켜짐 상태에서 시작됩니다.** 이 명령은 실행을 위해 카메라의 PTP를 켜고, 첫 번째 트리거(`ptp_lock`)가 발생하기 전에 카메라 클럭이 동기화되고 안정화될 때까지 대기합니다 — 전원 켜진 시점부터 약 2분(120초) 동안 모든 카메라가 동기화됩니다 (`ptp_settle_s=`가 이를 설정함). 갓 동기화된 클럭은 약 2분 동안 최대 ~200 us의 오차를 보이기 때문이며 — 이후 각 카메라의 PTP를 원래 상태로 되돌립니다. 이전 테스트에서 이미 동기화된 상태인 카메라는 다시 대기하지 않습니다. 과거에는 DAQ-E가 응답하지 않는 단일 스위치 네트워크에서 PTP를 비활성화한 채로 두었고, 각 카메라의 자유 주행 클럭을 PTP 클럭으로 간주하여 동기화되지 않는 것으로 처리했습니다 ("PTP가 잠기지 않음", 매 실행 시).
-> - **`.daq` 기록 파일은 캡이 선택되었는지 또는 추정되었는지를 나타냅니다.** DAQ-U, DAQ-M 및 DAQ-E는 캡 없이 출하되며, <sn><id>Chloros</id></sn>는 캡이 장착되었는지 여부를 확인할 수 없으므로, 캡 이름이 지정되지 않은 상태로 연결된 센서는 기본적으로 *추정*된 값인 `sunshine_cosine`를 부여받습니다. 모든 Chloros 기록(스키마 1.30)은 이제 `cap_id`와 함께 `cap_id_source`를 저장합니다: 캡 이름을 지정한 경우(`none` 포함)에는 `operator`, 기본값이었던 경우에는 `auto_default`가 저장됩니다. 캡이 가정된 기록을 처리할 때, 프로젝트의 DAQ 캡을 ‘자동’으로 둔 채로 진행하면 파일 이름을 `[daq-dls] WARNING`로 지정하여 출력합니다: 햇빛 보정 처리되지 않은 순수 DAQ-U의 측정값은 실제보다 약 30배 높게 나타납니다. 연결 시 **장착한 캡에 이름을 지정**하면(`connect_daq_sensor(cap_id=...)` 또는 `DAQSensorSession.set_cap()`, `chloros-cli daq pool-connect --cap-id` / `daq pool-set-cap`, 또는 GUI의 커패시터 드롭다운 메뉴)에 장착한**커패시터 이름을 지정**하거나 프로젝트의 DAQ 커패시터를 설정하면 경고가 사라집니다.
+> - **`.daq` 기록 파일은 캡이 선택되었는지 또는 추정되었는지를 나타냅니다.** DAQ-U, DAQ-M 및 DAQ-E는 캡 없이 출하되며, Chloros는 캡이 장착되었는지 여부를 확인할 수 없으므로, 캡 이름이 지정되지 않은 상태로 연결된 센서는 기본적으로 *추정*된 값인 `sunshine_cosine`를 부여받습니다. 모든 Chloros 기록(스키마 1.30)은 이제 `cap_id`와 함께 `cap_id_source`를 저장합니다: 캡 이름을 지정한 경우(`none` 포함)에는 `operator`, 기본값이었던 경우에는 `auto_default`가 저장됩니다. 캡이 가정된 기록을 처리할 때, 프로젝트의 DAQ 캡을 ‘자동’으로 둔 채로 진행하면 파일 이름을 `[daq-dls] WARNING`로 지정하여 출력합니다: 햇빛 보정 처리되지 않은 순수 DAQ-U의 측정값은 실제보다 약 30배 높게 나타납니다. 연결 시 **장착한 캡에 이름을 지정**하면(`connect_daq_sensor(cap_id=...)` 또는 `DAQSensorSession.set_cap()`, `chloros-cli daq pool-connect --cap-id` / `daq pool-set-cap`, 또는 GUI의 커패시터 드롭다운 메뉴)에 장착한**커패시터 이름을 지정**하거나 프로젝트의 DAQ 커패시터를 설정하면 경고가 사라집니다.
 > - **Windows에서 더 이상 pip 콘솔 창이 표시되지 않습니다.** Python가 설치된 PC에서 백엔드와 각 이미지 워커는 시작 시 `pip`를 한 번씩 실행했고, 각각 콘솔 창을 열었습니다. 이제 더 이상 그러지 않습니다.
 > - **실시간 `.daq` 녹화 데이터는 정전 시에도 유지됩니다.**녹화 데이터는 센서 뒤에서 매 커밋 시 저널과 전체 디스크 동기화를 통해 기록되므로, 디스크 속도가 느려도 파일 작성만 지연될 뿐 측정값 자체는 절대 지연되지 않습니다. 커밋 도중에 중단된 기록(정전, 강제 종료)은 그 옆에 `<name>.daq-journal` 파일을 남길 수 있습니다:**두 파일을 함께 복사하십시오.**Chloros는 파일을 처음 읽을 때 저널을 롤백하므로, 기록 파일은 중단되기 전까지 커밋된 모든 내용을 포함하여 열립니다(마지막 약 3초 분량이 손실됨). 1.2.0 버전에서는 부적절한 시점에 정전이 발생하면 전체 파일이 읽을 수 없게 될 수 있었습니다("데이터베이스 디스크 이미지가 잘못된 형식임").
 > - **사용량이 많은 디스크에서 `DAQSensorSession.record_start()`가 더 이상 센서를 지연시키지 않습니다**: 측정값은 대기열에 쌓여 별도의 스레드에서 기록되며, 기록되지 못한 값은 `status()`의 `record_errors`(`record_last_error` 포함)에 집계됩니다.
@@ -73,7 +73,7 @@
 > - **`ArraySession.record()`는 GUI가 열려 있지 않은 상태에서 기록합니다.** GUI의 결합된 보기가 닫혀 있으면, 백엔드가 뷰 자체를 렌더링합니다: 배열의NDVI 또는 `expr=`로 전달한 인덱스를 렌더링합니다. `RecorderHandle.stop()`는 기록에 실패했거나 프레임이 포함되지 않은 기록에 대해 `ChlorosConnectError`를 발생시키고, 중지 결과를 `.result`에 저장합니다(`with` 블록을 남겨두면 예외가 발생하지 않으므로 `rec.result`를 확인하십시오). [`RecorderHandle`](#recorderhandle)를 참조하십시오.
 > - **새로운 `DAQSensorSession` 메서드:** `enable_ptp()`, `force_disconnect()`, 그리고 DAQ-E의 자체 설정을 위한 `device_info()`, `set_network()`, `set_auto_stream()`, `reboot()` 및 `update_firmware()`가 있습니다. `record_stop()`는 `warning` 및 `gaps`를 반환합니다. 녹화를 종료한 재시작은 응답에서 해당 녹화 이름을 지정하거나, 재시작이 실패할 경우 `ChlorosConnectError`에 표시됩니다(`recording_closed`; [DAQ-E 장치 설정](#daq-e-device-settings) 참조). [`DAQSensorSession` 메서드](#daqsensorsession-methods)를 참조하십시오.
 > - **데이터 전송이 중단된 풀링된 DAQ-E는 백엔드에 의해** 기존 설정을 유지한 채 재연결되며, 해당 DAQ-E에서 진행 중이던 기록은 파일 내에 간격이 표시된 상태로 동일한 `.daq`에서 계속됩니다. `record_stop()`는 간격을 `gaps`로 반환합니다. 1.2.0 버전에서는 센서가 연결이 끊어졌다가 다시 연결될 때까지 응답하지 않았으며, 이로 인해 기록이 종료되었습니다. CLI 참조 문서의 [데이터 전송이 중단되는 DAQ-E](cli-reference.md#a-daq-e-that-stops-delivering)를 참조하십시오.
-> - **`open_project()`는 설치된 SDK에서 작동합니다.** 휠(설치 프로그램의및 PyPI)에는 이제 필요한 프로젝트 로더가 포함되어 있습니다. 이전에는 `open_project()`가 `ImportError`를 발생시켜 `project_cameras` / `project_sensors`를 호출하는 오류를 발생시켰습니다. `connect_all()`는 실행 중인 백엔드 (광 센서는 DAQ 풀을 통해) 연결하며, 찾을 수 없는 저장된 장치는 아무런 설명 없이 건너뛰어지지 않고 `errors` 항목에 사유가 함께 표시됩니다. 백엔드(GUI, 또는 `chloros-cli project connect`의)에 이미 등록된 저장된 어레이는 연결된 상태로 계속 실행되며, 이전에는 오류("카메라가 <sn>이미 어레이에 있습니다<id>")</id></sn>로 보고되던 것과 다릅니다<sn><id>. [`ChlorosProject` 메서드](#chlorosproject-methods)를 참조하십시오.
+> - **`open_project()`는 설치된 SDK에서 작동합니다.** 휠(설치 프로그램의및 PyPI)에는 이제 필요한 프로젝트 로더가 포함되어 있습니다. 이전에는 `open_project()`가 `ImportError`를 발생시켜 `project_cameras` / `project_sensors`를 호출하는 오류를 발생시켰습니다. `connect_all()`는 실행 중인 백엔드 (광 센서는 DAQ 풀을 통해) 연결하며, 찾을 수 없는 저장된 장치는 아무런 설명 없이 건너뛰어지지 않고 `errors` 항목에 사유가 함께 표시됩니다. 백엔드(GUI, 또는 `chloros-cli project connect`의)에 이미 등록된 저장된 어레이는 연결된 상태로 계속 실행되며, 이전에는 오류(`Camera <sn> is already in array <id>`)로 보고되던 것과 다릅니다. [`ChlorosProject` 메서드](#chlorosproject-methods)를 참조하십시오.
 > - **`ChlorosLocal()`, `process_folder()` 및 `process_lattice_capture()`는 Windows에서 Chloros를 찾습니다.** 이 메서드들은 설치 프로그램이 백엔드를 저장한 위치(기본적으로 `<install folder>\backend\`, `C:\Program Files\Chloros\backend\`, 설치 프로그램 자체 기록에 기반한 사용자 지정 폴더)를 확인한 후, 백엔드를 새로 검색하지 않고 이미 실행 중인 백엔드에 연결합니다. 1.2.0 버전에서는 `backend_exe=`를 전달하지 않는 한, 설치된 시스템에서 “Chloros 백엔드를 찾을 수 없음” 오류가 발생했습니다.
 > - **시작 시 종료되는 백엔드는 즉시 보고됩니다.** `ChlorosLocal()` 또는 스마트 연결 호출이 응답하기 전에 종료되는 백엔드를 시작할 경우, 해당 호출은 몇 초 내에 종료되며, `ChlorosBackendError`는 `ChlorosLocal`에서, `ChlorosConnectError`는 스마트-connect 호출에서 각각 `ChlorosLocal` 및 `ChlorosConnectError` 오류가 발생하며, 종료 코드, 실행된 명령어 및 백엔드가 출력한 마지막 줄들이 함께 보고됩니다. 1.2.0 버전은 60초의 시작 타임아웃을 기다리기만 했을 뿐, 원인을 알리지 않았습니다. [백엔드 자동 시작](#backend-auto-start)를 참조하십시오.
 > - **스크립트 사이에서 백엔드가 계속 실행됩니다.** `with ChlorosLocal(...)` 블록을 벗어나면, `process_folder()` / `process_lattice_capture()`가 반환되고 `chloros-mcp`가 종료되는 것은 더 이상 SDK가 시작한 백엔드를 중지시키지 않습니다. 다음 스크립트가 이를 재사용합니다. 백엔드는 `logout()`에서(Chloros 앱이 열려 있거나 실행 중인 경우가 아닌 한), `shutdown_backend()`에서, 또는 백엔드 환경에서 이를 사용하는 것이 없을 경우 30분이 지나면 자동으로 종료됩니다 (백엔드 환경의 `CHLOROS_BACKEND_IDLE_MIN`가 이를 변경하며, `0`: 절대 발생하지 않음).
@@ -175,7 +175,7 @@ sudo systemctl enable --now chloros-backend@$USER.service    # $USER expands to 
 
 그러면 백엔드는 사용자로 실행됩니다. 즉, 백엔드가 기록하는 캡처 데이터는 사용자의 것이며, 사용자의 `chloros-cli login`를 사용합니다. 루트 `chloros-backend.service`는 이를 활성화한 시스템에 여전히 설치되어 있지만, 루트 백엔드가 기록하는 모든 파일은 루트 소유가 됩니다. CLI 참조 문서의 [서비스로 백엔드 실행](cli-reference.md#running-the-backend-as-a-service-headless)을 참조하십시오.
 
-서비스가 실행하는 백엔드는 공유되며, 클라이언트에 의해 중지되지 않습니다: SDK 스크립트와 `chloros-cli`는 발견되는 대로 이를 사용합니다 (`ChlorosLocal.shutdown_backend()`는 `ChlorosLocal`가 직접 시작한 백엔드만 중지하며), `GET /api/status`는 해당 유닛의 이름을 `service`로 지정합니다. `sudo systemctl restart chloros-backend@$USER.service`로 다시 시작하십시오. 패키지를 업그레이드하면 설치 중에 백엔드 서비스가 중지되므로, 따라서 실행 중인 스크립트는 카메라와 센서 연결을 잃게 되며, 이후 활성화된 모든 장치를 다시 시작합니다. 패키지를 제거하면 서비스가 중지되고 활성화된 장치가 비활성화됩니다. 한 번에 하나의 백엔드만 실행되므로, 장치를 하나만 활성화하십시오. 두 번째 장치를 활성화하면 시작을 거부하고 `failed` (종료 상태 98, 재시작되지 않음) 상태가 되며, 해당 유닛의 `systemctl status`에서 그 이유를 확인할 수 있습니다. 유닛을 전환하려면 사용하지 않는 유닛을 비활성화하십시오.</id></sn>
+서비스가 실행하는 백엔드는 공유되며, 클라이언트에 의해 중지되지 않습니다: SDK 스크립트와 `chloros-cli`는 발견되는 대로 이를 사용합니다 (`ChlorosLocal.shutdown_backend()`는 `ChlorosLocal`가 직접 시작한 백엔드만 중지하며), `GET /api/status`는 해당 유닛의 이름을 `service`로 지정합니다. `sudo systemctl restart chloros-backend@$USER.service`로 다시 시작하십시오. 패키지를 업그레이드하면 설치 중에 백엔드 서비스가 중지되므로, 따라서 실행 중인 스크립트는 카메라와 센서 연결을 잃게 되며, 이후 활성화된 모든 장치를 다시 시작합니다. 패키지를 제거하면 서비스가 중지되고 활성화된 장치가 비활성화됩니다. 한 번에 하나의 백엔드만 실행되므로, 장치를 하나만 활성화하십시오. 두 번째 장치를 활성화하면 시작을 거부하고 `failed` (종료 상태 98, 재시작되지 않음) 상태가 되며, 해당 유닛의 `systemctl status`에서 그 이유를 확인할 수 있습니다. 유닛을 전환하려면 사용하지 않는 유닛을 비활성화하십시오.
 
 ### 2단계 — Python SDK 설치
 
@@ -1483,7 +1483,7 @@ if r["clamped"]:
 
 ### 이미 연결된 어레이에 연결하기 — `attach_array`
 
-어레이가 이미 가동 중인 경우 (GUI에서 열었거나, 이전 SDK 세션에서 `connect_array`를 호출한 경우), 재연결하는 대신 `attach_array`를 사용하여 해당 어레이의 핸들을 확보하십시오. `connect_array`는 해당 상황에서 항상 "Camera  <sn>is already in array<id>"라는 오류를 반환합니다. 이는 풀에 속한 멤버에 대해 `/array/connect`를 POST하는 것이 항등적이지 않기 때문입니다. `attach_array`는 `/api/camera/array/list`를 읽고 array_id 또는 일련번호를 기준으로 일치 여부를 확인합니다.
+어레이가 이미 가동 중인 경우 (GUI에서 열었거나, 이전 SDK 세션에서 `connect_array`를 호출한 경우), 재연결하는 대신 `attach_array`를 사용하여 해당 어레이의 핸들을 확보하십시오. `connect_array`는 해당 상황에서 항상 `Camera <sn> is already in array <id>`라는 오류를 반환합니다. 이는 풀에 속한 멤버에 대해 `/array/connect`를 POST하는 것이 항등적이지 않기 때문입니다. `attach_array`는 `/api/camera/array/list`를 읽고 array_id 또는 일련번호를 기준으로 일치 여부를 확인합니다.
 
 ```python
 import chloros_sdk
@@ -1518,7 +1518,7 @@ except chloros_sdk.ChlorosConnectError:
 > # … the array stays up for the GUI
 > ```
 >
-> 정말로 종료하려는 경우 — 예를 들어 다른 `wire_ceiling_mbps`와 재연결하려는 경우 — `arr.force_disconnect()`를 호출하십시오. 연결된 핸들에 대해 단순한 `disconnect()`를 호출한 후 재연결을 시도하면, 아무것도 해제되지 않았기 때문에 "카메라가 <sn>이미 배열에 포함되어 있습니다<id>"라는</id> 오류가 <id>발생합니다. 이는 아무것도 해제되지 않았기 때문입니다.
+> 정말로 종료하려는 경우 — 예를 들어 다른 `wire_ceiling_mbps`와 재연결하려는 경우 — `arr.force_disconnect()`를 호출하십시오. 연결된 핸들에 대해 단순한 `disconnect()`를 호출한 후 재연결을 시도하면, 아무것도 해제되지 않았기 때문에 `Camera <sn> is already in array <id>`라는 오류가 발생합니다. 이는 아무것도 해제되지 않았기 때문입니다.
 
 ### 네트워크 분석 도우미
 
@@ -1663,7 +1663,7 @@ daq = chloros_sdk.connect_daq_sensor(
 )
 ```
 
-`sensor_id=`는 하나의 센서를 지정하며, 해당 센서만 열립니다. 이미 열려 있는 센서들과 대조한 후, DAQ-E의 호스트명 또는 IP(네트워크 스캔에서 IP로만 식별되는 DAQ-E의 경우, 이름, MAC 및 일련번호를 읽기 전용으로 요청하며, 따라서 이 중 어느 것으로도 해당 센서를 찾을 수 있음), DAQ-M의 BLE MAC, 그리고 DAQ-U 또는 DAQ-M이 열렸을 때 보고하는 ID(검사를 위해 열린 다른 센서는 다시 닫힙니다)와 대조됩니다. 해당 센서가 발견되지 않으면, `connect_daq_sensor`는 발견된 항목을 나열하는 `ChlorosConnectError`를 발생시키며, 주소도 함께 포함합니다(다른 센서를 보유한 `port=` / `mac=` / `eth_host=`)가 다른 센서를 포함하고 있는 경우에도 예외가 발생합니다. 이 코드는 표시된 센서 중 어느 것으로도 대체되지 않습니다. 바로 이것이 제로 플래그 호출의 목적입니다.</id></sn></id></sn>
+`sensor_id=`는 하나의 센서를 지정하며, 해당 센서만 열립니다. 이미 열려 있는 센서들과 대조한 후, DAQ-E의 호스트명 또는 IP(네트워크 스캔에서 IP로만 식별되는 DAQ-E의 경우, 이름, MAC 및 일련번호를 읽기 전용으로 요청하며, 따라서 이 중 어느 것으로도 해당 센서를 찾을 수 있음), DAQ-M의 BLE MAC, 그리고 DAQ-U 또는 DAQ-M이 열렸을 때 보고하는 ID(검사를 위해 열린 다른 센서는 다시 닫힙니다)와 대조됩니다. 해당 센서가 발견되지 않으면, `connect_daq_sensor`는 발견된 항목을 나열하는 `ChlorosConnectError`를 발생시키며, 주소도 함께 포함합니다(다른 센서를 보유한 `port=` / `mac=` / `eth_host=`)가 다른 센서를 포함하고 있는 경우에도 예외가 발생합니다. 이 코드는 표시된 센서 중 어느 것으로도 대체되지 않습니다. 바로 이것이 제로 플래그 호출의 목적입니다.
 
 ### `connect_daq_sensor()` 시그니처
 
