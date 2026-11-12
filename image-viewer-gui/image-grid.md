@@ -10,7 +10,9 @@
 * **Ctrl + `+`**/**Ctrl + `=`**및**Ctrl + `−`**를 누를 때마다 크기가 4 px씩 단계별로 변경됩니다. 키보드 단축키로 조정 가능한 범위는 최소 64 px부터 시작하며, 최대 크기는 현재 창에서 한 행에 썸네일이 정확히 두 개 들어맞는 크기로 제한됩니다.
 * 최종적으로 결정한 크기는 프로젝트와 함께 저장됩니다(`UI → Grid thumbnail size`에서 `project.json`, 기본값 `160`), 따라서 프로젝트를 다시 열면 해당 크기가 복원됩니다.
 
-<figure><img src="../.gitbook/assets/chloros_grid_zoom.gif" alt=""><figcaption></figcaption></figure>썸네일 *해상도*는 썸네일 *크기*와는 별개의 설정입니다. [프로젝트 설정](../project-settings/project-settings.md)의 **표시 → 이미지 썸네일 해상도**를 참조하십시오(기본값: 긴 변 기준 512 픽셀). 크기는 타일이 그려지는 크기를 의미하며, 해상도는 타일을 채우기 위해 불러오는 세부 정보의 양을 의미합니다.***
+<figure><img src="../.gitbook/assets/chloros_grid_zoom.gif" alt=""><figcaption></figcaption></figure>썸네일 *해상도*는 썸네일 *크기*와는 별개의 설정입니다. [프로젝트 설정](../project-settings/project-settings.md)의 **표시 → 이미지 썸네일 해상도**를 참조하십시오(기본값: 긴 변 기준 512 픽셀). 크기는 타일이 그려지는 크기를 의미하며, 해상도는 타일을 채우기 위해 불러오는 세부 정보의 양을 의미합니다.
+
+***
 
 ## 그리드 도구 모음
 

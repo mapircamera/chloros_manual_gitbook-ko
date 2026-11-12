@@ -169,7 +169,9 @@ chloros-cli --version
 | 옵션 (설치 프로그램에 표시된 문구) | 기능 | 자동 설치 제외 |
 | --- | --- | --- |
 | **Windows 긴 경로 활성화** (프로젝트 폴더가 260자보다 더 깊은 위치에 있을 수 있도록 함; 권장) | Windows의 시스템 전체 설정인 `LongPathsEnabled`를 1로 설정합니다. Windows는 이 설정이 비활성화된 상태로 제공되며, 이 경우 경로 길이가 260자를 초과할 수 없습니다. Chloros 제품은 프로젝트 폴더 아래로 최대 약 130자까지 위치하므로, 더 깊은 위치의 프로젝트 폴더는 허용되지 않습니다([문제 해결](#troubleshooting-pointers) 참조). 설치 후 실행되는 프로그램부터 적용됩니다. 다른 프로그램에서 이 설정에 의존할 수 있으므로, 제거 시에도 이 설정은 유지됩니다. | `/MERGETASKS="!longpaths"` |
-| **Microsoft Defender 검사에서 Chloros 백엔드 제외**(카메라 캡처 속도 대폭 향상; 권장) | 설치 폴더 내의 `chloros-backend.exe`에 대한 Defender**프로세스** 제외 항목을 추가하여, 백엔드가 파일을 어디에 기록하든 실시간 보호 기능이 해당 파일을 검사하지 않도록 합니다. 다른 프로그램은 제외되지 않으며, 제거 시 이 제외 항목은 삭제됩니다. Defender가 없거나 정책에 의해 잠겨 있는 경우 이 단계는 오류 메시지 없이 실패하고 설치가 계속 진행됩니다. | `/MERGETASKS="!defenderexclusion"` |**Defender 옵션이 중요한 이유:** 캡처 속도가 높을 경우, 캡처 파일에 대한 실시간 스캔은 캡처 속도의 약 30%를 차지합니다(9대의 카메라로 연속 캡처 시 측정 결과: 77.7 캡처/초 제외, 52.7 스캔). `lattice array-capture --continuous`는 캡처 시 Defender가 CPU 코어 1개 이상을 사용하는 것으로 측정되면 알림을 표시합니다. 해당 옵션을 선택한 상태로 설치 프로그램을 다시 실행하십시오.
+| **Microsoft Defender 검사에서 Chloros 백엔드 제외**(카메라 캡처 속도 대폭 향상; 권장) | 설치 폴더 내의 `chloros-backend.exe`에 대한 Defender**프로세스** 제외 항목을 추가하여, 백엔드가 파일을 어디에 기록하든 실시간 보호 기능이 해당 파일을 검사하지 않도록 합니다. 다른 프로그램은 제외되지 않으며, 제거 시 이 제외 항목은 삭제됩니다. Defender가 없거나 정책에 의해 잠겨 있는 경우 이 단계는 오류 메시지 없이 실패하고 설치가 계속 진행됩니다. | `/MERGETASKS="!defenderexclusion"` |
+
+**Defender 옵션이 중요한 이유:** 캡처 속도가 높을 경우, 캡처 파일에 대한 실시간 스캔은 캡처 속도의 약 30%를 차지합니다(9대의 카메라로 연속 캡처 시 측정 결과: 77.7 캡처/초 제외, 52.7 스캔). `lattice array-capture --continuous`는 캡처 시 Defender가 CPU 코어 1개 이상을 사용하는 것으로 측정되면 알림을 표시합니다. 해당 옵션을 선택한 상태로 설치 프로그램을 다시 실행하십시오.
 
 자동 설치(`/SILENT` 또는 `/VERYSILENT`)의 경우, 명시적으로 제외하지 않는 한(예: `"Chloros Installer 1.3.0.exe" /VERYSILENT /MERGETASKS="!defenderexclusion"`) 두 옵션이 모두 적용됩니다.
 

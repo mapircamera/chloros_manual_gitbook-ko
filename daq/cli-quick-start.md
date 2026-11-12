@@ -170,7 +170,9 @@ chloros-cli daq pool-reboot --sensor-id daq-e-def330
 chloros-cli daq pool-update-firmware --sensor-id daq-e-def330
 ```
 
-`pool-info`는 센서의 펌웨어(및 해당 Chloros 릴리스에 더 새로운 버전이 포함되어 있는지 여부), 주소 및 주소 할당 방식, 현재 실행 중인 설정과 다른 저장된 네트워크 설정, 전원 켜기 시 스트리밍 및 PTP 정보를 표시합니다. `pool-set-network`는 변경 사항을 적용하기 위해 센서를 재시작하고 기존 설정으로 다시 연결하며, `--no-reboot`는 설정만 저장합니다. 정적 주소는 이 컴퓨터의 네트워크에 속해 있어야 하며, 그렇지 않으면 Chloros가 이를 거부합니다. `--force`는 주소가 재할당되거나 해당 주소로 라우팅될 컴퓨터에 한해 이 설정을 무시합니다. 센서가 기록 중인 동안에는 재시작이 허용되지 않습니다. `pool-update-firmware`는 <version\>명령줄에서</version\> GUI의 **Update to \<version\>**에 </version\>해당하는 명령이며<version\>, GUI가 없는 Linux에서 DAQ-E를 업데이트하는 방법입니다. 1.3.0 버전에서 새로 추가되었습니다.***
+`pool-info`는 센서의 펌웨어(및 해당 Chloros 릴리스에 더 새로운 버전이 포함되어 있는지 여부), 주소 및 주소 할당 방식, 현재 실행 중인 설정과 다른 저장된 네트워크 설정, 전원 켜기 시 스트리밍 및 PTP 정보를 표시합니다. `pool-set-network`는 변경 사항을 적용하기 위해 센서를 재시작하고 기존 설정으로 다시 연결하며, `--no-reboot`는 설정만 저장합니다. 정적 주소는 이 컴퓨터의 네트워크에 속해 있어야 하며, 그렇지 않으면 Chloros가 이를 거부합니다. `--force`는 주소가 재할당되거나 해당 주소로 라우팅될 컴퓨터에 한해 이 설정을 무시합니다. 센서가 기록 중인 동안에는 재시작이 허용되지 않습니다. `pool-update-firmware`는 <version\>명령줄에서</version\> GUI의 **Update to \<version\>**에 </version\>해당하는 명령이며<version\>, GUI가 없는 Linux에서 DAQ-E를 업데이트하는 방법입니다. 1.3.0 버전에서 새로 추가되었습니다.
+
+***
 
 ## 명령어 요약
 

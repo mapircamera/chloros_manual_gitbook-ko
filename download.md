@@ -190,7 +190,9 @@ Chloros+ 구독을 통해 고급 기능을 활용하세요:
 * **🐻 고급 텍스처 인식 디베이어링 방식** - AI/ML 노이즈 제거 모델과 결합된 고품질 에지 인식 디베이어링 방식으로, 디베이어링 과정에서 발생하는 노이즈를 거의 모두 제거합니다.
 * 🧮 **사용자 정의 공식** - 사용자 정의 다중 스펙트럼 지수 생성
 
-<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Chloros+ 요금제 및 가격 보기</a></p>***
+<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Chloros+ 요금제 및 가격 보기</a></p>
+
+***
 
 ## 설치 도움말
 
@@ -229,7 +231,9 @@ Chloros+ 구독을 통해 고급 기능을 활용하세요:
 * 📧 **이메일**: info@mapir.camera
 * 🌐 **웹사이트**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
 * 📚 **문서**: [시작하기](./)
-* ❓ **FAQ**: [자주 묻는 질문](faq.md)***
+* ❓ **FAQ**: [자주 묻는 질문](faq.md)
+
+***
 
 ## 소프트웨어 업데이트
 

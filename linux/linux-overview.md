@@ -10,7 +10,8 @@ Chloros 1.3.0은 Linux 워크스테이션, 서버 및 NVIDIA Jetson 엣지 장�
 
 ## 플랫폼 지원 매트릭스
 
-| 기능 | Windows (GUI) | Windows (CLI/SDK) | Linux amd64 (CLI/ --- | --- | --- | --- |
+| 기능 | Windows (GUI) | Windows (CLI/SDK) | Linux amd64 (CLI/SDK) | Linux arm64 / Jetson (CLI/SDK) |
+| --- | --- | --- | --- | --- |
 | **데스크톱 GUI** | 예 | 해당 없음 | 아니요 | 아니요 |
 | **CLI** (`chloros-cli`) | 예 | 예 | 예 | 예 |
 | **Python SDK** (`chloros-sdk`) | 예 | 예 | 예 | 예 |
@@ -22,7 +23,9 @@ Chloros 1.3.0은 Linux 워크스테이션, 서버 및 NVIDIA Jetson 엣지 장�
 | **텍스처 인식 디베이어** (CUDA GPU 필요) | 예 (Chloros+) | 예 (Chloros+) | 예 (Chloros+) | 예 (Chloros+) |
 | **동적 컴퓨트 적응** | 예 | 예 | 예 | 예 |
 | **시스템 서비스로서의 백엔드** (`chloros-backend@<user>.service`) | 아니요 | 아니요 | 예 (선택적 적용) | 예 (선택적 적용) |
-| **인플레이스 업데이트 기능** (`chloros-cli update`) | 아니요 (설치 프로그램 실행) | 아니요 (설치 프로그램 실행) | 예 | 예 |***
+| **인플레이스 업데이트 기능** (`chloros-cli update`) | 아니요 (설치 프로그램 실행) | 아니요 (설치 프로그램 실행) | 예 | 예 |
+
+***
 
 ## 지원되는 아키텍처
 
@@ -35,7 +38,9 @@ Chloros 1.3.0은 Linux 워크스테이션, 서버 및 NVIDIA Jetson 엣지 장�
 
 * **Ubuntu 22.04 LTS 이상** (amd64)
 * **Debian 12 이상** (amd64)
-* **NVIDIA JetPack 6** (arm64 — Jetson Orin 플랫폼)***
+* **NVIDIA JetPack 6** (arm64 — Jetson Orin 플랫폼)
+
+***
 
 ## Linux 사용자가 얻을 수 있는 것
 
@@ -54,7 +59,9 @@ Chloros 1.3.0은 Linux 워크스테이션, 서버 및 NVIDIA Jetson 엣지 장�
 
 * **데스크톱 GUI** — 그래픽 인터페이스가 없으며, 모든 상호 작용은 CLI 또는 Python SDK를 통해 이루어집니다
 * **이미지 뷰어** — 대화형 이미지 뷰어, 그리드 뷰 또는 지도 마커 기능이 없습니다
-* **시각적 프로젝트 관리** — 프로젝트는 CLI 명령어와 SDK 호출을 통해 생성 및 관리됩니다(카메라, 센서, 캡처 등 하드웨어 자체는 터미널에서 완전히 제어할 수 있습니다)***
+* **시각적 프로젝트 관리** — 프로젝트는 CLI 명령어와 SDK 호출을 통해 생성 및 관리됩니다(카메라, 센서, 캡처 등 하드웨어 자체는 터미널에서 완전히 제어할 수 있습니다)
+
+***
 
 ## 라이선스 요구 사항
 

@@ -17,7 +17,9 @@ MAPIR의 **DAQ** 광 센서는 주변광을 방사계측학적으로 보정된 �
 | --- | --- | --- |
 | **DAQ-U** | USB (직렬) | 직렬 포트 스캔 |
 | **DAQ-M** | 블루투스 저에너지 | 이름으로 BLE 스캔 |
-| **DAQ-E** | 이더넷 (IPv4, PoE 전원 공급) | mDNS `_daq-e._tcp` (호스트 이름 `daq-e-<id>.local`) |**DAQ-E-S (1.3.0 버전부터 추가됨).** 고정형 디퓨저와 기울기 센서가 장착된 DAQ-E입니다. Chloros에서는 이를 `DAQ-E-S`로 표시하며, 캡 보정이 적용되지 않고 모든 측정값에 장치의 기울기, 롤, 피치 정보가 포함된다는 점을 제외하면 DAQ-E와 완전히 동일하게 작동합니다. [DAQ-E-S: 고정형 디퓨저 및 기울기](caps-and-range.md#daq-e-s-fixed-diffuser-and-tilt)를 참조하십시오.
+| **DAQ-E** | 이더넷 (IPv4, PoE 전원 공급) | mDNS `_daq-e._tcp` (호스트 이름 `daq-e-<id>.local`) |
+
+**DAQ-E-S (1.3.0 버전부터 추가됨).** 고정형 디퓨저와 기울기 센서가 장착된 DAQ-E입니다. Chloros에서는 이를 `DAQ-E-S`로 표시하며, 캡 보정이 적용되지 않고 모든 측정값에 장치의 기울기, 롤, 피치 정보가 포함된다는 점을 제외하면 DAQ-E와 완전히 동일하게 작동합니다. [DAQ-E-S: 고정형 디퓨저 및 기울기](caps-and-range.md#daq-e-s-fixed-diffuser-and-tilt)를 참조하십시오.
 
 이 세 모델은 모두 동일한 와이어 프로토콜을 사용하며, 동일한 데이터를 제공합니다:
 

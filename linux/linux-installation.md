@@ -69,7 +69,9 @@ sudo apt install ./chloros_1.3.0_arm64_jp6.deb
 chloros-cli --version
 ```
 
-amd64 `.deb`(Python SDK, 수신 버퍼 및 백엔드 서비스 포함)와 동일한 레이아웃으로, **JetPack 6**(L4T R36)을 실행하는 Jetson Orin / Orin NX / Orin Nano용입니다. 이 패키지의 PyTorch는 Orin용 JetPack 6의 CUDA 빌드이므로, GPU 처리(Texture Aware 디베이어 포함)는 Jetson의 GPU에서 실행됩니다. 이 패키지는 CUDA 자체를 포함하지 않으며, JetPack 6이 설치하는 CUDA 및 cuDNN 라이브러리를 사용합니다(해당 라이브러리가 없는 이미지의 경우 `sudo apt install nvidia-jetpack`). CUDA GPU를 사용할 수 없는 경우, 처리는 CPU에서 실행되며 `--debayer texture-aware`는 표준 디베이어를 사용합니다(백엔드에는 그 이유를 설명하는 한 줄의 `[DEBAYER] … needs a CUDA GPU …` 로그가 기록됩니다). Jetson의 메모리, 발열 및 현장 배포 관련 동작에 대해서는 [NVIDIA Jetson 가이드](nvidia-jetson-guide.md)를 참조하십시오.***
+amd64 `.deb`(Python SDK, 수신 버퍼 및 백엔드 서비스 포함)와 동일한 레이아웃으로, **JetPack 6**(L4T R36)을 실행하는 Jetson Orin / Orin NX / Orin Nano용입니다. 이 패키지의 PyTorch는 Orin용 JetPack 6의 CUDA 빌드이므로, GPU 처리(Texture Aware 디베이어 포함)는 Jetson의 GPU에서 실행됩니다. 이 패키지는 CUDA 자체를 포함하지 않으며, JetPack 6이 설치하는 CUDA 및 cuDNN 라이브러리를 사용합니다(해당 라이브러리가 없는 이미지의 경우 `sudo apt install nvidia-jetpack`). CUDA GPU를 사용할 수 없는 경우, 처리는 CPU에서 실행되며 `--debayer texture-aware`는 표준 디베이어를 사용합니다(백엔드에는 그 이유를 설명하는 한 줄의 `[DEBAYER] … needs a CUDA GPU …` 로그가 기록됩니다). Jetson의 메모리, 발열 및 현장 배포 관련 동작에 대해서는 [NVIDIA Jetson 가이드](nvidia-jetson-guide.md)를 참조하십시오.
+
+***
 
 ## Python SDK 설치 (모든 Linux)**`.deb`가 SDK를 자동으로 설치합니다.** 두 패키지(amd64 및 Jetson) 모두 시스템용 `python3`로 설치되므로, `import chloros_sdk`는 설치 직후 pip나 네트워크 연결 없이도 바로 작동합니다. 이 패키지의 구성 요소(`chloros_sdk`, `lattice_sdk`, `lattice_cam`, `arena_api` 및 프로젝트 로더)는 해당 패키지가 소유하는 `/usr/lib/python3/dist-packages`에 포함됩니다. 업그레이드 시 이 패키지들이 대체되며, 패키지를 제거하면 이 패키지들도 함께 제거됩니다. 버전은 항상 설치한 CLI 및 백엔드와 일치합니다.
 
@@ -278,7 +280,9 @@ sudo systemctl disable --now chloros-backend.service
 sudo systemctl enable --now chloros-backend@$USER.service
 ```
 
-**서비스의 백엔드는 공유되며, 클라이언트에 의해 중지되지 않습니다.** `chloros-cli` 및 SDK 스크립트는 백엔드를 발견하는 대로 사용합니다: `process`는 백엔드에서 실행되며, 마지막 프로젝트 대신 자체 프로젝트를 불러옵니다. CLI가 다른 경우라면 백엔드를 재시작했을 상황(`--restart`, 또는 임포트 시 아무것도 찾지 못한 `process`)에서, 대신 유닛 이름을 지정하고 `sudo systemctl restart <unit>`를 출력한 뒤 종료됩니다(`1`). 이는 이러한 방식으로 중지된 백엔드는 다시 시작되지 않기 때문입니다. `sudo systemctl restart chloros-backend@$USER.service`를 사용하여 직접 다시 시작하십시오. 서비스의 백엔드는 유휴 상태에서도 스스로 중지되지 않으며, `chloros-cli backend stop`는 이를 거부하고 `systemctl stop` 명령을 표시합니다.**PTP가 포트를 할당받는 방식.** PTP는 UDP 319/320 포트를 사용하며, 두 포트 모두 일반적인 1024 특권 포트 하한선보다 낮습니다. 이 패키지의 `postinst`는 `/etc/sysctl.d/60-chloros-ptp.conf`에 `net.ipv4.ip_unprivileged_port_start = 319`를 기록하며, 이를 통해 백엔드는 사용자의 계정으로 실행되는 동안 해당 포트에 바인딩할 수 있습니다. 1.3.0 버전부터 이 패키지는 백엔드에 파일 권한(`setcap`)을 설정하지 않으며, `libcap2-bin`는 더 이상 의존성이 아닙니다. 압축을 푼 백엔드에서 파일 권한이 설정되어 있으면 백엔드가 시작되지 않으므로, 따라서 직접 추가하지 마십시오.***
+**서비스의 백엔드는 공유되며, 클라이언트에 의해 중지되지 않습니다.** `chloros-cli` 및 SDK 스크립트는 백엔드를 발견하는 대로 사용합니다: `process`는 백엔드에서 실행되며, 마지막 프로젝트 대신 자체 프로젝트를 불러옵니다. CLI가 다른 경우라면 백엔드를 재시작했을 상황(`--restart`, 또는 임포트 시 아무것도 찾지 못한 `process`)에서, 대신 유닛 이름을 지정하고 `sudo systemctl restart <unit>`를 출력한 뒤 종료됩니다(`1`). 이는 이러한 방식으로 중지된 백엔드는 다시 시작되지 않기 때문입니다. `sudo systemctl restart chloros-backend@$USER.service`를 사용하여 직접 다시 시작하십시오. 서비스의 백엔드는 유휴 상태에서도 스스로 중지되지 않으며, `chloros-cli backend stop`는 이를 거부하고 `systemctl stop` 명령을 표시합니다.**PTP가 포트를 할당받는 방식.** PTP는 UDP 319/320 포트를 사용하며, 두 포트 모두 일반적인 1024 특권 포트 하한선보다 낮습니다. 이 패키지의 `postinst`는 `/etc/sysctl.d/60-chloros-ptp.conf`에 `net.ipv4.ip_unprivileged_port_start = 319`를 기록하며, 이를 통해 백엔드는 사용자의 계정으로 실행되는 동안 해당 포트에 바인딩할 수 있습니다. 1.3.0 버전부터 이 패키지는 백엔드에 파일 권한(`setcap`)을 설정하지 않으며, `libcap2-bin`는 더 이상 의존성이 아닙니다. 압축을 푼 백엔드에서 파일 권한이 설정되어 있으면 백엔드가 시작되지 않으므로, 따라서 직접 추가하지 마십시오.
+
+***
 
 ## Bash 스크립팅 예제
 
