@@ -684,7 +684,7 @@ False         # export in native sensor geometry / skip the common-overlap crop
 
 #### 방사계 출력 (LATTICE 다중 스펙트럼 파이프라인)
 
-`process` 파이프라인의 LATTICE 다중 스펙트럼(M3C/M3M) 내보내기 수준 — `reflectance`(기본값), `radiance`, `sensor-response` 또는 `all`(이미지당 적용 가능한 모든 모드))는 프로젝트의 **"방사도 내보내기"**및**"반사도 내보내기"**** 산출물을 설정합니다: `radiance`는 복사도만 내보내고, `reflectance`는 반사도만 내보내며, `sensor-response`는 둘 다 내보내지 않습니다(데베이어링 처리된 산출물과 미리보기 산출물만 제공), `all`는 둘 다 내보냅니다. 디베이어링 및 미리보기 산출물은 이 레벨에서 변경할 수 없습니다. `configure()`에는 이를 위한 전용 키워드가 있습니다:
+`process` 파이프라인의 LATTICE 다중 스펙트럼(M3C/M3M) 내보내기 수준 — `reflectance`(기본값), `radiance`, `sensor-response` 또는 `all`(이미지당 적용 가능한 모든 모드))는 프로젝트의 **"방사도 내보내기"** 및 **"반사도 내보내기"** 산출물을 설정합니다: `radiance`는 복사도만 내보내고, `reflectance`는 반사도만 내보내며, `sensor-response`는 둘 다 내보내지 않습니다(데베이어링 처리된 산출물과 미리보기 산출물만 제공), `all`는 둘 다 내보냅니다. 디베이어링 및 미리보기 산출물은 이 레벨에서 변경할 수 없습니다. `configure()`에는 이를 위한 전용 키워드가 있습니다:
 
 ```python
 with chloros_sdk.ChlorosLocal() as cl:
